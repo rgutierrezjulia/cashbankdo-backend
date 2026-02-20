@@ -127,10 +127,10 @@ export const BANK_SOURCES = [
     id: 'lanacional',
     name: 'La Nacional',
     color: '#8B1A1A',
-    strategy: 'html_promo_pages',
+    // Las ofertas son inline en una sola página — no hay sub-páginas individuales
+    strategy: 'html_inline_cards',
     promoListUrl: 'https://asociacionlanacional.com.do/ofertas-tarjetas',
-    listingPages: ['https://asociacionlanacional.com.do/ofertas-tarjetas'],
-    promoLinkSelector: 'a[href*="lanacional.com.do"], article a, .offer a, h2 a',
+    cardSelector: '.ofertasTarjetas .boxOffer',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas'],
   },

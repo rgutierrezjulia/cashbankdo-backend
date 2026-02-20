@@ -423,6 +423,61 @@ Reglas importantes:
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 3c4. PROCESAR BANCO VÍA CARDS INLINE EN PÁGINA DE LISTADO (La Nacional)
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromInlineCards(source, existingIds) {
+  let browser;
+  try {
+    console.log(`   🌐 Cargando página de listado inline para ${source.name}...`);
+    browser = await puppeteer.launch(PUPPETEER_OPTS);
+    const page = await browser.newPage();
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
+    await page.goto(source.promoListUrl, { waitUntil: 'networkidle2', timeout: 30000 });
+    await new Promise(r => setTimeout(r, 2000));
+
+    const cards = await page.evaluate((sel) =>
+      [...document.querySelectorAll(sel)].map(el => el.innerText.trim()).filter(Boolean)
+    , source.cardSelector);
+
+    console.log(`   📋 ${cards.length} cards inline encontradas`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const cardText of cards) {
+      const textLower = cardText.toLowerCase();
+      const hasKeyword = source.keywords.some(k => textLower.includes(k));
+      const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
+      if (!hasKeyword || hasExclude) { skipped++; continue; }
+
+      const id = generateId(`${source.id}-${cardText.substring(0, 80)}`);
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      console.log(`   🤖 Extrayendo: ${cardText.substring(0, 60).replace(/\n/g, ' ')}...`);
+      const promo = await extractPromoFromPageText(cardText, source.name, source.promoListUrl);
+      if (promo) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        promo.id = id;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
+      await new Promise(r => setTimeout(r, 500));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error en inline cards ${source.name}:`, err.message);
+    return [];
+  } finally {
+    if (browser) await browser.close();
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 3d. PROCESAR BANCO VÍA PÁGINAS HTML DE PROMOS (Scotiabank, BLH)
 // ───────────────────────────────────────────────────────────────────
 
@@ -560,6 +615,11 @@ async function processBank(source, existingIds) {
   // Estrategia HTML promo pages (Scotiabank, BLH)
   if (source.strategy === 'html_promo_pages') {
     return await processBankFromHtmlPromoPages(source, existingIds);
+  }
+
+  // Estrategia inline cards (La Nacional — ofertas en una sola página sin sub-páginas)
+  if (source.strategy === 'html_inline_cards') {
+    return await processBankFromInlineCards(source, existingIds);
   }
 
   // Obtener links de PDFs
