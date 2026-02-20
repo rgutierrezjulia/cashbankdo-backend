@@ -443,12 +443,17 @@ async function processBankFromWpApi(source, existingIds) {
     const newPromos = [];
     let processed = 0, skipped = 0;
 
+    const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+
     for (const post of posts) {
       const title = post.title?.rendered || '';
       const link = post.link || source.promoListUrl;
       const id = generateId(link);
 
       if (existingIds.has(id)) { skipped++; continue; }
+
+      // Saltar posts más viejos de 90 días
+      if (post.date && new Date(post.date) < ninetyDaysAgo) { skipped++; continue; }
 
       // Convertir HTML del post a texto plano con cheerio
       const $ = cheerio.load(post.content?.rendered || '');
