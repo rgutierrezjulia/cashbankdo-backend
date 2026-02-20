@@ -83,12 +83,13 @@
   .stat-chip.purple .num { color: var(--accent2); }
   .stat-chip.blue .num { color: #48cae4; }
 
-  .controls { max-width: 1100px; margin: 0 auto 24px; padding: 0 24px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-  .tab-group { display: flex; gap: 4px; background: var(--surface); border-radius: 10px; padding: 4px; }
-  .tab { padding: 7px 16px; border-radius: 7px; border: none; background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
-  .tab.active { background: var(--surface2); color: var(--text); }
+  .controls { max-width: 1100px; margin: 0 auto 24px; padding: 0 24px; display: flex; flex-direction: column; gap: 10px; }
+  .cat-filter { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .cat-filter::-webkit-scrollbar { display: none; }
+  .cat-btn { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
+  .cat-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
   .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
-  .bank-btn { padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+  .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
 
   .main { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 310px; gap: 24px; }
@@ -268,11 +269,17 @@
 </div>
 
 <div class="controls">
-  <div class="tab-group">
-    <button class="tab active" onclick="setTab('all',this)">Todas</button>
-    <button class="tab" onclick="setTab('active',this)">Vigentes</button>
-    <button class="tab" onclick="setTab('next15',this)">Próximas 15 días</button>
-    <button class="tab" onclick="setTab('expired',this)">Expiradas</button>
+  <div class="cat-filter" id="catFilter">
+    <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
+    <button class="cat-btn" onclick="setCategory('compras',this)">🛍️ Compras</button>
+    <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
+    <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
+    <button class="cat-btn" onclick="setCategory('salud',this)">🏋️ Clubes</button>
+    <button class="cat-btn" onclick="setCategory('restaurante',this)">🍽️ Restaurantes</button>
+    <button class="cat-btn" onclick="setCategory('bebidas',this)">🍹 Bebidas</button>
+    <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
+    <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Entretenimiento</button>
+    <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
   </div>
   <div class="bank-filter" id="bankFilter">
     <button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>
@@ -380,8 +387,21 @@ const ADMIN_KEY = localStorage.getItem('cashbackdo_adminkey') || '';
 let allPromos = [];
 let banks = [];
 let cardCatalog = {};
-let activeTab = 'all';
+let activeCategory = 'all';
 let activeBank = 'all';
+
+// Mapeo de valor de categoría a tags del backend
+const CATEGORY_TAGS = {
+  compras:        ['online', 'presencial'],
+  supermercado:   ['supermercado'],
+  'educación':    ['educación'],
+  salud:          ['salud'],
+  restaurante:    ['restaurante'],
+  bebidas:        ['bebidas'],
+  viaje:          ['aéreo', 'viaje'],
+  entretenimiento:['entretenimiento'],
+  otro:           ['otro'],
+};
 let geoActive = false;
 let timerSec = 0;
 let timerRef = null;
@@ -394,9 +414,7 @@ let modalSelected = new Set();
 // ═══════════════════════════════════════════════════════════════════
 async function fetchPromos() {
   const params = new URLSearchParams();
-  if (activeTab !== 'all') params.append('status', activeTab);
   if (activeBank !== 'all') params.append('bank', activeBank);
-
   const res = await fetch(`${API_BASE}/api/promos?${params}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
@@ -536,7 +554,21 @@ function renderCards() {
     return;
   }
 
-  const rendered = allPromos.map((p, i) => {
+  // Solo mostrar activas y próximas (ocultar expiradas)
+  let filtered = allPromos.filter(p => p.isActive || p.isUpcoming);
+
+  // Filtrar por categoría
+  if (activeCategory !== 'all') {
+    const tags = CATEGORY_TAGS[activeCategory] || [activeCategory];
+    filtered = filtered.filter(p => p.categories?.some(c => tags.includes(c)));
+  }
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="big">🔍</div><div>No hay promos en esta categoría</div></div>`;
+    return;
+  }
+
+  const rendered = filtered.map((p, i) => {
     const color = banks.find(b => b.id === p.bankId)?.color || '#888';
     const tags = [...(p.categories || []), ...(p.cardTypes || [])];
 
@@ -582,7 +614,7 @@ function renderCards() {
     </div>`;
   }).join('');
 
-  list.innerHTML = rendered || `<div class="empty-state"><div class="big">🔍</div><div>No hay promos en esta categoría</div></div>`;
+  list.innerHTML = rendered;
 }
 
 function fmt(s) {
@@ -604,11 +636,11 @@ function renderBankFilter(banks) {
     ).join('');
 }
 
-function setTab(tab, el) {
-  activeTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+function setCategory(cat, el) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  loadData();
+  renderCards();
 }
 
 function setBank(bank, el) {
