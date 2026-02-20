@@ -433,10 +433,17 @@ async function fetchBanks() {
 async function fetchCardCatalog() {
   try {
     const res = await fetch(`${API_BASE}/api/card-catalog`);
-    if (!res.ok) return;
-    cardCatalog = await res.json();
-    populateBankSelect();
-  } catch {}
+    if (!res.ok) { console.warn('card-catalog status:', res.status); return; }
+    const data = await res.json();
+    if (data && Object.keys(data).length > 0) {
+      cardCatalog = data;
+      populateBankSelect();
+    } else {
+      console.warn('card-catalog vino vacío');
+    }
+  } catch (e) {
+    console.error('fetchCardCatalog error:', e);
+  }
 }
 
 function populateBankSelect() {
@@ -481,7 +488,6 @@ async function loadData() {
     const [promosData, statsData, banksData] = await Promise.all([
       fetchPromos(), fetchStats(), fetchBanks()
     ]);
-    fetchCardCatalog();
 
     allPromos = promosData.promos;
     banks = banksData;
@@ -979,6 +985,7 @@ function setApiUrl() {
 // INIT + AUTO REFRESH
 // ═══════════════════════════════════════════════════════════════════
 loadData();
+fetchCardCatalog();
 // Refrescar datos cada 5 minutos automáticamente
 setInterval(loadData, 5 * 60 * 1000);
 </script>
