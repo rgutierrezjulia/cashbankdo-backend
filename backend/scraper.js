@@ -16,6 +16,13 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const DATA_FILE = '../data/promos.json';
 const LOG_FILE = '../data/scrape_log.json';
 
+// Opciones comunes de Puppeteer: usa Chromium del sistema si está disponible
+const PUPPETEER_OPTS = {
+  headless: 'new',
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  ...(process.env.PUPPETEER_EXECUTABLE_PATH && { executablePath: process.env.PUPPETEER_EXECUTABLE_PATH }),
+};
+
 // ───────────────────────────────────────────────────────────────────
 // 1. OBTENER LINKS DE PDFs DE UNA PÁGINA
 // ───────────────────────────────────────────────────────────────────
@@ -54,10 +61,7 @@ async function getPdfLinksFromHtml(url, selector, keywords, excludeKeywords) {
 async function getPdfLinksFromDynamic(url, selector, keywords, excludeKeywords) {
   let browser;
   try {
-    browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+    browser = await puppeteer.launch(PUPPETEER_OPTS);
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (compatible; CashbackDO/1.0)');
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
@@ -377,7 +381,7 @@ async function getPromoLinksFromListingPages(source) {
   let browser;
   try {
     console.log(`   🌐 Lanzando Puppeteer para ${source.name}...`);
-    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    browser = await puppeteer.launch(PUPPETEER_OPTS);
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
     console.log(`   ✅ Puppeteer lanzado OK`);
@@ -407,7 +411,7 @@ async function getPromoLinksFromListingPages(source) {
 async function extractTextFromPromoPage(url) {
   let browser;
   try {
-    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    browser = await puppeteer.launch(PUPPETEER_OPTS);
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 25000 });
