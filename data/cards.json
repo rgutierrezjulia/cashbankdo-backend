@@ -9,7 +9,11 @@
       { "id": "banreservas-mc-clasica", "name": "Mastercard Clásica Banreservas", "network": "Mastercard", "type": "crédito" },
       { "id": "banreservas-mc-gold", "name": "Mastercard Gold Banreservas", "network": "Mastercard", "type": "crédito" },
       { "id": "banreservas-mc-black", "name": "Mastercard Black Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-visa-infinite", "name": "Visa Infinite Banreservas", "network": "Visa", "type": "crédito" },
+      { "id": "banreservas-visa-ser", "name": "Visa SER Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-debito-mc", "name": "Mastercard Débito Banreservas", "network": "Mastercard", "type": "débito" },
+      { "id": "banreservas-debito-mc-gold", "name": "Mastercard Débito Gold Banreservas", "network": "Mastercard", "type": "débito" },
+      { "id": "banreservas-debito-mc-platinum", "name": "Mastercard Débito Platinum Banreservas", "network": "Mastercard", "type": "débito" },
       { "id": "banreservas-debito-visa", "name": "Visa Débito Banreservas", "network": "Visa", "type": "débito" }
     ]
   },
@@ -98,7 +102,11 @@
       { "id": "apap-visa-clasica", "name": "Visa Clásica APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-gold", "name": "Visa Gold APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-platinum", "name": "Visa Platinum APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-visa-infinite", "name": "Visa Infinite APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-visa-joven", "name": "Visa Joven APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-sirena", "name": "Visa Sirena APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-mc-standard", "name": "Mastercard Estándar APAP", "network": "Mastercard", "type": "crédito" },
+      { "id": "apap-mc-gold", "name": "Mastercard Gold APAP", "network": "Mastercard", "type": "crédito" },
       { "id": "apap-debito-visa", "name": "Visa Débito APAP", "network": "Visa", "type": "débito" }
     ]
   },
@@ -120,6 +128,7 @@
       { "id": "bancocaribe-visa-clasica-local", "name": "Visa Clásica Local Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-clasica-intl", "name": "Visa Clásica Internacional Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-oro", "name": "Visa Oro Banco Caribe", "network": "Visa", "type": "crédito" },
+      { "id": "bancocaribe-visa-platinum", "name": "Visa Platinum Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-infinite-elite", "name": "Visa Infinite Elite Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-ecard", "name": "Visa E-Card Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-debito-visa", "name": "Visa Débito Banco Caribe", "network": "Visa", "type": "débito" }
@@ -198,9 +207,12 @@
     "name": "Banco Ademi",
     "color": "#0056A2",
     "cards": [
-      { "id": "ademi-mc-clasica", "name": "Mastercard Clásica Ademi", "network": "Mastercard", "type": "crédito" },
-      { "id": "ademi-mc-gold", "name": "Mastercard Gold Ademi", "network": "Mastercard", "type": "crédito" },
-      { "id": "ademi-debito-mc", "name": "Mastercard Débito Ademi", "network": "Mastercard", "type": "débito" }
+      { "id": "ademi-visa-clasica-local", "name": "Visa Clásica Local Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-clasica-intl", "name": "Visa Clásica Internacional Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-gold", "name": "Visa Gold Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-flexible", "name": "Visa Flexible Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-ole", "name": "Visa Olé Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-debito-visa", "name": "Visa Débito Ademi", "network": "Visa", "type": "débito" }
     ]
   },
   "qik": {
