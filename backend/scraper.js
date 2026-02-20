@@ -20,6 +20,28 @@ puppeteerExtra.use(StealthPlugin());
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const DATA_FILE = '../data/promos.json';
 const LOG_FILE = '../data/scrape_log.json';
+const CARD_FILE = '../data/cards.json';
+
+// URLs de páginas de tarjetas de cada banco para el catalog scraper
+const CARD_PAGE_URLS = {
+  banreservas: 'https://www.banreservas.com/tarjetas/',
+  bhd: 'https://www.bhd.com.do/homepage-personal/tarjetas/',
+  scotiabank: 'https://do.scotiabank.com/banca-personal/tarjetas.html',
+  blh: 'https://www.blh.com.do/personas/tarjetas/',
+  lafise: 'https://www.lafise.com/blrd/tarjetas.html',
+  banesco: 'https://www.banesco.com.do/tarjetas/',
+  apap: 'https://www.apap.com.do/productos/tarjetas/',
+  cibao: 'https://www.cibao.com.do/banca-personal/tarjetas/',
+  bancocaribe: 'https://www.bancocaribe.com.do/tarjetas',
+  lanacional: 'https://asociacionlanacional.com.do/tarjetas',
+  vimenca: 'https://bancovimenca.com/tarjetas',
+  promerica: 'https://promerica.com.do/banca-personal/tarjetas/',
+  popular: 'https://popular.com.do/personas/tarjetas/',
+  bsc: 'https://bsc.com.do/tarjetas',
+  ademi: 'https://bancoademi.com.do/tarjetas/',
+  qik: 'https://www.qik.do/tarjetas/',
+  bdi: 'https://www.bdi.com.do/tarjetas',
+};
 
 // Opciones comunes de Puppeteer: usa Chromium del sistema si está disponible
 const PUPPETEER_OPTS = {
@@ -868,6 +890,121 @@ export async function runScraper(banksToProcess = null) {
   console.log(`   🆕 Nuevas este run: ${result.stats.newThisRun}`);
 
   return result;
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 8. CARD CATALOG SCRAPER — actualización mensual de tarjetas
+// ───────────────────────────────────────────────────────────────────
+
+export async function runCardCatalogScraper() {
+  console.log('\n🃏 CashbackDO Card Catalog Scraper iniciando...');
+  console.log(`⏰ ${new Date().toLocaleString('es-DO')}\n`);
+
+  // Cargar catálogo existente
+  let catalog = {};
+  try {
+    const raw = await fs.readFile(CARD_FILE, 'utf-8');
+    catalog = JSON.parse(raw);
+  } catch {
+    console.log('   📭 Sin catálogo previo, iniciando desde cero');
+  }
+
+  let updatedBanks = 0;
+
+  for (const source of BANK_SOURCES) {
+    const url = CARD_PAGE_URLS[source.id];
+    if (!url) continue;
+
+    console.log(`\n🏦 Buscando tarjetas de ${source.name}...`);
+
+    let pageText = '';
+    let browser;
+    try {
+      browser = await launchBrowser();
+      const page = await browser.newPage();
+      await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
+      await page.goto(url, { waitUntil: 'networkidle2', timeout: 20000 });
+      await new Promise(r => setTimeout(r, 2000));
+      pageText = await page.evaluate(() => {
+        const el = document.querySelector('main, .products, .tarjetas, #content, .content-area');
+        return el ? el.innerText.substring(0, 3000) : document.body.innerText.substring(0, 3000);
+      });
+    } catch (e) {
+      console.log(`   ⚠️  Error visitando ${url}: ${e.message}`);
+    } finally {
+      if (browser) await browser.close();
+    }
+
+    if (!pageText) {
+      console.log(`   ⏭️  Sin contenido, saltando ${source.name}`);
+      continue;
+    }
+
+    try {
+      const response = await client.messages.create({
+        model: 'claude-opus-4-6',
+        max_tokens: 800,
+        messages: [{
+          role: 'user',
+          content: `Eres un extractor de catálogo de tarjetas bancarias dominicanas.
+
+Del siguiente texto de la página de tarjetas de ${source.name}, extrae la lista de tarjetas de crédito y débito disponibles.
+
+TEXTO:
+${pageText}
+
+Devuelve SOLAMENTE un array JSON con objetos de este formato exacto:
+[
+  { "id": "${source.id}-visa-clasica", "name": "Visa Clásica ${source.name}", "network": "Visa", "type": "crédito" }
+]
+
+Reglas:
+- "network": "Visa" | "Mastercard" | "American Express"
+- "type": "crédito" | "débito"
+- "id": ${source.id}-[network-en-minusculas]-[tipo-en-minusculas] (ej: "${source.id}-visa-platinum")
+- "name": nombre completo oficial incluyendo el nombre del banco al final
+- Solo incluye tarjetas explícitamente mencionadas en el texto
+- Si no puedes identificar tarjetas específicas, devuelve []
+- SOLO el array JSON, sin texto adicional ni markdown`
+        }]
+      });
+
+      const raw = response.content[0].text.trim();
+      const clean = raw.replace(/```json|```/g, '').trim();
+      const scrapedCards = JSON.parse(clean);
+
+      if (Array.isArray(scrapedCards) && scrapedCards.length > 0) {
+        const existingBank = catalog[source.id] || { name: source.name, color: source.color, cards: [] };
+        const existingIds = new Set(existingBank.cards.map(c => c.id));
+        const newCards = scrapedCards.filter(c => c.id && c.name && !existingIds.has(c.id));
+
+        if (newCards.length > 0) {
+          catalog[source.id] = {
+            ...existingBank,
+            name: source.name,
+            color: source.color,
+            cards: [...existingBank.cards, ...newCards],
+          };
+          console.log(`   ✅ ${source.name}: ${newCards.length} tarjeta(s) nueva(s) añadida(s)`);
+          updatedBanks++;
+        } else {
+          console.log(`   ✓  ${source.name}: sin tarjetas nuevas (${existingBank.cards.length} ya en catálogo)`);
+        }
+      } else {
+        console.log(`   ⏭️  ${source.name}: no se pudieron extraer tarjetas`);
+      }
+    } catch (e) {
+      console.error(`   ❌ Error extrayendo tarjetas de ${source.name}:`, e.message);
+    }
+
+    await new Promise(r => setTimeout(r, 1000));
+  }
+
+  await fs.mkdir('../data', { recursive: true });
+  await fs.writeFile(CARD_FILE, JSON.stringify(catalog, null, 2));
+
+  console.log(`\n✅ Catálogo de tarjetas actualizado: ${updatedBanks} banco(s) con nuevas tarjetas`);
+  return catalog;
 }
 
 // Ejecutar directamente si se llama como script

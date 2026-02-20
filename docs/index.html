@@ -136,19 +136,7 @@
   .widget { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
   .widget-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 
-  .card-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .card-item:last-child { border-bottom: none; }
-  .card-visual { width: 44px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 700; color: #fff; flex-shrink: 0; }
-  .card-info { flex: 1; }
-  .card-name { font-size: 0.8rem; font-weight: 500; margin-bottom: 2px; }
-  .card-sub { font-size: 0.7rem; color: var(--muted); }
-  .card-promos { font-size: 0.65rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #000; }
-  .card-promos.zero { background: var(--surface2); color: var(--muted); }
-
   .add-card-form { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-  .add-card-form select, .add-card-form input { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.18s; }
-  .add-card-form select:focus, .add-card-form input:focus { border-color: var(--accent); }
-  .add-card-form option { background: #1c1c28; }
   .add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
   .add-btn:hover { opacity: 0.85; }
 
@@ -184,6 +172,59 @@
 
   .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
   .empty-state .big { font-size: 3rem; margin-bottom: 12px; }
+
+  /* Network badges */
+  .net-badge { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 5px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.03em; }
+  .net-badge.visa { background: rgba(26,95,205,0.15); color: #5b9cf6; }
+  .net-badge.mastercard { background: rgba(235,77,47,0.15); color: #f5856d; }
+  .net-badge.amex { background: rgba(0,180,135,0.15); color: #2dce9b; }
+  .type-badge { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 5px; font-size: 0.65rem; font-weight: 500; }
+  .type-badge.credito { background: rgba(0,229,160,0.08); color: var(--accent); }
+  .type-badge.debito { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+  /* Card item improved */
+  .card-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .card-item:last-child { border-bottom: none; }
+  .card-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .card-info { flex: 1; min-width: 0; }
+  .card-name { font-size: 0.8rem; font-weight: 500; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-badges { display: flex; gap: 4px; flex-wrap: wrap; }
+  .card-promos { font-size: 0.65rem; font-weight: 700; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 99px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #000; flex-shrink: 0; }
+  .card-promos.zero { background: var(--surface2); color: var(--muted); }
+  .card-del { background: none; border: none; color: var(--muted); cursor: pointer; padding: 3px 5px; border-radius: 5px; font-size: 0.8rem; flex-shrink: 0; transition: color 0.15s; }
+  .card-del:hover { color: var(--accent3); }
+
+  /* Apple Wallet import button */
+  .wallet-import-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px; color: var(--text); font-size: 0.82rem; cursor: pointer; transition: all 0.18s; font-family: 'DM Sans', sans-serif; width: 100%; }
+  .wallet-import-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 480px; max-height: 85vh; display: flex; flex-direction: column; }
+  .modal-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--border); }
+  .modal-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .modal-search { background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; width: 100%; transition: border-color 0.18s; }
+  .modal-search:focus { border-color: var(--accent); }
+  .modal-list { flex: 1; overflow-y: auto; padding: 10px 12px; }
+  .modal-item { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 9px; cursor: pointer; transition: background 0.15s; }
+  .modal-item:hover { background: var(--surface2); }
+  .modal-item input[type=checkbox] { accent-color: var(--accent); width: 15px; height: 15px; flex-shrink: 0; cursor: pointer; }
+  .modal-item-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .modal-item-name { flex: 1; font-size: 0.82rem; }
+  .modal-item-badges { display: flex; gap: 4px; }
+  .modal-bank-header { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; padding: 12px 8px 4px; }
+  .modal-footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .modal-count { font-size: 0.82rem; color: var(--muted); }
+  .modal-add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px 18px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
+  .modal-add-btn:hover { opacity: 0.85; }
+  .modal-add-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .modal-close { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 4px; }
+
+  /* Add card form dropdowns row */
+  .add-card-form select { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.18s; width: 100%; }
+  .add-card-form select:focus { border-color: var(--accent); }
+  .add-card-form option { background: #1c1c28; }
 
   /* API config banner */
   .api-banner { background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); border-radius: 12px; padding: 12px 16px; font-size: 0.8rem; color: var(--accent4); margin-bottom: 16px; line-height: 1.6; }
@@ -260,13 +301,14 @@
       <div class="widget-title">💳 Mis Tarjetas</div>
       <div id="walletList"></div>
       <div class="add-card-form">
-        <select id="cardBank"><option value="">Banco...</option></select>
-        <input id="cardName" type="text" placeholder="Nombre tarjeta (ej: Visa Platinum)" />
-        <select id="cardType">
-          <option value="crédito">Crédito</option>
-          <option value="débito">Débito</option>
+        <select id="cardBank" onchange="onBankChange()">
+          <option value="">Banco...</option>
+        </select>
+        <select id="cardName" disabled>
+          <option value="">Selecciona banco primero</option>
         </select>
         <button class="add-btn" onclick="addCard()">+ Agregar tarjeta</button>
+        <button class="wallet-import-btn" onclick="openWalletModal()">🍎 Importar desde Apple Wallet</button>
       </div>
     </div>
 
@@ -300,6 +342,24 @@
   </div>
 </div>
 
+<!-- Apple Wallet Import Modal -->
+<div class="modal-overlay" id="walletModal" onclick="closeWalletModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">
+        🍎 Importar desde Apple Wallet
+        <button class="modal-close" onclick="closeWalletModal()" style="margin-left:auto">✕</button>
+      </div>
+      <input class="modal-search" id="modalSearch" type="text" placeholder="Buscar tarjeta..." oninput="filterModalCards()" />
+    </div>
+    <div class="modal-list" id="modalList"></div>
+    <div class="modal-footer">
+      <span class="modal-count" id="modalCount">0 seleccionadas</span>
+      <button class="modal-add-btn" id="modalAddBtn" onclick="addModalSelected()" disabled>Añadir seleccionadas</button>
+    </div>
+  </div>
+</div>
+
 <div class="notif-toast" id="notifToast">
   <button class="notif-close" onclick="closeToast()">✕</button>
   <div class="notif-header"><span>🔔</span><span class="notif-bank" id="toastBank"></span></div>
@@ -319,12 +379,15 @@ const ADMIN_KEY = localStorage.getItem('cashbackdo_adminkey') || '';
 // ═══════════════════════════════════════════════════════════════════
 let allPromos = [];
 let banks = [];
+let cardCatalog = {};
 let activeTab = 'all';
 let activeBank = 'all';
 let geoActive = false;
 let timerSec = 0;
 let timerRef = null;
 let walletCards = JSON.parse(localStorage.getItem('cashbackdo_wallet') || '[]');
+// Modal state
+let modalSelected = new Set();
 
 // ═══════════════════════════════════════════════════════════════════
 // API CALLS
@@ -351,6 +414,37 @@ async function fetchBanks() {
   return res.json();
 }
 
+async function fetchCardCatalog() {
+  try {
+    const res = await fetch(`${API_BASE}/api/card-catalog`);
+    if (!res.ok) return;
+    cardCatalog = await res.json();
+    populateBankSelect();
+  } catch {}
+}
+
+function populateBankSelect() {
+  const sel = document.getElementById('cardBank');
+  sel.innerHTML = '<option value="">Banco...</option>' +
+    Object.entries(cardCatalog).map(([id, bank]) =>
+      `<option value="${id}">${bank.name}</option>`
+    ).join('');
+}
+
+function onBankChange() {
+  const bankId = document.getElementById('cardBank').value;
+  const cardSel = document.getElementById('cardName');
+  if (!bankId || !cardCatalog[bankId]) {
+    cardSel.innerHTML = '<option value="">Selecciona banco primero</option>';
+    cardSel.disabled = true;
+    return;
+  }
+  const cards = cardCatalog[bankId].cards || [];
+  cardSel.innerHTML = '<option value="">Tarjeta...</option>' +
+    cards.map(c => `<option value="${c.id}" data-network="${c.network}" data-type="${c.type}">${c.name}</option>`).join('');
+  cardSel.disabled = false;
+}
+
 async function matchWallet() {
   if (walletCards.length === 0) return [];
   const res = await fetch(`${API_BASE}/api/match-wallet`, {
@@ -371,6 +465,7 @@ async function loadData() {
     const [promosData, statsData, banksData] = await Promise.all([
       fetchPromos(), fetchStats(), fetchBanks()
     ]);
+    fetchCardCatalog();
 
     allPromos = promosData.promos;
     banks = banksData;
@@ -386,11 +481,6 @@ async function loadData() {
 
     // Bank filter buttons
     renderBankFilter(banksData);
-
-    // Bank options in add card form
-    const sel = document.getElementById('cardBank');
-    sel.innerHTML = '<option value="">Banco...</option>' +
-      banksData.map(b => `<option value="${b.name}">${b.name}</option>`).join('');
 
     // Scrape stats widget
     renderScrapeStats(statsData);
@@ -542,6 +632,24 @@ function setBank(bank, el) {
 // ═══════════════════════════════════════════════════════════════════
 // WALLET
 // ═══════════════════════════════════════════════════════════════════
+function getNetworkClass(network) {
+  if (!network) return '';
+  const n = network.toLowerCase();
+  if (n.includes('visa')) return 'visa';
+  if (n.includes('mastercard')) return 'mastercard';
+  if (n.includes('american') || n.includes('amex')) return 'amex';
+  return '';
+}
+
+function getNetworkLabel(network) {
+  if (!network) return '';
+  const n = network.toLowerCase();
+  if (n.includes('visa')) return 'Visa';
+  if (n.includes('mastercard')) return 'MC';
+  if (n.includes('american') || n.includes('amex')) return 'Amex';
+  return network;
+}
+
 async function renderWallet() {
   const wl = document.getElementById('walletList');
   if (walletCards.length === 0) {
@@ -555,28 +663,146 @@ async function renderWallet() {
   wl.innerHTML = walletCards.map((c, i) => {
     const match = matches[i];
     const count = match?.promoCount || 0;
-    const bankColor = banks.find(b => b.name === c.bank)?.color || '#555';
+    // Support both new format (bankId) and old format (bank)
+    const bankId = c.bankId || '';
+    const bankColor = (bankId && cardCatalog[bankId]?.color) ||
+                      banks.find(b => b.name === c.bank || b.id === bankId)?.color || '#555';
+    const cardType = c.type || c.tipo || '';
+    const network = c.network || '';
+    const netClass = getNetworkClass(network);
+    const netLabel = getNetworkLabel(network);
+    const typeClass = cardType === 'crédito' ? 'credito' : 'debito';
+
     return `<div class="card-item">
-      <div class="card-visual" style="background:linear-gradient(135deg,#111,${bankColor})">${c.bank.substring(0,3).toUpperCase()}</div>
+      <div class="card-dot" style="background:${bankColor}"></div>
       <div class="card-info">
         <div class="card-name">${c.name}</div>
-        <div class="card-sub">${c.bank} · ${c.tipo}</div>
+        <div class="card-badges">
+          ${netLabel ? `<span class="net-badge ${netClass}">${netLabel}</span>` : ''}
+          ${cardType ? `<span class="type-badge ${typeClass}">${cardType}</span>` : ''}
+        </div>
       </div>
       <div class="card-promos ${count === 0 ? 'zero' : ''}">${count}</div>
+      <button class="card-del" onclick="removeCard(${i})" title="Eliminar">✕</button>
     </div>`;
   }).join('');
 }
 
-function addCard() {
-  const bank = document.getElementById('cardBank').value;
-  const name = document.getElementById('cardName').value.trim();
-  const tipo = document.getElementById('cardType').value;
-  if (!bank || !name) return;
-  walletCards.push({ bank, name, tipo });
+function removeCard(i) {
+  walletCards.splice(i, 1);
   localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
-  document.getElementById('cardBank').value = '';
-  document.getElementById('cardName').value = '';
   renderWallet();
+}
+
+function addCard() {
+  const bankId = document.getElementById('cardBank').value;
+  const cardSel = document.getElementById('cardName');
+  const cardId = cardSel.value;
+  if (!bankId || !cardId) return;
+
+  const selectedOpt = cardSel.options[cardSel.selectedIndex];
+  const network = selectedOpt.dataset.network || '';
+  const type = selectedOpt.dataset.type || '';
+  const name = selectedOpt.text;
+  const bankName = cardCatalog[bankId]?.name || bankId;
+
+  // Avoid duplicates
+  if (walletCards.some(c => c.cardId === cardId)) return;
+
+  walletCards.push({ bankId, cardId, name, bank: bankName, network, type });
+  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+
+  document.getElementById('cardBank').value = '';
+  document.getElementById('cardName').innerHTML = '<option value="">Selecciona banco primero</option>';
+  document.getElementById('cardName').disabled = true;
+  renderWallet();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// APPLE WALLET MODAL
+// ═══════════════════════════════════════════════════════════════════
+function openWalletModal() {
+  modalSelected.clear();
+  document.getElementById('modalSearch').value = '';
+  renderModalList('');
+  document.getElementById('walletModal').classList.add('open');
+  document.getElementById('modalSearch').focus();
+}
+
+function closeWalletModal() {
+  document.getElementById('walletModal').classList.remove('open');
+}
+
+function closeWalletModalOutside(e) {
+  if (e.target === document.getElementById('walletModal')) closeWalletModal();
+}
+
+function renderModalList(query) {
+  const list = document.getElementById('modalList');
+  const q = query.toLowerCase().trim();
+  let html = '';
+
+  Object.entries(cardCatalog).forEach(([bankId, bank]) => {
+    const filtered = bank.cards.filter(c =>
+      !q || c.name.toLowerCase().includes(q) || bank.name.toLowerCase().includes(q)
+    );
+    if (!filtered.length) return;
+
+    html += `<div class="modal-bank-header" style="color:${bank.color}">${bank.name}</div>`;
+    filtered.forEach(c => {
+      const checked = modalSelected.has(c.id) ? 'checked' : '';
+      const netClass = getNetworkClass(c.network);
+      const netLabel = getNetworkLabel(c.network);
+      const typeClass = c.type === 'crédito' ? 'credito' : 'debito';
+      html += `<label class="modal-item">
+        <input type="checkbox" ${checked} onchange="toggleModalCard('${bankId}','${c.id}')" />
+        <div class="modal-item-dot" style="background:${bank.color}"></div>
+        <span class="modal-item-name">${c.name}</span>
+        <div class="modal-item-badges">
+          ${netLabel ? `<span class="net-badge ${netClass}">${netLabel}</span>` : ''}
+          <span class="type-badge ${typeClass}">${c.type}</span>
+        </div>
+      </label>`;
+    });
+  });
+
+  list.innerHTML = html || '<div style="padding:20px;text-align:center;color:var(--muted)">Sin resultados</div>';
+  updateModalCount();
+}
+
+function filterModalCards() {
+  renderModalList(document.getElementById('modalSearch').value);
+}
+
+function toggleModalCard(bankId, cardId) {
+  if (modalSelected.has(cardId)) {
+    modalSelected.delete(cardId);
+  } else {
+    modalSelected.add(cardId);
+  }
+  updateModalCount();
+}
+
+function updateModalCount() {
+  const n = modalSelected.size;
+  document.getElementById('modalCount').textContent = `${n} tarjeta${n !== 1 ? 's' : ''} seleccionada${n !== 1 ? 's' : ''}`;
+  document.getElementById('modalAddBtn').disabled = n === 0;
+}
+
+function addModalSelected() {
+  let added = 0;
+  Object.entries(cardCatalog).forEach(([bankId, bank]) => {
+    bank.cards.forEach(c => {
+      if (!modalSelected.has(c.id)) return;
+      if (walletCards.some(w => w.cardId === c.id)) return; // skip duplicates
+      walletCards.push({ bankId, cardId: c.id, name: c.name, bank: bank.name, network: c.network, type: c.type });
+      added++;
+    });
+  });
+
+  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+  closeWalletModal();
+  if (added > 0) renderWallet();
 }
 
 // ═══════════════════════════════════════════════════════════════════
