@@ -1,0 +1,22 @@
+name: Keep alive
+
+on:
+  schedule:
+    # Cada 5 minutos (mínimo permitido por GitHub Actions)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # permite dispararlo manualmente también
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Railway API
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            https://cashbankdo-backend-production.up.railway.app/api/health)
+          echo "Response status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "⚠️ Server returned $STATUS"
+            exit 1
+          fi
+          echo "✅ Server is alive"
