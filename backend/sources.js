@@ -170,6 +170,23 @@ export const BANK_SOURCES = [
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota'],
   },
   {
+    id: 'bsc',
+    name: 'Banco Santa Cruz',
+    color: '#12499B',
+    // SPA Vue.js + Vuetify — Puppeteer renderiza y sigue links con IDs MongoDB
+    strategy: 'html_promo_pages',
+    promoListUrl: 'https://bsc.com.do/beneficios',
+    listingPages: [
+      'https://bsc.com.do/beneficios',
+      'https://bsc.com.do/beneficios/categoria/hogar',
+      'https://bsc.com.do/beneficios/categoria/tus-tiendas',
+      'https://bsc.com.do/promociones',
+    ],
+    promoLinkSelector: 'a[href*="/about/prouser/"], a[href*="/products/cards/"][href*="/item/"], a.v-card[href], .v-card a[href*="bsc.com.do"]',
+    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos'],
+  },
+  {
     id: 'bdi',
     name: 'Banco BDI',
     color: '#1A3A6B',
