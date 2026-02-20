@@ -263,6 +263,16 @@ app.post('/api/scrape', async (req, res) => {
   });
 });
 
+// POST /api/scrape-cards — actualizar catálogo de tarjetas (protegido con API key)
+app.post('/api/scrape-cards', async (req, res) => {
+  const apiKey = req.headers['x-api-key'];
+  if (apiKey !== process.env.ADMIN_API_KEY) {
+    return res.status(401).json({ error: 'No autorizado' });
+  }
+  res.json({ message: 'Card catalog scrape iniciado en background' });
+  runCardCatalogScraper().catch(console.error);
+});
+
 // GET /api/health
 app.get('/api/health', (req, res) => {
   res.json({
