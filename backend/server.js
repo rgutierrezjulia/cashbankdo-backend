@@ -11,6 +11,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { runScraper, runCardCatalogScraper } from './scraper.js';
+import { redisGet } from './redis.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,6 +33,14 @@ async function readData() {
     const raw = await fs.readFile(DATA_FILE, 'utf-8');
     return JSON.parse(raw);
   } catch {
+    // Archivo no existe (deploy fresco) — intentar restaurar desde Redis
+    const saved = await redisGet('promos');
+    if (saved) {
+      await fs.mkdir(DATA_DIR, { recursive: true });
+      await fs.writeFile(DATA_FILE, JSON.stringify(saved, null, 2)).catch(() => {});
+      console.log('📥 Datos restaurados desde Redis');
+      return saved;
+    }
     return { promos: [], lastUpdated: null, stats: {}, scrapeHistory: [] };
   }
 }

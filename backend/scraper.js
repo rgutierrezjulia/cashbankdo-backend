@@ -13,6 +13,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { BANK_SOURCES, EXTRACTION_SCHEMA } from './sources.js';
+import { redisSet } from './redis.js';
 
 // Activar plugin stealth: parchea WebGL, canvas, navigator, chrome runtime, etc.
 // Necesario para bypassear Incapsula (Popular) y Akamai (Caribe)
@@ -885,6 +886,8 @@ export async function runScraper(banksToProcess = null) {
 
   await fs.mkdir(DATA_DIR, { recursive: true });
   await fs.writeFile(DATA_FILE, JSON.stringify(result, null, 2));
+  await redisSet('promos', result);
+  console.log('☁️  Datos guardados en Redis');
 
   console.log(`\n✅ Scraping completo en ${elapsed}s`);
   console.log(`   📊 Total: ${result.stats.total} promos`);
