@@ -8,12 +8,17 @@ import express from 'express';
 import cors from 'cors';
 import cron from 'node-cron';
 import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { runScraper, runCardCatalogScraper } from './scraper.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DATA_FILE = '../data/promos.json';
-const CARDS_FILE = './data/cards.json';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DATA_DIR   = path.resolve(__dirname, '../data');
+const DATA_FILE  = path.join(DATA_DIR, 'promos.json');
+const CARDS_FILE = path.join(DATA_DIR, 'cards.json');
+const SEED_CARDS = path.resolve(__dirname, '../seeds/cards.json');
 
 app.use(cors());
 app.use(express.json());
@@ -299,30 +304,47 @@ function getNextCronTime() {
 // INICIO
 // ───────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 CashbackDO API corriendo en http://localhost:${PORT}`);
-  console.log(`📅 Scraping diario programado para las 6:00 AM (hora RD)`);
-  console.log(`🔑 Configura ANTHROPIC_API_KEY y ADMIN_API_KEY en .env\n`);
+async function seedDataDir() {
+  await fs.mkdir(DATA_DIR, { recursive: true });
+  try {
+    await fs.access(CARDS_FILE);
+    console.log('📂 cards.json encontrado en volumen');
+  } catch {
+    try {
+      await fs.copyFile(SEED_CARDS, CARDS_FILE);
+      console.log('🌱 cards.json sembrado desde imagen Docker');
+    } catch (err) {
+      console.warn('⚠️  No se pudo sembrar cards.json:', err.message);
+    }
+  }
+}
 
-  // Scrape inicial al arrancar si no hay datos
-  readData().then(data => {
-    if (!data.lastUpdated) {
-      console.log('📭 Sin datos previos — ejecutando scrape inicial...');
-      scrapeInProgress = true;
-      runScraper().catch(console.error).finally(() => {
-        scrapeInProgress = false;
-      });
-    } else {
-      const hoursAgo = (Date.now() - new Date(data.lastUpdated)) / 3600000;
-      console.log(`📦 Datos existentes (hace ${hoursAgo.toFixed(1)}h)`);
-      if (hoursAgo > 24) {
-        console.log('⚠️  Datos de más de 24h — ejecutando scrape de actualización...');
+seedDataDir().then(() => {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 CashbackDO API corriendo en http://localhost:${PORT}`);
+    console.log(`📅 Scraping diario programado para las 6:00 AM (hora RD)`);
+    console.log(`🔑 Configura ANTHROPIC_API_KEY y ADMIN_API_KEY en .env\n`);
+
+    // Scrape inicial al arrancar si no hay datos
+    readData().then(data => {
+      if (!data.lastUpdated) {
+        console.log('📭 Sin datos previos — ejecutando scrape inicial...');
         scrapeInProgress = true;
         runScraper().catch(console.error).finally(() => {
           scrapeInProgress = false;
         });
+      } else {
+        const hoursAgo = (Date.now() - new Date(data.lastUpdated)) / 3600000;
+        console.log(`📦 Datos existentes (hace ${hoursAgo.toFixed(1)}h)`);
+        if (hoursAgo > 24) {
+          console.log('⚠️  Datos de más de 24h — ejecutando scrape de actualización...');
+          scrapeInProgress = true;
+          runScraper().catch(console.error).finally(() => {
+            scrapeInProgress = false;
+          });
+        }
       }
-    }
+    });
   });
 });
 

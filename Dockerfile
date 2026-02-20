@@ -14,4 +14,8 @@ WORKDIR /app
 COPY . .
 RUN cd backend && npm install
 
+# Copia cards.json a /app/seeds/ — fuera de /app/data/ que será sobreescrito
+# por el volumen de Railway. Usado para sembrar el volumen en el primer arranque.
+RUN mkdir -p /app/seeds && cp /app/data/cards.json /app/seeds/cards.json
+
 CMD ["node", "backend/server.js"]

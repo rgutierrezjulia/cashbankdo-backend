@@ -11,6 +11,7 @@ import puppeteerExtra from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { BANK_SOURCES, EXTRACTION_SCHEMA } from './sources.js';
 
 // Activar plugin stealth: parchea WebGL, canvas, navigator, chrome runtime, etc.
@@ -18,9 +19,11 @@ import { BANK_SOURCES, EXTRACTION_SCHEMA } from './sources.js';
 puppeteerExtra.use(StealthPlugin());
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-const DATA_FILE = '../data/promos.json';
-const LOG_FILE = '../data/scrape_log.json';
-const CARD_FILE = './data/cards.json';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DATA_DIR  = path.resolve(__dirname, '../data');
+const DATA_FILE = path.join(DATA_DIR, 'promos.json');
+const LOG_FILE  = path.join(DATA_DIR, 'scrape_log.json');
+const CARD_FILE = path.join(DATA_DIR, 'cards.json');
 
 // URLs de páginas de tarjetas de cada banco para el catalog scraper
 const CARD_PAGE_URLS = {
@@ -880,7 +883,7 @@ export async function runScraper(banksToProcess = null) {
     ]
   };
 
-  await fs.mkdir('../data', { recursive: true });
+  await fs.mkdir(DATA_DIR, { recursive: true });
   await fs.writeFile(DATA_FILE, JSON.stringify(result, null, 2));
 
   console.log(`\n✅ Scraping completo en ${elapsed}s`);
@@ -1000,7 +1003,7 @@ Reglas:
     await new Promise(r => setTimeout(r, 1000));
   }
 
-  await fs.mkdir('../data', { recursive: true });
+  await fs.mkdir(DATA_DIR, { recursive: true });
   await fs.writeFile(CARD_FILE, JSON.stringify(catalog, null, 2));
 
   console.log(`\n✅ Catálogo de tarjetas actualizado: ${updatedBanks} banco(s) con nuevas tarjetas`);
