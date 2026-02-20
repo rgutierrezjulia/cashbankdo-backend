@@ -187,6 +187,29 @@ export const BANK_SOURCES = [
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos'],
   },
   {
+    id: 'ademi',
+    name: 'Banco Ademi',
+    color: '#0056A2',
+    // WordPress con API REST nativa — categoría 112 = "Promociones", ~50 posts con bases legales inline
+    strategy: 'wp_api',
+    wpApiUrl: 'https://bancoademi.com.do/wp-json/wp/v2/posts?categories=112&per_page=50&orderby=date&order=desc&_fields=id,title,slug,link,date,content',
+    promoListUrl: 'https://bancoademi.com.do/category/promociones/',
+    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso', 'ahorro'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'cumbre', 'certificac', 'emprendedor', 'embajador', 'felaban', 'bcie', 'financing'],
+    cardContextHint: 'Banco Ademi expresa sus promos como "hasta X% de ahorro/devolución". Las bases legales están en el cuerpo del post con monto mínimo de consumo, tope de devolución y tarjetas participantes (Visa Clásica Local, Internacional, Gold, Empresarial). La acreditación suele ser dentro de 30 días de finalizada la promo.',
+  },
+  {
+    id: 'qik',
+    name: 'Qik',
+    color: '#0082CD',
+    // Banco digital dominicano (subsidiaria Grupo Popular). Sitio AEM estático — axios funciona directamente.
+    strategy: 'html_pdf_links',
+    promoListUrl: 'https://www.qik.do/Promociones_TC_Qik.html',
+    pdfLinkSelector: 'a[href*="/content/dam/qik/legal/promociones/"][href$=".pdf"], a[href$=".pdf"]',
+    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'derechos', 'deberes'],
+  },
+  {
     id: 'bdi',
     name: 'Banco BDI',
     color: '#1A3A6B',
@@ -197,6 +220,30 @@ export const BANK_SOURCES = [
     promoLinkSelector: 'article h2 a, article a[href*="/novedades/"]',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota', 'apple pay', 'ranking', 'inclusion'],
+  },
+  {
+    id: 'ademi',
+    name: 'Banco Ademi',
+    color: '#0056A2',
+    // WordPress con API REST nativa — categoría "Promociones" tiene ID 112 y ~50 posts
+    // Los posts se obtienen directamente como JSON sin necesidad de Puppeteer (HTML estático)
+    strategy: 'wp_api',
+    // Endpoint de la API WP REST que retorna posts de la categoría Promociones
+    wpApiUrl: 'https://bancoademi.com.do/wp-json/wp/v2/posts?categories=112&per_page=50&orderby=date&order=desc&_fields=id,title,slug,link,excerpt,date,content,featured_media',
+    // Página de listado HTML (fallback visual / referencia)
+    promoListUrl: 'https://bancoademi.com.do/category/promociones/',
+    // Ejemplo de URLs de promos individuales (sub-páginas WordPress):
+    //   https://bancoademi.com.do/promocion-pago-de-colegiatura-2025/
+    //   https://bancoademi.com.do/promocion-devolucion-innovacentro-2025/
+    //   https://bancoademi.com.do/tiendas-corripio-visa-ademi-65-devolucion/
+    // Las bases legales están inline en el content.rendered de cada post (listas <ol>),
+    // no en PDFs externos.
+    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso', 'ahorro'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'cumbre', 'certificac', 'emprendedor', 'embajador', 'felaban', 'bcie', 'symbiotics', 'financing'],
+    // Contexto para Claude: Ademi usa "% de ahorro" o "% de devolución" en el título.
+    // El contenido del post incluye bases inline con consumo mínimo, tope y tarjetas participantes.
+    // Tarjetas habituales: Visa Clásica Local, Clásica Internacional, Visa Olé, Gold, Empresarial.
+    cardContextHint: 'Banco Ademi expresa sus promos como "hasta X% de ahorro/devolución" en el título. Las bases legales están dentro del cuerpo del post en una lista <ol>. Incluyen monto mínimo de consumo, tope de devolución y tarjetas participantes (Visa Clásica Local, Internacional, Olé, Gold, Empresarial). La acreditación suele ser dentro de 30 días de finalizada la promo.',
   },
 ];
 

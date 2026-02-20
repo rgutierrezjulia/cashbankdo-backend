@@ -423,7 +423,63 @@ Reglas importantes:
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 3c4. PROCESAR BANCO VÍA CARDS INLINE EN PÁGINA DE LISTADO (La Nacional)
+// 3c4. PROCESAR BANCO VÍA WORDPRESS REST API (Banco Ademi)
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromWpApi(source, existingIds) {
+  try {
+    const { data } = await axios.get(source.wpApiUrl, { timeout: 15000 });
+    const posts = Array.isArray(data) ? data : [];
+    console.log(`   📋 ${posts.length} posts en la WP API`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const post of posts) {
+      const title = post.title?.rendered || '';
+      const link = post.link || source.promoListUrl;
+      const id = generateId(link);
+
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      // Convertir HTML del post a texto plano con cheerio
+      const $ = cheerio.load(post.content?.rendered || '');
+      const contentText = $.text().replace(/\s+/g, ' ').trim();
+      const fullText = `${title}\n${contentText}`;
+      const textLower = fullText.toLowerCase();
+
+      const hasKeyword = source.keywords.some(k => textLower.includes(k));
+      const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
+      if (!hasKeyword || hasExclude) { skipped++; continue; }
+
+      const contextHint = source.cardContextHint ? `[CONTEXTO: ${source.cardContextHint}]\n\n` : '';
+      const pageText = `${contextHint}${fullText}`.substring(0, 2500);
+
+      console.log(`   🤖 Extrayendo: ${title.substring(0, 60)}...`);
+      const promo = await extractPromoFromPageText(pageText, source.name, link);
+
+      if (promo) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        promo.sourceUrl = link;
+        promo.id = id;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
+      await new Promise(r => setTimeout(r, 500));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (WP API):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 3c5. PROCESAR BANCO VÍA CARDS INLINE EN PÁGINA DE LISTADO (La Nacional)
 // ───────────────────────────────────────────────────────────────────
 
 async function processBankFromInlineCards(source, existingIds) {
@@ -623,6 +679,11 @@ async function processBank(source, existingIds) {
   // Estrategia HTML promo pages (Scotiabank, BLH)
   if (source.strategy === 'html_promo_pages') {
     return await processBankFromHtmlPromoPages(source, existingIds);
+  }
+
+  // Estrategia WordPress REST API (Banco Ademi)
+  if (source.strategy === 'wp_api') {
+    return await processBankFromWpApi(source, existingIds);
   }
 
   // Estrategia inline cards (La Nacional — ofertas en una sola página sin sub-páginas)
