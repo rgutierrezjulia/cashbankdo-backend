@@ -10,7 +10,7 @@ import cron from 'node-cron';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { runScraper, runCardCatalogScraper } from './scraper.js';
+import { runScraper, runCardCatalogScraper, recategorizePromos } from './scraper.js';
 import { redisGet } from './redis.js';
 
 const app = express();
@@ -275,6 +275,20 @@ app.post('/api/scrape', async (req, res) => {
   runScraper(banks).catch(console.error).finally(() => {
     scrapeInProgress = false;
   });
+});
+
+// POST /api/recategorize — re-categoriza promos existentes con keyword matching (sin re-scrapear)
+app.post('/api/recategorize', async (req, res) => {
+  const apiKey = req.headers['x-api-key'];
+  if (apiKey !== process.env.ADMIN_API_KEY) {
+    return res.status(401).json({ error: 'No autorizado' });
+  }
+  try {
+    const result = await recategorizePromos();
+    res.json({ message: 'Re-categorización completa', ...result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // POST /api/scrape-cards — actualizar catálogo de tarjetas (protegido con API key)

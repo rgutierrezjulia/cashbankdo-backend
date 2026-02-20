@@ -884,6 +884,9 @@ export async function runScraper(banksToProcess = null) {
     ]
   };
 
+  // Re-categorizar con keyword matching para corregir categorías imprecisas del LLM
+  result.promos = result.promos.map(p => ({ ...p, categories: categorizePromo(p) }));
+
   await fs.mkdir(DATA_DIR, { recursive: true });
   await fs.writeFile(DATA_FILE, JSON.stringify(result, null, 2));
   await redisSet('promos', result);
@@ -899,7 +902,120 @@ export async function runScraper(banksToProcess = null) {
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 8. CARD CATALOG SCRAPER — actualización mensual de tarjetas
+// 8. CATEGORIZADOR DE PROMOS — keyword-based, sobrescribe categorías
+//    imprecisas del LLM (online/presencial) con categorías comerciales
+// ───────────────────────────────────────────────────────────────────
+
+const CATEGORY_KEYWORDS = {
+  supermercado: [
+    'sirena', 'la sirena', 'nacional', 'national', 'jumbo', 'pola', 'súper pola', 'super pola',
+    'bravo', 'el bravo', 'iberia market', 'supermercado', 'hiper', 'hipermercado', 'olé',
+    'mr. price', 'economax', 'carrefour',
+  ],
+  farmacia: [
+    'carol', 'farmacia', 'farmacias carol', 'farma', 'droguería', 'botica',
+    'medic', 'farmacéutic',
+  ],
+  restaurante: [
+    'restaurant', 'burger', "mcdonald's", 'mcdonalds', 'pollo rey', 'kfc', 'subway', 'pizza',
+    'domino', 'papa john', 'wendys', 'wendy', 'hard rock cafe', 'applebee', 'chilis', 'chili',
+    'friday', 'tony roma', 'olive garden', 'sushi', 'grill', 'bistro', 'cafetería', 'café',
+    'comida', 'deli', 'panadería', 'pastelería', 'food', 'comedero', 'asador',
+    'delivery', 'rappi', 'ubereats', 'ifood', 'pedidos ya',
+  ],
+  retail: [
+    'zara', 'h&m', 'corripio', 'almacén', 'tienda', 'mall', 'ágora', 'agora',
+    'centro cuesta nacional', 'ccn', 'jumbo retail', 'plaza lama', 'boh', 'blue mall',
+    'acropolis', 'sambil', 'centro comercial', 'ropa', 'calzado', 'zapatos',
+    'electrónic', 'electrodoméstic', 'anthony', 'macrocentro', 'ferretería',
+    'librería', 'papelería', 'joyería', 'optic', 'bisuter', 'jugueter',
+    'apple store', 'samsung', 'lg', 'muebl',
+  ],
+  online: [
+    'amazon', 'shein', 'aliexpress', 'ebay', 'etsy', 'online', 'compra en línea',
+    'compras online', 'e-commerce', 'ecommerce', 'internet', 'app ', 'página web',
+    'marketplace',
+  ],
+  viaje: [
+    'american airlines', 'jetblue', 'jet blue', 'copa airlines', 'iberia', 'spirit',
+    'frontier', 'united', 'delta', 'aerolínea', 'aeropuerto', 'vuelo', 'aéreo',
+    'hotel', 'airbnb', 'booking', 'expedia', 'crucero', 'carnival', 'royal caribbean',
+    'viaje', 'turismo', 'hospedaje', 'alojamiento',
+  ],
+  entretenimiento: [
+    'cinemark', 'caribbean cinemas', 'cine', 'netflix', 'spotify', 'disney',
+    'bowling', 'laser tag', 'karting', 'escape room', 'parque', 'acuático',
+    'spa', 'masaje', 'salón de belleza', 'peluquería', 'fitness', 'gym', 'gimnasio',
+    'crossfit', 'pilates', 'yoga', 'club', 'disco', 'teatro', 'concierto',
+    'citi field', 'country club', 'golf',
+  ],
+  educación: [
+    'universidad', 'colegio', 'escuela', 'educación', 'intec', 'pucmm', 'uasd',
+    'apec', 'unibe', 'utesa', 'unicaribe', 'unphu', 'o&m', 'o and m', 'ufhec',
+    'matrícula', 'curso', 'academia', 'capacitación', 'estudio',
+  ],
+  combustible: [
+    'esso', 'shell', 'texaco', 'gasolinera', 'combustible', 'gasolina',
+    'estación de servicio', 'gulf', 'pdv',
+  ],
+  bebidas: [
+    'bar', 'cerveza', 'heineken', 'presidente', 'brahma', 'corona', 'ron',
+    'whisky', 'whiskey', 'licor', 'vino', 'bodega', 'spirits', 'craft beer',
+    'cantina', 'pub', 'lounge',
+  ],
+};
+
+// Asigna categorías comerciales a una promo basándose en título, descripción y establecimientos
+export function categorizePromo(promo) {
+  const searchText = [
+    promo.title || '',
+    promo.description || '',
+    ...(Array.isArray(promo.establishments) ? promo.establishments : [promo.establishments || '']),
+  ].join(' ').toLowerCase();
+
+  const assigned = new Set();
+  for (const [cat, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
+    if (keywords.some(kw => searchText.includes(kw))) {
+      assigned.add(cat);
+    }
+  }
+
+  // Si no matcheó nada, conservar lo que tenía; si tenía solo online/presencial → otro
+  const oldCats = (promo.categories || []).filter(
+    c => !['online', 'presencial', 'otro'].includes(c)
+  );
+  // Merge: keyword matches + categorías LLM que no sean canal genérico
+  const merged = [...new Set([...assigned, ...oldCats])];
+  return merged.length > 0 ? merged : ['otro'];
+}
+
+// Re-categoriza todas las promos del archivo de datos y guarda
+export async function recategorizePromos() {
+  let data;
+  try {
+    const raw = await fs.readFile(DATA_FILE, 'utf-8');
+    data = JSON.parse(raw);
+  } catch {
+    return { error: 'No hay datos para re-categorizar' };
+  }
+
+  let changed = 0;
+  data.promos = data.promos.map(p => {
+    const newCats = categorizePromo(p);
+    const oldStr = JSON.stringify((p.categories || []).sort());
+    const newStr = JSON.stringify(newCats.sort());
+    if (oldStr !== newStr) changed++;
+    return { ...p, categories: newCats };
+  });
+
+  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
+  await redisSet('promos', data);
+  console.log(`♻️  Re-categorización: ${changed} promos actualizadas`);
+  return { changed, total: data.promos.length };
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 9. CARD CATALOG SCRAPER — actualización mensual de tarjetas
 // ───────────────────────────────────────────────────────────────────
 
 export async function runCardCatalogScraper() {

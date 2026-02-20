@@ -236,7 +236,7 @@ export const EXTRACTION_SCHEMA = {
   validUntil: 'Fecha fin formato YYYY-MM-DD',
   creditingDate: 'Cuándo se acredita la devolución (string descriptivo)',
   establishments: 'Array de strings con comercios o plataformas participantes',
-  categories: 'Array de: "online" | "presencial" | "aéreo" | "entretenimiento" | "supermercado" | "restaurante" | "viaje" | "salud" | "educación" | "otro"',
+  categories: 'Array de: "supermercado" | "farmacia" | "restaurante" | "retail" | "online" | "viaje" | "entretenimiento" | "educación" | "combustible" | "bebidas" | "otro"',
   cardTypes: 'Array de: "crédito" | "débito"',
   notes: 'Condiciones importantes o restricciones en max 2 oraciones',
   isActive: 'Boolean: true si la fecha actual (hoy) está dentro del periodo de vigencia',

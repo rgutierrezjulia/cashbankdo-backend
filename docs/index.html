@@ -272,13 +272,14 @@
 <div class="controls">
   <div class="cat-filter" id="catFilter">
     <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
-    <button class="cat-btn" onclick="setCategory('compras',this)">🛍️ Shopping</button>
+    <button class="cat-btn" onclick="setCategory('shopping',this)">🛍️ Shopping</button>
     <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
-    <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
     <button class="cat-btn" onclick="setCategory('restaurante',this)">🍽️ Restaurantes</button>
-    <button class="cat-btn" onclick="setCategory('bebidas',this)">🍹 Bebidas</button>
+    <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Entretenimiento</button>
     <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
-    <button class="cat-btn" onclick="setCategory('clubes-entret',this)">🎭 Clubes y Entretenimiento</button>
+    <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
+    <button class="cat-btn" onclick="setCategory('combustible',this)">⛽ Combustible</button>
+    <button class="cat-btn" onclick="setCategory('bebidas',this)">🍹 Bebidas</button>
     <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
   </div>
   <div class="bank-filter" id="bankFilter">
@@ -395,14 +396,15 @@ let activeBank = 'all';
 
 // Mapeo de valor de categoría a tags del backend
 const CATEGORY_TAGS = {
-  compras:        ['online', 'presencial'],
-  supermercado:   ['supermercado'],
-  'educación':    ['educación'],
-  'clubes-entret': ['salud', 'entretenimiento'],
-  restaurante:    ['restaurante'],
-  bebidas:        ['bebidas'],
-  viaje:          ['aéreo', 'viaje'],
-  otro:           ['otro'],
+  shopping:        ['retail', 'online'],
+  supermercado:    ['supermercado', 'farmacia'],
+  restaurante:     ['restaurante'],
+  'entretenimiento': ['entretenimiento'],
+  viaje:           ['viaje'],
+  educación:       ['educación'],
+  combustible:     ['combustible'],
+  bebidas:         ['bebidas'],
+  otro:            ['otro'],
 };
 let geoActive = false;
 let timerSec = 0;
