@@ -316,7 +316,57 @@ async function processBankFromStrapiApi(source, existingIds) {
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 3c2. EXTRAER DATOS DE PÁGINA HTML COMPLETA (Scotiabank, BLH)
+// 3c2. PROCESAR LAFISE VÍA JSON API
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromLafiseJson(source, existingIds) {
+  try {
+    const { data } = await axios.get(source.jsonUrl, { timeout: 10000 });
+    const items = data?.promos || [];
+    console.log(`   📋 ${items.length} promos en el JSON`);
+
+    const newPromos = [];
+    let processed = 0;
+    let skipped = 0;
+
+    for (const item of items) {
+      const fullTitle = `${item.title} ${item.conector} ${item.sub_title}`.trim().replace(/\s+/g, ' ');
+      const id = generateId(`lafise-${fullTitle}`);
+
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      const text = `${fullTitle} ${item.img?.alt || ''}`.toLowerCase();
+      const hasKeyword = source.keywords.some(k => text.includes(k));
+      const hasExclude = source.excludeKeywords?.some(k => text.includes(k));
+      if (!hasKeyword || hasExclude) { skipped++; continue; }
+
+      const description = `${fullTitle}. Vigencia: ${item.fecha}. Aplica con: ${item.tipo}.`;
+      console.log(`   🤖 Extrayendo: ${fullTitle.substring(0, 60)}...`);
+      const promo = await extractPromoFromText(fullTitle, description, source.name, fullTitle);
+
+      if (promo) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        promo.sourceUrl = item.url_reglamento || item.cta || source.jsonUrl;
+        promo.id = id;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
+
+      await new Promise(r => setTimeout(r, 400));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (JSON):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 3c3. EXTRAER DATOS DE PÁGINA HTML COMPLETA (Scotiabank, BLH)
 // ───────────────────────────────────────────────────────────────────
 
 async function extractPromoFromPageText(pageText, bankName, sourceUrl) {
@@ -500,6 +550,11 @@ async function processBank(source, existingIds) {
   // Estrategia Strapi API (BHD y similares)
   if (source.strategy === 'strapi_api') {
     return await processBankFromStrapiApi(source, existingIds);
+  }
+
+  // Estrategia JSON API (LAFISE)
+  if (source.strategy === 'lafise_json') {
+    return await processBankFromLafiseJson(source, existingIds);
   }
 
   // Estrategia HTML promo pages (Scotiabank, BLH)

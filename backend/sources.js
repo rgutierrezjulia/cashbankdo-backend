@@ -69,11 +69,12 @@ export const BANK_SOURCES = [
     id: 'lafise',
     name: 'LAFISE',
     color: '#0077b6',
-    promoListUrl: 'https://www.lafise.com/blrd/banca-personal/promociones/',
-    strategy: 'dynamic_js',
-    pdfLinkSelector: 'a[href*=".pdf"]',
+    strategy: 'lafise_json',
+    // JSON con todas las promos — se actualiza cuando hay campañas activas
+    jsonUrl: 'https://www.lafise.com/blrd/web-resources/widgets/promociones.json',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
-    excludeKeywords: [],
+    // Excluir programas de puntos/lealtad que no son cashback directo
+    excludeKeywords: ['lealtad', 'puntos', 'programa'],
   },
 ];
 
