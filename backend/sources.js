@@ -34,6 +34,8 @@ export const BANK_SOURCES = [
     excludeKeywords: ['ganador', 'concurso', 'sorteo', 'millas', 'remesa', 'cuota', 'concierto', 'membres', 'gimnas', 'gym'],
     // Contexto adicional para Claude al analizar cards de esta fuente
     cardContextHint: '"Día PLUS BHD" y "Oferta Día PLUS" son el programa de cashback diario de BHD: ofrecen devolución en efectivo (cashback) en compras en comercios específicos durante un día concreto. Las ofertas de categoría/tienda (Gastos educativos, Corripio, San Valentín) pueden ser descuentos directos o cashback en esa categoría.',
+    // API de detalles: cada card tiene una página t-4-s con el % de devolución completo
+    detailApi: 'https://backend.bhd.com.do/api/t-4-s',
   },
   {
     id: 'scotiabank',

@@ -1,0 +1,1645 @@
+{
+  "promos": [
+    {
+      "title": "20% Devolución en Hoyo 20 con Mastercard Banreservas",
+      "description": "Por consumos de RD$3,000 o más con Tarjetas de Crédito personales Mastercard Banreservas en el restaurante y alquiler de bahías de Hoyo 20 recibes 20% de devolución.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Mastercard Standard Banreservas",
+        "Mastercard Gold Banreservas",
+        "Mastercard Platinum Banreservas",
+        "Mastercard Black Banreservas",
+        "Mastercard Black Ámbar Banreservas"
+      ],
+      "minimumSpend": "RD$3,000",
+      "maxReturn": "RD$2,500 mensual / RD$10,000 anual por cliente",
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-12-31",
+      "creditingDate": "En el mes posterior al consumo, el Banco tiene hasta el último día del mes posterior para realizar las devoluciones",
+      "establishments": [
+        "Hoyo 20"
+      ],
+      "categories": [
+        "restaurante",
+        "entretenimiento",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplica sobre otras ofertas ni con tarjetas de débito. La devolución está limitada a clientes con estatus crediticio normal y activo; aplican pagos con Credimás Banreservas de manera presencial.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/svapvbra/términos-y-condiciones-promoción-restaurante-y-alquileres-de-bahias-hoyo-20.pdf",
+      "extractedAt": "2026-02-19T17:35:40.835Z",
+      "id": "dn0vio",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 314,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Banreservas Café sucursal PUCMM Santo Domingo",
+      "description": "Hasta 35% de ahorro al pagar con tarjetas personales Banreservas en Café Santo Domingo sucursal PUCMM Santo Domingo, combinando devolución del banco y descuento estudiantil en caja.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito personal Banreservas",
+        "Tarjeta Credimás Banreservas",
+        "Tarjeta de Débito personal Banreservas"
+      ],
+      "minimumSpend": "RD$1,000 acumulados durante el mes",
+      "maxReturn": "RD$1,000 mensuales por cliente",
+      "validFrom": "2026-01-02",
+      "validUntil": "2026-12-31",
+      "creditingDate": "En el mes posterior de haber realizado el consumo, hasta el último día de dicho mes",
+      "establishments": [
+        "Café Santo Domingo sucursal PUCMM Santo Domingo"
+      ],
+      "categories": [
+        "presencial",
+        "restaurante",
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican tarjetas comerciales ni compras online, vía link de pago o telefónicas. El 10% de descuento en caja aplica solo para estudiantes de la PUCMM; para tarjetas de débito la devolución es RD$200 por cada RD$2,000 consumidos.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/qw4de3n4/te-rminos-y-condiciones-promocio-n-banreservas-cafe-santo-domingo-pucmm-1.pdf",
+      "extractedAt": "2026-02-19T17:38:28.467Z",
+      "id": "ccdwn4",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 314,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Momentos de Sabor - 20% Cashback en Restaurantes",
+      "description": "Disfruta de un 20% de cashback en restaurantes seleccionados al pagar con todas las tarjetas de crédito personales del Banco López de Haro.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Todas las tarjetas de crédito personales del Banco López de Haro"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "RD$3,500 mensual por cliente",
+      "validFrom": "2026-01-01",
+      "validUntil": "2026-12-31",
+      "creditingDate": "Devolución reflejada en los próximos 45 días luego de realizado el consumo",
+      "establishments": [
+        "Casa Brava",
+        "Cappuccino",
+        "Casa Luca",
+        "Restaurante Don Pepe",
+        "La Cassina",
+        "La Scarpetta",
+        "Il Bacareto",
+        "Peperoni (Santo Domingo)",
+        "Mamma Luisa (Punta Cana)",
+        "Peperoni (Casa de Campo)",
+        "Restorán Gazpacho (Santiago)"
+      ],
+      "categories": [
+        "restaurante",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas Empresariales, Línea Efectivo ni Visa Débito. Cashbacks en nuevos restaurantes es válido a partir de su fecha de inclusión.",
+      "isActive": true,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/momentos-de-sabor/",
+      "extractedAt": "2026-02-19T21:50:14.681Z",
+      "id": "68cmo4",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": 314,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Clubes Sociales Mastercard Banreservas",
+      "description": "15% de devolución al consumir RD$10,000 o más acumulables cada mes en clubes sociales seleccionados con Tarjetas de Crédito Mastercard Platinum y Black Banreservas.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Mastercard Platinum Banreservas",
+        "Mastercard Black Banreservas"
+      ],
+      "minimumSpend": "RD$10,000 acumulados mensualmente",
+      "maxReturn": "RD$3,000 mensual por cliente",
+      "validFrom": "2026-02-01",
+      "validUntil": "2026-11-30",
+      "creditingDate": "En el mes posterior de haber realizado el consumo, hasta el último día de dicho mes",
+      "establishments": [
+        "Santo Domingo Country Club",
+        "Santiago Country Club",
+        "Club Arroyo Hondo",
+        "Club Deportivo Naco",
+        "Club Casa de España",
+        "Club Náutico de Santo Domingo"
+      ],
+      "categories": [
+        "entretenimiento",
+        "restaurante",
+        "presencial",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican pagos de inscripción, membresía ni anualidad. No aplican consumos vía link de pago ni vía telefónica. Solo aplica en clases deportivas/recreativas, restaurantes/bares, gimnasio, campamentos, eventos y reservaciones.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/fh2paqjp/términos-y-condiciones-promoción-clubes-sociales.pdf",
+      "extractedAt": "2026-02-19T17:37:02.010Z",
+      "id": "4t2syd",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 283,
+      "daysUntilStart": null
+    },
+    {
+      "title": "10% de descuento en Guía Technology con Banreservas",
+      "description": "10% de descuento en artículos seleccionados de las marcas Lenovo, Dell y HP en Guía Technology al pagar con tarjetas Banreservas.",
+      "percentage": "10%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjeta de Débito Banreservas",
+        "Tarjeta de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-11",
+      "validUntil": "2026-07-31",
+      "creditingDate": null,
+      "establishments": [
+        "Guía Technology"
+      ],
+      "categories": [
+        "presencial",
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Solo aplica en artículos seleccionados de las marcas Lenovo, Dell y HP. No aplican artículos en oferta ni transacciones fraudulentas, anulaciones, cancelaciones o reversos.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/dgrec52b/te-rminos-y-condiciones-aprovecha-10-de-descuento-en-gui-a-technology-con-tu-gui-a-de-beneficios-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:36:09.103Z",
+      "id": "gnor0w",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 161,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% de descuento en Las Arabitas con Banreservas",
+      "description": "Obtén 15% de descuento en Las Arabitas de lunes a jueves al pagar con Tarjetas de Débito y Crédito Banreservas a través de la Guía de Beneficios Banreservas.",
+      "percentage": "15%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de Débito Banreservas",
+        "Tarjetas de Crédito Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-04",
+      "validUntil": "2026-07-30",
+      "creditingDate": "Descuento aplicado al momento de realizar el pago en el establecimiento",
+      "establishments": [
+        "Las Arabitas - Plaza Gazebo, Av. Sarasota no. 71, Bella Vista, Santo Domingo"
+      ],
+      "categories": [
+        "restaurante",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplica para delivery, solo de lunes a jueves. No aplican consumos con Credimás Banreservas ni se combina con otras ofertas. No aplican transacciones fraudulentas, anulaciones, cancelaciones o reversos.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/vnxnznvn/terminos-y-condiciones-aprovecha-15-de-descuento-en-las-arabitas-con-tu-gui-uea-de-beneficios-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:37:21.356Z",
+      "id": "w72jl8",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 160,
+      "daysUntilStart": null
+    },
+    {
+      "title": "10% de descuento en Bath and Body Works",
+      "description": "Obtén 10% de descuento en tiendas Bath and Body Works al pagar con tarjetas de Débito, Crédito o Credimás Banreservas a través de la Guía de Beneficios Banreservas.",
+      "percentage": "10%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjeta de Débito Banreservas",
+        "Tarjeta de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-04-30",
+      "creditingDate": null,
+      "establishments": [
+        "Bath and Body Works Ágora Mall",
+        "Bath and Body Works Galería 360",
+        "Bath and Body Works Downtown Center",
+        "Bath and Body Works Megacentro",
+        "Bath and Body Works Blue Mall",
+        "Bath and Body Works Ágora Santiago Center"
+      ],
+      "categories": [
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican artículos en ofertas ni compras online. No aplican transacciones fraudulentas, anulaciones, cancelaciones o reversos de consumos.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/ba1eyx2i/te-rminos-y-condiciones-promocio-n-10-de-descuento-en-bath-and-body-works-con-tu-gb-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:36:00.503Z",
+      "id": "jnw8ms",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 69,
+      "daysUntilStart": null
+    },
+    {
+      "title": "El que paga goza con Tarjetas Banreservas",
+      "description": "Por cada consumo a partir de RD$6,000 con tarjetas personales de Débito, Crédito o Credimás Banreservas, se generan boletos electrónicos para participar en sorteos de RD$50,000 en efectivo. Se premian 60 ganadores (15 por quincena).",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "Mastercard Standard Crédito Banreservas",
+        "Mastercard Standard Táctil Crédito Banreservas",
+        "Mastercard Standard Multimoneda Crédito Banreservas",
+        "Mastercard Preserva Crédito Banreservas",
+        "Mastercard Gold Crédito Banreservas",
+        "Mastercard Gold Multimoneda Crédito Banreservas",
+        "Mastercard Platinum Crédito Banreservas",
+        "Mastercard Platinum Multimoneda Crédito Banreservas",
+        "Mastercard Black Crédito Banreservas",
+        "Mastercard Black Ámbar Crédito Banreservas",
+        "Visa SER Crédito Banreservas",
+        "Visa Clásica Crédito Banreservas",
+        "Visa Negocios Personal Crédito Banreservas",
+        "Visa Clásica Multimoneda Crédito Banreservas",
+        "Visa Gold Crédito Banreservas",
+        "Visa Gold Multimoneda Crédito Banreservas",
+        "Visa Platinum Universe Crédito Banreservas",
+        "Visa Platinum Multimoneda Crédito Banreservas",
+        "Visa Infinite Crédito Banreservas",
+        "Mastercard Standard Débito Banreservas",
+        "Mastercard Standard Táctil Débito Banreservas",
+        "Mastercard Gold Débito Banreservas",
+        "Mastercard Platinum Débito Banreservas",
+        "Mastercard Dólares Débito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": "RD$6,000.00 por transacción o su equivalente en dólares",
+      "maxReturn": null,
+      "validFrom": "2026-02-02",
+      "validUntil": "2026-03-31",
+      "creditingDate": "El premio de RD$50,000 se acredita a la cuenta o tarjeta con la que fue generado el boleto ganador, tras contacto formal y firma de acto de entrega, en un plazo de hasta 120 días laborables.",
+      "establishments": [],
+      "categories": [
+        "online",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican avances de efectivo, cargos, comisiones, transacciones fraudulentas, anulaciones ni consumos acumulados. Los consumos con Tarjetas de Débito generan el doble de boletos y con Credimás el cuádruple; tarjetas nuevas generan cuádruple en el primer consumo.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/bbjj2usr/bases-de-la-promoción-el-que-paga-goza-con-tarjetas-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:39:10.922Z",
+      "id": "ogr7j1",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 39,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 50% de descuento en Fundación Psicología & Salud Michelle Santana",
+      "description": "Descuentos de hasta 50% en consultas de psicología, psiquiatría y nutrición en Fundación Psicología & Salud Michelle Santana al pagar con tarjetas Banreservas a través de la Guía de Beneficios.",
+      "percentage": "Hasta 50%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de Débito Banreservas",
+        "Tarjetas de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-01-28",
+      "validUntil": "2026-03-31",
+      "creditingDate": "Descuento aplicado en caja al momento de realizar el pago",
+      "establishments": [
+        "Fundación Psicología & Salud Michelle Santana"
+      ],
+      "categories": [
+        "salud",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "50% de descuento en primera consulta con ARS Reservas, 25% en demás consultas con ARS Reservas y 10% con otras ARS. El descuento no aplica sobre otras ofertas ni en transacciones fraudulentas, anulaciones o reversos.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/rjiluy53/terminos-y-condiciones-aprovecha-hasta-50-de-descuento-en-fundacio-uen-psicologi-uea-salud-ms-con-la-gb.pdf",
+      "extractedAt": "2026-02-19T17:39:49.505Z",
+      "id": "58q7we",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 39,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Membresías y renovaciones Hoyo 20 – Mastercard Banreservas",
+      "description": "Al pagar con Tarjetas de Crédito personales Mastercard Banreservas en Hoyo 20, recibes 50% de devolución en membresías y renovaciones.",
+      "percentage": "50%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito Mastercard Standard Banreservas (multimoneda y doble saldo)",
+        "Tarjeta de Crédito Mastercard Gold Banreservas (multimoneda y doble saldo)",
+        "Tarjeta de Crédito Mastercard Platinum Banreservas (multimoneda y doble saldo)",
+        "Tarjeta de Crédito Mastercard Black Banreservas",
+        "Tarjeta de Crédito Mastercard Black Ámbar Banreservas"
+      ],
+      "minimumSpend": "RD$10,000",
+      "maxReturn": "RD$10,000 anual por cliente",
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-03-15",
+      "creditingDate": "En el mes de abril 2026, hasta el 30 de abril de 2026",
+      "establishments": [
+        "Hoyo 20"
+      ],
+      "categories": [
+        "entretenimiento",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan personas jurídicas, tarjetas de débito ni aplica sobre otras ofertas. Los reembolsos son acumulativos durante 2026 con tope anual de RD$10,000 por cliente y aplica también con Credimás Banreservas presencial.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/yv4fbfjs/términos-y-condiciones-promoción-membresias-y-renovaciones-hoyo-20-2.pdf",
+      "extractedAt": "2026-02-19T17:35:15.502Z",
+      "id": "k3ff2q",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 23,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Beneficios Sportcity – Mastercard Banreservas",
+      "description": "Hasta 30% de ahorro al pagar con Tarjetas de Crédito personales Mastercard Banreservas en Sportcity: 20% de devolución por parte del banco y 10% de descuento aplicado en caja por el comercio.",
+      "percentage": "30%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito Mastercard Standard Banreservas",
+        "Tarjeta de Crédito Mastercard Gold Banreservas",
+        "Tarjeta de Crédito Mastercard Platinum Banreservas",
+        "Tarjeta de Crédito Mastercard Black Banreservas",
+        "Tarjeta de Crédito Mastercard Black Ámbar Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "US$150 por cliente o su equivalente en pesos",
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-03-15",
+      "creditingDate": "En el mes de abril 2026, hasta el 30 de abril de 2026",
+      "establishments": [
+        "Sportcity"
+      ],
+      "categories": [
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican compras en línea, servicios de fitting, ni artículos en oferta para el 10% de descuento en caja. La devolución está limitada a clientes con estatus crediticio normal y activo; no participan tarjetas comerciales, de débito ni personas jurídicas.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/mihlslxm/términos-y-condiciones-promoción-sportcity-mastercard-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:35:28.778Z",
+      "id": "gro4ei",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 23,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Bienvenido al juego. Copa Mundial FIFA 2026™",
+      "description": "Promoción de Tarjetas de Crédito Personales Visa de Scotiabank con motivo de la Copa Mundial FIFA 2026. Los detalles específicos de devolución y consumo mínimo se encuentran en los términos y condiciones completos.",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "Tarjetas de Crédito Personales Visa Scotiabank"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-16",
+      "validUntil": "2026-03-15",
+      "creditingDate": null,
+      "establishments": null,
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Los detalles de consumo mínimo y tope de devolución no están especificados en el texto visible, se indica 'Detalles más abajo' y los términos completos están ocultos tras 'Mostrar más'. Aplica exclusivamente para Tarjetas de Crédito Personales Visa de Scotiabank República Dominicana.",
+      "isActive": true,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.bienvenido-al-juego-copa-mundial-fifa-2026-feb26.html",
+      "extractedAt": "2026-02-19T21:47:42.357Z",
+      "id": "fxjjc1",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": 23,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 43% de descuento en Soluciones Automotrices",
+      "description": "Descuentos de hasta 43% en productos automotrices como neumáticos, baterías y lubricantes en Soluciones Automotrices pagando con tarjetas Banreservas.",
+      "percentage": "Hasta 43%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjeta de Débito Banreservas",
+        "Tarjeta de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-16",
+      "validUntil": "2026-02-28",
+      "creditingDate": null,
+      "establishments": [
+        "Soluciones Automotrices"
+      ],
+      "categories": [
+        "presencial",
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican artículos en ofertas. Los descuentos varían por marca: 43% Pirelli y Goodyear, 40% marcas emergentes, 35% baterías Ultrastart, 10% lubricantes Ravenol, 6% Michelin y BFGoodrich.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/ilzdt0wg/te-rminos-y-condiciones-aprovecha-hasta-43-de-descuento-en-soluciones-automotrices-con-tu-gb-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:35:51.070Z",
+      "id": "z6pahz",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 8,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 15% de descuento en Cos Fi Clinic",
+      "description": "Descuentos de hasta 15% en servicios estéticos y productos en Cos Fi Clinic al pagar con tarjetas Banreservas, además de consulta o evaluación gratis.",
+      "percentage": "Hasta 15%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjeta de Débito Banreservas",
+        "Tarjeta de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-06",
+      "validUntil": "2026-02-28",
+      "creditingDate": "Descuento aplicado al momento del pago presencial",
+      "establishments": [
+        "Cos Fi Clinic"
+      ],
+      "categories": [
+        "presencial",
+        "salud"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplica para compras online ni sobre otras ofertas. 15% en faciales, plasma hialurónico y armonización facial; 10% en botox, masajes de piedras calientes, depilación láser y productos; 5% en fajas.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/fxol4buj/te-rminos-y-condiciones-aprovecha-hasta-15-de-descuento-en-cos-fi-clinic-con-tu-gb-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:36:31.172Z",
+      "id": "gumio5",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": 8,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback 20% en Educación",
+      "description": "Recibe un 20% de devolución (Cashback) al realizar pagos en colegios, universidades o centros de idiomas con tu tarjeta de crédito LAFISE durante la segunda quincena de febrero.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal LAFISE",
+        "MasterCard Crédito Personal LAFISE"
+      ],
+      "minimumSpend": "RD$65,000 acumulado durante la vigencia",
+      "maxReturn": "RD$15,000 por cliente (por cuenta)",
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-02-28",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "Colegios",
+        "Universidades",
+        "Institutos Técnicos",
+        "Centros de Idiomas"
+      ],
+      "categories": [
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica únicamente si el punto de venta o pasarela de pago está clasificada bajo el MCC de servicios educativos. No participan tarjetas de débito, prepagadas ni corporativas/empresariales. Solo consumos en pesos dominicanos (RD$).",
+      "isActive": true,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-colegiatura-educacion-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:51:47.703Z",
+      "id": "cw5b6x",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": 8,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% Cashback en Hoteles y Airbnb",
+      "description": "Recibe un 20% de devolución (Cashback) al reservar tu estadía en Hoteles o Airbnb con Tarjetas de Crédito LAFISE durante Semana Santa.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal LAFISE",
+        "MasterCard Crédito Personal LAFISE"
+      ],
+      "minimumSpend": "USD 200 o su equivalente en Pesos Dominicanos",
+      "maxReturn": "USD 100 o su equivalente en Pesos Dominicanos por cliente",
+      "validFrom": "2026-02-20",
+      "validUntil": "2026-02-24",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "Hoteles",
+        "Airbnb"
+      ],
+      "categories": [
+        "viaje",
+        "online",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas de Débito, Prepagadas ni Corporativas/Empresariales. Para hoteles, el comercio debe estar registrado bajo la categoría MCC de servicios de alojamiento u hotelería.",
+      "isActive": true,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-hoteles-airbnb-semana-santa-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:51:39.229Z",
+      "id": "k7ot3y",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": 4,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Oferta Carnaval Punta Cana 2026",
+      "description": "Obtén 20% de devolución al comprar brazaletes y accesos al Carnaval de Punta Cana pagando con Tarjetas de Crédito BHD.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito BHD"
+      ],
+      "minimumSpend": "RD$1,914 o US$30 acumulado",
+      "maxReturn": "RD$3,828 o US$60 por cliente durante la vigencia",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-21",
+      "creditingDate": "En el transcurso de los 45 días posteriores a la promoción",
+      "establishments": [
+        "Carnaval de Punta Cana"
+      ],
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican Tarjetas de Débito ni Tarjetas Empresariales. Válido hasta agotar existencia. Tasa del dólar utilizada: RD$63.80.",
+      "isActive": true,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-20T14:26:23.551Z",
+      "id": "x1kmab",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": 1,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Un buen futuro se asegura estudiando - 2026",
+      "description": "Promoción de 10% de devolución en tarjetas de crédito personales Scotiabank por consumos mínimos de RD$50,000.00 durante la semana del 16 al 20 de febrero de 2026.",
+      "percentage": "10%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "American Express",
+        "Visa",
+        "Mastercard"
+      ],
+      "minimumSpend": "RD$50,000.00",
+      "maxReturn": "RD$10,000.00",
+      "validFrom": "2026-02-16",
+      "validUntil": "2026-02-20",
+      "creditingDate": null,
+      "establishments": null,
+      "categories": [
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica exclusivamente a tarjetas de crédito personales American Express, Visa y Mastercard de Scotiabank. Consumo mínimo de RD$50,000.00 con tope de devolución de RD$10,000.00.",
+      "isActive": true,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.un-buen-futuro-se-asegura-estudiando-feb26.html",
+      "extractedAt": "2026-02-19T21:47:28.674Z",
+      "id": "9h56fn",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": 0,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Ahorre el primer lunes de cada mes con Mastercard Banreservas",
+      "description": "Devolución de hasta 30% al pagar con Credimás y hasta 25% con tarjeta de crédito Mastercard Platinum o Black Banreservas en tiendas seleccionadas el primer lunes de cada mes, con un consumo mínimo acumulable de RD$20,000.",
+      "percentage": "25%-30%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Mastercard Platinum Banreservas",
+        "Mastercard Black Banreservas"
+      ],
+      "minimumSpend": "RD$20,000.00",
+      "maxReturn": "RD$17,500.00 (Credimás) / RD$15,000.00 (tarjeta de crédito)",
+      "validFrom": "2026-02-02",
+      "validUntil": null,
+      "creditingDate": "El monto de devolución será aplicado mensualmente en el mes posterior de realizar el consumo, hasta el último día de dicho mes",
+      "establishments": [
+        "Adolfo Domínguez",
+        "Bimba y Lola",
+        "Cartier",
+        "Casa Cuesta",
+        "Louis Vuitton",
+        "Rolex",
+        "Tiffany & Co",
+        "Zara",
+        "Dolce & Gabbana",
+        "Yves Saint Laurent"
+      ],
+      "categories": [
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No válida para compras online, vía link de pago, WhatsApp ni telefónica. Aplica una única vez por mes y por cliente. En Casa Cuesta se excluyen las categorías Electro Hogar y TV/Tecnología.",
+      "isActive": true,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/ltmbaoib/tyc-promoción-ahorre-el-primer-lunes-de-cada-mes-en-tiendas-seleccionadas-mc-br-v2-1.pdf",
+      "extractedAt": "2026-02-19T17:39:38.731Z",
+      "id": "7hajnl",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017"
+    },
+    {
+      "title": "Tarjeta Visa Infinite Iberia - Avios",
+      "description": "Con la Tarjeta Visa Infinite Iberia gane 1 Avios por cada US$1.00 de consumo en el extranjero o RD$100.00 en el país, más bono de 15,000 Avios de bienvenida al consumir US$1,000.00 en los primeros 3 meses.",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "Visa Infinite Iberia Banco López de Haro"
+      ],
+      "minimumSpend": "US$1,000.00 o su equivalente en pesos en los primeros 3 meses para bono de bienvenida",
+      "maxReturn": "15,000 Avios de bienvenida + 5,000 Avios adicionales al consumir US$15,000 el primer año",
+      "validFrom": null,
+      "validUntil": null,
+      "creditingDate": null,
+      "establishments": [
+        "Iberia",
+        "Tienda de Iberia en República Dominicana",
+        "iberia.com"
+      ],
+      "categories": [
+        "aéreo",
+        "viaje",
+        "online",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Incluye Nivel Plata Iberia Club, 8 pases anuales Priority Pass para titular y 8 para tarjeta adicional, 6 pases anuales Before Boarding en AILA con 2 accesos cortesía a sala SKY, y doble Avios al reservar directo con Iberia.",
+      "isActive": true,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/visaiberia/visa-infinite-iberia/",
+      "extractedAt": "2026-02-19T21:50:44.794Z",
+      "id": "vn53n9",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f"
+    },
+    {
+      "title": "Tarjeta Visa Iberia - Acumula Avios",
+      "description": "Con las Tarjetas de Crédito Visa Iberia Banco López de Haro convierte tus compras en Avios canjeables por vuelos, noches de hotel, alquiler de coches y más beneficios del programa Iberia Plus. Incluye 15,000 Avios de bienvenida al consumir US$1,000.00 en los primeros 3 meses.",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "Visa Iberia Banco López de Haro"
+      ],
+      "minimumSpend": "US$1,000.00 o su equivalente en pesos (para Avios de bienvenida, en los primeros 3 meses)",
+      "maxReturn": null,
+      "validFrom": null,
+      "validUntil": null,
+      "creditingDate": "15,000 Avios de bienvenida acreditados al consumir US$1,000.00 en los primeros 3 meses desde la emisión de la tarjeta",
+      "establishments": [
+        "Iberia (iberia.com/do/)",
+        "Tienda Iberia en República Dominicana",
+        "Compañías asociadas al programa Iberia Plus"
+      ],
+      "categories": [
+        "aéreo",
+        "viaje",
+        "presencial",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Facturación prioritaria en mostrador Business de Iberia en Aeropuerto Internacional Las Américas presentando la tarjeta. Cada acompañante o visita extra será facturada al tarjetahabiente principal a US$32.00 o su equivalente en pesos.",
+      "isActive": true,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/visaiberia/visa-iberia-platinum/",
+      "extractedAt": "2026-02-19T21:50:58.847Z",
+      "id": "tis0y7",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f"
+    },
+    {
+      "title": "Promoción pago de colegiatura - Banreservas",
+      "description": "Al pagar la colegiatura con tarjetas personales de Débito, Crédito o Credimás Banreservas en colegios registrados, recibes hasta 15% de devolución en el pago de la colegiatura.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito Platinum Banreservas",
+        "Tarjeta de Crédito Universe Banreservas",
+        "Tarjeta de Crédito Black Banreservas",
+        "Tarjeta de Crédito Infinite Banreservas",
+        "Tarjeta de Crédito Standard Banreservas",
+        "Tarjeta de Crédito Clásica Banreservas",
+        "Tarjeta de Crédito Gold Banreservas",
+        "Credimás Platinum Banreservas",
+        "Credimás Universe Banreservas",
+        "Credimás Black Banreservas",
+        "Credimás Infinite Banreservas",
+        "Credimás Standard Banreservas",
+        "Credimás Clásica Banreservas",
+        "Credimás Gold Banreservas",
+        "Tarjeta de Débito personal Banreservas"
+      ],
+      "minimumSpend": "RD$70,000 para tarjetas Platinum/Universe/Black/Infinite; RD$50,000 para tarjetas Standard/Clásica/Gold; RD$2,000 para tarjetas de Débito",
+      "maxReturn": "RD$15,000 por cliente (Credimás Platinum/Universe/Black/Infinite); RD$12,000 por cliente (Credimás Standard/Clásica/Gold o Crédito Platinum/Universe/Black/Infinite); RD$10,000 por cliente (Crédito Standard/Clásica/Gold); RD$1,000 por cliente (Débito)",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-18",
+      "creditingDate": "Marzo 2026, el banco tiene hasta el 31 de marzo 2026 para realizar la devolución",
+      "establishments": [
+        "Colegios registrados bajo MCC 8211",
+        "Colegios registrados bajo MCC 8220",
+        "Colegios registrados bajo MCC 8249",
+        "Colegios registrados bajo MCC 8299",
+        "Colegios registrados bajo MCC 8351",
+        "Colegios registrados bajo MCC 8398",
+        "Colegios registrados bajo MCC 8661"
+      ],
+      "categories": [
+        "educación",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican consumos online ni mediante link de pago. No aplica para compras de útiles ni uniformes escolares, solo para pago de colegiatura en pesos dominicanos. No participan tarjetas comerciales, Visa Negocios ni Débito Negocios.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/oweeix34/términos-y-condiciones-promoción-colegiatura.pdf",
+      "extractedAt": "2026-02-19T17:37:37.854Z",
+      "id": "dcmd5b",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -2,
+      "daysUntilStart": null
+    },
+    {
+      "title": "14% de devolución – Floristerías y Viveros",
+      "description": "Recibe un 14% de devolución en consumos realizados con tarjetas de crédito personales Scotiabank en floristerías y viveros durante el período de San Valentín.",
+      "percentage": "14%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito personales Scotiabank"
+      ],
+      "minimumSpend": "RD$3,000.00",
+      "maxReturn": "RD$1,000.00",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-15",
+      "creditingDate": null,
+      "establishments": [
+        "Floristerías",
+        "Viveros"
+      ],
+      "categories": [
+        "presencial",
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida exclusivamente del 12 al 15 de febrero de 2026. Requiere un consumo mínimo de RD$3,000.00 con un tope de devolución de RD$1,000.00.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.14-devolucion-floristerias-y-viveros-feb26.html",
+      "extractedAt": "2026-02-19T21:48:08.606Z",
+      "id": "p1srv7",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -5,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín en La Sirena con Cashback 20%",
+      "description": "Hasta 40% de ahorro en compras de San Valentín en La Sirena: hasta 20% de descuento directo de la tienda más 20% de cashback de Banco LAFISE al pagar con tarjetas de crédito personales.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal Banco LAFISE",
+        "MasterCard Crédito Personal Banco LAFISE"
+      ],
+      "minimumSpend": "RD$4,000 por transacción",
+      "maxReturn": "RD$6,000 por cliente (por cuenta)",
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-02-15",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "La Sirena"
+      ],
+      "categories": [
+        "presencial",
+        "supermercado"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan tarjetas de débito, prepagadas ni corporativas/empresariales. Promoción válida únicamente para consumos facturados en Pesos Dominicanos (RD$).",
+      "isActive": false,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-la-sirena-san-valentin-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:51:28.078Z",
+      "id": "fh9px4",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": -5,
+      "daysUntilStart": null
+    },
+    {
+      "title": "El Sabor de Compartir Momentos Juntos - San Valentín",
+      "description": "20% de devolución (Cashback) por consumos en restaurantes al pagar con Tarjetas de Crédito LAFISE durante los días 14 y 15 de febrero de 2026.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal LAFISE",
+        "MasterCard Crédito Personal LAFISE"
+      ],
+      "minimumSpend": "RD$3,500 por transacción",
+      "maxReturn": "RD$1,500 por cliente",
+      "validFrom": "2026-02-14",
+      "validUntil": "2026-02-15",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "Restaurantes clasificados bajo MCC de Restaurantes o Comida Rápida"
+      ],
+      "categories": [
+        "restaurante"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas de Débito, Prepagadas ni Corporativas/Empresariales. Pedidos por apps de delivery podrían no aplicar si la transacción se registra bajo categoría de tecnología o servicios de entrega. Solo consumos en Pesos Dominicanos (RD$).",
+      "isActive": false,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-restaurantes-san-valentin-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:52:05.534Z",
+      "id": "43ad8v",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": -5,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín – La Bodega 14% de devolución",
+      "description": "14% de devolución en compras realizadas con tarjetas de crédito personales Scotiabank en La Bodega durante el período de San Valentín.",
+      "percentage": "14%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Scotiabank",
+        "Mastercard Scotiabank",
+        "American Express® Scotiabank"
+      ],
+      "minimumSpend": "RD$5,000.00",
+      "maxReturn": "RD$3,000.00",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-14",
+      "creditingDate": null,
+      "establishments": [
+        "La Bodega"
+      ],
+      "categories": [
+        "supermercado"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida únicamente del 12 al 14 de febrero de 2026 con un consumo mínimo de RD$5,000.00 y tope de devolución de RD$3,000.00.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.san-valentin-la-bodega-feb26.html",
+      "extractedAt": "2026-02-19T21:47:55.430Z",
+      "id": "d5whfj",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "14% de devolución – Jenny Polanco",
+      "description": "Promoción de 14% de devolución en compras realizadas con tarjetas de crédito personales Scotiabank en Jenny Polanco, con un consumo mínimo de RD$6,000.00 y tope de devolución de RD$3,000.00.",
+      "percentage": "14%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Platinum American Express",
+        "Gold American Express",
+        "Platinum Visa",
+        "Infinite Visa",
+        "Mastercard Platinum"
+      ],
+      "minimumSpend": "RD$6,000.00",
+      "maxReturn": "RD$3,000.00",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-14",
+      "creditingDate": null,
+      "establishments": [
+        "Jenny Polanco"
+      ],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida exclusivamente del 12 al 14 de febrero de 2026. Aplica solo para tarjetas de crédito personales Platinum, Gold American Express, Platinum e Infinite Visa y Mastercard Platinum de Scotiabank.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.14-devolucion-jenny-polanco-feb26.html",
+      "extractedAt": "2026-02-19T21:48:23.029Z",
+      "id": "1i91bg",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "5 puntos Membership Rewards® por cada dólar en Chrono Jewlery",
+      "description": "Gana 5 veces los puntos Membership Rewards® por cada dólar estadounidense consumido en Chrono Jewlery con tarjetas American Express® de Scotiabank.",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "American Express® de Scotiabank personales",
+        "American Express® de Scotiabank comerciales"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-11",
+      "validUntil": "2026-02-14",
+      "creditingDate": null,
+      "establishments": [
+        "Chrono Jewlery"
+      ],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida para tarjetas de crédito personales y comerciales American Express® de Scotiabank. Al participar se aceptan los términos y condiciones establecidos por Scotiabank.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.gana-5-veces-los-puntos-por-cada-dolar-en-chrono-jewlery-feb26.html",
+      "extractedAt": "2026-02-19T21:48:35.714Z",
+      "id": "y4uyod",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "14% Cashback por San Valentín en Sembra - Agencia de Vinos",
+      "description": "Obtén 14% de devolución (cashback) en compras realizadas con tarjetas de crédito personales American Express y VISA de Scotiabank en Sembra - Agencia de Vinos por San Valentín.",
+      "percentage": "14%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "American Express® personal",
+        "VISA personal"
+      ],
+      "minimumSpend": "RD$4,000.00",
+      "maxReturn": "RD$2,000.00",
+      "validFrom": "2026-02-11",
+      "validUntil": "2026-02-14",
+      "creditingDate": null,
+      "establishments": [
+        "Sembra - Agencia de Vinos"
+      ],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida únicamente del 11 al 14 de febrero de 2026. Consumo mínimo de RD$4,000.00 y tope de devolución de RD$2,000.00.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.14-cashback-por-san-valentin-en-sembra-agencia-de-vinos-feb26.html",
+      "extractedAt": "2026-02-19T21:48:50.700Z",
+      "id": "6uamij",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Perfumería PRESTIGE (Cosper) – Febrero 2026",
+      "description": "14% de devolución en consumos realizados con tarjetas de crédito personales Scotiabank en Perfumería PRESTIGE (Cosper) durante el período de San Valentín.",
+      "percentage": "14%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "American Express",
+        "Visa",
+        "MasterCard"
+      ],
+      "minimumSpend": "RD$4,000.00",
+      "maxReturn": "RD$2,000.00",
+      "validFrom": "2026-02-11",
+      "validUntil": "2026-02-14",
+      "creditingDate": null,
+      "establishments": [
+        "Perfumería PRESTIGE (Cosper)"
+      ],
+      "categories": [
+        "presencial",
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción exclusiva para tarjetas de crédito personales American Express, Visa y MasterCard de Scotiabank. Consumo mínimo de RD$4,000.00 con tope de devolución de RD$2,000.00.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.perfumeria-prestige-cosper-feb26.html",
+      "extractedAt": "2026-02-19T21:49:04.884Z",
+      "id": "1vyazv",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Un Brillo Especial - Cashback en Joyerías San Valentín",
+      "description": "20% de devolución (Cashback) por compras en joyerías al pagar con Tarjetas de Crédito LAFISE durante San Valentín.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal Banco LAFISE",
+        "MasterCard Crédito Personal Banco LAFISE"
+      ],
+      "minimumSpend": "RD$8,000 por transacción",
+      "maxReturn": "RD$2,000 por cliente (por cuenta)",
+      "validFrom": "2026-02-07",
+      "validUntil": "2026-02-14",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "Joyerías (establecimientos clasificados bajo MCC de Joyerías)"
+      ],
+      "categories": [
+        "presencial",
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica únicamente en comercios clasificados bajo el MCC de joyerías y para consumos en Pesos Dominicanos (RD$). No participan Tarjetas de Débito, Prepagadas ni Tarjetas de Crédito Corporativas/Empresariales.",
+      "isActive": false,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-joyerias-san-valentin-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:52:13.940Z",
+      "id": "2qshr2",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín: 20% devolución en hospedaje",
+      "description": "20% de devolución en reservas de hospedaje en Airbnb y cadenas de hoteles participantes al pagar con Tarjetas de Crédito Personales y Empresariales BHD.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Personales BHD",
+        "Tarjetas de Crédito Empresariales BHD",
+        "Lifemiles",
+        "Premia",
+        "Billet",
+        "Mi País"
+      ],
+      "minimumSpend": "US$300 o su equivalente en pesos",
+      "maxReturn": "US$125 por cliente",
+      "validFrom": "2026-01-27",
+      "validUntil": "2026-02-14",
+      "creditingDate": "Dentro de los 45 días posteriores a la finalización de la promoción",
+      "establishments": [
+        "Airbnb",
+        "Four Points",
+        "Marriott",
+        "Hilton",
+        "Dreams",
+        "Secrets",
+        "Hyatt",
+        "Intercontinental",
+        "Aloft",
+        "Donoma Terrenas",
+        "W Hotel",
+        "Sheraton",
+        "Embassy Suites",
+        "Jaragua",
+        "Aqua Live",
+        "Casa del XVI"
+      ],
+      "categories": [
+        "online",
+        "presencial",
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican Tarjetas de Débito. La tarjeta debe estar al día en sus pagos y sin bloqueo por mora al momento del consumo o de recibir la devolución.",
+      "isActive": false,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-20T14:26:05.048Z",
+      "id": "5t31g8",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Boletos aéreos con Tarjetas Visa Clásica y Gold Banreservas",
+      "description": "15% de devolución al comprar boletos aéreos en aerolíneas seleccionadas pagando con Tarjetas de Crédito Visa Clásica y Gold Banreservas, con un mínimo de consumo acumulable de US$500.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Clásica Banreservas",
+        "Visa Gold Banreservas"
+      ],
+      "minimumSpend": "US$500 acumulable",
+      "maxReturn": "US$90 por cliente",
+      "validFrom": "2026-02-08",
+      "validUntil": "2026-02-10",
+      "creditingDate": "En el mes de marzo 2026, hasta el último día del mes",
+      "establishments": [
+        "American Airlines",
+        "JetBlue Airways",
+        "Delta Airlines",
+        "Iberia",
+        "United Airlines",
+        "Avianca",
+        "Air France",
+        "Spirit",
+        "Aeroméxico",
+        "Emirates Airlines"
+      ],
+      "categories": [
+        "aéreo",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican compras en mostrador del aeropuerto, oficinas de aerolíneas, consumos presenciales, mediante link de pago, a través de terceros ni en agencias de viajes. No aplica consumos con Credimás Banreservas.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/h1kbr05r/terminos-y-condiciones-promocio-n-boletos-ae-reos-visa-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:36:20.545Z",
+      "id": "oic1il",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -10,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Día de la Pizza - 20% Cashback",
+      "description": "Celebración del Día de la Pizza con 20% de devolución (Cashback) al pagar con Tarjetas de Crédito LAFISE en pizzerías.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Crédito Personal LAFISE",
+        "MasterCard Crédito Personal LAFISE"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "RD$800 por cliente",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-09",
+      "creditingDate": "Aproximadamente 30 días después de finalizada la promoción",
+      "establishments": [
+        "Pizzerías registradas bajo categoría MCC de Pizzerías"
+      ],
+      "categories": [
+        "restaurante",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplica en pedidos por plataformas de delivery (Uber Eats, PedidosYa, etc.). Excluye tarjetas de débito, prepagadas y corporativas/empresariales; válido solo en pesos dominicanos.",
+      "isActive": false,
+      "bank": "LAFISE",
+      "sourceUrl": "https://www.lafise.com/blrd/web-resources/promos/reglamentos/reglamento-dia-de-la-pizza-febrero-2026.pdf",
+      "extractedAt": "2026-02-19T21:51:57.072Z",
+      "id": "drb4se",
+      "bankId": "lafise",
+      "bankColor": "#0077b6",
+      "isUpcoming": false,
+      "daysUntilExpiry": -11,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% devolución + 10% descuento en Grupo Bentrani",
+      "description": "20% de devolución en compras desde RD$32,000 y hasta 10% de descuento en piezas seleccionadas de Cartier, Tudor, Montblanc y Rolex al pagar con tarjetas de crédito BHD participantes en Grupo Bentrani.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Infinite Unique",
+        "Infinite",
+        "Mujer Black",
+        "Black",
+        "Platinum",
+        "Mujer White"
+      ],
+      "minimumSpend": "RD$32,000",
+      "maxReturn": "RD$12,500",
+      "validFrom": "2026-02-03",
+      "validUntil": "2026-02-09",
+      "creditingDate": "Dentro de los 45 días posteriores a la finalización de la promoción",
+      "establishments": [
+        "Cartier BlueMall Santo Domingo",
+        "Rolex BlueMall Santo Domingo",
+        "Montblanc BlueMall Santo Domingo",
+        "Tudor BlueMall Santo Domingo"
+      ],
+      "categories": [
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "El tope de devolución de RD$12,500 considera el total de transacciones del titular y sus adicionales. El plan de 6 cuotas sin interés no aplica para la devolución.",
+      "isActive": false,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-20T14:26:11.705Z",
+      "id": "5t31g7",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": -11,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Día Plus BHD - Febrero",
+      "description": "Recibe 20% de devolución en consumos presenciales en restaurantes al pagar con tarjetas de crédito BHD seleccionadas.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Infinite Unique",
+        "Infinite",
+        "Black",
+        "Mujer Black",
+        "Platinum",
+        "Mujer White"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-08",
+      "validUntil": "2026-02-08",
+      "creditingDate": null,
+      "establishments": null,
+      "categories": [
+        "restaurante",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Válido únicamente el 8 de febrero de 2026. Aplica solo para consumos presenciales en restaurantes.",
+      "isActive": false,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-20T14:26:17.090Z",
+      "id": "x1kma7",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": -12,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 65% de ahorro en electrodomésticos en Sirena con Visa Banreservas",
+      "description": "Al pagar con Tarjetas de Crédito Visa Clásica y Gold Banreservas en Tiendas Sirena, obtén hasta 65% de ahorro en electrodomésticos seleccionados, combinando descuento en caja y devolución posterior.",
+      "percentage": "Hasta 65% (hasta 45% descuento en caja + 15% o 20% devolución)",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Clásica Banreservas",
+        "Visa Gold Banreservas",
+        "Credimás Visa Clásica Banreservas",
+        "Credimás Visa Gold Banreservas"
+      ],
+      "minimumSpend": "RD$15,000 no acumulados",
+      "maxReturn": "RD$9,000 por cliente con Credimás; RD$7,000 por cliente con Tarjeta de Crédito Visa Clásica y Gold",
+      "validFrom": "2026-02-03",
+      "validUntil": "2026-02-03",
+      "creditingDate": "En el mes de marzo 2026, hasta el 31 de marzo de 2026",
+      "establishments": [
+        "Tiendas Sirena"
+      ],
+      "categories": [
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Solo aplica para compras presenciales en Sirena, no aplica online ni link de pago ni WhatsApp. Es imprescindible el uso de la tarjeta Siremás. No aplican tarjetas Visa Platinum, Universe, Infinite, Negocios, Corporativa ni Flotilla.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/jqlhsz0s/terminos-y-condiciones-promocio-n-electrodome-sticos-sirena-visa-banreservas.pdf",
+      "extractedAt": "2026-02-19T17:38:02.145Z",
+      "id": "pyohie",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -17,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% descuento boletas concierto Christian Nodal con Visa Banreservas",
+      "description": "Preventa exclusiva con 15% de descuento en boletas para el concierto de Christian Nodal en Altos de Chavón al pagar con Tarjetas de Crédito Visa Banreservas a través de Uepa Tickets.",
+      "percentage": "15%",
+      "promoType": "preventa",
+      "eligibleCards": [
+        "Tarjetas de Crédito Visa Banreservas personales",
+        "Tarjetas de Crédito Visa Banreservas comerciales"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-03",
+      "validUntil": "2026-02-03",
+      "creditingDate": null,
+      "establishments": [
+        "Uepa Tickets",
+        "UepaTickets.com"
+      ],
+      "categories": [
+        "entretenimiento",
+        "online",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Máximo 8 boletas por cliente. No aplican consumos con Credimás Banreservas ni tarjetas Visa Flotilla Banreservas. El descuento solo aplica en boletas, no en cargos por servicios. Válido hasta agotar existencias.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/bsffm1r1/terminos-y-condiciones-15-de-descuento-en-boletas-del-concierto-christian-nodal-2026.pdf",
+      "extractedAt": "2026-02-19T17:38:12.706Z",
+      "id": "nvqdxd",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -17,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Inicia el verano ganando",
+      "description": "Por cada consumo desde RD$5,000 con tarjetas Banreservas, se generan boletos electrónicos para sorteos semanales con premios en bonos CCN, efectivo y un Kia Picanto 2026.",
+      "percentage": null,
+      "promoType": "beneficio",
+      "eligibleCards": [
+        "Mastercard Standard Crédito Banreservas",
+        "Mastercard Standard Táctil Crédito Banreservas",
+        "Mastercard Standard Multimoneda Crédito Banreservas",
+        "Mastercard Preserva Crédito Banreservas",
+        "Mastercard Gold Crédito Banreservas",
+        "Mastercard Gold Multimoneda Crédito Banreservas",
+        "Mastercard Platinum Crédito Banreservas",
+        "Mastercard Platinum Multimoneda Crédito Banreservas",
+        "Mastercard Black Crédito Banreservas",
+        "Mastercard Black Ámbar Crédito Banreservas",
+        "Visa SER Crédito Banreservas",
+        "Visa Clásica Crédito Banreservas",
+        "Visa Negocios Persona Crédito Banreservas",
+        "Visa Clásica Multimoneda Crédito Banreservas",
+        "Visa Gold Crédito Banreservas",
+        "Visa Gold Multimoneda Crédito Banreservas",
+        "Visa Platinum Universe Crédito Banreservas",
+        "Visa Platinum Multimoneda Crédito Banreservas",
+        "Visa Infinite Crédito Banreservas",
+        "Mastercard Standard Débito Banreservas",
+        "Mastercard Standard Táctil Débito Banreservas",
+        "Mastercard Gold Débito Banreservas",
+        "Mastercard Platinum Débito Banreservas",
+        "Mastercard Dólares Débito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": "RD$5,000.00 o su equivalente en dólares por transacción",
+      "maxReturn": null,
+      "validFrom": "2025-05-26",
+      "validUntil": "2025-07-27",
+      "creditingDate": "Premios en efectivo de RD$50,000 acreditados a la tarjeta con la que fue generado el boleto ganador; bonos y vehículo entregados hasta 120 días laborables después del contacto formal con el ganador",
+      "establishments": [],
+      "categories": [
+        "online",
+        "presencial"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican avances de efectivo, cargos, comisiones, transacciones fraudulentas, anulaciones ni consumos acumulados. Tarjetas de Débito generan doble boletos y Credimás genera cuádruple boletos electrónicos.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/sg2oc0po/bases-de-la-promocio-n-2da-campan-a-institucional-2025.pdf",
+      "extractedAt": "2026-02-19T17:36:50.228Z",
+      "id": "1g6cis",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -208,
+      "daysUntilStart": null
+    }
+  ],
+  "lastUpdated": "2026-02-20T14:26:24.057Z",
+  "stats": {
+    "total": 39,
+    "active": 21,
+    "upcoming": 0,
+    "expired": 22,
+    "newThisRun": 4,
+    "scrapeTimeSeconds": 27.2
+  },
+  "scrapeHistory": [
+    {
+      "date": "2026-02-20T14:26:24.057Z",
+      "newPromos": 4,
+      "totalPromos": 44,
+      "durationSeconds": 27.2
+    },
+    {
+      "date": "2026-02-20T13:41:57.196Z",
+      "newPromos": 5,
+      "totalPromos": 40,
+      "durationSeconds": 36.9
+    },
+    {
+      "date": "2026-02-20T13:40:21.048Z",
+      "newPromos": 0,
+      "totalPromos": 35,
+      "durationSeconds": 23.1
+    },
+    {
+      "date": "2026-02-19T22:14:38.733Z",
+      "newPromos": 0,
+      "totalPromos": 35,
+      "durationSeconds": 0.8
+    },
+    {
+      "date": "2026-02-19T21:55:22.415Z",
+      "newPromos": 0,
+      "totalPromos": 53,
+      "durationSeconds": 19.1
+    },
+    {
+      "date": "2026-02-19T21:52:14.953Z",
+      "newPromos": 17,
+      "totalPromos": 53,
+      "durationSeconds": 316.8
+    },
+    {
+      "date": "2026-02-19T21:46:22.294Z",
+      "newPromos": 0,
+      "totalPromos": 36,
+      "durationSeconds": 11.5
+    },
+    {
+      "date": "2026-02-19T21:35:59.274Z",
+      "newPromos": 18,
+      "totalPromos": 36,
+      "durationSeconds": 90.7
+    },
+    {
+      "date": "2026-02-19T21:30:03.403Z",
+      "newPromos": 0,
+      "totalPromos": 18,
+      "durationSeconds": 7.2
+    },
+    {
+      "date": "2026-02-19T21:29:40.432Z",
+      "newPromos": 0,
+      "totalPromos": 18,
+      "durationSeconds": 9.8
+    },
+    {
+      "date": "2026-02-19T21:19:27.124Z",
+      "newPromos": 0,
+      "totalPromos": 18,
+      "durationSeconds": 40.3
+    },
+    {
+      "date": "2026-02-19T21:17:27.074Z",
+      "newPromos": 0,
+      "totalPromos": 18,
+      "durationSeconds": 37.5
+    },
+    {
+      "date": "2026-02-19T17:40:27.407Z",
+      "newPromos": 18,
+      "totalPromos": 18,
+      "durationSeconds": 327.3
+    }
+  ]
+}

@@ -234,6 +234,33 @@ Reglas importantes:
 // 3c. PROCESAR BANCO VÍA STRAPI API (BHD)
 // ───────────────────────────────────────────────────────────────────
 
+// Busca el detalle completo de una promo BHD en t-4-s por título
+// Devuelve texto rico con porcentaje, requisitos, topes, etc.
+async function getBhdPromoDetail(title) {
+  try {
+    const q = encodeURIComponent(title.substring(0, 60));
+    const url = `https://backend.bhd.com.do/api/t-4-s?filters[heading][$containsi]=${q}&populate=deep&pagination%5BpageSize%5D=3`;
+    const { data } = await axios.get(url, { timeout: 8000 });
+    const items = data?.data || [];
+    if (items.length === 0) return null;
+
+    // Tomar el más parecido al título original
+    const match = items.find(i =>
+      i.attributes.heading?.toLowerCase().includes(title.toLowerCase().substring(0, 25))
+    ) || items[0];
+
+    const attrs = match.attributes;
+    const paragraphs = (attrs.paragraph || [])
+      .map(p => p.paratext || '').filter(Boolean).join('\n');
+    const reqs = (attrs.requisite?.reqdata || [])
+      .map(r => r.detail || '').filter(Boolean).join('\n');
+
+    return [paragraphs, reqs ? `Requisitos:\n${reqs}` : ''].filter(Boolean).join('\n\n');
+  } catch {
+    return null;
+  }
+}
+
 async function processBankFromStrapiApi(source, existingIds) {
   try {
     const { data } = await axios.get(source.strapiUrl, { timeout: 15000 });
@@ -255,11 +282,15 @@ async function processBankFromStrapiApi(source, existingIds) {
       const hasExclude = source.excludeKeywords?.some(k => text.includes(k));
       if (!hasKeyword || hasExclude) { skipped++; continue; }
 
+      // Buscar detalle completo en t-4-s (tiene el % de devolución)
+      const detail = source.detailApi ? await getBhdPromoDetail(title) : null;
+      if (detail) console.log(`   🔍 Detalle encontrado para: ${title.substring(0, 50)}`);
+
       console.log(`   🤖 Extrayendo: ${title.substring(0, 60)}...`);
-      const contextDesc = source.cardContextHint
+      const richDesc = detail || (source.cardContextHint
         ? `[CONTEXTO: ${source.cardContextHint}]\n${description || ''}`
-        : description;
-      const promo = await extractPromoFromText(title, contextDesc, source.name, card.id);
+        : description);
+      const promo = await extractPromoFromText(title, richDesc, source.name, card.id);
 
       if (promo) {
         promo.bankId = source.id;
