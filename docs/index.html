@@ -274,11 +274,10 @@
     <button class="cat-btn" onclick="setCategory('compras',this)">🛍️ Compras</button>
     <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
     <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
-    <button class="cat-btn" onclick="setCategory('salud',this)">🏋️ Clubes</button>
     <button class="cat-btn" onclick="setCategory('restaurante',this)">🍽️ Restaurantes</button>
     <button class="cat-btn" onclick="setCategory('bebidas',this)">🍹 Bebidas</button>
     <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
-    <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Entretenimiento</button>
+    <button class="cat-btn" onclick="setCategory('clubes-entret',this)">🎭 Clubes y Entretenimiento</button>
     <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
   </div>
   <div class="bank-filter" id="bankFilter">
@@ -395,11 +394,10 @@ const CATEGORY_TAGS = {
   compras:        ['online', 'presencial'],
   supermercado:   ['supermercado'],
   'educación':    ['educación'],
-  salud:          ['salud'],
+  'clubes-entret': ['salud', 'entretenimiento'],
   restaurante:    ['restaurante'],
   bebidas:        ['bebidas'],
   viaje:          ['aéreo', 'viaje'],
-  entretenimiento:['entretenimiento'],
   otro:           ['otro'],
 };
 let geoActive = false;
