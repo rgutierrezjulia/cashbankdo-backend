@@ -283,6 +283,7 @@
   </div>
   <div class="bank-filter" id="bankFilter">
     <button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>
+    <button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>
   </div>
 </div>
 
@@ -662,13 +663,17 @@ function fmt(s) {
 // ═══════════════════════════════════════════════════════════════════
 function renderBankFilter(banks) {
   const filter = document.getElementById('bankFilter');
+  // Keep the static Todos + Mis Productos buttons, only replace the bank buttons after them
+  const bankBtns = banks.filter(b => b.promoCount > 0).map(b =>
+    `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
+      style="--bc:${b.color}">${b.name}</button>`
+  ).join('');
+  // Remove old bank buttons (keep first 2 static ones)
+  const staticBtns = filter.querySelectorAll('[data-bank="all"], [data-bank="mis-productos"]');
   filter.innerHTML =
     `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
     `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +
-    banks.filter(b => b.promoCount > 0).map(b =>
-      `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
-        style="--bc:${b.color}">${b.name}</button>`
-    ).join('');
+    bankBtns;
 }
 
 function setCategory(cat, el) {
