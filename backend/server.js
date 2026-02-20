@@ -13,7 +13,7 @@ import { runScraper, runCardCatalogScraper } from './scraper.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 const DATA_FILE = '../data/promos.json';
-const CARDS_FILE = '../data/cards.json';
+const CARDS_FILE = './data/cards.json';
 
 app.use(cors());
 app.use(express.json());

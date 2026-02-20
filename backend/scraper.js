@@ -20,7 +20,7 @@ puppeteerExtra.use(StealthPlugin());
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const DATA_FILE = '../data/promos.json';
 const LOG_FILE = '../data/scrape_log.json';
-const CARD_FILE = '../data/cards.json';
+const CARD_FILE = './data/cards.json';
 
 // URLs de páginas de tarjetas de cada banco para el catalog scraper
 const CARD_PAGE_URLS = {
