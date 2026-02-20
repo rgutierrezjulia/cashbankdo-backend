@@ -88,8 +88,7 @@
   .cat-filter::-webkit-scrollbar { display: none; }
   .cat-btn { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
   .cat-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
-  .cat-btn.mis-btn { border-color: var(--accent2); color: var(--accent2); }
-  .cat-btn.mis-btn.active { background: var(--accent2); border-color: var(--accent2); color: #fff; font-weight: 600; }
+  .mis-bank-btn { border-color: var(--accent2) !important; color: var(--accent2) !important; }
   .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
   .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
@@ -272,7 +271,6 @@
 
 <div class="controls">
   <div class="cat-filter" id="catFilter">
-    <button class="cat-btn mis-btn" onclick="setCategory('mis-productos',this)">⭐ Mis Productos</button>
     <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
     <button class="cat-btn" onclick="setCategory('compras',this)">🛍️ Compras</button>
     <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
@@ -417,7 +415,7 @@ let modalSelected = new Set();
 // ═══════════════════════════════════════════════════════════════════
 async function fetchPromos() {
   const params = new URLSearchParams();
-  if (activeBank !== 'all') params.append('bank', activeBank);
+  if (activeBank !== 'all' && activeBank !== 'mis-productos') params.append('bank', activeBank);
   const res = await fetch(`${API_BASE}/api/promos?${params}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
@@ -567,7 +565,7 @@ function renderCards() {
   let filtered = allPromos.filter(p => p.isActive || p.isUpcoming);
 
   // Filtrar por "Mis Productos" — promos de los bancos del wallet del usuario
-  if (activeCategory === 'mis-productos') {
+  if (activeBank === 'mis-productos') {
     if (walletCards.length === 0) {
       list.innerHTML = `<div class="empty-state"><div class="big">💳</div><div>Agrega tus tarjetas en el panel de la derecha para ver tus promos personalizadas</div></div>`;
       return;
@@ -593,7 +591,7 @@ function renderCards() {
   }
 
   // Filtrar por categoría
-  if (activeCategory !== 'all' && activeCategory !== 'mis-productos') {
+  if (activeCategory !== 'all') {
     const tags = CATEGORY_TAGS[activeCategory] || [activeCategory];
     filtered = filtered.filter(p => p.categories?.some(c => tags.includes(c)));
   }
@@ -664,7 +662,9 @@ function fmt(s) {
 // ═══════════════════════════════════════════════════════════════════
 function renderBankFilter(banks) {
   const filter = document.getElementById('bankFilter');
-  filter.innerHTML = `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
+  filter.innerHTML =
+    `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
+    `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +
     banks.filter(b => b.promoCount > 0).map(b =>
       `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
         style="--bc:${b.color}">${b.name}</button>`
@@ -687,7 +687,11 @@ function setBank(bank, el) {
     b.style.color = '';
   });
   el.classList.add('active-all');
-  if (bank !== 'all') {
+  if (bank === 'mis-productos') {
+    el.style.background = 'var(--accent2)';
+    el.style.borderColor = 'var(--accent2)';
+    el.style.color = '#fff';
+  } else if (bank !== 'all') {
     const bc = banks.find(b => b.id === bank)?.color || '';
     el.style.background = bc;
     el.style.borderColor = bc;
@@ -759,7 +763,7 @@ function removeCard(i) {
   walletCards.splice(i, 1);
   localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
   renderWallet();
-  if (activeCategory === 'mis-productos') renderCards();
+  if (activeBank === 'mis-productos') renderCards();
 }
 
 function addCard() {
@@ -784,7 +788,7 @@ function addCard() {
   document.getElementById('cardName').innerHTML = '<option value="">Selecciona banco primero</option>';
   document.getElementById('cardName').disabled = true;
   renderWallet();
-  if (activeCategory === 'mis-productos') renderCards();
+  if (activeBank === 'mis-productos') renderCards();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -873,7 +877,7 @@ function addModalSelected() {
   closeWalletModal();
   if (added > 0) {
     renderWallet();
-    if (activeCategory === 'mis-productos') renderCards();
+    if (activeBank === 'mis-productos') renderCards();
   }
 }
 
