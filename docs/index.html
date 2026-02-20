@@ -88,6 +88,8 @@
   .cat-filter::-webkit-scrollbar { display: none; }
   .cat-btn { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
   .cat-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .cat-btn.mis-btn { border-color: var(--accent2); color: var(--accent2); }
+  .cat-btn.mis-btn.active { background: var(--accent2); border-color: var(--accent2); color: #fff; font-weight: 600; }
   .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
   .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
@@ -270,6 +272,7 @@
 
 <div class="controls">
   <div class="cat-filter" id="catFilter">
+    <button class="cat-btn mis-btn" onclick="setCategory('mis-productos',this)">⭐ Mis Productos</button>
     <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
     <button class="cat-btn" onclick="setCategory('compras',this)">🛍️ Compras</button>
     <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
@@ -563,8 +566,34 @@ function renderCards() {
   // Solo mostrar activas y próximas (ocultar expiradas)
   let filtered = allPromos.filter(p => p.isActive || p.isUpcoming);
 
+  // Filtrar por "Mis Productos" — promos de los bancos del wallet del usuario
+  if (activeCategory === 'mis-productos') {
+    if (walletCards.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="big">💳</div><div>Agrega tus tarjetas en el panel de la derecha para ver tus promos personalizadas</div></div>`;
+      return;
+    }
+    filtered = filtered.filter(p =>
+      walletCards.some(card => {
+        const bankId = card.bankId || card.bank?.toLowerCase().replace(/\s+/g, '');
+        const bankMatch = p.bankId === bankId ||
+                          p.bank?.toLowerCase().includes(card.bank?.toLowerCase()) ||
+                          p.bankId === card.bank?.toLowerCase();
+        if (!bankMatch) return false;
+        const cardType = card.type || card.tipo;
+        if (cardType && p.cardTypes?.length > 0) {
+          if (!p.cardTypes.includes(cardType)) return false;
+        }
+        return true;
+      })
+    );
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="big">🔍</div><div>No hay promos activas para tus tarjetas en este momento</div></div>`;
+      return;
+    }
+  }
+
   // Filtrar por categoría
-  if (activeCategory !== 'all') {
+  if (activeCategory !== 'all' && activeCategory !== 'mis-productos') {
     const tags = CATEGORY_TAGS[activeCategory] || [activeCategory];
     filtered = filtered.filter(p => p.categories?.some(c => tags.includes(c)));
   }
@@ -730,6 +759,7 @@ function removeCard(i) {
   walletCards.splice(i, 1);
   localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
   renderWallet();
+  if (activeCategory === 'mis-productos') renderCards();
 }
 
 function addCard() {
@@ -754,6 +784,7 @@ function addCard() {
   document.getElementById('cardName').innerHTML = '<option value="">Selecciona banco primero</option>';
   document.getElementById('cardName').disabled = true;
   renderWallet();
+  if (activeCategory === 'mis-productos') renderCards();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -840,7 +871,10 @@ function addModalSelected() {
 
   localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
   closeWalletModal();
-  if (added > 0) renderWallet();
+  if (added > 0) {
+    renderWallet();
+    if (activeCategory === 'mis-productos') renderCards();
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════
