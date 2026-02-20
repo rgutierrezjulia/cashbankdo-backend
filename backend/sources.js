@@ -196,7 +196,7 @@ export const BANK_SOURCES = [
     promoListUrl: 'https://bancoademi.com.do/category/promociones/',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso', 'ahorro'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'cumbre', 'certificac', 'emprendedor', 'embajador', 'felaban', 'bcie', 'financing'],
-    cardContextHint: 'Banco Ademi expresa sus promos como "hasta X% de ahorro/devolución". Las bases legales están en el cuerpo del post con monto mínimo de consumo, tope de devolución y tarjetas participantes (Visa Clásica Local, Internacional, Gold, Empresarial). La acreditación suele ser dentro de 30 días de finalizada la promo.',
+    cardContextHint: 'IMPORTANTE: Las promos de Banco Ademi son ofertas COMPUESTAS: la tienda ofrece su propio descuento (ej: 80% en venta de pasillo) y ADICIONALMENTE la tarjeta Ademi da un cashback/devolución extra. El porcentaje total anunciado (ej: "hasta 85% de ahorro") combina ambos. Debes extraer SOLO la porción que corresponde a la tarjeta Ademi (el cashback o devolución adicional que acredita el banco), NO el descuento de la tienda. Busca en las bases legales frases como "X% de devolución adicional", "el banco acreditará X%", o "devolución de hasta X% sobre el consumo". Si no puedes separar claramente la parte del banco, usa null en percentage.',
   },
   {
     id: 'qik',
