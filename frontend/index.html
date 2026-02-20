@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CashbackDO — Ofertas de Bancos Dominicanos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1c1c28;
+    --border: rgba(255,255,255,0.06);
+    --accent: #00e5a0;
+    --accent2: #7c5cff;
+    --accent3: #ff6b6b;
+    --accent4: #ffd166;
+    --text: #f0f0f8;
+    --muted: #6b6b88;
+    --card: #16161f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.9); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border); padding: 0 24px;
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.03em; }
+  .logo span { color: var(--accent); }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+
+  .sync-info {
+    font-size: 0.72rem; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; }
+  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .sync-dot.stale { background: var(--accent4); animation: none; }
+  .sync-dot.error { background: var(--accent3); animation: none; }
+
+  .scrape-btn {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); padding: 5px 12px; border-radius: 7px;
+    font-size: 0.75rem; cursor: pointer; transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px;
+  }
+  .scrape-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .scrape-btn.loading { opacity: 0.6; cursor: not-allowed; }
+  .scrape-btn .spin { display: none; animation: spin 1s linear infinite; }
+  .scrape-btn.loading .spin { display: inline; }
+  .scrape-btn.loading .idle { display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .geo-btn {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 14px; border-radius: 8px;
+    font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px;
+    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .geo-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .geo-btn.active { border-color: var(--accent); background: rgba(0,229,160,0.1); color: var(--accent); }
+
+  .hero { max-width: 1100px; margin: 0 auto; padding: 48px 24px 32px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 0.95rem; max-width: 480px; line-height: 1.6; }
+
+  .stats-row { max-width: 1100px; margin: 0 auto 32px; padding: 0 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 20px; flex: 1; min-width: 130px; }
+  .stat-chip .num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .stat-chip .lbl { font-size: 0.75rem; color: var(--muted); }
+  .stat-chip.green .num { color: var(--accent); }
+  .stat-chip.yellow .num { color: var(--accent4); }
+  .stat-chip.purple .num { color: var(--accent2); }
+  .stat-chip.blue .num { color: #48cae4; }
+
+  .controls { max-width: 1100px; margin: 0 auto 24px; padding: 0 24px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .tab-group { display: flex; gap: 4px; background: var(--surface); border-radius: 10px; padding: 4px; }
+  .tab { padding: 7px 16px; border-radius: 7px; border: none; background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+  .tab.active { background: var(--surface2); color: var(--text); }
+  .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+  .bank-btn { padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+  .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
+
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 310px; gap: 24px; }
+  @media (max-width: 800px) { .main { grid-template-columns: 1fr; } }
+
+  .cards-list { display: flex; flex-direction: column; gap: 14px; }
+  .promo-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.22s; position: relative; overflow: hidden; animation: fadeUp 0.4s ease both; }
+  .promo-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-1px); }
+  .promo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 16px 16px 0 0; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .bank-tag { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .bank-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .pct-badge { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); line-height: 1; }
+  .pct-badge small { font-size: 0.65rem; font-weight: 400; color: var(--muted); display: block; text-align: right; font-family: 'DM Sans', sans-serif; }
+  .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; line-height: 1.3; }
+  .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .meta-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 0.75rem; display: flex; align-items: center; gap: 5px; color: var(--muted); }
+  .meta-chip .val { color: var(--text); font-weight: 500; }
+  .meta-chip.hl { border-color: rgba(0,229,160,0.3); background: rgba(0,229,160,0.06); }
+  .meta-chip.hl .val { color: var(--accent); }
+  .card-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .validity { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .days-badge { border-radius: 5px; padding: 2px 7px; font-weight: 500; font-size: 0.72rem; }
+  .days-badge.active { background: rgba(0,229,160,0.12); color: var(--accent); }
+  .days-badge.soon { background: rgba(255,209,102,0.12); color: var(--accent4); }
+  .days-badge.expired { background: rgba(255,107,107,0.1); color: var(--accent3); }
+  .card-link { font-size: 0.75rem; color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--border); border-radius: 7px; transition: all 0.18s; }
+  .card-link:hover { border-color: var(--accent); color: var(--accent); }
+  .tags-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag { font-size: 0.68rem; padding: 3px 8px; border-radius: 5px; font-weight: 500; }
+  .tag.online { background: rgba(124,92,255,0.15); color: var(--accent2); }
+  .tag.presencial { background: rgba(0,119,182,0.15); color: #48cae4; }
+  .tag.aéreo { background: rgba(255,209,102,0.15); color: var(--accent4); }
+  .tag.entretenimiento { background: rgba(255,107,107,0.15); color: var(--accent3); }
+  .tag.supermercado,.tag.restaurante { background: rgba(0,229,160,0.1); color: var(--accent); }
+  .tag.crédito { background: rgba(0,229,160,0.08); color: var(--accent); }
+  .tag.débito { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .widget { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+  .widget-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+  .card-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .card-item:last-child { border-bottom: none; }
+  .card-visual { width: 44px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .card-info { flex: 1; }
+  .card-name { font-size: 0.8rem; font-weight: 500; margin-bottom: 2px; }
+  .card-sub { font-size: 0.7rem; color: var(--muted); }
+  .card-promos { font-size: 0.65rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #000; }
+  .card-promos.zero { background: var(--surface2); color: var(--muted); }
+
+  .add-card-form { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .add-card-form select, .add-card-form input { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.18s; }
+  .add-card-form select:focus, .add-card-form input:focus { border-color: var(--accent); }
+  .add-card-form option { background: #1c1c28; }
+  .add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
+  .add-btn:hover { opacity: 0.85; }
+
+  /* Location */
+  .location-display { background: var(--surface2); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+  .location-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .location-name { font-size: 0.85rem; font-weight: 500; }
+  .location-sub { font-size: 0.72rem; color: var(--muted); }
+  .pulse-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; position: relative; }
+  .pulse-dot.active::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
+  .timer-bar-wrap { margin-top: 8px; }
+  .timer-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .timer-bar { height: 4px; background: var(--surface); border-radius: 99px; overflow: hidden; }
+  .timer-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width 1s linear; }
+  .nearby-promo { background: linear-gradient(135deg, rgba(0,229,160,0.08), rgba(124,92,255,0.08)); border: 1px solid rgba(0,229,160,0.2); border-radius: 10px; padding: 12px; font-size: 0.8rem; line-height: 1.5; margin-bottom: 12px; }
+  .nearby-promo strong { color: var(--accent); }
+
+  /* Toast */
+  .notif-toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface2); border: 1px solid rgba(0,229,160,0.3); border-radius: 14px; padding: 16px 20px; max-width: 320px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 9999; display: none; }
+  .notif-toast.show { display: block; animation: slideIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes slideIn { from { transform: translateX(100%) translateY(20px); opacity: 0; } to { transform: translateX(0) translateY(0); opacity: 1; } }
+  .notif-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .notif-bank { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; }
+  .notif-msg { font-size: 0.82rem; line-height: 1.5; }
+  .notif-sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+  .notif-close { position: absolute; top: 10px; right: 12px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; }
+
+  /* Loading skeleton */
+  .skeleton { background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  .sk-card { height: 180px; border-radius: 16px; margin-bottom: 14px; }
+
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .empty-state .big { font-size: 3rem; margin-bottom: 12px; }
+
+  /* API config banner */
+  .api-banner { background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); border-radius: 12px; padding: 12px 16px; font-size: 0.8rem; color: var(--accent4); margin-bottom: 16px; line-height: 1.6; }
+  .api-banner strong { display: block; margin-bottom: 4px; }
+  .api-input-row { display: flex; gap: 8px; margin-top: 8px; }
+  .api-input-row input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 7px 10px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; outline: none; }
+  .api-input-row button { background: var(--accent4); color: #000; border: none; border-radius: 7px; padding: 7px 12px; font-size: 0.78rem; font-weight: 700; cursor: pointer; font-family: 'Syne', sans-serif; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="logo">Cashback<span>DO</span></div>
+    </div>
+    <div class="header-right">
+      <div class="sync-info">
+        <div class="sync-dot" id="syncDot"></div>
+        <span id="syncText">Conectando...</span>
+      </div>
+      <button class="scrape-btn" id="scrapeBtn" onclick="triggerScrape()">
+        <span class="idle">🔄 Actualizar</span>
+        <span class="spin">⟳</span>
+      </button>
+      <button class="geo-btn" id="geoBtn" onclick="toggleGeo()">📍 Ubicación</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Cashback <em>bancario</em><br>en República Dominicana</h1>
+  <p>Datos extraídos automáticamente cada día de las bases legales de todos los bancos dominicanos. Siempre actualizado.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-chip green"><div class="num" id="statActive">—</div><div class="lbl">Vigentes hoy</div></div>
+  <div class="stat-chip yellow"><div class="num" id="statUpcoming">—</div><div class="lbl">Próximos 15 días</div></div>
+  <div class="stat-chip purple"><div class="num" id="statBanks">—</div><div class="lbl">Bancos</div></div>
+  <div class="stat-chip blue"><div class="num" id="statTotal">—</div><div class="lbl">Total promos</div></div>
+</div>
+
+<div class="controls">
+  <div class="tab-group">
+    <button class="tab active" onclick="setTab('all',this)">Todas</button>
+    <button class="tab" onclick="setTab('active',this)">Vigentes</button>
+    <button class="tab" onclick="setTab('next15',this)">Próximas 15 días</button>
+    <button class="tab" onclick="setTab('expired',this)">Expiradas</button>
+  </div>
+  <div class="bank-filter" id="bankFilter">
+    <button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>
+  </div>
+</div>
+
+<div class="main">
+  <div>
+    <div id="apiBanner" class="api-banner" style="display:none">
+      <strong>⚙️ Configura el servidor backend</strong>
+      Ingresa la URL de tu servidor CashbackDO para ver las promos en vivo.
+      <div class="api-input-row">
+        <input id="apiUrlInput" type="text" placeholder="http://localhost:3001" />
+        <button onclick="setApiUrl()">Conectar</button>
+      </div>
+    </div>
+    <div class="cards-list" id="cardsList">
+      <div class="skeleton sk-card"></div>
+      <div class="skeleton sk-card"></div>
+      <div class="skeleton sk-card"></div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="widget">
+      <div class="widget-title">💳 Mis Tarjetas</div>
+      <div id="walletList"></div>
+      <div class="add-card-form">
+        <select id="cardBank"><option value="">Banco...</option></select>
+        <input id="cardName" type="text" placeholder="Nombre tarjeta (ej: Visa Platinum)" />
+        <select id="cardType">
+          <option value="crédito">Crédito</option>
+          <option value="débito">Débito</option>
+        </select>
+        <button class="add-btn" onclick="addCard()">+ Agregar tarjeta</button>
+      </div>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">📍 Detector de Lugar</div>
+      <div class="location-display">
+        <div class="location-row">
+          <div class="pulse-dot" id="pulseDot" style="background:var(--muted)"></div>
+          <div>
+            <div class="location-name" id="locName">Ubicación no activa</div>
+            <div class="location-sub" id="locSub">Activa para ver promos cercanas</div>
+          </div>
+        </div>
+        <div class="timer-bar-wrap" id="timerWrap" style="display:none">
+          <div class="timer-label"><span>Tiempo en lugar</span><span id="timerLabel">0:00 / 5:00</span></div>
+          <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div id="nearbyPromo" style="display:none" class="nearby-promo"></div>
+      <button class="geo-btn" style="width:100%;justify-content:center" onclick="toggleGeo()">
+        Activar ubicación
+      </button>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">📊 Último Scraping</div>
+      <div id="scrapeStats" style="font-size:0.8rem;color:var(--muted);line-height:1.8">
+        Cargando...
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notif-toast" id="notifToast">
+  <button class="notif-close" onclick="closeToast()">✕</button>
+  <div class="notif-header"><span>🔔</span><span class="notif-bank" id="toastBank"></span></div>
+  <div class="notif-msg" id="toastMsg"></div>
+  <div class="notif-sub" id="toastSub"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════════════
+let API_BASE = localStorage.getItem('cashbackdo_api') || 'https://cashbankdo-backend-production.up.railway.app';
+const ADMIN_KEY = localStorage.getItem('cashbackdo_adminkey') || '';
+
+// ═══════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════
+let allPromos = [];
+let banks = [];
+let activeTab = 'all';
+let activeBank = 'all';
+let geoActive = false;
+let timerSec = 0;
+let timerRef = null;
+let walletCards = JSON.parse(localStorage.getItem('cashbackdo_wallet') || '[]');
+
+// ═══════════════════════════════════════════════════════════════════
+// API CALLS
+// ═══════════════════════════════════════════════════════════════════
+async function fetchPromos() {
+  const params = new URLSearchParams();
+  if (activeTab !== 'all') params.append('status', activeTab);
+  if (activeBank !== 'all') params.append('bank', activeBank);
+
+  const res = await fetch(`${API_BASE}/api/promos?${params}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+async function fetchStats() {
+  const res = await fetch(`${API_BASE}/api/stats`);
+  if (!res.ok) throw new Error();
+  return res.json();
+}
+
+async function fetchBanks() {
+  const res = await fetch(`${API_BASE}/api/banks`);
+  if (!res.ok) throw new Error();
+  return res.json();
+}
+
+async function matchWallet() {
+  if (walletCards.length === 0) return [];
+  const res = await fetch(`${API_BASE}/api/match-wallet`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cards: walletCards })
+  });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.matches;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// LOAD DATA
+// ═══════════════════════════════════════════════════════════════════
+async function loadData() {
+  try {
+    const [promosData, statsData, banksData] = await Promise.all([
+      fetchPromos(), fetchStats(), fetchBanks()
+    ]);
+
+    allPromos = promosData.promos;
+    banks = banksData;
+
+    // Update stats
+    document.getElementById('statActive').textContent = promosData.meta.stats?.active || allPromos.filter(p => p.isActive).length;
+    document.getElementById('statUpcoming').textContent = promosData.meta.stats?.upcoming || allPromos.filter(p => p.isUpcoming).length;
+    document.getElementById('statBanks').textContent = banksData.filter(b => b.promoCount > 0).length;
+    document.getElementById('statTotal').textContent = promosData.meta.stats?.total || allPromos.length;
+
+    // Sync status
+    setSyncStatus('ok', statsData.lastUpdated);
+
+    // Bank filter buttons
+    renderBankFilter(banksData);
+
+    // Bank options in add card form
+    const sel = document.getElementById('cardBank');
+    sel.innerHTML = '<option value="">Banco...</option>' +
+      banksData.map(b => `<option value="${b.name}">${b.name}</option>`).join('');
+
+    // Scrape stats widget
+    renderScrapeStats(statsData);
+
+    // Render cards
+    renderCards();
+    renderWallet();
+
+    document.getElementById('apiBanner').style.display = 'none';
+  } catch (err) {
+    console.error('API error:', err);
+    setSyncStatus('error', null);
+    document.getElementById('apiBanner').style.display = 'block';
+    document.getElementById('apiUrlInput').value = API_BASE;
+    // Show fallback data
+    renderCards();
+  }
+}
+
+function setSyncStatus(status, lastUpdated) {
+  const dot = document.getElementById('syncDot');
+  const text = document.getElementById('syncText');
+  dot.className = 'sync-dot';
+
+  if (status === 'ok') {
+    const ago = lastUpdated ? timeAgo(lastUpdated) : 'recién';
+    text.textContent = `Actualizado ${ago}`;
+    dot.classList.add('');
+    dot.style.background = 'var(--accent)';
+  } else if (status === 'error') {
+    text.textContent = 'Sin conexión al servidor';
+    dot.style.background = 'var(--accent3)';
+  }
+}
+
+function timeAgo(iso) {
+  const diff = Date.now() - new Date(iso);
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor(diff / 60000);
+  if (h > 0) return `hace ${h}h`;
+  if (m > 0) return `hace ${m}min`;
+  return 'ahora mismo';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// RENDER CARDS
+// ═══════════════════════════════════════════════════════════════════
+function renderCards() {
+  const list = document.getElementById('cardsList');
+
+  if (allPromos.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="big">🏦</div><div>No hay promociones. El servidor está procesando...</div></div>`;
+    return;
+  }
+
+  const rendered = allPromos.map((p, i) => {
+    const color = banks.find(b => b.id === p.bankId)?.color || '#888';
+    const tags = [...(p.categories || []), ...(p.cardTypes || [])];
+
+    let daysBadge = '';
+    if (p.isActive) {
+      const d = p.daysUntilExpiry;
+      daysBadge = `<span class="days-badge active">${d != null ? (d === 0 ? 'Hoy termina' : `${d} días restantes`) : 'Vigente'}</span>`;
+    } else if (p.isUpcoming) {
+      daysBadge = `<span class="days-badge soon">Empieza en ${p.daysUntilStart} día${p.daysUntilStart !== 1 ? 's' : ''}</span>`;
+    } else {
+      daysBadge = `<span class="days-badge expired">Expirada</span>`;
+    }
+
+    const tagsHtml = tags.slice(0, 5).map(t => `<span class="tag ${t}">${t}</span>`).join('');
+    const establishments = Array.isArray(p.establishments)
+      ? p.establishments.slice(0, 5).join(', ')
+      : p.establishments || '';
+
+    return `<div class="promo-card" style="animation-delay:${i*0.05}s; --bcolor:${color}">
+      <style>.promo-card:nth-child(${i+1})::before { background: linear-gradient(90deg, ${color}, ${color}88); }</style>
+      <div class="card-top">
+        <div class="bank-tag">
+          <div class="bank-dot" style="background:${color}"></div>
+          ${p.bank}
+        </div>
+        <div class="pct-badge">${p.percentage || '—'}<small>${p.promoType || ''}</small></div>
+      </div>
+      <div class="card-title">${p.title || 'Promoción'}</div>
+      ${tags.length ? `<div class="tags-row">${tagsHtml}</div>` : ''}
+      <div class="card-desc">${p.description || ''}</div>
+      <div class="card-meta">
+        ${p.minimumSpend ? `<div class="meta-chip"><span>🪙 Mínimo</span><span class="val">${p.minimumSpend}</span></div>` : ''}
+        ${p.maxReturn ? `<div class="meta-chip hl"><span>🎯 Tope</span><span class="val">${p.maxReturn}</span></div>` : ''}
+        ${p.validFrom ? `<div class="meta-chip"><span>📅</span><span class="val">${fmt(p.validFrom)} → ${fmt(p.validUntil)}</span></div>` : ''}
+        ${p.creditingDate ? `<div class="meta-chip"><span>💰</span><span class="val">${p.creditingDate}</span></div>` : ''}
+        ${establishments ? `<div class="meta-chip" style="flex:1"><span>🏪</span><span class="val">${establishments}</span></div>` : ''}
+      </div>
+      ${p.notes ? `<div class="card-desc" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">ℹ️ ${p.notes}</div>` : ''}
+      <div class="card-bottom">
+        <div class="validity">${daysBadge}</div>
+        <a class="card-link" href="${p.sourceUrl || '#'}" target="_blank">Ver T&C ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+
+  list.innerHTML = rendered || `<div class="empty-state"><div class="big">🔍</div><div>No hay promos en esta categoría</div></div>`;
+}
+
+function fmt(s) {
+  if (!s) return '';
+  const [y,m,d] = s.split('-');
+  const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return `${parseInt(d)} ${months[parseInt(m)-1]}`;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// BANK FILTER
+// ═══════════════════════════════════════════════════════════════════
+function renderBankFilter(banks) {
+  const filter = document.getElementById('bankFilter');
+  filter.innerHTML = `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
+    banks.filter(b => b.promoCount > 0).map(b =>
+      `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
+        style="--bc:${b.color}">${b.name}</button>`
+    ).join('');
+}
+
+function setTab(tab, el) {
+  activeTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  loadData();
+}
+
+function setBank(bank, el) {
+  activeBank = bank;
+  document.querySelectorAll('.bank-btn').forEach(b => {
+    b.classList.remove('active-all');
+    b.style.background = '';
+    b.style.borderColor = '';
+    b.style.color = '';
+  });
+  el.classList.add('active-all');
+  if (bank !== 'all') {
+    const bc = banks.find(b => b.id === bank)?.color || '';
+    el.style.background = bc;
+    el.style.borderColor = bc;
+    el.style.color = '#000';
+  }
+  loadData();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// WALLET
+// ═══════════════════════════════════════════════════════════════════
+async function renderWallet() {
+  const wl = document.getElementById('walletList');
+  if (walletCards.length === 0) {
+    wl.innerHTML = '<div style="font-size:0.8rem;color:var(--muted);padding:8px 0 12px">Agrega tus tarjetas para ver promos personalizadas</div>';
+    return;
+  }
+
+  let matches = [];
+  try { matches = await matchWallet(); } catch {}
+
+  wl.innerHTML = walletCards.map((c, i) => {
+    const match = matches[i];
+    const count = match?.promoCount || 0;
+    const bankColor = banks.find(b => b.name === c.bank)?.color || '#555';
+    return `<div class="card-item">
+      <div class="card-visual" style="background:linear-gradient(135deg,#111,${bankColor})">${c.bank.substring(0,3).toUpperCase()}</div>
+      <div class="card-info">
+        <div class="card-name">${c.name}</div>
+        <div class="card-sub">${c.bank} · ${c.tipo}</div>
+      </div>
+      <div class="card-promos ${count === 0 ? 'zero' : ''}">${count}</div>
+    </div>`;
+  }).join('');
+}
+
+function addCard() {
+  const bank = document.getElementById('cardBank').value;
+  const name = document.getElementById('cardName').value.trim();
+  const tipo = document.getElementById('cardType').value;
+  if (!bank || !name) return;
+  walletCards.push({ bank, name, tipo });
+  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+  document.getElementById('cardBank').value = '';
+  document.getElementById('cardName').value = '';
+  renderWallet();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SCRAPE STATS WIDGET
+// ═══════════════════════════════════════════════════════════════════
+function renderScrapeStats(stats) {
+  const el = document.getElementById('scrapeStats');
+  if (!stats.lastUpdated) { el.textContent = 'Sin datos aún'; return; }
+  const history = stats.scrapeHistory || [];
+  const last = history[0];
+  el.innerHTML = `
+    <div style="margin-bottom:6px"><span style="color:var(--text)">Última actualización</span><br>${new Date(stats.lastUpdated).toLocaleString('es-DO')}</div>
+    <div style="margin-bottom:6px"><span style="color:var(--text)">Próxima corrida</span><br>${new Date(stats.nextScrape).toLocaleString('es-DO')}</div>
+    ${last ? `<div><span style="color:var(--text)">Promos nuevas (último run)</span><br>${last.newPromos} nuevas en ${last.durationSeconds}s</div>` : ''}
+  `;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// TRIGGER MANUAL SCRAPE
+// ═══════════════════════════════════════════════════════════════════
+async function triggerScrape() {
+  const key = prompt('Ingresa tu ADMIN_API_KEY del servidor:') || ADMIN_KEY;
+  if (!key) return;
+  localStorage.setItem('cashbackdo_adminkey', key);
+
+  const btn = document.getElementById('scrapeBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${API_BASE}/api/scrape`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': key },
+      body: JSON.stringify({})
+    });
+    if (!res.ok) throw new Error('No autorizado');
+    showToast('Sistema', '🔄 Scraping iniciado en el servidor', 'Los datos se actualizarán en unos minutos. Recarga la página cuando termine.');
+    // Poll cada 30s para detectar cuando termina
+    const poll = setInterval(async () => {
+      try {
+        const s = await fetchStats();
+        if (s.lastUpdated && Date.now() - new Date(s.lastUpdated) < 120000) {
+          clearInterval(poll);
+          loadData();
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      } catch {}
+    }, 30000);
+  } catch (err) {
+    alert('Error: ' + err.message);
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// GEO
+// ═══════════════════════════════════════════════════════════════════
+const DEMO_LOCATIONS = [
+  { name: 'Bluemall Santo Domingo', area: 'Av. John F. Kennedy, SD', bank: 'Banreservas', promo: 'Descuento los Lunes con Mastercard Banreservas' },
+  { name: 'Sportcity', area: 'Santo Domingo', bank: 'Banreservas', promo: 'Beneficios en membresías con Mastercard Banreservas' },
+  { name: 'Arajet.com', area: 'Online / Aeropuerto Las Américas', bank: 'Banreservas', promo: '15% devolución en boletos aéreos con tarjetas Banreservas' },
+];
+
+let simLoc = null;
+
+function toggleGeo() {
+  geoActive = !geoActive;
+  const btn = document.getElementById('geoBtn');
+  if (geoActive) {
+    btn.textContent = '📍 Activo';
+    btn.classList.add('active');
+    startGeo();
+  } else {
+    btn.textContent = '📍 Ubicación';
+    btn.classList.remove('active');
+    stopGeo();
+  }
+}
+
+function startGeo() {
+  simLoc = DEMO_LOCATIONS[Math.floor(Math.random() * DEMO_LOCATIONS.length)];
+  const dot = document.getElementById('pulseDot');
+  dot.style.background = 'var(--accent)';
+  dot.classList.add('active');
+  document.getElementById('locName').textContent = simLoc.name;
+  document.getElementById('locSub').textContent = simLoc.area;
+  document.getElementById('timerWrap').style.display = 'block';
+  document.getElementById('nearbyPromo').style.display = 'none';
+  timerSec = 0;
+  clearInterval(timerRef);
+  timerRef = setInterval(() => {
+    timerSec++;
+    const m = Math.floor(timerSec / 60), s = timerSec % 60;
+    document.getElementById('timerLabel').textContent = `${m}:${s.toString().padStart(2,'0')} / 5:00`;
+    document.getElementById('timerFill').style.width = Math.min(timerSec / 300 * 100, 100) + '%';
+    if (timerSec === 8) triggerNearby(simLoc); // demo: 8s en vez de 5min
+    if (timerSec >= 300) { clearInterval(timerRef); triggerNearby(simLoc); }
+  }, 1000);
+}
+
+function stopGeo() {
+  clearInterval(timerRef);
+  document.getElementById('pulseDot').style.background = 'var(--muted)';
+  document.getElementById('pulseDot').classList.remove('active');
+  document.getElementById('locName').textContent = 'Ubicación no activa';
+  document.getElementById('locSub').textContent = 'Activa para ver promos cercanas';
+  document.getElementById('timerWrap').style.display = 'none';
+  document.getElementById('nearbyPromo').style.display = 'none';
+  timerSec = 0;
+}
+
+function triggerNearby(loc) {
+  const np = document.getElementById('nearbyPromo');
+  np.style.display = 'block';
+  np.innerHTML = `<div style="font-size:0.65rem;font-weight:700;background:var(--accent);color:#000;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;margin-bottom:8px">🔔 +5 min aquí</div>
+    <strong>${loc.bank}</strong> — ${loc.promo}`;
+  showToast(loc.bank, `¡Llevas 5+ min en ${loc.name}!`, loc.promo);
+}
+
+function showToast(bank, msg, sub) {
+  document.getElementById('toastBank').textContent = bank;
+  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastSub').textContent = sub || '';
+  const t = document.getElementById('notifToast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 8000);
+}
+function closeToast() { document.getElementById('notifToast').classList.remove('show'); }
+
+// ═══════════════════════════════════════════════════════════════════
+// API URL CONFIG
+// ═══════════════════════════════════════════════════════════════════
+function setApiUrl() {
+  const url = document.getElementById('apiUrlInput').value.trim().replace(/\/$/, '');
+  if (!url) return;
+  API_BASE = url;
+  localStorage.setItem('cashbackdo_api', url);
+  loadData();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// INIT + AUTO REFRESH
+// ═══════════════════════════════════════════════════════════════════
+loadData();
+// Refrescar datos cada 5 minutos automáticamente
+setInterval(loadData, 5 * 60 * 1000);
+</script>
+</body>
+</html>
