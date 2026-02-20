@@ -162,8 +162,8 @@ export const BANK_SOURCES = [
     id: 'popular',
     name: 'Banco Popular',
     color: '#FF0000',
-    strategy: 'html_pdf_links',
-    // Página de promociones con PDF de bases legales
+    // Incapsula WAF bloquea axios — usamos dynamic_js (Puppeteer+stealth) para pasar la protección
+    strategy: 'dynamic_js',
     promoListUrl: 'https://popular.com.do/personas/tarjetas/promociones/',
     pdfLinkSelector: 'a[href*=".pdf"], a[href*="SiteCollectionDocuments"]',
     keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
