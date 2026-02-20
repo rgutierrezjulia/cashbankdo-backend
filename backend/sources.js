@@ -138,10 +138,11 @@ export const BANK_SOURCES = [
     id: 'vimenca',
     name: 'Banco Vimenca',
     color: '#003366',
+    // Sitio React SPA — Puppeteer renderiza y luego busca en .promociones-activas
     strategy: 'html_promo_pages',
     promoListUrl: 'https://bancovimenca.com/promociones',
     listingPages: ['https://bancovimenca.com/promociones'],
-    promoLinkSelector: 'a[href*="bancovimenca.com/p"], article a, .promo-item a, h2 a, h3 a',
+    promoLinkSelector: '.promociones-activas a, .promocionactiva a, .swiper-slide a[href*="promoci"], a[href*="bancovimenca.com/promoci"]',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'remesa'],
   },
@@ -149,10 +150,11 @@ export const BANK_SOURCES = [
     id: 'promerica',
     name: 'Promerica',
     color: '#E8622A',
+    // Sitio jQuery jplist — JS renderiza las cards en .jplist-item
     strategy: 'html_promo_pages',
     promoListUrl: 'https://promerica.com.do/banca-personal/promociones/',
     listingPages: ['https://promerica.com.do/banca-personal/promociones/'],
-    promoLinkSelector: 'a[href*="/banca-personal/promociones/"], article a, h2 a',
+    promoLinkSelector: '.jplist-item a, .card-promo a, a[href*="/banca-personal/promociones/"]',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['puntos', 'lealtad', 'sorteo', 'millas'],
   },
@@ -166,6 +168,18 @@ export const BANK_SOURCES = [
     pdfLinkSelector: 'a[href*=".pdf"], a[href*="SiteCollectionDocuments"]',
     keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota'],
+  },
+  {
+    id: 'bdi',
+    name: 'Banco BDI',
+    color: '#1A3A6B',
+    // Umbraco CMS, carga con axios, novedades en /novedades/?category=Promociones
+    strategy: 'html_promo_pages',
+    promoListUrl: 'https://www.bdi.com.do/novedades?category=Promociones',
+    listingPages: ['https://www.bdi.com.do/novedades?category=Promociones'],
+    promoLinkSelector: 'article h2 a, article a[href*="/novedades/"]',
+    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota', 'apple pay', 'ranking', 'inclusion'],
   },
 ];
 
