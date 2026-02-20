@@ -377,7 +377,9 @@
 // ═══════════════════════════════════════════════════════════════════
 // CONFIG
 // ═══════════════════════════════════════════════════════════════════
-let API_BASE = localStorage.getItem('cashbackdo_api') || 'https://cashbankdo-backend-production.up.railway.app';
+// Sanitizar API_BASE: solo host, sin paths
+const _savedApi = localStorage.getItem('cashbackdo_api') || 'https://cashbankdo-backend-production.up.railway.app';
+let API_BASE = (() => { try { const u = new URL(_savedApi); return u.origin; } catch { return 'https://cashbankdo-backend-production.up.railway.app'; } })();
 const ADMIN_KEY = localStorage.getItem('cashbackdo_adminkey') || '';
 
 // ═══════════════════════════════════════════════════════════════════
