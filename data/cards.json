@@ -39,6 +39,15 @@
     "name": "Scotiabank",
     "color": "#e8003d",
     "cards": [
+      { "id": "scotiabank-visa-clasica", "name": "Visa Clásica Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-gold", "name": "Visa Gold Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-bravo", "name": "Visa Bravo Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-aadvantage-platinum", "name": "AAdvantage Platinum Visa Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-infinite", "name": "Visa Infinite Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-mc-standard", "name": "Mastercard Standard Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-gold", "name": "Mastercard Gold Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-platinum", "name": "Mastercard Platinum Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-black", "name": "Mastercard Black Scotiabank", "network": "Mastercard", "type": "crédito" },
       { "id": "scotiabank-amex-green", "name": "American Express Green Scotiabank", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-standard", "name": "American Express Scotiabank", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-gold", "name": "American Express Gold Scotiabank", "network": "American Express", "type": "crédito" },
@@ -46,7 +55,8 @@
       { "id": "scotiabank-amex-casadecampo", "name": "Casa de Campo American Express Platinum", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-carrefour", "name": "Carrefour American Express", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-sumaccn", "name": "Suma CCN American Express", "network": "American Express", "type": "crédito" },
-      { "id": "scotiabank-debito-visa", "name": "ScotiaCard Visa Débito", "network": "Visa", "type": "débito" }
+      { "id": "scotiabank-debito-visa", "name": "ScotiaCard Visa Débito", "network": "Visa", "type": "débito" },
+      { "id": "scotiabank-debito-mc", "name": "ScotiaCard Mastercard Débito", "network": "Mastercard", "type": "débito" }
     ]
   },
   "blh": {
