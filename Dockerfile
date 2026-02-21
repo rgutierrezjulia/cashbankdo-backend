@@ -1,10 +1,17 @@
 FROM node:20-slim
 
-# Instalar Chromium y sus dependencias del sistema
+# Instalar Chromium, fuentes y utilidades DNS
 RUN apt-get update && apt-get install -y \
     chromium \
+    fonts-liberation \
+    fonts-noto-color-emoji \
+    dnsutils \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
+
+# Fallback DNS — Railway's container DNS can fail for some .com.do domains
+RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf \
+    && echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 # Decirle a Puppeteer que use el Chromium del sistema
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true

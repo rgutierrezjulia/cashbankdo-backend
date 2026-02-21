@@ -51,12 +51,37 @@ const CARD_PAGE_URLS = {
 // Opciones comunes de Puppeteer: usa Chromium del sistema si está disponible
 const PUPPETEER_OPTS = {
   headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--dns-server=8.8.8.8',
+  ],
   ...(process.env.PUPPETEER_EXECUTABLE_PATH && { executablePath: process.env.PUPPETEER_EXECUTABLE_PATH }),
 };
 
 // Lanzador unificado: siempre usa puppeteer-extra con stealth
 const launchBrowser = () => puppeteerExtra.launch(PUPPETEER_OPTS);
+
+// ───────────────────────────────────────────────────────────────────
+// 0. RETRY WRAPPER — reintenta en errores de DNS y timeout
+// ───────────────────────────────────────────────────────────────────
+
+async function withRetry(fn, { retries = 2, delayMs = 3000, label = '' } = {}) {
+  for (let attempt = 1; attempt <= retries + 1; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const isRetryable = /ERR_NAME_NOT_RESOLVED|TimeoutError|timeout|ECONNREFUSED|ENOTFOUND|ERR_CONNECTION_RESET/i.test(err.message);
+      if (isRetryable && attempt <= retries) {
+        console.log(`   🔄 Reintento ${attempt}/${retries} para ${label}: ${err.message.substring(0, 60)}`);
+        await new Promise(r => setTimeout(r, delayMs * attempt));
+        continue;
+      }
+      throw err;
+    }
+  }
+}
 
 // ───────────────────────────────────────────────────────────────────
 // 1. OBTENER LINKS DE PDFs DE UNA PÁGINA
@@ -99,10 +124,13 @@ async function getPdfLinksFromDynamic(url, selector, keywords, excludeKeywords) 
     browser = await launchBrowser();
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (compatible; CashbackDO/1.0)');
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+    await withRetry(
+      () => page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 }),
+      { retries: 2, label: url }
+    );
 
     // Esperar a que cargue el contenido
-    await new Promise(r => setTimeout(r, 3000));
+    await new Promise(r => setTimeout(r, 5000));
 
     const links = await page.evaluate((selector, keywords, excludeKeywords) => {
       const results = [];
@@ -575,8 +603,11 @@ async function processBankFromInlineCards(source, existingIds, existingContext, 
     await page.evaluateOnNewDocument(() => {
       Object.defineProperty(navigator, 'webdriver', { get: () => false });
     });
-    await page.goto(source.promoListUrl, { waitUntil: 'networkidle2', timeout: 30000 });
-    await new Promise(r => setTimeout(r, 2000));
+    await withRetry(
+      () => page.goto(source.promoListUrl, { waitUntil: 'networkidle2', timeout: 60000 }),
+      { retries: 2, label: source.promoListUrl }
+    );
+    await new Promise(r => setTimeout(r, 5000));
 
     const cards = await page.evaluate((sel) =>
       [...document.querySelectorAll(sel)].map(el => el.innerText.trim()).filter(Boolean)
@@ -647,8 +678,11 @@ async function getPromoLinksFromListingPages(source) {
     for (const listingUrl of (source.listingPages || [source.promoListUrl])) {
       try {
         console.log(`   📃 Cargando: ${listingUrl}`);
-        await page.goto(listingUrl, { waitUntil: 'networkidle2', timeout: 30000 });
-        await new Promise(r => setTimeout(r, 3000));
+        await withRetry(
+          () => page.goto(listingUrl, { waitUntil: 'networkidle2', timeout: 60000 }),
+          { retries: 2, label: listingUrl }
+        );
+        await new Promise(r => setTimeout(r, 5000));
         const found = await page.evaluate((sel) =>
           [...new Set([...document.querySelectorAll(sel)].map(a => a.href).filter(Boolean))]
         , source.promoLinkSelector);
@@ -667,24 +701,28 @@ async function getPromoLinksFromListingPages(source) {
 }
 
 async function extractTextFromPromoPage(url) {
-  let browser;
   try {
-    browser = await launchBrowser();
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 25000 });
-    await new Promise(r => setTimeout(r, 2000));
-    // Extraer el texto del artículo/main, ignorando nav y footer
-    const text = await page.evaluate(() => {
-      const el = document.querySelector('article, main, .entry-content, .promo-detail, #main-content, .content-area');
-      return el ? el.innerText : document.body.innerText;
-    });
-    return text.substring(0, 3000);
+    return await withRetry(async () => {
+      let browser;
+      try {
+        browser = await launchBrowser();
+        const page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
+        await new Promise(r => setTimeout(r, 2000));
+        // Extraer el texto del artículo/main, ignorando nav y footer
+        const text = await page.evaluate(() => {
+          const el = document.querySelector('article, main, .entry-content, .promo-detail, #main-content, .content-area');
+          return el ? el.innerText : document.body.innerText;
+        });
+        return text.substring(0, 3000);
+      } finally {
+        if (browser) await browser.close();
+      }
+    }, { retries: 1, label: url });
   } catch (e) {
     console.error(`   ⚠️  Error extrayendo texto de ${url}:`, e.message);
     return null;
-  } finally {
-    if (browser) await browser.close();
   }
 }
 
