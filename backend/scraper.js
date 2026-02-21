@@ -4,6 +4,7 @@
 // para parsear los campos clave de cada promoción.
 // ═══════════════════════════════════════════════════════════════════
 
+import 'dotenv/config';
 import Anthropic from '@anthropic-ai/sdk';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
@@ -145,18 +146,30 @@ async function downloadPdfAsBase64(url) {
   }
 }
 
+// Normaliza la respuesta de Claude: si es un array, devuelve múltiples promos con metadata
+function normalizeExtractedPromos(data, bankName, sourceUrl, idBase) {
+  const stamp = { bank: bankName, sourceUrl, extractedAt: new Date().toISOString() };
+  const items = Array.isArray(data) ? data : [data];
+  return items.map((item, i) => ({
+    ...item,
+    ...stamp,
+    id: items.length === 1 ? generateId(idBase) : generateId(`${idBase}::${i}`),
+  }));
+}
+
 // ───────────────────────────────────────────────────────────────────
 // 3. EXTRAER DATOS DEL PDF CON CLAUDE AI
 // ───────────────────────────────────────────────────────────────────
 
-async function extractPromoFromPdf(pdfBase64, pdfUrl, bankName) {
+async function extractPromoFromPdf(pdfBase64, pdfUrl, bankName, existingContext = null) {
   const today = new Date().toISOString().split('T')[0];
   const schemaStr = JSON.stringify(EXTRACTION_SCHEMA, null, 2);
+  const dedupBlock = buildDedupInstructions(existingContext);
 
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-6',
-      max_tokens: 1500,
+      max_tokens: 2000,
       messages: [{
         role: 'user',
         content: [
@@ -172,7 +185,7 @@ Analiza este PDF de bases legales de ${bankName} y extrae la información de la 
 
 IMPORTANTE: Esta app SOLO muestra cashbacks y descuentos directos. Si la promoción NO es un cashback, devolución en efectivo o descuento directo en el precio (por ejemplo: conciertos, sorteos, millas, cuotas sin intereses, membresías, preventas, rifas, gimnasios, remesas), devuelve ÚNICAMENTE la palabra SKIP, sin nada más.
 
-La fecha de hoy es ${today}.
+${dedupBlock}La fecha de hoy es ${today}.
 
 Si es un cashback o descuento, devuelve SOLAMENTE un objeto JSON válido con exactamente estos campos:
 ${schemaStr}
@@ -183,7 +196,8 @@ Reglas importantes:
 - isActive = true si today (${today}) está entre validFrom y validUntil (inclusive).
 - Para establishments, lista solo los nombres de comercios específicos, máximo 10.
 - Para eligibleCards, sé específico (ej: ["Visa Platinum Banreservas", "Mastercard Black Banreservas"]).
-- Responde SOLO con el JSON o con SKIP, sin texto adicional, sin markdown, sin explicaciones.`
+- Para conditions, extrae restricciones que podrían descalificar al usuario (ej: "Una vez por cliente", "Consumo mínimo de RD$3,000 en una sola transacción", "Solo aplica los viernes"). Si no hay condiciones especiales, usa [].
+- Responde SOLO con el JSON, KNOWN o SKIP, sin texto adicional, sin markdown, sin explicaciones.`
           }
         ]
       }]
@@ -194,17 +208,15 @@ Reglas importantes:
       console.log(`   ⏭️  Claude: promo no es cashback/descuento, saltando.`);
       return null;
     }
+    if (text.toUpperCase() === 'KNOWN') {
+      console.log(`   🔄 Claude: promo ya conocida, saltando.`);
+      return { _action: 'known' };
+    }
     // Limpiar posibles backticks
     const clean = text.replace(/```json|```/g, '').trim();
     const data = JSON.parse(clean);
 
-    return {
-      ...data,
-      bank: bankName,
-      sourceUrl: pdfUrl,
-      extractedAt: new Date().toISOString(),
-      id: generateId(pdfUrl),
-    };
+    return normalizeExtractedPromos(data, bankName, pdfUrl, pdfUrl);
   } catch (err) {
     console.error(`❌ Error extracting from PDF ${pdfUrl}:`, err.message);
     return null;
@@ -215,14 +227,15 @@ Reglas importantes:
 // 3b. EXTRAER DATOS DE TEXTO (para bancos sin PDF)
 // ───────────────────────────────────────────────────────────────────
 
-async function extractPromoFromText(title, description, bankName, cardId) {
+async function extractPromoFromText(title, description, bankName, cardId, existingContext = null) {
   const today = new Date().toISOString().split('T')[0];
   const schemaStr = JSON.stringify(EXTRACTION_SCHEMA, null, 2);
+  const dedupBlock = buildDedupInstructions(existingContext);
 
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-6',
-      max_tokens: 1000,
+      max_tokens: 2000,
       messages: [{
         role: 'user',
         content: `Eres un extractor de datos de promociones bancarias dominicanas.
@@ -234,7 +247,7 @@ Descripción: ${description || '(sin descripción)'}
 
 IMPORTANTE: Esta app SOLO muestra cashbacks y descuentos directos. Si la promoción NO es un cashback, devolución en efectivo o descuento directo en el precio (por ejemplo: conciertos, sorteos, millas, cuotas sin intereses, membresías, preventas, rifas, gimnasios, remesas, bienvenida), devuelve ÚNICAMENTE la palabra SKIP, sin nada más.
 
-La fecha de hoy es ${today}.
+${dedupBlock}La fecha de hoy es ${today}.
 
 Si es un cashback o descuento, devuelve SOLAMENTE un objeto JSON válido con exactamente estos campos:
 ${schemaStr}
@@ -243,7 +256,8 @@ Reglas importantes:
 - Las fechas deben estar en formato YYYY-MM-DD. Infiere el año si no está explícito (estamos en ${today.substring(0,4)}).
 - Si un campo no aplica o no está disponible, usa null.
 - isActive = true si today (${today}) está entre validFrom y validUntil (inclusive).
-- Responde SOLO con el JSON o con SKIP, sin texto adicional, sin markdown, sin explicaciones.`
+- Para conditions, extrae restricciones que podrían descalificar al usuario (ej: "Una vez por cliente", "Consumo mínimo de RD$3,000 en una sola transacción", "Solo aplica los viernes"). Si no hay condiciones especiales, usa [].
+- Responde SOLO con el JSON, KNOWN o SKIP, sin texto adicional, sin markdown, sin explicaciones.`
       }]
     });
 
@@ -252,16 +266,15 @@ Reglas importantes:
       console.log(`   ⏭️  Claude: "${title.substring(0, 50)}" no es cashback/descuento, saltando.`);
       return null;
     }
+    if (text.toUpperCase() === 'KNOWN') {
+      console.log(`   🔄 Claude: "${title.substring(0, 50)}" ya conocida, saltando.`);
+      return { _action: 'known' };
+    }
     const clean = text.replace(/```json|```/g, '').trim();
     const data = JSON.parse(clean);
+    const srcUrl = 'https://bhd.com.do/homepage-personal/otros-servicios/products/259';
 
-    return {
-      ...data,
-      bank: bankName,
-      sourceUrl: 'https://bhd.com.do/homepage-personal/otros-servicios/products/259',
-      extractedAt: new Date().toISOString(),
-      id: generateId(`bhd-card-${cardId}`),
-    };
+    return normalizeExtractedPromos(data, bankName, srcUrl, `bhd-card-${cardId}`);
   } catch (err) {
     console.error(`❌ Error extrayendo texto "${title}":`, err.message);
     return null;
@@ -299,7 +312,7 @@ async function getBhdPromoDetail(title) {
   }
 }
 
-async function processBankFromStrapiApi(source, existingIds) {
+async function processBankFromStrapiApi(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
     const { data } = await axios.get(source.strapiUrl, { timeout: 15000 });
     const cards = data?.data?.attributes?.product_cards?.data || [];
@@ -310,6 +323,7 @@ async function processBankFromStrapiApi(source, existingIds) {
     let skipped = 0;
 
     for (const card of cards) {
+      if (processed >= maxPerBank) break;
       const { title, description } = card.attributes;
       const id = generateId(`bhd-card-${card.id}`);
 
@@ -328,14 +342,18 @@ async function processBankFromStrapiApi(source, existingIds) {
       const richDesc = detail || (source.cardContextHint
         ? `[CONTEXTO: ${source.cardContextHint}]\n${description || ''}`
         : description);
-      const promo = await extractPromoFromText(title, richDesc, source.name, card.id);
+      const result = await extractPromoFromText(title, richDesc, source.name, card.id, existingContext);
 
-      if (promo) {
-        promo.bankId = source.id;
-        promo.bankColor = source.color;
-        newPromos.push(promo);
-        processed++;
-        console.log(`   ✅ ${promo.title}`);
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
       }
 
       await new Promise(r => setTimeout(r, 500));
@@ -353,7 +371,7 @@ async function processBankFromStrapiApi(source, existingIds) {
 // 3c2. PROCESAR LAFISE VÍA JSON API
 // ───────────────────────────────────────────────────────────────────
 
-async function processBankFromLafiseJson(source, existingIds) {
+async function processBankFromLafiseJson(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
     const { data } = await axios.get(source.jsonUrl, { timeout: 10000 });
     const items = data?.promos || [];
@@ -364,6 +382,7 @@ async function processBankFromLafiseJson(source, existingIds) {
     let skipped = 0;
 
     for (const item of items) {
+      if (processed >= maxPerBank) break;
       const fullTitle = `${item.title} ${item.conector} ${item.sub_title}`.trim().replace(/\s+/g, ' ');
       const id = generateId(`lafise-${fullTitle}`);
 
@@ -376,16 +395,20 @@ async function processBankFromLafiseJson(source, existingIds) {
 
       const description = `${fullTitle}. Vigencia: ${item.fecha}. Aplica con: ${item.tipo}.`;
       console.log(`   🤖 Extrayendo: ${fullTitle.substring(0, 60)}...`);
-      const promo = await extractPromoFromText(fullTitle, description, source.name, fullTitle);
+      const result = await extractPromoFromText(fullTitle, description, source.name, fullTitle, existingContext);
 
-      if (promo) {
-        promo.bankId = source.id;
-        promo.bankColor = source.color;
-        promo.sourceUrl = item.url_reglamento || item.cta || source.jsonUrl;
-        promo.id = id;
-        newPromos.push(promo);
-        processed++;
-        console.log(`   ✅ ${promo.title}`);
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.sourceUrl = item.url_reglamento || item.cta || source.jsonUrl;
+          promo.id = id;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
       }
 
       await new Promise(r => setTimeout(r, 400));
@@ -403,14 +426,15 @@ async function processBankFromLafiseJson(source, existingIds) {
 // 3c3. EXTRAER DATOS DE PÁGINA HTML COMPLETA (Scotiabank, BLH)
 // ───────────────────────────────────────────────────────────────────
 
-async function extractPromoFromPageText(pageText, bankName, sourceUrl) {
+async function extractPromoFromPageText(pageText, bankName, sourceUrl, existingContext = null) {
   const today = new Date().toISOString().split('T')[0];
   const schemaStr = JSON.stringify(EXTRACTION_SCHEMA, null, 2);
+  const dedupBlock = buildDedupInstructions(existingContext);
 
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-6',
-      max_tokens: 1000,
+      max_tokens: 2000,
       messages: [{
         role: 'user',
         content: `Eres un extractor de datos de promociones bancarias dominicanas.
@@ -422,7 +446,7 @@ ${pageText.substring(0, 2500)}
 
 IMPORTANTE: Esta app SOLO muestra cashbacks y descuentos directos. Si la promoción NO es un cashback, devolución en efectivo o descuento directo en el precio (por ejemplo: conciertos, sorteos, millas, cuotas sin intereses, membresías, preventas, rifas, gimnasios, remesas), devuelve ÚNICAMENTE la palabra SKIP, sin nada más.
 
-La fecha de hoy es ${today}.
+${dedupBlock}La fecha de hoy es ${today}.
 
 Si es un cashback o descuento, devuelve SOLAMENTE un objeto JSON válido con exactamente estos campos:
 ${schemaStr}
@@ -431,8 +455,9 @@ Reglas importantes:
 - Las fechas deben estar en formato YYYY-MM-DD. Infiere el año si no está explícito (estamos en ${today.substring(0,4)}).
 - Si un campo no aplica o no está disponible, usa null.
 - isActive = true si today (${today}) está entre validFrom y validUntil (inclusive).
-- Si el texto describe múltiples promociones, extrae solo la promoción principal.
-- Responde SOLO con el JSON o con SKIP, sin texto adicional, sin markdown, sin explicaciones.`
+- Si el texto describe múltiples promociones, devuelve un ARRAY JSON de objetos (cada uno con los mismos campos del schema).
+- Para conditions, extrae restricciones que podrían descalificar al usuario (ej: "Una vez por cliente", "Consumo mínimo de RD$3,000 en una sola transacción", "Solo aplica los viernes"). Si no hay condiciones especiales, usa [].
+- Responde SOLO con el JSON, KNOWN o SKIP, sin texto adicional, sin markdown, sin explicaciones.`
       }]
     });
 
@@ -441,15 +466,14 @@ Reglas importantes:
       console.log(`   ⏭️  Claude: página no es cashback/descuento, saltando.`);
       return null;
     }
+    if (raw.toUpperCase() === 'KNOWN') {
+      console.log(`   🔄 Claude: promo ya conocida, saltando.`);
+      return { _action: 'known' };
+    }
     const clean = raw.replace(/```json|```/g, '').trim();
     const data = JSON.parse(clean);
-    return {
-      ...data,
-      bank: bankName,
-      sourceUrl,
-      extractedAt: new Date().toISOString(),
-      id: generateId(sourceUrl),
-    };
+
+    return normalizeExtractedPromos(data, bankName, sourceUrl, sourceUrl);
   } catch (err) {
     console.error(`❌ Error extrayendo página ${sourceUrl}:`, err.message);
     return null;
@@ -460,7 +484,7 @@ Reglas importantes:
 // 3c4. PROCESAR BANCO VÍA WORDPRESS REST API (Banco Ademi)
 // ───────────────────────────────────────────────────────────────────
 
-async function processBankFromWpApi(source, existingIds) {
+async function processBankFromWpApi(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
     const { data } = await axios.get(source.wpApiUrl, { timeout: 15000 });
     const posts = Array.isArray(data) ? data : [];
@@ -472,6 +496,7 @@ async function processBankFromWpApi(source, existingIds) {
     const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
 
     for (const post of posts) {
+      if (processed >= maxPerBank) break;
       const title = post.title?.rendered || '';
       const link = post.link || source.promoListUrl;
       const id = generateId(link);
@@ -495,16 +520,20 @@ async function processBankFromWpApi(source, existingIds) {
       const pageText = `${contextHint}${fullText}`.substring(0, 2500);
 
       console.log(`   🤖 Extrayendo: ${title.substring(0, 60)}...`);
-      const promo = await extractPromoFromPageText(pageText, source.name, link);
+      const result = await extractPromoFromPageText(pageText, source.name, link, existingContext);
 
-      if (promo) {
-        promo.bankId = source.id;
-        promo.bankColor = source.color;
-        promo.sourceUrl = link;
-        promo.id = id;
-        newPromos.push(promo);
-        processed++;
-        console.log(`   ✅ ${promo.title}`);
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.sourceUrl = link;
+          promo.id = id;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
       }
       await new Promise(r => setTimeout(r, 500));
     }
@@ -521,7 +550,7 @@ async function processBankFromWpApi(source, existingIds) {
 // 3c5. PROCESAR BANCO VÍA CARDS INLINE EN PÁGINA DE LISTADO (La Nacional)
 // ───────────────────────────────────────────────────────────────────
 
-async function processBankFromInlineCards(source, existingIds) {
+async function processBankFromInlineCards(source, existingIds, existingContext, maxPerBank = Infinity) {
   let browser;
   try {
     console.log(`   🌐 Cargando página de listado inline para ${source.name}...`);
@@ -544,6 +573,7 @@ async function processBankFromInlineCards(source, existingIds) {
     let processed = 0, skipped = 0;
 
     for (const cardText of cards) {
+      if (processed >= maxPerBank) break;
       const textLower = cardText.toLowerCase();
       const hasKeyword = source.keywords.some(k => textLower.includes(k));
       const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
@@ -553,14 +583,19 @@ async function processBankFromInlineCards(source, existingIds) {
       if (existingIds.has(id)) { skipped++; continue; }
 
       console.log(`   🤖 Extrayendo: ${cardText.substring(0, 60).replace(/\n/g, ' ')}...`);
-      const promo = await extractPromoFromPageText(cardText, source.name, source.promoListUrl);
-      if (promo) {
-        promo.bankId = source.id;
-        promo.bankColor = source.color;
-        promo.id = id;
-        newPromos.push(promo);
-        processed++;
-        console.log(`   ✅ ${promo.title}`);
+      const result = await extractPromoFromPageText(cardText, source.name, source.promoListUrl, existingContext);
+
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.id = id;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
       }
       await new Promise(r => setTimeout(r, 500));
     }
@@ -638,7 +673,7 @@ async function extractTextFromPromoPage(url) {
   }
 }
 
-async function processBankFromHtmlPromoPages(source, existingIds) {
+async function processBankFromHtmlPromoPages(source, existingIds, existingContext, maxPerBank = Infinity) {
   console.log(`   🔍 Buscando links en ${(source.listingPages || []).length} páginas de listado...`);
   const promoLinks = await getPromoLinksFromListingPages(source);
   console.log(`   📄 Encontrados ${promoLinks.length} links de promos`);
@@ -648,6 +683,7 @@ async function processBankFromHtmlPromoPages(source, existingIds) {
   let skipped = 0;
 
   for (const url of promoLinks.slice(0, 20)) {
+    if (processed >= maxPerBank) break;
     const id = generateId(url);
     if (existingIds.has(id)) { skipped++; continue; }
 
@@ -660,13 +696,18 @@ async function processBankFromHtmlPromoPages(source, existingIds) {
     if (!hasKeyword) { skipped++; continue; }
 
     console.log(`   🤖 Extrayendo con Claude...`);
-    const promo = await extractPromoFromPageText(text, source.name, url);
-    if (promo) {
-      promo.bankId = source.id;
-      promo.bankColor = source.color;
-      newPromos.push(promo);
-      processed++;
-      console.log(`   ✅ ${promo.title}`);
+    const result = await extractPromoFromPageText(text, source.name, url, existingContext);
+
+    if (result && result._action === 'known') { skipped++; continue; }
+
+    if (result) {
+      for (const promo of result) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
     }
     await new Promise(r => setTimeout(r, 1000));
   }
@@ -699,35 +740,70 @@ async function loadExistingData() {
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 4b. CONTEXTO DE PROMOS EXISTENTES PARA DEDUP INTELIGENTE
+// ───────────────────────────────────────────────────────────────────
+
+function formatExistingPromosForContext(allPromos, bankId) {
+  const today = new Date().toISOString().split('T')[0];
+  const activeForBank = allPromos.filter(p =>
+    p.bankId === bankId && p.validUntil && p.validUntil >= today
+  );
+  if (activeForBank.length === 0) return null;
+
+  const lines = activeForBank.map(p => {
+    const estab = Array.isArray(p.establishments) ? p.establishments.slice(0, 3).join(', ') : '';
+    return `- [${p.id}] "${p.title}" | ${p.percentage || '?'} | ${p.validFrom || '?'}→${p.validUntil || '?'} | ${estab}`;
+  });
+  return lines.join('\n');
+}
+
+function buildDedupInstructions(existingContext) {
+  if (!existingContext) return '';
+  return `
+DEDUPLICACIÓN: Ya tenemos estas promos activas de este banco:
+${existingContext}
+
+Para cada promo que analices:
+- Si ya existe en la lista anterior SIN cambios relevantes, devuelve ÚNICAMENTE la palabra KNOWN (sin nada más).
+- Si existe pero tiene cambios (fechas extendidas, porcentaje diferente, términos actualizados), devuelve el JSON con los campos actualizados MÁS estos campos adicionales: "_action": "correction", "_correctedId": "[id de la promo existente que corrige]".
+- Si es una promo genuinamente nueva que no aparece arriba, devuelve el JSON normal con "_action": "new".
+- Si no es cashback/descuento, devuelve SKIP como siempre.
+
+`;
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 5. PROCESAR UN BANCO COMPLETO
 // ───────────────────────────────────────────────────────────────────
 
-async function processBank(source, existingIds) {
+async function processBank(source, existingIds, allPromos, maxPerBank = Infinity) {
   console.log(`\n🏦 Procesando ${source.name}...`);
+
+  const existingContext = formatExistingPromosForContext(allPromos, source.id);
 
   // Estrategia Strapi API (BHD y similares)
   if (source.strategy === 'strapi_api') {
-    return await processBankFromStrapiApi(source, existingIds);
+    return await processBankFromStrapiApi(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia JSON API (LAFISE)
   if (source.strategy === 'lafise_json') {
-    return await processBankFromLafiseJson(source, existingIds);
+    return await processBankFromLafiseJson(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia HTML promo pages (Scotiabank, BLH)
   if (source.strategy === 'html_promo_pages') {
-    return await processBankFromHtmlPromoPages(source, existingIds);
+    return await processBankFromHtmlPromoPages(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia WordPress REST API (Banco Ademi)
   if (source.strategy === 'wp_api') {
-    return await processBankFromWpApi(source, existingIds);
+    return await processBankFromWpApi(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia inline cards (La Nacional — ofertas en una sola página sin sub-páginas)
   if (source.strategy === 'html_inline_cards') {
-    return await processBankFromInlineCards(source, existingIds);
+    return await processBankFromInlineCards(source, existingIds, existingContext, maxPerBank);
   }
 
   // Obtener links de PDFs
@@ -754,9 +830,11 @@ async function processBank(source, existingIds) {
   let skipped = 0;
 
   for (const link of limitedLinks) {
+    if (processed >= maxPerBank) break;
+
     const id = generateId(link.url);
 
-    // Skip si ya lo procesamos antes
+    // Skip si ya lo procesamos antes (no re-descargar PDFs conocidos)
     if (existingIds.has(id)) {
       skipped++;
       continue;
@@ -782,14 +860,18 @@ async function processBank(source, existingIds) {
     if (!pdfBase64) continue;
 
     console.log(`   🤖 Extrayendo con Claude AI...`);
-    const promo = await extractPromoFromPdf(pdfBase64, link.url, source.name);
+    const result = await extractPromoFromPdf(pdfBase64, link.url, source.name, existingContext);
 
-    if (promo) {
-      promo.bankId = source.id;
-      promo.bankColor = source.color;
-      newPromos.push(promo);
-      processed++;
-      console.log(`   ✅ ${promo.title}`);
+    if (result && result._action === 'known') { skipped++; continue; }
+
+    if (result) {
+      for (const promo of result) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
     }
 
     // Rate limit: pausa entre PDFs para no sobrecargar
@@ -825,7 +907,7 @@ function refreshActiveStatus(promos) {
 // 7. FUNCIÓN PRINCIPAL DEL SCRAPER
 // ───────────────────────────────────────────────────────────────────
 
-export async function runScraper(banksToProcess = null) {
+export async function runScraper(banksToProcess = null, { maxPerBank = Infinity } = {}) {
   console.log('\n🚀 CashbackDO Scraper iniciando...');
   console.log(`⏰ ${new Date().toLocaleString('es-DO')}\n`);
 
@@ -839,11 +921,13 @@ export async function runScraper(banksToProcess = null) {
 
   const allNewPromos = [];
   const bankResults = [];
+  const CIRCUIT_BREAKER_SAMPLE = 3;
+  let abortedReason = null;
 
   for (const source of sources) {
     const bankStart = Date.now();
     try {
-      const newPromos = await processBank(source, existingIds);
+      const newPromos = await processBank(source, existingIds, existing.promos, maxPerBank);
       allNewPromos.push(...newPromos);
       bankResults.push({
         bankId: source.id,
@@ -863,10 +947,54 @@ export async function runScraper(banksToProcess = null) {
         durationSeconds: parseFloat(((Date.now() - bankStart) / 1000).toFixed(1)),
       });
     }
+
+    // Circuit breaker: abort early if all sample banks errored (not just 0 new promos — steady-state dedup means 0 is normal)
+    if (bankResults.length === CIRCUIT_BREAKER_SAMPLE) {
+      const errors = bankResults.filter(r => r.status === 'error');
+      if (errors.length === CIRCUIT_BREAKER_SAMPLE) {
+        const errorMsgs = errors.map(r => r.error);
+        const commonError = errorMsgs.length >= 2 && errorMsgs.every(e => e === errorMsgs[0])
+          ? errorMsgs[0]
+          : null;
+
+        abortedReason = commonError
+          ? `All ${CIRCUIT_BREAKER_SAMPLE} banks failed with same error: ${commonError}`
+          : `All ${CIRCUIT_BREAKER_SAMPLE} banks failed with errors`;
+
+        console.error(`\n🛑 CIRCUIT BREAKER: ${abortedReason}`);
+        console.error('   Aborting scrape to avoid wasting time. Fix the issue and retry.\n');
+        break;
+      }
+    }
   }
 
-  // Combinar nuevas con existentes
-  const combined = [...existing.promos, ...allNewPromos];
+  // Separar promos genuinamente nuevas de correcciones
+  const genuinelyNew = allNewPromos.filter(p => p._action !== 'correction');
+  const corrections = allNewPromos.filter(p => p._action === 'correction');
+
+  // Aplicar correcciones sobre promos existentes
+  const correctedExisting = existing.promos.map(p => {
+    const correction = corrections.find(c => c._correctedId === p.id);
+    if (!correction) return p;
+
+    console.log(`   🔧 Corrección aplicada: "${p.title}" ← actualizado`);
+    const merged = { ...p };
+    for (const [key, val] of Object.entries(correction)) {
+      if (['_action', '_correctedId', 'id', 'extractedAt'].includes(key)) continue;
+      if (val !== null && val !== undefined) merged[key] = val;
+    }
+    merged.correctedAt = new Date().toISOString();
+    return merged;
+  });
+
+  // Limpiar campos internos de promos nuevas
+  const cleanNew = genuinelyNew.map(p => {
+    const { _action, _correctedId, ...clean } = p;
+    return clean;
+  });
+
+  // Combinar existentes (con correcciones aplicadas) + genuinamente nuevas
+  const combined = [...correctedExisting, ...cleanNew];
 
   // Refrescar estado activo/próximo de TODAS las promos
   const updated = refreshActiveStatus(combined);
@@ -887,16 +1015,19 @@ export async function runScraper(banksToProcess = null) {
       active: updated.filter(p => p.isActive).length,
       upcoming: updated.filter(p => p.isUpcoming && p.daysUntilStart <= 15).length,
       expired: updated.filter(p => !p.isActive && !p.isUpcoming).length,
-      newThisRun: allNewPromos.length,
+      newThisRun: cleanNew.length,
+      correctionsThisRun: corrections.length,
       scrapeTimeSeconds: parseFloat(elapsed),
     },
     scrapeHistory: [
       {
         date: new Date().toISOString(),
-        newPromos: allNewPromos.length,
+        newPromos: cleanNew.length,
+        correctionsThisRun: corrections.length,
         totalPromos: updated.length,
         durationSeconds: parseFloat(elapsed),
         bankResults,
+        ...(abortedReason ? { abortedReason } : {}),
       },
       ...(existing.scrapeHistory || []).slice(0, 29), // últimas 30 ejecuciones
     ]
@@ -915,6 +1046,9 @@ export async function runScraper(banksToProcess = null) {
   console.log(`   ✅ Activas: ${result.stats.active}`);
   console.log(`   ⏳ Próximas: ${result.stats.upcoming}`);
   console.log(`   🆕 Nuevas este run: ${result.stats.newThisRun}`);
+  if (result.stats.correctionsThisRun > 0) {
+    console.log(`   🔧 Correcciones: ${result.stats.correctionsThisRun}`);
+  }
 
   return result;
 }

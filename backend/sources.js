@@ -239,5 +239,6 @@ export const EXTRACTION_SCHEMA = {
   categories: 'Array de: "supermercado" | "farmacia" | "restaurante" | "retail" | "online" | "viaje" | "entretenimiento" | "educación" | "combustible" | "bebidas" | "otro"',
   cardTypes: 'Array de: "crédito" | "débito"',
   notes: 'Condiciones importantes o restricciones en max 2 oraciones',
+  conditions: 'Array de strings con condiciones que podrían descalificar al usuario, ej: ["Una vez por cliente", "Consumo mínimo en una sola transacción", "Solo en un comercio"]. Si no hay condiciones especiales, usar []',
   isActive: 'Boolean: true si la fecha actual (hoy) está dentro del periodo de vigencia',
 };
