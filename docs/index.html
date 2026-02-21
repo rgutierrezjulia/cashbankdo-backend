@@ -2,9 +2,38 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Todas las ofertas de cashback y descuentos de bancos dominicanos en un solo lugar. Actualizado diariamente.">
 <title>CashbackDO — Ofertas de Cashback de Bancos en RD</title>
+
+<!-- PWA Meta Tags -->
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="CashbackDO">
+<meta name="application-name" content="CashbackDO">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="msapplication-TileColor" content="#2563eb">
+
+<!-- Manifest & Icons -->
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+<!-- iOS Splash Screens (inline SVG data URIs) -->
+<link rel="apple-touch-startup-image"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 375 667'%3E%3Crect width='375' height='667' fill='%23f4f5f7'/%3E%3Ctext x='187' y='310' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='48' fill='%232563eb'%3ECB%3C/text%3E%3Ctext x='187' y='370' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='22' fill='%23059669'%3EDO%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-startup-image"
+      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'%3E%3Crect width='390' height='844' fill='%23f4f5f7'/%3E%3Ctext x='195' y='390' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='48' fill='%232563eb'%3ECB%3C/text%3E%3Ctext x='195' y='450' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='22' fill='%23059669'%3EDO%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-startup-image"
+      media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 393 852'%3E%3Crect width='393' height='852' fill='%23f4f5f7'/%3E%3Ctext x='196' y='395' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='48' fill='%232563eb'%3ECB%3C/text%3E%3Ctext x='196' y='455' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='22' fill='%23059669'%3EDO%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-startup-image"
+      media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 430 932'%3E%3Crect width='430' height='932' fill='%23f4f5f7'/%3E%3Ctext x='215' y='435' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='48' fill='%232563eb'%3ECB%3C/text%3E%3Ctext x='215' y='495' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='22' fill='%23059669'%3EDO%3C/text%3E%3C/svg%3E">
+
 <!-- Google AdSense: uncomment and replace with your publisher ID
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
@@ -25,6 +54,12 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  /* PWA safe area for iOS standalone mode */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    header { padding-top: env(safe-area-inset-top); }
+    body { padding-bottom: env(safe-area-inset-bottom); }
+  }
 
   body::before {
     content: ''; position: fixed; inset: 0;
@@ -2138,7 +2173,7 @@ function sendBrowserNotification(title, body) {
   const masterOn = loadState('cashbackdo_notif_master', false);
   if (!masterOn || !notifPrefs.nearby) return;
   if ('Notification' in window && Notification.permission === 'granted') {
-    new Notification(title, { body, icon: '📍', tag: 'cashbackdo-nearby' });
+    new Notification(title, { body, icon: './icon.svg', tag: 'cashbackdo-nearby' });
   }
 }
 
@@ -2327,6 +2362,21 @@ fetchCardCatalog();
 restoreSettingsState();
 // Refrescar datos cada 5 minutos automáticamente
 setInterval(loadData, 5 * 60 * 1000);
+
+// ═══════════════════════════════════════════════════════════════════
+// SERVICE WORKER REGISTRATION
+// ═══════════════════════════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => {
+        console.log('SW registered, scope:', reg.scope);
+        // Check for updates every 30 minutes
+        setInterval(() => reg.update(), 30 * 60 * 1000);
+      })
+      .catch(err => console.warn('SW registration failed:', err));
+  });
+}
 </script>
 </body>
 </html>

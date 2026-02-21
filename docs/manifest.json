@@ -1,0 +1,33 @@
+{
+  "name": "CashbackDO — Ofertas de Cashback en RD",
+  "short_name": "CashbackDO",
+  "description": "Todas las ofertas de cashback y descuentos de bancos dominicanos en un solo lugar.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f5f7",
+  "theme_color": "#2563eb",
+  "lang": "es",
+  "categories": ["finance", "shopping"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
