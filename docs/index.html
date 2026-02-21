@@ -365,6 +365,37 @@
   .add-btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
   .add-btn:hover { opacity: 0.85; }
 
+  /* Settings sections */
+  .settings-section { margin-bottom: 20px; }
+  .settings-section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .settings-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .settings-item:last-child { border-bottom: none; }
+  .settings-item-left { flex: 1; min-width: 0; }
+  .settings-item-label { font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; }
+  .settings-item-desc { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+  .settings-item-icon { font-size: 1.1rem; margin-right: 12px; flex-shrink: 0; }
+  .settings-last-update { font-size: 0.72rem; color: var(--muted); text-align: center; padding: 8px 0; border-top: 1px solid var(--border); margin-top: 4px; }
+  #notifSubToggles .settings-item-label { font-size: 0.82rem; }
+  #notifSubToggles .settings-item-desc { font-size: 0.68rem; }
+  #notifSubToggles .settings-item { padding: 10px 0; }
+
+  /* iOS-style toggle switch */
+  .toggle-switch { position: relative; width: 44px; height: 26px; flex-shrink: 0; margin-left: 12px; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute; inset: 0; cursor: pointer; border-radius: 26px;
+    background: #d1d5db; transition: background 0.25s;
+  }
+  .toggle-slider::before {
+    content: ''; position: absolute; left: 2px; top: 2px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: transform 0.25s;
+  }
+  .toggle-switch input:checked + .toggle-slider { background: var(--accent); }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
+  .toggle-switch input:disabled + .toggle-slider { opacity: 0.4; cursor: not-allowed; }
+
   /* Location */
   .location-display { background: var(--surface2); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
   .location-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
@@ -604,25 +635,101 @@
 
 <!-- Settings dropdown -->
 <div class="settings-dropdown" id="settingsDropdown">
-  <div class="widget-title" style="margin-bottom:12px">📍 Detector de Lugar</div>
-  <div class="location-display">
-    <div class="location-row">
-      <div class="pulse-dot" id="pulseDot" style="background:var(--muted)"></div>
-      <div>
-        <div class="location-name" id="locName">Ubicación no activa</div>
-        <div class="location-sub" id="locSub">Activa para ver promos cercanas</div>
+
+  <!-- Location Services -->
+  <div class="settings-section">
+    <div class="settings-section-title">Ubicación</div>
+    <div class="settings-item">
+      <span class="settings-item-icon">📍</span>
+      <div class="settings-item-left">
+        <div class="settings-item-label">Servicios de ubicación</div>
+        <div class="settings-item-desc">Detecta promos cercanas automáticamente</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleLocation" onchange="onToggleLocation(this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <!-- Location status (shown when active) -->
+    <div id="locationStatus" class="location-display" style="display:none;margin-top:8px">
+      <div class="location-row">
+        <div class="pulse-dot" id="pulseDot" style="background:var(--muted)"></div>
+        <div>
+          <div class="location-name" id="locName">Buscando ubicación...</div>
+          <div class="location-sub" id="locSub"></div>
+        </div>
+      </div>
+      <div class="timer-bar-wrap" id="timerWrap" style="display:none">
+        <div class="timer-label"><span>Tiempo en lugar</span><span id="timerLabel">0:00 / 5:00</span></div>
+        <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:0%"></div></div>
       </div>
     </div>
-    <div class="timer-bar-wrap" id="timerWrap" style="display:none">
-      <div class="timer-label"><span>Tiempo en lugar</span><span id="timerLabel">0:00 / 5:00</span></div>
-      <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:0%"></div></div>
+    <div id="nearbyPromo" style="display:none" class="nearby-promo"></div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="settings-section">
+    <div class="settings-section-title">Notificaciones</div>
+    <div class="settings-item">
+      <span class="settings-item-icon">🔔</span>
+      <div class="settings-item-left">
+        <div class="settings-item-label">Permitir notificaciones</div>
+        <div class="settings-item-desc">Activa las notificaciones push</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleNotifMaster" onchange="onToggleNotifMaster(this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <!-- Sub-notifications (indented, enabled only when master is on) -->
+    <div id="notifSubToggles" style="padding-left:32px;opacity:0.45;pointer-events:none;transition:opacity 0.2s">
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-item-label">Nuevas promos para mis tarjetas</div>
+          <div class="settings-item-desc">Cuando se activa una promo para tus tarjetas</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleNotifNewPromos" onchange="onToggleNotifSub()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-item-label">Promo cercana detectada</div>
+          <div class="settings-item-desc">Al pasar 5 min cerca de un establecimiento</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleNotifNearby" onchange="onToggleNotifSub()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-item-label">Favorita por vencer</div>
+          <div class="settings-item-desc">Cuando una promo favorita está por expirar</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleNotifExpiring" onchange="onToggleNotifSub()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="settings-item">
+        <div class="settings-item-left">
+          <div class="settings-item-label">Promo actualizada</div>
+          <div class="settings-item-desc">Cuando un banco modifica una promo existente</div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleNotifUpdated" onchange="onToggleNotifSub()">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
     </div>
   </div>
-  <div id="nearbyPromo" style="display:none" class="nearby-promo"></div>
-  <button class="geo-btn" id="geoBtn" style="width:100%;justify-content:center;margin-bottom:16px" onclick="toggleGeo()">Activar ubicación</button>
-  <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px">
-    <div class="widget-title" style="margin-bottom:8px">📊 Último Scraping</div>
-    <div id="scrapeStats" style="font-size:0.8rem;color:var(--muted);line-height:1.8">Cargando...</div>
+
+  <!-- Last Updated -->
+  <div class="settings-last-update" id="settingsLastUpdate">
+    Última actualización: —
   </div>
 </div>
 
@@ -683,8 +790,7 @@ const CATEGORY_TAGS = {
   otro:              ['otro', 'combustible'],
 };
 let geoActive = false;
-let timerSec = 0;
-let timerRef = null;
+// timerSec / timerRef replaced by dwell system in geo section
 // Persist helper — saves to localStorage and logs for debugging
 function saveState(key, data) {
   try {
@@ -806,11 +912,12 @@ async function loadData() {
       } catch (e) { /* no fallback available */ }
     }
 
-    // Update stats
-    document.getElementById('statActive').textContent = promosData.meta.stats?.active || allPromos.filter(p => p.isActive).length;
-    document.getElementById('statUpcoming').textContent = promosData.meta.stats?.upcoming || allPromos.filter(p => p.isUpcoming).length;
-    document.getElementById('statBanks').textContent = banksData.filter(b => b.promoCount > 0).length;
-    document.getElementById('statTotal').textContent = promosData.meta.stats?.total || allPromos.length;
+    // Update stats — derive bank count from actual promos to stay accurate
+    document.getElementById('statActive').textContent = promosData.meta?.stats?.active || allPromos.filter(p => p.isActive).length;
+    document.getElementById('statUpcoming').textContent = promosData.meta?.stats?.upcoming || allPromos.filter(p => p.isUpcoming).length;
+    const uniqueBanks = new Set(allPromos.map(p => p.bankId));
+    document.getElementById('statBanks').textContent = uniqueBanks.size;
+    document.getElementById('statTotal').textContent = promosData.meta?.stats?.total || allPromos.length;
 
     // Sync status
     setSyncStatus('ok', statsData.lastUpdated);
@@ -1270,25 +1377,135 @@ function haversine(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
-// Known establishment coordinates in DR (expandable)
+// Known establishment coordinates in DR
+// Each key is lowercase for matching against promo establishment names
 const PLACE_COORDS = {
-  'bluemall': { lat: 18.4655, lng: -69.9295 },
-  'blue mall': { lat: 18.4655, lng: -69.9295 },
-  'agora mall': { lat: 18.4830, lng: -69.9390 },
-  'ágora mall': { lat: 18.4830, lng: -69.9390 },
-  'sambil': { lat: 18.4725, lng: -69.9490 },
-  'galería 360': { lat: 18.4770, lng: -69.9330 },
-  'galeria 360': { lat: 18.4770, lng: -69.9330 },
-  'downtown center': { lat: 18.4750, lng: -69.9100 },
-  'megacentro': { lat: 18.4500, lng: -69.9680 },
-  'los jardines': { lat: 18.4790, lng: -69.9280 },
-  'bella vista mall': { lat: 18.4600, lng: -69.9380 },
-  'nacional': { lat: 18.4860, lng: -69.9310 },
-  'bravo': { lat: 18.4700, lng: -69.9400 },
-  'jumbo': { lat: 18.4750, lng: -69.9350 },
-  'la sirena': { lat: 18.4710, lng: -69.9320 },
-  'sportcity': { lat: 18.4690, lng: -69.9280 },
-  'arajet': { lat: 18.4296, lng: -69.6688 },
+  // ── Malls & Shopping Centers ──────────────────────────────
+  'bluemall': { lat: 18.4655, lng: -69.9295, name: 'BlueMall Santo Domingo' },
+  'blue mall': { lat: 18.4655, lng: -69.9295, name: 'BlueMall Santo Domingo' },
+  'agora mall': { lat: 18.4830, lng: -69.9390, name: 'Ágora Mall' },
+  'ágora mall': { lat: 18.4830, lng: -69.9390, name: 'Ágora Mall' },
+  'sambil': { lat: 18.4725, lng: -69.9490, name: 'Sambil Santo Domingo' },
+  'galería 360': { lat: 18.4770, lng: -69.9330, name: 'Galería 360' },
+  'galeria 360': { lat: 18.4770, lng: -69.9330, name: 'Galería 360' },
+  'downtown center': { lat: 18.4750, lng: -69.9100, name: 'Downtown Center' },
+  'megacentro': { lat: 18.4500, lng: -69.9680, name: 'Megacentro' },
+  'bella vista mall': { lat: 18.4600, lng: -69.9380, name: 'Bella Vista Mall' },
+
+  // ── Supermercados ─────────────────────────────────────────
+  'supermercados nacional': { lat: 18.4860, lng: -69.9310, name: 'Nacional (Lope de Vega)' },
+  'nacional': { lat: 18.4860, lng: -69.9310, name: 'Nacional (Lope de Vega)' },
+  'jumbo': { lat: 18.4750, lng: -69.9350, name: 'Jumbo (Churchill)' },
+  'la sirena': { lat: 18.4710, lng: -69.9320, name: 'La Sirena (27 de Febrero)' },
+  'sirena': { lat: 18.4710, lng: -69.9320, name: 'La Sirena (27 de Febrero)' },
+  'bravo': { lat: 18.4700, lng: -69.9400, name: 'Bravo (Naco)' },
+  'hipermercados olé': { lat: 18.4610, lng: -69.9280, name: 'Olé (SD)' },
+  'olé': { lat: 18.4610, lng: -69.9280, name: 'Olé (SD)' },
+  'bebemundo': { lat: 18.4760, lng: -69.9330, name: 'Bebemundo' },
+
+  // ── Plaza Lama locations ──────────────────────────────────
+  'plaza lama': { lat: 18.4720, lng: -69.9130, name: 'Plaza Lama (Duarte)' },
+  'plaza lama - duarte': { lat: 18.4720, lng: -69.9130, name: 'Plaza Lama Duarte' },
+  'plaza lama - ferias': { lat: 18.4810, lng: -69.9520, name: 'Plaza Lama Ferias' },
+  'plaza lama - 27 de febrero': { lat: 18.4810, lng: -69.9520, name: 'Plaza Lama 27 Feb' },
+  'plaza lama - herrera': { lat: 18.4885, lng: -69.9700, name: 'Plaza Lama Herrera' },
+  'plaza lama - santiago': { lat: 19.4500, lng: -70.6870, name: 'Plaza Lama Santiago' },
+  'plaza lama - zona oriental': { lat: 18.5010, lng: -69.8570, name: 'Plaza Lama Zona Oriental' },
+  'plaza lama - bávaro': { lat: 18.6820, lng: -68.4050, name: 'Plaza Lama Bávaro' },
+  'plaza lama - higüey': { lat: 18.6150, lng: -68.7080, name: 'Plaza Lama Higüey' },
+
+  // ── Tiendas / Retail ──────────────────────────────────────
+  'casa cuesta': { lat: 18.4870, lng: -69.9385, name: 'Casa Cuesta' },
+  'corripio': { lat: 18.4740, lng: -69.9020, name: 'Corripio (Zona Colonial)' },
+  'tiendas corripio': { lat: 18.4740, lng: -69.9020, name: 'Corripio' },
+  'distribuidora corripio': { lat: 18.4740, lng: -69.9020, name: 'Corripio' },
+  'tiendas el encanto': { lat: 18.4720, lng: -69.9380, name: 'El Encanto' },
+  'el encanto': { lat: 18.4720, lng: -69.9380, name: 'El Encanto' },
+  'el mundo del juguete': { lat: 18.4760, lng: -69.9330, name: 'El Mundo del Juguete' },
+  'carol': { lat: 18.4850, lng: -69.9380, name: 'Carol' },
+  'jenny polanco': { lat: 18.4655, lng: -69.9295, name: 'Jenny Polanco (BlueMall)' },
+  'tous': { lat: 18.4655, lng: -69.9295, name: 'TOUS (BlueMall)' },
+  'lacoste': { lat: 18.4655, lng: -69.9295, name: 'Lacoste (BlueMall)' },
+  'cartier': { lat: 18.4655, lng: -69.9295, name: 'Cartier (BlueMall)' },
+  'montblanc': { lat: 18.4655, lng: -69.9295, name: 'Montblanc (BlueMall)' },
+  'rolex': { lat: 18.4655, lng: -69.9295, name: 'Rolex (BlueMall)' },
+  'tudor': { lat: 18.4655, lng: -69.9295, name: 'Tudor (BlueMall)' },
+  'bath and body works': { lat: 18.4830, lng: -69.9390, name: 'Bath & Body Works (Ágora)' },
+  'sleep center': { lat: 18.4770, lng: -69.9330, name: 'Sleep Center' },
+  'conformatic': { lat: 18.4740, lng: -69.9350, name: 'Conformatic' },
+  'ilumel': { lat: 18.4790, lng: -69.9310, name: 'Ilumel' },
+  'lolita home': { lat: 18.4720, lng: -69.9380, name: 'Lolita Home' },
+  'hair plus': { lat: 18.4760, lng: -69.9330, name: 'Hair Plus' },
+
+  // ── Restaurantes ──────────────────────────────────────────
+  'la cassina': { lat: 18.4660, lng: -69.9290, name: 'La Cassina' },
+  'la bistecca': { lat: 18.4665, lng: -69.9285, name: 'La Bistecca (BlueMall)' },
+  'peperoni': { lat: 18.4830, lng: -69.9395, name: 'Peperoni (Ágora)' },
+  'il bacareto': { lat: 18.4735, lng: -69.9350, name: 'Il Bacareto' },
+  'cappuccino': { lat: 18.4850, lng: -69.9340, name: 'Cappuccino' },
+  'habanero': { lat: 18.4850, lng: -69.9360, name: 'Habanero' },
+  'casa brava': { lat: 18.4840, lng: -69.9380, name: 'Casa Brava' },
+  'el catador': { lat: 18.4830, lng: -69.9350, name: 'El Catador' },
+  'catador': { lat: 18.4830, lng: -69.9350, name: 'El Catador' },
+  'maialino': { lat: 18.4840, lng: -69.9340, name: 'Maialino' },
+  'mamma luisa': { lat: 18.4825, lng: -69.9360, name: 'Mamma Luisa' },
+  'la scarpetta': { lat: 18.4840, lng: -69.9350, name: 'La Scarpetta' },
+  'pascale': { lat: 18.4835, lng: -69.9345, name: 'Pascale' },
+  'donoma': { lat: 18.4850, lng: -69.9335, name: 'Donoma' },
+  'sapori': { lat: 18.4830, lng: -69.9370, name: "Sapori D'Italia" },
+  'café locanda': { lat: 18.4735, lng: -69.8930, name: 'Café Locanda (Zona Colonial)' },
+  'restaurante don pepe': { lat: 18.4850, lng: -69.9310, name: 'Don Pepe' },
+  'restaurante ona': { lat: 18.4660, lng: -69.9290, name: 'Ona (BlueMall)' },
+  'casa mencía': { lat: 18.4835, lng: -69.9340, name: 'Casa Mencía' },
+  'restorán gazpacho': { lat: 18.4830, lng: -69.9345, name: 'Gazpacho' },
+  'las arabitas': { lat: 18.4845, lng: -69.9360, name: 'Las Arabitas' },
+  'la bodega': { lat: 18.4840, lng: -69.9345, name: 'La Bodega' },
+  'la parrillita': { lat: 19.4510, lng: -70.6880, name: 'La Parrillita (Santiago)' },
+  'rancho chito': { lat: 19.4500, lng: -70.6860, name: 'Rancho Chito (Santiago)' },
+  'casa luca': { lat: 18.4855, lng: -69.9345, name: 'Casa Luca' },
+  'lila': { lat: 18.4840, lng: -69.9350, name: 'Lila' },
+  'laurel': { lat: 18.4845, lng: -69.9340, name: 'Laurel' },
+  'el atelier': { lat: 18.4835, lng: -69.9355, name: 'El Atelier' },
+
+  // ── Hoteles ───────────────────────────────────────────────
+  'hilton': { lat: 18.4720, lng: -69.8940, name: 'Hilton Santo Domingo' },
+  'hyatt': { lat: 18.6900, lng: -68.4060, name: 'Hyatt (Cap Cana)' },
+  'marriott': { lat: 18.4810, lng: -69.9430, name: 'JW Marriott Santo Domingo' },
+  'sheraton': { lat: 18.4710, lng: -69.9360, name: 'Sheraton Santo Domingo' },
+  'intercontinental': { lat: 18.4720, lng: -69.9340, name: 'InterContinental SD' },
+  'w hotel': { lat: 18.4660, lng: -69.9295, name: 'W Santo Domingo' },
+  'embassy suites': { lat: 18.4750, lng: -69.9380, name: 'Embassy Suites SD' },
+  'four points': { lat: 18.4730, lng: -69.9370, name: 'Four Points SD' },
+  'aloft': { lat: 18.4735, lng: -69.9360, name: 'Aloft Santo Domingo' },
+  'jaragua': { lat: 18.4630, lng: -69.9320, name: 'Hotel Jaragua' },
+  'dreams': { lat: 18.7200, lng: -68.3980, name: 'Dreams Punta Cana' },
+  'secrets': { lat: 18.7180, lng: -68.4000, name: 'Secrets Cap Cana' },
+  'casa del xvi': { lat: 18.4730, lng: -69.8860, name: 'Casa del XVI (Zona Colonial)' },
+  'days inn': { lat: 18.4210, lng: -69.6040, name: 'Days Inn Juan Dolio' },
+
+  // ── Deportes / Gym ────────────────────────────────────────
+  'sportcity': { lat: 18.4690, lng: -69.9280, name: 'SportCity' },
+  'aqua live': { lat: 18.4700, lng: -69.9300, name: 'Aqua Live' },
+  'aro & pedal': { lat: 18.4760, lng: -69.9340, name: 'Aro & Pedal' },
+
+  // ── Transporte / Aerolíneas ───────────────────────────────
+  'arajet': { lat: 18.4296, lng: -69.6688, name: 'Aeropuerto Las Américas' },
+  'aeropuerto': { lat: 18.4296, lng: -69.6688, name: 'Aeropuerto Las Américas' },
+
+  // ── Farmacias ─────────────────────────────────────────────
+  'farmacia value': { lat: 18.4790, lng: -69.9310, name: 'Farmacia Value' },
+
+  // ── Santiago locations ────────────────────────────────────
+  'santiago country club': { lat: 19.4600, lng: -70.6830, name: 'Santiago Country Club' },
+  'centro español': { lat: 19.4420, lng: -70.6850, name: 'Centro Español (Santiago)' },
+
+  // ── Otros ─────────────────────────────────────────────────
+  'elevapos': { lat: 18.4760, lng: -69.9330, name: 'Elevapos' },
+  'innova centro': { lat: 18.4810, lng: -69.9300, name: 'Innova Centro' },
+  'grupo bentrani': { lat: 18.4740, lng: -69.9350, name: 'Grupo Bentrani' },
+  'cos fi clinic': { lat: 18.4780, lng: -69.9340, name: 'Cos Fi Clinic' },
+  'carnaval de punta cana': { lat: 18.5820, lng: -68.4050, name: 'Carnaval de Punta Cana' },
+  'valle nevado': { lat: 19.2700, lng: -70.4200, name: 'Valle Nevado (Constanza)' },
 };
 
 function promoDistance(promo) {
@@ -1554,18 +1771,14 @@ function addModalSelected() {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SCRAPE STATS WIDGET
+// SCRAPE STATS → Simple timestamp
 // ═══════════════════════════════════════════════════════════════════
 function renderScrapeStats(stats) {
-  const el = document.getElementById('scrapeStats');
-  if (!stats.lastUpdated) { el.textContent = 'Sin datos aún'; return; }
-  const history = stats.scrapeHistory || [];
-  const last = history[0];
-  el.innerHTML = `
-    <div style="margin-bottom:6px"><span style="color:var(--text)">Última actualización</span><br>${new Date(stats.lastUpdated).toLocaleString('es-DO')}</div>
-    <div style="margin-bottom:6px"><span style="color:var(--text)">Próxima corrida</span><br>${new Date(stats.nextScrape).toLocaleString('es-DO')}</div>
-    ${last ? `<div><span style="color:var(--text)">Promos nuevas (último run)</span><br>${last.newPromos} nuevas en ${last.durationSeconds}s</div>` : ''}
-  `;
+  const el = document.getElementById('settingsLastUpdate');
+  if (!el) return;
+  if (!stats.lastUpdated) { el.textContent = 'Última actualización: —'; return; }
+  const d = new Date(stats.lastUpdated);
+  el.textContent = `Última actualización: ${d.toLocaleDateString('es-DO', { day:'numeric', month:'short', year:'numeric' })} ${d.toLocaleTimeString('es-DO', { hour:'2-digit', minute:'2-digit' })}`;
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1610,66 +1823,323 @@ async function triggerScrape() {
 // ═══════════════════════════════════════════════════════════════════
 // GEO
 // ═══════════════════════════════════════════════════════════════════
-const DEMO_LOCATIONS = [
-  { name: 'Bluemall Santo Domingo', area: 'Av. John F. Kennedy, SD', bank: 'Banreservas', promo: 'Descuento los Lunes con Mastercard Banreservas' },
-  { name: 'Sportcity', area: 'Santo Domingo', bank: 'Banreservas', promo: 'Beneficios en membresías con Mastercard Banreservas' },
-  { name: 'Arajet.com', area: 'Online / Aeropuerto Las Américas', bank: 'Banreservas', promo: '15% devolución en boletos aéreos con tarjetas Banreservas' },
-];
-
-let simLoc = null;
+// ── Real Geolocation State ──────────────────────────────────────
+let geoWatchId = null;         // navigator.geolocation watchPosition ID
+let geoCheckInterval = null;   // 30s proximity check loop
+let dwellPlace = null;         // current place user is dwelling at { key, name, lat, lng }
+let dwellStart = null;         // timestamp when dwell started
+let dwellTimerRef = null;      // interval for the UI timer
+let dwellNotified = false;     // already fired notification for this dwell?
+const DWELL_RADIUS_KM = 0.2;  // 200 meters
+const DWELL_TIME_SEC = 300;    // 5 minutes
 
 function toggleGeo() {
   geoActive = !geoActive;
   const btn = document.getElementById('geoBtn');
-  if (geoActive) {
-    btn.textContent = '📍 Activo';
-    btn.classList.add('active');
+  if (btn) {
+    btn.textContent = geoActive ? '📍 Activo' : '📍 Ubicación';
+    btn.classList.toggle('active', geoActive);
+  }
+  geoActive ? startGeo() : stopGeo();
+}
+
+// Toggle location from settings panel
+function onToggleLocation(checked) {
+  geoActive = checked;
+  saveState('cashbackdo_location_enabled', checked);
+  const statusEl = document.getElementById('locationStatus');
+  if (checked) {
+    if (statusEl) statusEl.style.display = 'block';
     startGeo();
   } else {
-    btn.textContent = '📍 Ubicación';
-    btn.classList.remove('active');
+    if (statusEl) statusEl.style.display = 'none';
     stopGeo();
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// NOTIFICATION TOGGLES
+// ═══════════════════════════════════════════════════════════════════
+function onToggleNotifMaster(checked) {
+  const subToggles = document.getElementById('notifSubToggles');
+  if (checked) {
+    // Request notification permission from browser
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission().then(perm => {
+        if (perm !== 'granted') {
+          document.getElementById('toggleNotifMaster').checked = false;
+          saveState('cashbackdo_notif_master', false);
+          subToggles.style.opacity = '0.45';
+          subToggles.style.pointerEvents = 'none';
+          return;
+        }
+        enableNotifSubToggles(subToggles);
+      });
+    } else if ('Notification' in window && Notification.permission === 'granted') {
+      enableNotifSubToggles(subToggles);
+    } else {
+      // Notifications not supported
+      enableNotifSubToggles(subToggles);
+    }
+  } else {
+    subToggles.style.opacity = '0.45';
+    subToggles.style.pointerEvents = 'none';
+    // Turn off all sub-toggles
+    ['toggleNotifNewPromos','toggleNotifNearby','toggleNotifExpiring','toggleNotifUpdated'].forEach(id => {
+      document.getElementById(id).checked = false;
+    });
+    saveNotifPrefs();
+  }
+  saveState('cashbackdo_notif_master', checked);
+}
+
+function enableNotifSubToggles(subToggles) {
+  subToggles.style.opacity = '1';
+  subToggles.style.pointerEvents = 'auto';
+  // Enable all sub-toggles by default when master is turned on for first time
+  const prefs = loadState('cashbackdo_notif_prefs', null);
+  if (!prefs) {
+    ['toggleNotifNewPromos','toggleNotifNearby','toggleNotifExpiring','toggleNotifUpdated'].forEach(id => {
+      document.getElementById(id).checked = true;
+    });
+    saveNotifPrefs();
+  }
+}
+
+function onToggleNotifSub() {
+  saveNotifPrefs();
+}
+
+function saveNotifPrefs() {
+  const prefs = {
+    newPromos: document.getElementById('toggleNotifNewPromos').checked,
+    nearby: document.getElementById('toggleNotifNearby').checked,
+    expiring: document.getElementById('toggleNotifExpiring').checked,
+    updated: document.getElementById('toggleNotifUpdated').checked
+  };
+  saveState('cashbackdo_notif_prefs', prefs);
+}
+
+// Restore settings toggles from localStorage on page load
+function restoreSettingsState() {
+  // Location
+  const locEnabled = loadState('cashbackdo_location_enabled', false);
+  const locToggle = document.getElementById('toggleLocation');
+  if (locToggle && locEnabled) {
+    locToggle.checked = true;
+    document.getElementById('locationStatus').style.display = 'block';
+    geoActive = true;
+    startGeo();
+  }
+
+  // Notifications master
+  const notifMaster = loadState('cashbackdo_notif_master', false);
+  const masterToggle = document.getElementById('toggleNotifMaster');
+  if (masterToggle && notifMaster) {
+    masterToggle.checked = true;
+    const subToggles = document.getElementById('notifSubToggles');
+    subToggles.style.opacity = '1';
+    subToggles.style.pointerEvents = 'auto';
+  }
+
+  // Notification sub-toggles
+  const notifPrefs = loadState('cashbackdo_notif_prefs', null);
+  if (notifPrefs) {
+    if (notifPrefs.newPromos) document.getElementById('toggleNotifNewPromos').checked = true;
+    if (notifPrefs.nearby) document.getElementById('toggleNotifNearby').checked = true;
+    if (notifPrefs.expiring) document.getElementById('toggleNotifExpiring').checked = true;
+    if (notifPrefs.updated) document.getElementById('toggleNotifUpdated').checked = true;
+  }
+}
+
 function startGeo() {
-  simLoc = DEMO_LOCATIONS[Math.floor(Math.random() * DEMO_LOCATIONS.length)];
+  if (!navigator.geolocation) {
+    document.getElementById('locName').textContent = 'Geolocalización no disponible';
+    document.getElementById('locSub').textContent = 'Tu navegador no soporta GPS';
+    return;
+  }
+
   const dot = document.getElementById('pulseDot');
-  dot.style.background = 'var(--accent)';
+  dot.style.background = 'var(--accent4)';
   dot.classList.add('active');
-  document.getElementById('locName').textContent = simLoc.name;
-  document.getElementById('locSub').textContent = simLoc.area;
-  document.getElementById('timerWrap').style.display = 'block';
+  document.getElementById('locName').textContent = 'Buscando ubicación...';
+  document.getElementById('locSub').textContent = '';
+  document.getElementById('timerWrap').style.display = 'none';
   document.getElementById('nearbyPromo').style.display = 'none';
-  timerSec = 0;
-  clearInterval(timerRef);
-  timerRef = setInterval(() => {
-    timerSec++;
-    const m = Math.floor(timerSec / 60), s = timerSec % 60;
-    document.getElementById('timerLabel').textContent = `${m}:${s.toString().padStart(2,'0')} / 5:00`;
-    document.getElementById('timerFill').style.width = Math.min(timerSec / 300 * 100, 100) + '%';
-    if (timerSec === 8) triggerNearby(simLoc); // demo: 8s en vez de 5min
-    if (timerSec >= 300) { clearInterval(timerRef); triggerNearby(simLoc); }
-  }, 1000);
+
+  // Start watching real GPS position
+  geoWatchId = navigator.geolocation.watchPosition(
+    (pos) => {
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+      dot.style.background = 'var(--accent)';
+      // Update sort if in cercanía mode
+      if (activeSort === 'cercanía') renderCards();
+    },
+    (err) => {
+      console.warn('Geo error:', err.message);
+      dot.style.background = 'var(--accent3)';
+      document.getElementById('locName').textContent = 'Error de ubicación';
+      document.getElementById('locSub').textContent = err.code === 1 ? 'Permiso denegado' : 'No se pudo obtener GPS';
+      // If permission denied, turn off the toggle
+      if (err.code === 1) {
+        geoActive = false;
+        const toggle = document.getElementById('toggleLocation');
+        if (toggle) toggle.checked = false;
+        saveState('cashbackdo_location_enabled', false);
+      }
+    },
+    { enableHighAccuracy: true, maximumAge: 30000, timeout: 15000 }
+  );
+
+  // Start proximity check loop every 30 seconds
+  checkNearbyEstablishments(); // immediate first check
+  geoCheckInterval = setInterval(checkNearbyEstablishments, 30000);
 }
 
 function stopGeo() {
-  clearInterval(timerRef);
-  document.getElementById('pulseDot').style.background = 'var(--muted)';
-  document.getElementById('pulseDot').classList.remove('active');
+  // Stop GPS watch
+  if (geoWatchId !== null) {
+    navigator.geolocation.clearWatch(geoWatchId);
+    geoWatchId = null;
+  }
+  // Stop proximity check
+  clearInterval(geoCheckInterval);
+  geoCheckInterval = null;
+  // Stop dwell timer
+  clearInterval(dwellTimerRef);
+  dwellTimerRef = null;
+  dwellPlace = null;
+  dwellStart = null;
+  dwellNotified = false;
+
+  // Reset UI
+  const dot = document.getElementById('pulseDot');
+  if (dot) {
+    dot.style.background = 'var(--muted)';
+    dot.classList.remove('active');
+  }
   document.getElementById('locName').textContent = 'Ubicación no activa';
   document.getElementById('locSub').textContent = 'Activa para ver promos cercanas';
   document.getElementById('timerWrap').style.display = 'none';
   document.getElementById('nearbyPromo').style.display = 'none';
-  timerSec = 0;
 }
 
-function triggerNearby(loc) {
+// ── Proximity Check ─────────────────────────────────────────────
+function checkNearbyEstablishments() {
+  if (userLat == null || userLng == null) return;
+
+  // Find the closest known establishment within radius
+  let closest = null;
+  let closestDist = DWELL_RADIUS_KM;
+
+  for (const [key, place] of Object.entries(PLACE_COORDS)) {
+    const d = haversine(userLat, userLng, place.lat, place.lng);
+    if (d < closestDist) {
+      closestDist = d;
+      closest = { key, ...place };
+    }
+  }
+
+  if (closest) {
+    // User is near an establishment
+    if (!dwellPlace || dwellPlace.key !== closest.key) {
+      // New place — start dwell
+      dwellPlace = closest;
+      dwellStart = Date.now();
+      dwellNotified = false;
+      startDwellTimer();
+    }
+    // Update UI
+    document.getElementById('locName').textContent = closest.name;
+    document.getElementById('locSub').textContent = `A ${Math.round(closestDist * 1000)}m de ti`;
+  } else {
+    // Not near anything
+    if (dwellPlace) {
+      // Left the place
+      dwellPlace = null;
+      dwellStart = null;
+      dwellNotified = false;
+      clearInterval(dwellTimerRef);
+      dwellTimerRef = null;
+      document.getElementById('timerWrap').style.display = 'none';
+    }
+    document.getElementById('locName').textContent = 'Ubicación activa';
+    document.getElementById('locSub').textContent = `${userLat.toFixed(4)}, ${userLng.toFixed(4)}`;
+    document.getElementById('nearbyPromo').style.display = 'none';
+  }
+}
+
+// ── Dwell Timer ─────────────────────────────────────────────────
+function startDwellTimer() {
+  clearInterval(dwellTimerRef);
+  document.getElementById('timerWrap').style.display = 'block';
+  document.getElementById('nearbyPromo').style.display = 'none';
+
+  dwellTimerRef = setInterval(() => {
+    if (!dwellStart || !dwellPlace) { clearInterval(dwellTimerRef); return; }
+    const elapsed = Math.floor((Date.now() - dwellStart) / 1000);
+    const m = Math.floor(elapsed / 60), s = elapsed % 60;
+    document.getElementById('timerLabel').textContent = `${m}:${s.toString().padStart(2,'0')} / 5:00`;
+    document.getElementById('timerFill').style.width = Math.min(elapsed / DWELL_TIME_SEC * 100, 100) + '%';
+
+    if (elapsed >= DWELL_TIME_SEC && !dwellNotified) {
+      dwellNotified = true;
+      triggerNearbyPromos(dwellPlace);
+    }
+  }, 1000);
+}
+
+// ── Trigger Notification When Dwell Met ─────────────────────────
+function triggerNearbyPromos(place) {
+  // Find promos that match this establishment
+  const matchingPromos = allPromos.filter(p => {
+    if (!p.isActive) return false;
+    const ests = (p.establishments || []).map(e => e.toLowerCase());
+    const title = (p.title || '').toLowerCase();
+    const desc = (p.description || '').toLowerCase();
+    const allText = [...ests, title, desc];
+    return allText.some(text => text.includes(place.key));
+  });
+
   const np = document.getElementById('nearbyPromo');
-  np.style.display = 'block';
-  np.innerHTML = `<div style="font-size:0.65rem;font-weight:700;background:var(--accent);color:#000;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;margin-bottom:8px">🔔 +5 min aquí</div>
-    <strong>${loc.bank}</strong> — ${loc.promo}`;
-  showToast(loc.bank, `¡Llevas 5+ min en ${loc.name}!`, loc.promo);
+  if (matchingPromos.length > 0) {
+    const summaries = matchingPromos.slice(0, 3).map(p => {
+      const pct = normalizePercentage(p);
+      const bankName = banks.find(b => b.id === p.bankId)?.name || p.bankId;
+      return `<div style="margin-bottom:4px"><strong>${bankName}</strong> — ${pct} ${p.title}</div>`;
+    }).join('');
+    const moreText = matchingPromos.length > 3 ? `<div style="font-size:0.7rem;color:var(--muted)">+${matchingPromos.length - 3} promo(s) más</div>` : '';
+
+    np.style.display = 'block';
+    np.innerHTML = `<div style="font-size:0.65rem;font-weight:700;background:var(--accent);color:#fff;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;margin-bottom:8px">🔔 +5 min en ${place.name}</div>
+      ${summaries}${moreText}`;
+
+    // Show in-app toast
+    const firstPromo = matchingPromos[0];
+    const bankName = banks.find(b => b.id === firstPromo.bankId)?.name || '';
+    showToast(bankName, `¡Llevas 5+ min en ${place.name}!`, `${matchingPromos.length} promo(s) disponibles aquí`);
+
+    // Send browser notification if enabled
+    sendBrowserNotification(
+      `📍 ${place.name}`,
+      `${matchingPromos.length} promo(s) de cashback disponibles aquí`
+    );
+  } else {
+    np.style.display = 'block';
+    np.innerHTML = `<div style="font-size:0.65rem;font-weight:700;background:var(--accent4);color:#fff;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;margin-bottom:8px">📍 +5 min en ${place.name}</div>
+      <div style="font-size:0.8rem;color:var(--muted)">No hay promos activas para este lugar</div>`;
+  }
+}
+
+// ── Browser Notification Helper ─────────────────────────────────
+function sendBrowserNotification(title, body) {
+  const notifPrefs = loadState('cashbackdo_notif_prefs', {});
+  const masterOn = loadState('cashbackdo_notif_master', false);
+  if (!masterOn || !notifPrefs.nearby) return;
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification(title, { body, icon: '📍', tag: 'cashbackdo-nearby' });
+  }
 }
 
 function showToast(bank, msg, sub) {
@@ -1704,6 +2174,7 @@ function toggleSettings() {
   if (!isOpen) {
     dd.classList.add('open');
     document.getElementById('settingsBtn').classList.add('active');
+    _settingsJustOpened = true;
   }
 }
 
@@ -1825,9 +2296,12 @@ function closeMobileMenu() {
 }
 
 // Close settings dropdown when clicking outside it
+// Use a flag to prevent the mobile menu "Configuraciones" click from immediately closing it
+let _settingsJustOpened = false;
 document.addEventListener('click', e => {
   const dd = document.getElementById('settingsDropdown');
   const btn = document.getElementById('settingsBtn');
+  if (_settingsJustOpened) { _settingsJustOpened = false; return; }
   if (dd.classList.contains('open') && !dd.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
     dd.classList.remove('open');
     btn.classList.remove('active');
@@ -1850,6 +2324,7 @@ function setApiUrl() {
 // ═══════════════════════════════════════════════════════════════════
 loadData();
 fetchCardCatalog();
+restoreSettingsState();
 // Refrescar datos cada 5 minutos automáticamente
 setInterval(loadData, 5 * 60 * 1000);
 </script>
