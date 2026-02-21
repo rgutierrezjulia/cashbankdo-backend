@@ -150,13 +150,13 @@ export const BANK_SOURCES = [
     id: 'promerica',
     name: 'Promerica',
     color: '#E8622A',
-    // Sitio jQuery jplist — JS renderiza las cards en .jplist-item
+    // Promos reales están en Club Promerica (NopCommerce), no en promerica.com.do (página vacía)
     strategy: 'html_promo_pages',
-    promoListUrl: 'https://promerica.com.do/banca-personal/promociones/',
-    listingPages: ['https://promerica.com.do/banca-personal/promociones/'],
-    promoLinkSelector: '.jplist-item a, .card-promo a, a[href*="/banca-personal/promociones/"]',
+    promoListUrl: 'https://clubpromerica.com/republicadominicana/comercios-2',
+    listingPages: ['https://clubpromerica.com/republicadominicana/comercios-2'],
+    promoLinkSelector: '.product-title a',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
-    excludeKeywords: ['puntos', 'lealtad', 'sorteo', 'millas'],
+    excludeKeywords: ['puntos', 'lealtad', 'sorteo', 'millas', 'concierto', 'killers'],
   },
   {
     id: 'popular',
