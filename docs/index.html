@@ -278,8 +278,6 @@
     <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Entretenimiento</button>
     <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
     <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
-    <button class="cat-btn" onclick="setCategory('combustible',this)">⛽ Combustible</button>
-    <button class="cat-btn" onclick="setCategory('bebidas',this)">🍹 Bebidas</button>
     <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
   </div>
   <div class="bank-filter" id="bankFilter">
@@ -396,15 +394,13 @@ let activeBank = 'all';
 
 // Mapeo de valor de categoría a tags del backend
 const CATEGORY_TAGS = {
-  shopping:        ['retail', 'online'],
-  supermercado:    ['supermercado', 'farmacia'],
-  restaurante:     ['restaurante'],
-  'entretenimiento': ['entretenimiento'],
-  viaje:           ['viaje'],
-  educación:       ['educación'],
-  combustible:     ['combustible'],
-  bebidas:         ['bebidas'],
-  otro:            ['otro'],
+  shopping:          ['retail', 'online'],
+  supermercado:      ['supermercado', 'farmacia'],
+  restaurante:       ['restaurante'],
+  entretenimiento:   ['entretenimiento'],
+  viaje:             ['viaje'],
+  'educación':       ['educación'],
+  otro:              ['otro', 'combustible', 'bebidas'],
 };
 let geoActive = false;
 let timerSec = 0;
