@@ -93,10 +93,39 @@
   .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
 
-  .main { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; display: grid; grid-template-columns: 1fr 310px; gap: 24px; }
-  @media (max-width: 800px) { .main { grid-template-columns: 1fr; } }
+  .main { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
 
-  .cards-list { display: flex; flex-direction: column; gap: 14px; }
+  /* Google Ads banner */
+  .ads-banner { width: 100%; background: var(--surface); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; }
+  .ads-banner-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Promos grid — 3 columns desktop */
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+  @media (max-width: 600px) { .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+
+  /* Drawer backdrop */
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+  .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+  /* Slide-in drawer (right) */
+  .side-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw); background: var(--surface); border-left: 1px solid var(--border); z-index: 201; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; overflow-y: auto; }
+  .side-drawer.open { transform: translateX(0); }
+  .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 20px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--surface); z-index: 1; }
+  .drawer-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+  .drawer-close { background: none; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: color 0.15s; }
+  .drawer-close:hover { color: var(--text); }
+  .drawer-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+  /* Settings dropdown */
+  .settings-dropdown { position: fixed; top: 68px; right: 24px; width: min(340px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; z-index: 300; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: none; padding: 16px; }
+  .settings-dropdown.open { display: block; animation: fadeDown 0.18s ease; }
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+
+  /* Header drawer/settings buttons */
+  .icon-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.18s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .icon-btn.active { border-color: var(--accent2); color: var(--accent2); background: rgba(124,92,255,0.1); }
   .promo-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.22s; position: relative; overflow: hidden; animation: fadeUp 0.4s ease both; }
   .promo-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-1px); }
   .promo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 16px 16px 0 0; }
@@ -133,10 +162,33 @@
   .tag.crédito { background: rgba(0,229,160,0.08); color: var(--accent); }
   .tag.débito { background: rgba(255,255,255,0.06); color: var(--muted); }
 
-  /* SIDEBAR */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
-  .widget { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+  /* Widget (used inside drawers) */
+  .widget { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
   .widget-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+  /* Compact promo cards on mobile — show 9 at once (3×3) */
+  @media (max-width: 600px) {
+    .hero { padding: 20px 16px 16px; }
+    .hero h1 { font-size: 1.4rem; }
+    .hero p { display: none; }
+    .stats-row { margin-bottom: 16px; gap: 8px; }
+    .stat-chip { padding: 8px 10px; min-width: 70px; }
+    .stat-chip .num { font-size: 1.1rem; }
+    .stat-chip .lbl { font-size: 0.62rem; }
+    .controls { margin-bottom: 14px; gap: 8px; }
+    .ads-banner { min-height: 60px; margin-bottom: 12px; }
+    .main { padding: 0 10px 40px; }
+    .promo-card { padding: 10px 8px 8px; border-radius: 12px; }
+    .card-title { font-size: 0.72rem; line-height: 1.25; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-desc, .tags-row, .card-meta, .card-notes { display: none; }
+    .bank-tag { font-size: 0.6rem; gap: 5px; }
+    .bank-dot { width: 6px; height: 6px; }
+    .pct-badge { font-size: 1rem; }
+    .pct-badge small { font-size: 0.55rem; }
+    .card-bottom { margin-top: 6px; padding-top: 6px; }
+    .days-badge { font-size: 0.6rem; padding: 1px 5px; }
+    .card-link { font-size: 0.6rem; padding: 3px 7px; }
+  }
 
   .add-card-form { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
   .add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
@@ -249,10 +301,11 @@
         <span id="syncText">Conectando...</span>
       </div>
       <button class="scrape-btn" id="scrapeBtn" onclick="triggerScrape()">
-        <span class="idle">🔄 Actualizar</span>
+        <span class="idle">🔄</span>
         <span class="spin">⟳</span>
       </button>
-      <button class="geo-btn" id="geoBtn" onclick="toggleGeo()">📍 Ubicación</button>
+      <button class="icon-btn" id="walletBtn" onclick="toggleWalletDrawer()">💳 Mis Tarjetas</button>
+      <button class="icon-btn" id="settingsBtn" onclick="toggleSettings()">⚙️</button>
     </div>
   </div>
 </header>
@@ -287,65 +340,73 @@
 </div>
 
 <div class="main">
-  <div>
-    <div id="apiBanner" class="api-banner" style="display:none">
-      <strong>⚙️ Configura el servidor backend</strong>
-      Ingresa la URL de tu servidor CashbackDO para ver las promos en vivo.
-      <div class="api-input-row">
-        <input id="apiUrlInput" type="text" placeholder="http://localhost:3001" />
-        <button onclick="setApiUrl()">Conectar</button>
-      </div>
-    </div>
-    <div class="cards-list" id="cardsList">
-      <div class="skeleton sk-card"></div>
-      <div class="skeleton sk-card"></div>
-      <div class="skeleton sk-card"></div>
+  <div id="apiBanner" class="api-banner" style="display:none">
+    <strong>⚙️ Configura el servidor backend</strong>
+    Ingresa la URL de tu servidor CashbackDO para ver las promos en vivo.
+    <div class="api-input-row">
+      <input id="apiUrlInput" type="text" placeholder="http://localhost:3001" />
+      <button onclick="setApiUrl()">Conectar</button>
     </div>
   </div>
 
-  <div class="sidebar">
-    <div class="widget">
-      <div class="widget-title">💳 Mis Tarjetas</div>
-      <div id="walletList"></div>
-      <div class="add-card-form">
-        <select id="cardBank" onchange="onBankChange()">
-          <option value="">Banco...</option>
-        </select>
-        <select id="cardName" disabled>
-          <option value="">Selecciona banco primero</option>
-        </select>
-        <button class="add-btn" onclick="addCard()">+ Agregar tarjeta</button>
-        <button class="wallet-import-btn" onclick="openWalletModal()">🍎 Importar desde Apple Wallet</button>
-      </div>
-    </div>
+  <!-- Google Ads -->
+  <div class="ads-banner">
+    <!-- Google AdSense: reemplaza con tu código de unidad de anuncio -->
+    <span class="ads-banner-label">Publicidad</span>
+  </div>
 
-    <div class="widget">
-      <div class="widget-title">📍 Detector de Lugar</div>
-      <div class="location-display">
-        <div class="location-row">
-          <div class="pulse-dot" id="pulseDot" style="background:var(--muted)"></div>
-          <div>
-            <div class="location-name" id="locName">Ubicación no activa</div>
-            <div class="location-sub" id="locSub">Activa para ver promos cercanas</div>
-          </div>
-        </div>
-        <div class="timer-bar-wrap" id="timerWrap" style="display:none">
-          <div class="timer-label"><span>Tiempo en lugar</span><span id="timerLabel">0:00 / 5:00</span></div>
-          <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:0%"></div></div>
-        </div>
-      </div>
-      <div id="nearbyPromo" style="display:none" class="nearby-promo"></div>
-      <button class="geo-btn" style="width:100%;justify-content:center" onclick="toggleGeo()">
-        Activar ubicación
-      </button>
-    </div>
+  <div class="cards-grid" id="cardsList">
+    <div class="skeleton sk-card"></div>
+    <div class="skeleton sk-card"></div>
+    <div class="skeleton sk-card"></div>
+  </div>
+</div>
 
-    <div class="widget">
-      <div class="widget-title">📊 Último Scraping</div>
-      <div id="scrapeStats" style="font-size:0.8rem;color:var(--muted);line-height:1.8">
-        Cargando...
+<!-- Drawer backdrop -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
+
+<!-- Mis Tarjetas drawer -->
+<div class="side-drawer" id="walletDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">💳 Mis Tarjetas</div>
+    <button class="drawer-close" onclick="closeAllDrawers()">✕</button>
+  </div>
+  <div class="drawer-body">
+    <div id="walletList"></div>
+    <div class="add-card-form">
+      <select id="cardBank" onchange="onBankChange()">
+        <option value="">Banco...</option>
+      </select>
+      <select id="cardName" disabled>
+        <option value="">Selecciona banco primero</option>
+      </select>
+      <button class="add-btn" onclick="addCard()">+ Agregar tarjeta</button>
+      <button class="wallet-import-btn" onclick="openWalletModal()">🍎 Importar desde Apple Wallet</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings dropdown -->
+<div class="settings-dropdown" id="settingsDropdown">
+  <div class="widget-title" style="margin-bottom:12px">📍 Detector de Lugar</div>
+  <div class="location-display">
+    <div class="location-row">
+      <div class="pulse-dot" id="pulseDot" style="background:var(--muted)"></div>
+      <div>
+        <div class="location-name" id="locName">Ubicación no activa</div>
+        <div class="location-sub" id="locSub">Activa para ver promos cercanas</div>
       </div>
     </div>
+    <div class="timer-bar-wrap" id="timerWrap" style="display:none">
+      <div class="timer-label"><span>Tiempo en lugar</span><span id="timerLabel">0:00 / 5:00</span></div>
+      <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div id="nearbyPromo" style="display:none" class="nearby-promo"></div>
+  <button class="geo-btn" id="geoBtn" style="width:100%;justify-content:center;margin-bottom:16px" onclick="toggleGeo()">Activar ubicación</button>
+  <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px">
+    <div class="widget-title" style="margin-bottom:8px">📊 Último Scraping</div>
+    <div id="scrapeStats" style="font-size:0.8rem;color:var(--muted);line-height:1.8">Cargando...</div>
   </div>
 </div>
 
@@ -1012,6 +1073,49 @@ function showToast(bank, msg, sub) {
   setTimeout(() => t.classList.remove('show'), 8000);
 }
 function closeToast() { document.getElementById('notifToast').classList.remove('show'); }
+
+// ═══════════════════════════════════════════════════════════════════
+// DRAWER / SETTINGS TOGGLE
+// ═══════════════════════════════════════════════════════════════════
+function toggleWalletDrawer() {
+  const drawer = document.getElementById('walletDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const isOpen = drawer.classList.contains('open');
+  closeAllDrawers();
+  if (!isOpen) {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.getElementById('walletBtn').classList.add('active');
+  }
+}
+
+function toggleSettings() {
+  const dd = document.getElementById('settingsDropdown');
+  const isOpen = dd.classList.contains('open');
+  closeAllDrawers();
+  if (!isOpen) {
+    dd.classList.add('open');
+    document.getElementById('settingsBtn').classList.add('active');
+  }
+}
+
+function closeAllDrawers() {
+  document.getElementById('walletDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('settingsDropdown').classList.remove('open');
+  document.getElementById('walletBtn').classList.remove('active');
+  document.getElementById('settingsBtn').classList.remove('active');
+}
+
+// Close settings dropdown when clicking outside it
+document.addEventListener('click', e => {
+  const dd = document.getElementById('settingsDropdown');
+  const btn = document.getElementById('settingsBtn');
+  if (dd.classList.contains('open') && !dd.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+    btn.classList.remove('active');
+  }
+});
 
 // ═══════════════════════════════════════════════════════════════════
 // API URL CONFIG
