@@ -3,21 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CashbackDO — Ofertas de Bancos Dominicanos</title>
+<meta name="description" content="Todas las ofertas de cashback y descuentos de bancos dominicanos en un solo lugar. Actualizado diariamente.">
+<title>CashbackDO — Ofertas de Cashback de Bancos en RD</title>
+<!-- Google AdSense: uncomment and replace with your publisher ID
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1c1c28;
-    --border: rgba(255,255,255,0.06);
-    --accent: #00e5a0;
-    --accent2: #7c5cff;
-    --accent3: #ff6b6b;
-    --accent4: #ffd166;
-    --text: #f0f0f8;
-    --muted: #6b6b88;
-    --card: #16161f;
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --surface2: #eef0f3;
+    --border: rgba(0,0,0,0.08);
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --accent3: #dc2626;
+    --accent4: #d97706;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --card: #ffffff;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
@@ -25,17 +29,17 @@
   body::before {
     content: ''; position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 1000; opacity: 0.4;
+    pointer-events: none; z-index: 1000; opacity: 0.15;
   }
 
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,15,0.9); backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border); padding: 0 24px;
   }
   .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.03em; }
-  .logo span { color: var(--accent); }
+  .logo span { color: #059669; }
   .header-right { display: flex; align-items: center; gap: 10px; }
 
   .sync-info {
@@ -78,26 +82,96 @@
   .stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 20px; flex: 1; min-width: 130px; }
   .stat-chip .num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
   .stat-chip .lbl { font-size: 0.75rem; color: var(--muted); }
-  .stat-chip.green .num { color: var(--accent); }
-  .stat-chip.yellow .num { color: var(--accent4); }
+  .stat-chip { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .stat-chip.green .num { color: #059669; }
+  .stat-chip.yellow .num { color: #b45309; }
   .stat-chip.purple .num { color: var(--accent2); }
-  .stat-chip.blue .num { color: #48cae4; }
+  .stat-chip.blue .num { color: var(--accent); }
 
   .controls { max-width: 1100px; margin: 0 auto 24px; padding: 0 24px; display: flex; flex-direction: column; gap: 10px; }
+  .filter-sort-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .filter-sort-row .cat-filter { flex: 1; }
   .cat-filter { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .cat-filter::-webkit-scrollbar { display: none; }
   .cat-btn { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0; }
-  .cat-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .cat-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .mis-bank-btn { border-color: var(--accent2) !important; color: var(--accent2) !important; }
+  .fav-bank-btn { border-color: #e11d48 !important; color: #e11d48 !important; }
+  .hidden-bank-btn { border-color: var(--muted) !important; color: var(--muted) !important; }
+
+  /* Heart toggle on cards */
+  .card-fav-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 4px; line-height: 0; transition: transform 0.2s;
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .card-fav-btn:active { transform: scale(1.3); }
+  .card-fav-btn.faved { animation: heartPop 0.3s ease; }
+  @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
+
+  /* Swipe-to-hide card wrapper */
+  .card-swipe-wrap {
+    position: relative; overflow: hidden; border-radius: 16px;
+  }
+  .card-swipe-wrap .swipe-bg {
+    position: absolute; top: 0; bottom: 0; right: 0; width: 80px;
+    background: var(--muted); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 0.75rem; font-weight: 600; border-radius: 0 16px 16px 0;
+    opacity: 0; transition: opacity 0.15s;
+  }
+  .card-swipe-wrap.swiping .swipe-bg { opacity: 1; }
+  .card-swipe-wrap .promo-card {
+    position: relative; z-index: 1; transition: transform 0.25s ease;
+  }
+  .card-swipe-wrap.hiding .promo-card {
+    transform: translateX(-100%); transition: transform 0.3s ease;
+  }
+  .card-swipe-wrap.hiding {
+    max-height: 300px; transition: max-height 0.3s ease 0.15s, opacity 0.3s ease;
+    overflow: hidden;
+  }
+  .card-swipe-wrap.hiding.collapse { max-height: 0; opacity: 0; margin-bottom: 0; }
+  /* Sort dropdown */
+  .sort-row { display: flex; align-items: center; gap: 8px; }
+  .sort-select {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 99px;
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    padding: 6px 14px; cursor: pointer; outline: none; transition: border-color 0.18s;
+    -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6b88'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px;
+  }
+  .sort-select:focus { border-color: var(--accent); }
+  .sort-select option { background: var(--surface2); color: var(--text); }
+
   .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
   .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
 
   .main { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
 
-  /* Google Ads banner */
-  .ads-banner { width: 100%; background: var(--surface); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; min-height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; overflow: hidden; }
-  .ads-banner-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  /* Google Ads — responsive leaderboard */
+  .ad-container { width: 100%; margin-bottom: 20px; }
+  .ad-slot {
+    width: 100%; min-height: 90px; max-width: 728px; margin: 0 auto;
+    background: var(--surface); border-radius: 12px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ad-slot ins { display: block; width: 100%; }
+  .ad-placeholder {
+    width: 100%; height: 90px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px;
+    color: var(--muted); font-size: 0.68rem; letter-spacing: 0.05em;
+    text-transform: uppercase; opacity: 0.5;
+  }
+  .ad-placeholder-line { width: 60px; height: 1px; background: var(--border); }
+  /* In-feed ad between cards */
+  .ad-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+    min-height: 250px;
+  }
+  .ad-card ins { display: block; width: 100%; }
 
   /* Promos grid — 3 columns desktop */
   .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -118,7 +192,7 @@
   .drawer-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
   /* Settings dropdown */
-  .settings-dropdown { position: fixed; top: 68px; right: 24px; width: min(340px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; z-index: 300; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: none; padding: 16px; }
+  .settings-dropdown { position: fixed; top: 68px; right: 24px; width: min(340px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; z-index: 300; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; padding: 16px; }
   .settings-dropdown.open { display: block; animation: fadeDown 0.18s ease; }
   @keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 
@@ -126,8 +200,8 @@
   .icon-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.18s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
   .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
   .icon-btn.active { border-color: var(--accent2); color: var(--accent2); background: rgba(124,92,255,0.1); }
-  .promo-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.22s; position: relative; overflow: hidden; animation: fadeUp 0.4s ease both; }
-  .promo-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-1px); }
+  .promo-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.22s; position: relative; overflow: hidden; animation: fadeUp 0.4s ease both; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06); }
+  .promo-card:hover { border-color: rgba(0,0,0,0.12); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
   .promo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 16px 16px 0 0; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -135,63 +209,160 @@
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
   .bank-tag { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
   .bank-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .pct-badge { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); line-height: 1; }
+  .pct-badge { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: #059669; line-height: 1; }
   .pct-badge small { font-size: 0.65rem; font-weight: 400; color: var(--muted); display: block; text-align: right; font-family: 'DM Sans', sans-serif; }
-  .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; line-height: 1.3; }
+  .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; line-height: 1.3; text-align: left; }
   .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
   .card-meta { display: flex; flex-wrap: wrap; gap: 8px; }
   .meta-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 0.75rem; display: flex; align-items: center; gap: 5px; color: var(--muted); }
   .meta-chip .val { color: var(--text); font-weight: 500; }
-  .meta-chip.hl { border-color: rgba(0,229,160,0.3); background: rgba(0,229,160,0.06); }
-  .meta-chip.hl .val { color: var(--accent); }
+  .meta-chip.hl { border-color: rgba(5,150,105,0.25); background: rgba(5,150,105,0.06); }
+  .meta-chip.hl .val { color: #059669; }
   .card-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
   .validity { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
   .days-badge { border-radius: 5px; padding: 2px 7px; font-weight: 500; font-size: 0.72rem; }
-  .days-badge.active { background: rgba(0,229,160,0.12); color: var(--accent); }
-  .days-badge.soon { background: rgba(255,209,102,0.12); color: var(--accent4); }
-  .days-badge.expired { background: rgba(255,107,107,0.1); color: var(--accent3); }
+  .days-badge.active { background: rgba(5,150,105,0.1); color: #059669; }
+  .days-badge.soon { background: rgba(217,119,6,0.1); color: #b45309; }
+  .days-badge.expired { background: rgba(220,38,38,0.08); color: var(--accent3); }
   .card-link { font-size: 0.75rem; color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--border); border-radius: 7px; transition: all 0.18s; }
   .card-link:hover { border-color: var(--accent); color: var(--accent); }
   .tags-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
   .tag { font-size: 0.68rem; padding: 3px 8px; border-radius: 5px; font-weight: 500; }
-  .tag.online { background: rgba(124,92,255,0.15); color: var(--accent2); }
-  .tag.presencial { background: rgba(0,119,182,0.15); color: #48cae4; }
-  .tag.aéreo { background: rgba(255,209,102,0.15); color: var(--accent4); }
-  .tag.entretenimiento { background: rgba(255,107,107,0.15); color: var(--accent3); }
-  .tag.supermercado,.tag.restaurante { background: rgba(0,229,160,0.1); color: var(--accent); }
-  .tag.crédito { background: rgba(0,229,160,0.08); color: var(--accent); }
-  .tag.débito { background: rgba(255,255,255,0.06); color: var(--muted); }
+  .tag.online { background: rgba(124,58,237,0.1); color: var(--accent2); }
+  .tag.presencial { background: rgba(37,99,235,0.1); color: var(--accent); }
+  .tag.aéreo { background: rgba(217,119,6,0.1); color: var(--accent4); }
+  .tag.entretenimiento { background: rgba(220,38,38,0.1); color: var(--accent3); }
+  .tag.supermercado,.tag.restaurante { background: rgba(5,150,105,0.1); color: #059669; }
+  .tag.crédito { background: rgba(37,99,235,0.08); color: var(--accent); }
+  .tag.débito { background: rgba(0,0,0,0.05); color: var(--muted); }
 
   /* Widget (used inside drawers) */
   .widget { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
   .widget-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 
-  /* Compact promo cards on mobile — show 9 at once (3×3) */
+  /* ═══ Hamburger menu (mobile only) ═══ */
+  .hamburger-btn {
+    display: none; background: none; border: none; color: var(--text);
+    font-size: 1.4rem; cursor: pointer; padding: 6px; line-height: 1;
+  }
+  .mobile-menu {
+    display: none; position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(280px, 80vw); background: var(--surface); border-left: 1px solid var(--border);
+    z-index: 400; transform: translateX(100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    flex-direction: column; padding: 0;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 399; opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .mobile-menu-overlay.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu-header .logo { font-size: 1.1rem; }
+  .mobile-menu-close { background: none; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; padding: 4px 8px; }
+  .mobile-menu-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; overflow-y: auto; }
+  .mobile-menu-item {
+    display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+    border-radius: 12px; background: none; border: none; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer;
+    transition: background 0.15s; text-align: left; width: 100%;
+  }
+  .mobile-menu-item:hover, .mobile-menu-item:active { background: var(--surface2); }
+  .mobile-menu-item .menu-icon { font-size: 1.1rem; width: 28px; text-align: center; }
+  .mobile-menu-divider { height: 1px; background: var(--border); margin: 8px 0; }
+  .mobile-menu-sync {
+    padding: 12px 16px; font-size: 0.75rem; color: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mobile-menu-sync .sync-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* ═══ Mobile: iPhone-optimized layout ═══ */
   @media (max-width: 600px) {
-    .hero { padding: 20px 16px 16px; }
-    .hero h1 { font-size: 1.4rem; }
-    .hero p { display: none; }
-    .stats-row { margin-bottom: 16px; gap: 8px; }
-    .stat-chip { padding: 8px 10px; min-width: 70px; }
-    .stat-chip .num { font-size: 1.1rem; }
-    .stat-chip .lbl { font-size: 0.62rem; }
-    .controls { margin-bottom: 14px; gap: 8px; }
-    .ads-banner { min-height: 60px; margin-bottom: 12px; }
-    .main { padding: 0 10px 40px; }
-    .promo-card { padding: 10px 8px 8px; border-radius: 12px; }
-    .card-title { font-size: 0.72rem; line-height: 1.25; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .card-desc, .tags-row, .card-meta, .card-notes { display: none; }
-    .bank-tag { font-size: 0.6rem; gap: 5px; }
-    .bank-dot { width: 6px; height: 6px; }
-    .pct-badge { font-size: 1rem; }
-    .pct-badge small { font-size: 0.55rem; }
-    .card-bottom { margin-top: 6px; padding-top: 6px; }
-    .days-badge { font-size: 0.6rem; padding: 1px 5px; }
-    .card-link { font-size: 0.6rem; padding: 3px 7px; }
+    /* Header: just logo + hamburger */
+    .header-inner { height: 50px; padding: 0; }
+    .logo { font-size: 1.1rem; }
+    .header-right .sync-info,
+    .header-right .scrape-btn,
+    .header-right .icon-btn { display: none; }
+    .hamburger-btn { display: block; }
+    .mobile-menu { display: flex; }
+    .mobile-menu-overlay { display: block; }
+
+    /* Hero: hidden on mobile */
+    .hero { display: none; }
+
+    /* API banner: hidden on mobile */
+    .api-banner { display: none !important; }
+
+    /* Stats: single row, 4 compact chips */
+    .stats-row { margin-top: 10px; margin-bottom: 12px; gap: 6px; display: flex; flex-wrap: nowrap; padding: 0 16px; }
+    .stat-chip { padding: 8px 0; min-width: 0; flex: 1; text-align: center; border-radius: 10px; }
+    .stat-chip .num { font-size: 1rem; }
+    .stat-chip .lbl { font-size: 0.58rem; }
+
+    /* Filters — wrap, sort on right */
+    .controls { margin-bottom: 12px; gap: 8px; padding: 0 16px; }
+    .filter-sort-row { flex-direction: column; gap: 8px; }
+    .filter-sort-row .cat-filter { flex-wrap: wrap; overflow-x: visible; gap: 6px; }
+    .filter-sort-row .sort-select { align-self: flex-end; }
+    .cat-btn { padding: 5px 11px; font-size: 0.72rem; }
+    .sort-select { font-size: 0.75rem; padding: 5px 26px 5px 12px; }
+    /* Show only the 4 main filters, justified evenly */
+    .bank-filter { display: flex; gap: 0; justify-content: stretch; }
+    .bank-filter .bank-btn:not([data-bank="all"]):not([data-bank="mis-productos"]):not([data-bank="favoritos"]):not([data-bank="hidden"]) { display: none; }
+    .bank-filter .bank-btn { flex: 1; text-align: center; justify-content: center; padding: 7px 4px; font-size: 0.72rem; border-radius: 0; border-right: none; }
+    .bank-filter .bank-btn:first-child { border-radius: 10px 0 0 10px; }
+    .bank-filter .bank-btn:last-of-type, .bank-filter .bank-btn[data-bank="hidden"] { border-radius: 0 10px 10px 0; border-right: 1px solid var(--border); }
+
+    /* Ads */
+    .ad-container { margin-bottom: 14px; }
+    .ad-slot { min-height: 50px; border-radius: 10px; }
+    .ad-placeholder { height: 50px; }
+    .ad-card { min-height: 200px; border-radius: 14px; }
+
+    /* Main */
+    .main { padding: 0 16px 40px; }
+
+    /* Cards: SINGLE COLUMN for readability */
+    .cards-grid { grid-template-columns: 1fr !important; gap: 12px; }
+
+    /* Promo card: compact by default, expandable */
+    .promo-card { padding: 14px 16px; border-radius: 14px; cursor: pointer; }
+    .card-top { margin-bottom: 6px; }
+    .bank-tag { font-size: 0.72rem; gap: 6px; }
+    .bank-dot { width: 7px; height: 7px; }
+    .pct-badge { font-size: 1.3rem; }
+    .pct-badge small { font-size: 0.6rem; }
+    .card-title { font-size: 0.88rem; line-height: 1.3; margin-bottom: 0; }
+
+    /* Hidden by default on mobile — shown on expand */
+    .card-desc, .tags-row, .card-meta, .card-notes-wrap, .card-link { display: none; }
+    .card-bottom { margin-top: 8px; padding-top: 8px; }
+    .days-badge { font-size: 0.7rem; padding: 2px 8px; }
+    .card-expand-hint { font-size: 0.65rem; color: var(--muted); }
+
+    /* Expanded state */
+    .promo-card.expanded .card-title { margin-bottom: 6px; }
+    .promo-card.expanded .card-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.78rem; line-height: 1.5; margin-bottom: 10px; }
+    .promo-card.expanded .tags-row { display: flex; margin-bottom: 8px; }
+    .promo-card.expanded .card-meta { display: flex; gap: 6px; }
+    .promo-card.expanded .meta-chip { font-size: 0.7rem; padding: 4px 8px; }
+    .promo-card.expanded .card-notes-wrap { display: block; }
+    .promo-card.expanded .card-link { display: flex; font-size: 0.72rem; padding: 6px 12px; min-height: 32px; align-items: center; }
+    .promo-card.expanded .card-expand-hint { display: none; }
+
+    /* Settings dropdown full-width on mobile */
+    .settings-dropdown { right: 8px; left: 8px; width: auto; top: 56px; }
+
+    /* Hide text labels on mobile, keep icons */
+    .hide-mobile { display: none; }
   }
 
   .add-card-form { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-  .add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
+  .add-btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
   .add-btn:hover { opacity: 0.85; }
 
   /* Location */
@@ -210,11 +381,11 @@
   .nearby-promo strong { color: var(--accent); }
 
   /* Toast */
-  .notif-toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface2); border: 1px solid rgba(0,229,160,0.3); border-radius: 14px; padding: 16px 20px; max-width: 320px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 9999; display: none; }
+  .notif-toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; max-width: 320px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); z-index: 9999; display: none; }
   .notif-toast.show { display: block; animation: slideIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
   @keyframes slideIn { from { transform: translateX(100%) translateY(20px); opacity: 0; } to { transform: translateX(0) translateY(0); opacity: 1; } }
   .notif-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-  .notif-bank { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; }
+  .notif-bank { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); font-weight: 700; }
   .notif-msg { font-size: 0.82rem; line-height: 1.5; }
   .notif-sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
   .notif-close { position: absolute; top: 10px; right: 12px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; }
@@ -243,7 +414,7 @@
   .card-info { flex: 1; min-width: 0; }
   .card-name { font-size: 0.8rem; font-weight: 500; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .card-badges { display: flex; gap: 4px; flex-wrap: wrap; }
-  .card-promos { font-size: 0.65rem; font-weight: 700; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 99px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #000; flex-shrink: 0; }
+  .card-promos { font-size: 0.65rem; font-weight: 700; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 99px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; flex-shrink: 0; }
   .card-promos.zero { background: var(--surface2); color: var(--muted); }
   .card-del { background: none; border: none; color: var(--muted); cursor: pointer; padding: 3px 5px; border-radius: 5px; font-size: 0.8rem; flex-shrink: 0; transition: color 0.15s; }
   .card-del:hover { color: var(--accent3); }
@@ -253,9 +424,9 @@
   .wallet-import-btn:hover { border-color: var(--accent2); color: var(--accent2); }
 
   /* Modal */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.open { display: flex; }
-  .modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 480px; max-height: 85vh; display: flex; flex-direction: column; }
+  .modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 480px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
   .modal-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--border); }
   .modal-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
   .modal-search { background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; width: 100%; transition: border-color 0.18s; }
@@ -270,7 +441,7 @@
   .modal-bank-header { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; padding: 12px 8px 4px; }
   .modal-footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .modal-count { font-size: 0.82rem; color: var(--muted); }
-  .modal-add-btn { background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 9px 18px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
+  .modal-add-btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: opacity 0.18s; }
   .modal-add-btn:hover { opacity: 0.85; }
   .modal-add-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .modal-close { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 4px; }
@@ -278,7 +449,7 @@
   /* Add card form dropdowns row */
   .add-card-form select { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.18s; width: 100%; }
   .add-card-form select:focus { border-color: var(--accent); }
-  .add-card-form option { background: #1c1c28; }
+  .add-card-form option { background: var(--surface); }
 
   /* API config banner */
   .api-banner { background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); border-radius: 12px; padding: 12px 16px; font-size: 0.8rem; color: var(--accent4); margin-bottom: 16px; line-height: 1.6; }
@@ -304,11 +475,29 @@
         <span class="idle">🔄</span>
         <span class="spin">⟳</span>
       </button>
-      <button class="icon-btn" id="walletBtn" onclick="toggleWalletDrawer()">💳 Mis Tarjetas</button>
+      <button class="icon-btn" id="walletBtn" onclick="toggleWalletDrawer()">💳 <span class="hide-mobile">Mis Tarjetas</span></button>
       <button class="icon-btn" id="settingsBtn" onclick="toggleSettings()">⚙️</button>
+      <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileMenu()">☰</button>
     </div>
   </div>
 </header>
+
+<!-- Mobile slide-in menu -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="logo">Cashback<span>DO</span></div>
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  </div>
+  <div class="mobile-menu-body">
+    <button class="mobile-menu-item" onclick="closeMobileMenu();toggleWalletDrawer()">
+      <span class="menu-icon">💳</span> Mis Tarjetas
+    </button>
+    <button class="mobile-menu-item" onclick="closeMobileMenu();toggleSettings()">
+      <span class="menu-icon">⚙️</span> Configuraciones
+    </button>
+  </div>
+</div>
 
 <div class="hero">
   <h1>Cashback <em>bancario</em><br>en República Dominicana</h1>
@@ -323,19 +512,30 @@
 </div>
 
 <div class="controls">
-  <div class="cat-filter" id="catFilter">
-    <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
-    <button class="cat-btn" onclick="setCategory('shopping',this)">🛍️ Shopping</button>
-    <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super & Farmacia</button>
-    <button class="cat-btn" onclick="setCategory('restaurante',this)">🍽️ Bares y Restaurantes</button>
-    <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Entretenimiento</button>
-    <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
-    <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
-    <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
+  <div class="filter-sort-row">
+    <div class="cat-filter" id="catFilter">
+      <button class="cat-btn active" onclick="setCategory('all',this)">Todas</button>
+      <button class="cat-btn" onclick="setCategory('restaurante',this)">🍽️ Restaurantes</button>
+      <button class="cat-btn" onclick="setCategory('supermercado',this)">🛒 Super</button>
+      <button class="cat-btn" onclick="setCategory('shopping',this)">🛍️ Shopping</button>
+      <button class="cat-btn" onclick="setCategory('viaje',this)">✈️ Viajes</button>
+      <button class="cat-btn" onclick="setCategory('entretenimiento',this)">🎭 Ocio</button>
+      <button class="cat-btn" onclick="setCategory('educación',this)">📚 Educación</button>
+      <button class="cat-btn" onclick="setCategory('otro',this)">📦 Otras</button>
+    </div>
+    <select class="sort-select" id="sortSelect" onchange="setSort(this.value)">
+      <option value="" disabled selected>Ordenar</option>
+      <option value="vigencia">Vigencia</option>
+      <option value="cercania">Cercanía</option>
+      <option value="az">A–Z</option>
+      <option value="za">Z–A</option>
+    </select>
   </div>
   <div class="bank-filter" id="bankFilter">
-    <button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>
     <button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>
+    <button class="bank-btn fav-bank-btn" data-bank="favoritos" onclick="setBank('favoritos',this)">❤️ Favoritos</button>
+    <button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>
+    <button class="bank-btn hidden-bank-btn" data-bank="hidden" onclick="setBank('hidden',this)">🙈 Hidden</button>
   </div>
 </div>
 
@@ -349,10 +549,26 @@
     </div>
   </div>
 
-  <!-- Google Ads -->
-  <div class="ads-banner">
-    <!-- Google AdSense: reemplaza con tu código de unidad de anuncio -->
-    <span class="ads-banner-label">Publicidad</span>
+  <!-- Google AdSense: Top leaderboard (responsive) -->
+  <div class="ad-container">
+    <div class="ad-slot" id="adTop">
+      <!--
+        Replace this placeholder with your AdSense code:
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      -->
+      <div class="ad-placeholder">
+        <div class="ad-placeholder-line"></div>
+        <span>Ad</span>
+        <div class="ad-placeholder-line"></div>
+      </div>
+    </div>
   </div>
 
   <div class="cards-grid" id="cardsList">
@@ -452,6 +668,9 @@ let banks = [];
 let cardCatalog = {};
 let activeCategory = 'all';
 let activeBank = 'all';
+let activeSort = 'vigencia';
+let userLat = null;
+let userLng = null;
 
 // Mapeo de valor de categoría a tags del backend
 const CATEGORY_TAGS = {
@@ -466,7 +685,25 @@ const CATEGORY_TAGS = {
 let geoActive = false;
 let timerSec = 0;
 let timerRef = null;
-let walletCards = JSON.parse(localStorage.getItem('cashbackdo_wallet') || '[]');
+// Persist helper — saves to localStorage and logs for debugging
+function saveState(key, data) {
+  try {
+    const json = typeof data === 'string' ? data : JSON.stringify(data);
+    localStorage.setItem(key, json);
+  } catch (e) { console.warn('localStorage save failed:', key, e); }
+}
+function loadState(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw) return JSON.parse(raw);
+  } catch (e) { console.warn('localStorage load failed:', key, e); }
+  return fallback;
+}
+
+let walletCards = loadState('cashbackdo_wallet', []);
+let favoriteIds = new Set(loadState('cashbackdo_favs', []));
+let hiddenIds = new Set(loadState('cashbackdo_hidden', []));
+console.log('Init — wallet:', walletCards.length, 'cards, favs:', favoriteIds.size, 'hidden:', hiddenIds.size);
 // Modal state
 let modalSelected = new Set();
 
@@ -552,8 +789,22 @@ async function loadData() {
       fetchPromos(), fetchStats(), fetchBanks()
     ]);
 
-    allPromos = promosData.promos;
+    allPromos = promosData.promos || [];
     banks = banksData;
+
+    // If API returned 0 promos (e.g. during scrape), try local fallback
+    if (allPromos.length === 0) {
+      try {
+        const fb = await fetch('../data/promos.json');
+        if (fb.ok) {
+          const fbData = await fb.json();
+          if (fbData.promos?.length > 0) {
+            allPromos = fbData.promos;
+            console.log('API returned 0 promos, loaded fallback:', allPromos.length);
+          }
+        }
+      } catch (e) { /* no fallback available */ }
+    }
 
     // Update stats
     document.getElementById('statActive').textContent = promosData.meta.stats?.active || allPromos.filter(p => p.isActive).length;
@@ -580,7 +831,21 @@ async function loadData() {
     setSyncStatus('error', null);
     document.getElementById('apiBanner').style.display = 'block';
     document.getElementById('apiUrlInput').value = API_BASE;
-    // Show fallback data
+    // Fallback: try loading local promos.json
+    if (allPromos.length === 0) {
+      const paths = ['../data/promos.json', 'data/promos.json', '/data/promos.json'];
+      for (const path of paths) {
+        try {
+          const fallback = await fetch(path);
+          if (fallback.ok) {
+            const data = await fallback.json();
+            allPromos = data.promos || [];
+            console.log('Loaded fallback promos from', path, ':', allPromos.length);
+            break;
+          }
+        } catch (e) { /* try next path */ }
+      }
+    }
     renderCards();
   }
 }
@@ -590,14 +855,20 @@ function setSyncStatus(status, lastUpdated) {
   const text = document.getElementById('syncText');
   dot.className = 'sync-dot';
 
+  const menuDot = document.getElementById('menuSyncDot');
+  const menuText = document.getElementById('menuSyncText');
+
   if (status === 'ok') {
     const ago = lastUpdated ? timeAgo(lastUpdated) : 'recién';
     text.textContent = `Actualizado ${ago}`;
-    dot.classList.add('');
     dot.style.background = 'var(--accent)';
+    if (menuDot) { menuDot.style.background = 'var(--accent)'; }
+    if (menuText) { menuText.textContent = `Actualizado ${ago}`; }
   } else if (status === 'error') {
     text.textContent = 'Sin conexión al servidor';
     dot.style.background = 'var(--accent3)';
+    if (menuDot) { menuDot.style.background = 'var(--accent3)'; }
+    if (menuText) { menuText.textContent = 'Sin conexión al servidor'; }
   }
 }
 
@@ -611,6 +882,129 @@ function timeAgo(iso) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// SMART CARD MATCHING FOR "MIS PRODUCTOS"
+// ═══════════════════════════════════════════════════════════════════
+
+// Check if a promo is eligible for any card in the user's wallet
+function isPromoEligibleForWallet(promo) {
+  return walletCards.some(card => isCardEligible(card, promo));
+}
+
+// Check if a specific wallet card is eligible for a promo
+function isCardEligible(card, promo) {
+  // Step 1: Bank must match
+  const cardBankId = card.bankId || card.bank?.toLowerCase().replace(/\s+/g, '');
+  const bankMatch = promo.bankId === cardBankId ||
+                    promo.bank?.toLowerCase().includes(card.bank?.toLowerCase()) ||
+                    promo.bankId === card.bank?.toLowerCase();
+  if (!bankMatch) return false;
+
+  // Step 2: Card type must match (crédito / débito)
+  const cardType = card.type || card.tipo || '';
+  if (cardType && promo.cardTypes?.length > 0) {
+    if (!promo.cardTypes.includes(cardType)) return false;
+  }
+
+  // Step 3: Check eligibleCards rules
+  const eligible = promo.eligibleCards || [];
+  if (eligible.length === 0) return true; // No restrictions = all cards from this bank
+
+  const cardName = (card.name || '').toLowerCase();
+  const cardNetwork = (card.network || '').toLowerCase();
+
+  for (const rule of eligible) {
+    const ruleLower = rule.toLowerCase();
+
+    // Check for exclusion pattern: "tarjetas de crédito BankX (excepto ...)"
+    const exceptMatch = ruleLower.match(/\(excepto\s+(.+?)\)/);
+    if (exceptMatch) {
+      // This is a broad eligibility with exclusions
+      const exclusions = exceptMatch[1].split(/,\s*|\s+y\s+/).map(e => e.trim().toLowerCase());
+
+      // Check if this card is excluded
+      const isExcluded = exclusions.some(excl => {
+        if (!excl) return false;
+        // Match against card name
+        if (cardName.includes(excl)) return true;
+        // Match exclusion keywords against card name parts
+        // e.g., "supercashback" matches "Supercashback Banesco"
+        // e.g., "business" matches "Business Banesco"
+        // e.g., "visa connectmiles" matches "Visa ConnectMiles Banesco"
+        const exclWords = excl.split(/\s+/);
+        return exclWords.every(w => cardName.includes(w));
+      });
+
+      if (isExcluded) return false;
+
+      // Not excluded — check if the broad rule applies to this card
+      // The text before "(excepto" describes who IS eligible
+      const beforeExcept = ruleLower.split('(excepto')[0].trim();
+      if (broadRuleMatchesCard(beforeExcept, card)) return true;
+
+    } else {
+      // No exclusion — check if rule matches this card directly
+      if (specificRuleMatchesCard(ruleLower, card)) return true;
+    }
+  }
+
+  return false;
+}
+
+// Match a broad rule like "tarjetas de crédito banesco" or "todas las tarjetas..."
+function broadRuleMatchesCard(rule, card) {
+  const cardName = (card.name || '').toLowerCase();
+  const cardNetwork = (card.network || '').toLowerCase();
+  const cardType = (card.type || card.tipo || '').toLowerCase();
+
+  // "todas las tarjetas de crédito" / "tarjetas de crédito [bank]"
+  if (rule.includes('todas las tarjetas') || rule.includes('tarjetas de crédito') || rule.includes('tarjetas de débito')) {
+    if (rule.includes('crédito') && cardType === 'crédito') return true;
+    if (rule.includes('débito') && cardType === 'débito') return true;
+    if (!rule.includes('crédito') && !rule.includes('débito')) return true;
+  }
+
+  // Network-based: "mastercard", "visa", "american express"
+  if (rule.includes('mastercard') && cardNetwork.includes('mastercard')) return true;
+  if (rule.includes('visa') && cardNetwork.includes('visa')) return true;
+  if ((rule.includes('american express') || rule.includes('amex')) &&
+      (cardNetwork.includes('american') || cardNetwork.includes('amex'))) return true;
+
+  return false;
+}
+
+// Match a specific rule like "Visa Infinite Banco Santa Cruz" or just "Mastercard"
+function specificRuleMatchesCard(rule, card) {
+  const cardName = (card.name || '').toLowerCase();
+  const cardNetwork = (card.network || '').toLowerCase();
+  const cardType = (card.type || card.tipo || '').toLowerCase();
+
+  // Direct name match (card name contains the rule or rule contains the card name)
+  if (cardName.includes(rule) || rule.includes(cardName)) return true;
+
+  // Fuzzy: check if all significant words from the rule appear in the card name
+  const ruleWords = rule.replace(/tarjetas?\s*(de\s+)?/g, '').split(/\s+/).filter(w => w.length > 2);
+  if (ruleWords.length >= 2 && ruleWords.every(w => cardName.includes(w))) return true;
+
+  // Network-only match: rule is just a network name
+  const networkNames = ['visa', 'mastercard', 'american express', 'amex'];
+  const ruleClean = rule.trim();
+  if (networkNames.includes(ruleClean)) {
+    if (ruleClean === 'visa' && cardNetwork.includes('visa')) return true;
+    if (ruleClean === 'mastercard' && cardNetwork.includes('mastercard')) return true;
+    if ((ruleClean === 'american express' || ruleClean === 'amex') &&
+        (cardNetwork.includes('american') || cardNetwork.includes('amex'))) return true;
+  }
+
+  // "Tarjeta de Débito [Bank]" / "Tarjeta de Crédito [Bank]"
+  if (rule.includes('tarjeta de débito') && cardType === 'débito') return true;
+  if (rule.includes('tarjeta de crédito') && cardType === 'crédito') return true;
+  if (rule.includes('credimás') && cardName.includes('credimás')) return true;
+  if (rule.includes('ultracrédito') && cardName.includes('ultracrédito')) return true;
+
+  return false;
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // RENDER CARDS
 // ═══════════════════════════════════════════════════════════════════
 function renderCards() {
@@ -621,29 +1015,47 @@ function renderCards() {
     return;
   }
 
-  // Solo mostrar activas y próximas (ocultar expiradas)
-  let filtered = allPromos.filter(p => p.isActive || p.isUpcoming);
+  try {
 
-  // Filtrar por "Mis Productos" — promos de los bancos del wallet del usuario
+  // Hidden filter shows only hidden promos
+  if (activeBank === 'hidden') {
+    let filtered = allPromos.filter(p => hiddenIds.has(p.id));
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="big">🙈</div><div>No hay promos ocultas</div></div>`;
+      return;
+    }
+    list.innerHTML = filtered.map((p, i) => {
+      const color = banks.find(b => b.id === p.bankId)?.color || '#888';
+      return `<div class="promo-card" style="animation-delay:${i*0.05}s; opacity:0.7">
+        <div class="card-top">
+          <div class="bank-tag"><div class="bank-dot" style="background:${color}"></div>${p.bank}</div>
+          <button class="card-fav-btn" onclick="unhidePromo('${p.id}')" title="Mostrar">👁️</button>
+        </div>
+        <div class="card-title">${p.title || 'Promoción'}</div>
+      </div>`;
+    }).join('');
+    return;
+  }
+
+  // For all other views, exclude hidden promos
+  let filtered = allPromos.filter(p => (p.isActive || p.isUpcoming) && !hiddenIds.has(p.id));
+
+  // Filtrar por "Favoritos"
+  if (activeBank === 'favoritos') {
+    filtered = filtered.filter(p => favoriteIds.has(p.id));
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="big">❤️</div><div>No tienes promos favoritas aún. Toca el corazón en cualquier promo para agregarla.</div></div>`;
+      return;
+    }
+  }
+
+  // Filtrar por "Mis Productos" — promos matching wallet cards
   if (activeBank === 'mis-productos') {
     if (walletCards.length === 0) {
       list.innerHTML = `<div class="empty-state"><div class="big">💳</div><div>Agrega tus tarjetas en el panel de la derecha para ver tus promos personalizadas</div></div>`;
       return;
     }
-    filtered = filtered.filter(p =>
-      walletCards.some(card => {
-        const bankId = card.bankId || card.bank?.toLowerCase().replace(/\s+/g, '');
-        const bankMatch = p.bankId === bankId ||
-                          p.bank?.toLowerCase().includes(card.bank?.toLowerCase()) ||
-                          p.bankId === card.bank?.toLowerCase();
-        if (!bankMatch) return false;
-        const cardType = card.type || card.tipo;
-        if (cardType && p.cardTypes?.length > 0) {
-          if (!p.cardTypes.includes(cardType)) return false;
-        }
-        return true;
-      })
-    );
+    filtered = filtered.filter(p => isPromoEligibleForWallet(p));
     if (filtered.length === 0) {
       list.innerHTML = `<div class="empty-state"><div class="big">🔍</div><div>No hay promos activas para tus tarjetas en este momento</div></div>`;
       return;
@@ -660,6 +1072,9 @@ function renderCards() {
     list.innerHTML = `<div class="empty-state"><div class="big">🔍</div><div>No hay promos en esta categoría</div></div>`;
     return;
   }
+
+  // ── Sort ──
+  sortPromos(filtered);
 
   const rendered = filtered.map((p, i) => {
     const color = banks.find(b => b.id === p.bankId)?.color || '#888';
@@ -680,14 +1095,24 @@ function renderCards() {
       ? p.establishments.slice(0, 5).join(', ')
       : p.establishments || '';
 
-    return `<div class="promo-card" style="animation-delay:${i*0.05}s; --bcolor:${color}">
-      <style>.promo-card:nth-child(${i+1})::before { background: linear-gradient(90deg, ${color}, ${color}88); }</style>
+    const dateStr = p.validFrom ? `${fmt(p.validFrom)} → ${fmt(p.validUntil)}` : '';
+
+    const isFav = favoriteIds.has(p.id);
+    const heartSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="${isFav ? '#e11d48' : 'none'}" stroke="${isFav ? '#e11d48' : '#9ca3af'}" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+    const favClass = isFav ? 'faved' : '';
+
+    return `<div class="card-swipe-wrap" data-promo-id="${p.id}">
+      <div class="swipe-bg">Ocultar</div>
+      <div class="promo-card" onclick="toggleCard(this, event)" style="animation-delay:${i*0.05}s; --bcolor:${color}">
+      <style>.card-swipe-wrap:nth-child(${i+1}) .promo-card::before { background: linear-gradient(90deg, ${color}, ${color}88); }</style>
       <div class="card-top">
         <div class="bank-tag">
           <div class="bank-dot" style="background:${color}"></div>
           ${p.bank}
         </div>
-        <div class="pct-badge">${p.percentage || '—'}<small>${p.promoType || ''}</small></div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="pct-badge">${normalizePercentage(p)}<small>${p.promoType || ''}</small></div>
+        </div>
       </div>
       <div class="card-title">${p.title || 'Promoción'}</div>
       ${tags.length ? `<div class="tags-row">${tagsHtml}</div>` : ''}
@@ -695,19 +1120,78 @@ function renderCards() {
       <div class="card-meta">
         ${p.minimumSpend ? `<div class="meta-chip"><span>🪙 Mínimo</span><span class="val">${p.minimumSpend}</span></div>` : ''}
         ${p.maxReturn ? `<div class="meta-chip hl"><span>🎯 Tope</span><span class="val">${p.maxReturn}</span></div>` : ''}
-        ${p.validFrom ? `<div class="meta-chip"><span>📅</span><span class="val">${fmt(p.validFrom)} → ${fmt(p.validUntil)}</span></div>` : ''}
+        ${p.validFrom ? `<div class="meta-chip"><span>📅</span><span class="val">${dateStr}</span></div>` : ''}
         ${p.creditingDate ? `<div class="meta-chip"><span>💰</span><span class="val">${p.creditingDate}</span></div>` : ''}
         ${establishments ? `<div class="meta-chip" style="flex:1"><span>🏪</span><span class="val">${establishments}</span></div>` : ''}
       </div>
-      ${p.notes ? `<div class="card-desc" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">ℹ️ ${p.notes}</div>` : ''}
+      ${p.notes ? `<div class="card-notes-wrap"><div class="card-desc" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">ℹ️ ${p.notes}</div></div>` : ''}
       <div class="card-bottom">
-        <div class="validity">${daysBadge}</div>
-        <a class="card-link" href="${p.sourceUrl || '#'}" target="_blank">Ver T&C ↗</a>
+        <div class="validity">
+          ${daysBadge}
+          ${dateStr ? `<span style="margin-left:6px;font-size:0.68rem;color:var(--muted)">${dateStr}</span>` : ''}
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button class="card-fav-btn ${favClass}" onclick="toggleFavorite('${p.id}', event)">${heartSvg}</button>
+          <span class="card-expand-hint">Ver más ▾</span>
+        </div>
+        <a class="card-link" href="${p.sourceUrl || '#'}" target="_blank" onclick="event.stopPropagation()">Ver T&C ↗</a>
       </div>
+    </div>
     </div>`;
-  }).join('');
+  });
 
-  list.innerHTML = rendered;
+  // Inject in-feed ad every 6 cards
+  const AD_EVERY = 6;
+  const adUnit = `<div class="ad-card">
+    <!-- AdSense in-feed: replace with your code -->
+    <div class="ad-placeholder"><div class="ad-placeholder-line"></div><span>Ad</span><div class="ad-placeholder-line"></div></div>
+  </div>`;
+  const finalParts = [];
+  rendered.forEach((card, idx) => {
+    finalParts.push(card);
+    if ((idx + 1) % AD_EVERY === 0 && idx < rendered.length - 1) {
+      finalParts.push(adUnit);
+    }
+  });
+
+  list.innerHTML = finalParts.join('');
+
+  // Initialize swipe-to-hide on each card
+  list.querySelectorAll('.card-swipe-wrap').forEach(el => {
+    const promoId = el.dataset.promoId;
+    if (promoId) initSwipe(el, promoId);
+  });
+
+  } catch (err) {
+    console.error('renderCards error:', err);
+    list.innerHTML = `<div class="empty-state"><div class="big">⚠️</div><div>Error al renderizar: ${err.message}</div></div>`;
+  }
+}
+
+// Extract a clean percentage from the percentage field or description
+function normalizePercentage(promo) {
+  const pct = promo.percentage || '';
+  // If it already looks like a percentage, return it
+  if (/^\d+(\.\d+)?%$/.test(pct.trim())) return pct.trim();
+  // Try to extract percentage from the percentage field
+  const pctMatch = pct.match(/(\d+(?:\.\d+)?)\s*%/);
+  if (pctMatch) return pctMatch[1] + '%';
+  // If percentage field has no %, search description for cashback/descuento percentages
+  const desc = promo.description || '';
+  const descMatches = desc.match(/(\d+(?:\.\d+)?)\s*%\s*(?:de\s+)?(cashback|devolución|descuento)/gi);
+  if (descMatches) {
+    // Get the highest percentage mentioned with cashback/descuento
+    let best = 0;
+    descMatches.forEach(m => {
+      const n = parseFloat(m.match(/(\d+(?:\.\d+)?)/)[1]);
+      if (n > best) best = n;
+    });
+    if (best > 0) return best + '%';
+  }
+  // Last resort: any percentage in description
+  const anyPct = desc.match(/(\d+(?:\.\d+)?)\s*%/);
+  if (anyPct) return anyPct[1] + '%';
+  return pct || '—';
 }
 
 function fmt(s) {
@@ -715,6 +1199,115 @@ function fmt(s) {
   const [y,m,d] = s.split('-');
   const months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   return `${parseInt(d)} ${months[parseInt(m)-1]}`;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SORT
+// ═══════════════════════════════════════════════════════════════════
+function setSort(val) {
+  activeSort = val;
+  if (val === 'cercania') {
+    requestUserLocation(() => renderCards());
+  } else {
+    renderCards();
+  }
+}
+
+function sortPromos(arr) {
+  switch (activeSort) {
+    case 'vigencia':
+      arr.sort((a, b) => {
+        // Active first (by daysUntilExpiry ascending), then upcoming (by daysUntilStart ascending)
+        const aExp = a.isActive ? (a.daysUntilExpiry ?? 9999) : (a.isUpcoming ? 10000 + (a.daysUntilStart ?? 0) : 99999);
+        const bExp = b.isActive ? (b.daysUntilExpiry ?? 9999) : (b.isUpcoming ? 10000 + (b.daysUntilStart ?? 0) : 99999);
+        return aExp - bExp;
+      });
+      break;
+    case 'cercania':
+      if (userLat != null && userLng != null) {
+        arr.sort((a, b) => {
+          const distA = promoDistance(a);
+          const distB = promoDistance(b);
+          return distA - distB;
+        });
+      }
+      break;
+    case 'az':
+      arr.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'es'));
+      break;
+    case 'za':
+      arr.sort((a, b) => (b.title || '').localeCompare(a.title || '', 'es'));
+      break;
+  }
+}
+
+function requestUserLocation(callback) {
+  if (userLat != null && userLng != null) { callback(); return; }
+  if (!navigator.geolocation) {
+    alert('Tu navegador no soporta geolocalización');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+      callback();
+    },
+    err => {
+      console.warn('Geolocation error:', err);
+      alert('No se pudo obtener tu ubicación. Verifica los permisos.');
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
+// Haversine distance in km
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+// Known establishment coordinates in DR (expandable)
+const PLACE_COORDS = {
+  'bluemall': { lat: 18.4655, lng: -69.9295 },
+  'blue mall': { lat: 18.4655, lng: -69.9295 },
+  'agora mall': { lat: 18.4830, lng: -69.9390 },
+  'ágora mall': { lat: 18.4830, lng: -69.9390 },
+  'sambil': { lat: 18.4725, lng: -69.9490 },
+  'galería 360': { lat: 18.4770, lng: -69.9330 },
+  'galeria 360': { lat: 18.4770, lng: -69.9330 },
+  'downtown center': { lat: 18.4750, lng: -69.9100 },
+  'megacentro': { lat: 18.4500, lng: -69.9680 },
+  'los jardines': { lat: 18.4790, lng: -69.9280 },
+  'bella vista mall': { lat: 18.4600, lng: -69.9380 },
+  'nacional': { lat: 18.4860, lng: -69.9310 },
+  'bravo': { lat: 18.4700, lng: -69.9400 },
+  'jumbo': { lat: 18.4750, lng: -69.9350 },
+  'la sirena': { lat: 18.4710, lng: -69.9320 },
+  'sportcity': { lat: 18.4690, lng: -69.9280 },
+  'arajet': { lat: 18.4296, lng: -69.6688 },
+};
+
+function promoDistance(promo) {
+  if (userLat == null || userLng == null) return 99999;
+  const ests = Array.isArray(promo.establishments) ? promo.establishments : [];
+  const title = (promo.title || '').toLowerCase();
+  const desc = (promo.description || '').toLowerCase();
+  const allText = [...ests.map(e => e.toLowerCase()), title, desc];
+
+  let minDist = 99999;
+  for (const text of allText) {
+    for (const [key, coord] of Object.entries(PLACE_COORDS)) {
+      if (text.includes(key)) {
+        const d = haversine(userLat, userLng, coord.lat, coord.lng);
+        if (d < minDist) minDist = d;
+      }
+    }
+  }
+  return minDist;
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -730,8 +1323,10 @@ function renderBankFilter(banks) {
   // Remove old bank buttons (keep first 2 static ones)
   const staticBtns = filter.querySelectorAll('[data-bank="all"], [data-bank="mis-productos"]');
   filter.innerHTML =
-    `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
     `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +
+    `<button class="bank-btn fav-bank-btn" data-bank="favoritos" onclick="setBank('favoritos',this)">❤️ Favoritos</button>` +
+    `<button class="bank-btn active-all" data-bank="all" onclick="setBank('all',this)">Todos</button>` +
+    `<button class="bank-btn hidden-bank-btn" data-bank="hidden" onclick="setBank('hidden',this)">🙈 Hidden</button>` +
     bankBtns;
 }
 
@@ -755,13 +1350,26 @@ function setBank(bank, el) {
     el.style.background = 'var(--accent2)';
     el.style.borderColor = 'var(--accent2)';
     el.style.color = '#fff';
+  } else if (bank === 'favoritos') {
+    el.style.background = '#e11d48';
+    el.style.borderColor = '#e11d48';
+    el.style.color = '#fff';
+  } else if (bank === 'hidden') {
+    el.style.background = 'var(--muted)';
+    el.style.borderColor = 'var(--muted)';
+    el.style.color = '#fff';
   } else if (bank !== 'all') {
     const bc = banks.find(b => b.id === bank)?.color || '';
     el.style.background = bc;
     el.style.borderColor = bc;
     el.style.color = '#000';
   }
-  loadData();
+  // Favoritos and Hidden don't need API reload, just re-render
+  if (bank === 'favoritos' || bank === 'hidden') {
+    renderCards();
+  } else {
+    loadData();
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -825,7 +1433,7 @@ async function renderWallet() {
 
 function removeCard(i) {
   walletCards.splice(i, 1);
-  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+  saveState('cashbackdo_wallet', walletCards);
   renderWallet();
   if (activeBank === 'mis-productos') renderCards();
 }
@@ -846,7 +1454,7 @@ function addCard() {
   if (walletCards.some(c => c.cardId === cardId)) return;
 
   walletCards.push({ bankId, cardId, name, bank: bankName, network, type });
-  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+  saveState('cashbackdo_wallet', walletCards);
 
   document.getElementById('cardBank').value = '';
   document.getElementById('cardName').innerHTML = '<option value="">Selecciona banco primero</option>';
@@ -937,7 +1545,7 @@ function addModalSelected() {
     });
   });
 
-  localStorage.setItem('cashbackdo_wallet', JSON.stringify(walletCards));
+  saveState('cashbackdo_wallet', walletCards);
   closeWalletModal();
   if (added > 0) {
     renderWallet();
@@ -1105,6 +1713,115 @@ function closeAllDrawers() {
   document.getElementById('settingsDropdown').classList.remove('open');
   document.getElementById('walletBtn').classList.remove('active');
   document.getElementById('settingsBtn').classList.remove('active');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CARD EXPAND/COLLAPSE (mobile)
+// ═══════════════════════════════════════════════════════════════════
+function toggleCard(el, event) {
+  // Only on mobile
+  if (window.innerWidth > 600) return;
+  // Don't toggle if clicking a link or button
+  if (event.target.closest('a') || event.target.closest('.card-fav-btn')) return;
+  el.classList.toggle('expanded');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// FAVORITES
+// ═══════════════════════════════════════════════════════════════════
+function toggleFavorite(promoId, event) {
+  event.stopPropagation();
+  const btn = event.currentTarget;
+  const emptyHeart = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  const filledHeart = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#e11d48" stroke="#e11d48" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  if (favoriteIds.has(promoId)) {
+    favoriteIds.delete(promoId);
+    btn.innerHTML = emptyHeart;
+    btn.classList.remove('faved');
+  } else {
+    favoriteIds.add(promoId);
+    btn.innerHTML = filledHeart;
+    btn.classList.add('faved');
+  }
+  saveState('cashbackdo_favs', [...favoriteIds]);
+  if (activeBank === 'favoritos') renderCards();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SWIPE TO HIDE
+// ═══════════════════════════════════════════════════════════════════
+function hidePromo(promoId, wrapEl) {
+  hiddenIds.add(promoId);
+  saveState('cashbackdo_hidden', [...hiddenIds]);
+  // Animate out
+  wrapEl.classList.add('hiding');
+  setTimeout(() => {
+    wrapEl.classList.add('collapse');
+    setTimeout(() => renderCards(), 350);
+  }, 150);
+}
+
+function unhidePromo(promoId) {
+  hiddenIds.delete(promoId);
+  saveState('cashbackdo_hidden', [...hiddenIds]);
+  renderCards();
+}
+
+// Touch swipe handler — attach to each card wrapper
+function initSwipe(el, promoId) {
+  let startX = 0, currentX = 0, dragging = false;
+  const threshold = 80;
+
+  el.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    currentX = startX;
+    dragging = true;
+    el.classList.remove('swiping');
+  }, { passive: true });
+
+  el.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    currentX = e.touches[0].clientX;
+    const dx = startX - currentX;
+    if (dx > 20) {
+      el.classList.add('swiping');
+      const card = el.querySelector('.promo-card');
+      card.style.transform = `translateX(${Math.max(-threshold, -dx)}px)`;
+    }
+  }, { passive: true });
+
+  el.addEventListener('touchend', () => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = startX - currentX;
+    const card = el.querySelector('.promo-card');
+    if (dx >= threshold) {
+      hidePromo(promoId, el);
+    } else {
+      card.style.transform = '';
+      el.classList.remove('swiping');
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════════════════════════
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) {
+    closeMobileMenu();
+  } else {
+    menu.classList.add('open');
+    overlay.classList.add('open');
+  }
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileMenuOverlay').classList.remove('open');
 }
 
 // Close settings dropdown when clicking outside it
