@@ -838,13 +838,30 @@ export async function runScraper(banksToProcess = null) {
     : BANK_SOURCES;
 
   const allNewPromos = [];
+  const bankResults = [];
 
   for (const source of sources) {
+    const bankStart = Date.now();
     try {
       const newPromos = await processBank(source, existingIds);
       allNewPromos.push(...newPromos);
+      bankResults.push({
+        bankId: source.id,
+        name: source.name,
+        status: 'ok',
+        promosFound: newPromos.length,
+        durationSeconds: parseFloat(((Date.now() - bankStart) / 1000).toFixed(1)),
+      });
     } catch (err) {
       console.error(`❌ Error procesando ${source.name}:`, err.message);
+      bankResults.push({
+        bankId: source.id,
+        name: source.name,
+        status: 'error',
+        error: err.message,
+        promosFound: 0,
+        durationSeconds: parseFloat(((Date.now() - bankStart) / 1000).toFixed(1)),
+      });
     }
   }
 
@@ -879,6 +896,7 @@ export async function runScraper(banksToProcess = null) {
         newPromos: allNewPromos.length,
         totalPromos: updated.length,
         durationSeconds: parseFloat(elapsed),
+        bankResults,
       },
       ...(existing.scrapeHistory || []).slice(0, 29), // últimas 30 ejecuciones
     ]
