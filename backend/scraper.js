@@ -10,6 +10,7 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import puppeteerExtra from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -19,6 +20,11 @@ import { redisSet } from './redis.js';
 // Activar plugin stealth: parchea WebGL, canvas, navigator, chrome runtime, etc.
 // Necesario para bypassear Incapsula (Popular) y Akamai (Caribe)
 puppeteerExtra.use(StealthPlugin());
+
+// Proxy opcional para evadir bloqueos de IP en datacenters (Railway, etc.)
+const PROXY_URL = process.env.PROXY_URL || '';
+if (PROXY_URL) console.log(`🌐 Proxy activo: ${PROXY_URL.replace(/\/\/.*@/, '//***@')}`);
+const axiosProxy = PROXY_URL ? { httpsAgent: new HttpsProxyAgent(PROXY_URL) } : {};
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -56,6 +62,7 @@ const PUPPETEER_OPTS = {
     '--disable-setuid-sandbox',
     '--disable-dev-shm-usage',
     '--dns-server=8.8.8.8',
+    ...(PROXY_URL ? [`--proxy-server=${PROXY_URL}`] : []),
   ],
   ...(process.env.PUPPETEER_EXECUTABLE_PATH && { executablePath: process.env.PUPPETEER_EXECUTABLE_PATH }),
 };
@@ -91,7 +98,8 @@ async function getPdfLinksFromHtml(url, selector, keywords, excludeKeywords) {
   try {
     const { data } = await axios.get(url, {
       timeout: 15000,
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' }
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' },
+      ...axiosProxy,
     });
     const $ = cheerio.load(data);
     const links = [];
@@ -164,7 +172,8 @@ async function downloadPdfAsBase64(url) {
     const response = await axios.get(url, {
       responseType: 'arraybuffer',
       timeout: 20000,
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' }
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' },
+      ...axiosProxy,
     });
     const buffer = Buffer.from(response.data);
     return buffer.toString('base64');
@@ -334,7 +343,7 @@ async function getBhdPromoDetail(title) {
   try {
     const q = encodeURIComponent(title.substring(0, 60));
     const url = `https://backend.bhd.com.do/api/t-4-s?filters[heading][$containsi]=${q}&populate=deep&pagination%5BpageSize%5D=3`;
-    const { data } = await axios.get(url, { timeout: 8000 });
+    const { data } = await axios.get(url, { timeout: 8000, ...axiosProxy });
     const items = data?.data || [];
     if (items.length === 0) return null;
 
@@ -357,7 +366,7 @@ async function getBhdPromoDetail(title) {
 
 async function processBankFromStrapiApi(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
-    const { data } = await axios.get(source.strapiUrl, { timeout: 15000 });
+    const { data } = await axios.get(source.strapiUrl, { timeout: 15000, ...axiosProxy });
     const cards = data?.data?.attributes?.product_cards?.data || [];
     console.log(`   📋 ${cards.length} cards en la API`);
 
@@ -416,7 +425,7 @@ async function processBankFromStrapiApi(source, existingIds, existingContext, ma
 
 async function processBankFromLafiseJson(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
-    const { data } = await axios.get(source.jsonUrl, { timeout: 10000 });
+    const { data } = await axios.get(source.jsonUrl, { timeout: 10000, ...axiosProxy });
     const items = data?.promos || [];
     console.log(`   📋 ${items.length} promos en el JSON`);
 
@@ -529,7 +538,7 @@ Reglas importantes:
 
 async function processBankFromWpApi(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
-    const { data } = await axios.get(source.wpApiUrl, { timeout: 15000 });
+    const { data } = await axios.get(source.wpApiUrl, { timeout: 15000, ...axiosProxy });
     const posts = Array.isArray(data) ? data : [];
     console.log(`   📋 ${posts.length} posts en la WP API`);
 
