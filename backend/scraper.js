@@ -146,11 +146,26 @@ async function downloadPdfAsBase64(url) {
   }
 }
 
-// Normaliza la respuesta de Claude: si es un array, devuelve múltiples promos con metadata
+// Normaliza la respuesta de Claude: maneja arrays, objetos con keys numéricos, y objetos simples
 function normalizeExtractedPromos(data, bankName, sourceUrl, idBase) {
   const stamp = { bank: bankName, sourceUrl, extractedAt: new Date().toISOString() };
-  const items = Array.isArray(data) ? data : [data];
-  return items.map((item, i) => ({
+
+  let items;
+  if (Array.isArray(data)) {
+    items = data;
+  } else if (typeof data === 'object' && data !== null) {
+    // Claude a veces devuelve {"0": {...}, "1": {...}} en vez de [{...}, {...}]
+    const numericKeys = Object.keys(data).filter(k => /^\d+$/.test(k));
+    if (numericKeys.length > 0 && typeof data[numericKeys[0]] === 'object') {
+      items = numericKeys.sort((a, b) => a - b).map(k => data[k]);
+    } else {
+      items = [data];
+    }
+  } else {
+    items = [data];
+  }
+
+  return items.filter(item => item && item.title).map((item, i) => ({
     ...item,
     ...stamp,
     id: items.length === 1 ? generateId(idBase) : generateId(`${idBase}::${i}`),
@@ -996,14 +1011,38 @@ export async function runScraper(banksToProcess = null, { maxPerBank = Infinity 
   // Combinar existentes (con correcciones aplicadas) + genuinamente nuevas
   const combined = [...correctedExisting, ...cleanNew];
 
+  // Dedup por contenido: si dos promos tienen mismo banco+título+fecha, queda la más reciente
+  const deduped = [];
+  const seen = new Map();
+  for (const p of combined) {
+    if (!p.title) continue; // descartar promos sin título
+    const key = `${p.bankId}::${p.title}::${p.validFrom || ''}`;
+    const existing = seen.get(key);
+    if (existing) {
+      // Quedarse con la más reciente
+      if ((p.extractedAt || '') > (existing.extractedAt || '')) {
+        deduped[deduped.indexOf(existing)] = p;
+        seen.set(key, p);
+      }
+    } else {
+      seen.set(key, p);
+      deduped.push(p);
+    }
+  }
+
   // Refrescar estado activo/próximo de TODAS las promos
-  const updated = refreshActiveStatus(combined);
+  const updated = refreshActiveStatus(deduped);
 
   // Ordenar: activas primero, luego próximas, luego expiradas
   updated.sort((a, b) => {
     const order = (p) => p.isActive ? 0 : p.isUpcoming ? 1 : 2;
     return order(a) - order(b) || new Date(b.validUntil) - new Date(a.validUntil);
   });
+
+  const dedupedCount = combined.length - deduped.length;
+  if (dedupedCount > 0) {
+    console.log(`   🧹 Dedup: ${dedupedCount} duplicados eliminados (${combined.length} → ${deduped.length})`);
+  }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
 
@@ -1017,6 +1056,7 @@ export async function runScraper(banksToProcess = null, { maxPerBank = Infinity 
       expired: updated.filter(p => !p.isActive && !p.isUpcoming).length,
       newThisRun: cleanNew.length,
       correctionsThisRun: corrections.length,
+      duplicatesRemoved: dedupedCount,
       scrapeTimeSeconds: parseFloat(elapsed),
     },
     scrapeHistory: [

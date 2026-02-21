@@ -116,6 +116,84 @@
       "daysUntilStart": null
     },
     {
+      "title": "30% Descuento en Days Inn Juan Dolio + 5% en Restaurante Ona",
+      "description": "Disfruta de 30% de descuento en estadía en Days Inn Juan Dolio y 5% de descuento en el restaurante Ona al pagar con tarjetas VISA Banco López de Haro.",
+      "percentage": "30%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de crédito VISA Banco López de Haro",
+        "Tarjetas de débito VISA Banco López de Haro",
+        "Tarjetas empresariales VISA Banco López de Haro"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-01-01",
+      "validUntil": "2026-12-31",
+      "creditingDate": "Descuento aplicado en caja directamente por el hotel al momento del pago",
+      "establishments": [
+        "Days Inn Juan Dolio",
+        "Restaurante Ona"
+      ],
+      "categories": [
+        "restaurante",
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Descuento aplicado en caja directamente por el hotel al pagar con tarjeta participante. Válido para tarjetas de crédito, débito y empresariales VISA Banco López de Haro.",
+      "conditions": [],
+      "isActive": true,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-21T14:27:20.928Z",
+      "id": "pz8wdp",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": 313,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% descuento en Donoma Spa con Plus BHD",
+      "description": "15% de descuento en servicios de Spa y upgrade en Donoma para miembros de Plus BHD.",
+      "percentage": "15%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas BHD (programa Plus BHD)"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-12-31",
+      "creditingDate": null,
+      "establishments": [
+        "Donoma"
+      ],
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Aplica en Spa y upgrade. Exclusivo para miembros Plus BHD.",
+      "conditions": [
+        "Exclusivo para miembros Plus BHD"
+      ],
+      "isActive": true,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-21T14:34:46.626Z",
+      "id": "cu2s9w",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": 313,
+      "daysUntilStart": null
+    },
+    {
       "title": "10% de descuento en Barrio Import",
       "description": "Obtén 10% de descuento en la compra de 4 gomas o 4 aros, nuevos o usados, en Barrio Import al pagar con tarjetas Banreservas durante la última semana de cada mes.",
       "percentage": "10%",
@@ -503,6 +581,44 @@
       "daysUntilStart": null
     },
     {
+      "title": "10% descuento en Hair Plus con Plus BHD",
+      "description": "10% de descuento en todos los servicios y productos de Hair Plus para miembros de Plus BHD.",
+      "percentage": "10%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas BHD (programa Plus BHD)"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-12-01",
+      "validUntil": "2026-04-30",
+      "creditingDate": null,
+      "establishments": [
+        "Hair Plus"
+      ],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Descuento exclusivo para miembros del programa Plus BHD. Aplica en todos los servicios y productos.",
+      "conditions": [
+        "Exclusivo para miembros Plus BHD"
+      ],
+      "isActive": true,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-21T14:34:46.626Z",
+      "id": "cu2s9y",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": 68,
+      "daysUntilStart": null
+    },
+    {
       "title": "Hasta 50% de descuento en Fundación Psicología & Salud Michelle Santana",
       "description": "Descuentos en consultas de psicología, psiquiatría y nutrición en Fundación Psicología & Salud Michelle Santana al pagar con tarjetas Banreservas. Hasta 50% en primera consulta con ARS Reservas.",
       "percentage": "Hasta 50%",
@@ -572,6 +688,45 @@
       "bankColor": "#005FA8",
       "isUpcoming": false,
       "daysUntilExpiry": 38,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 25% descuento en Arbaje Soni con Plus BHD",
+      "description": "25% de descuento en mobiliarios y 15% en accesorios en Arbaje Soni para miembros de Plus BHD.",
+      "percentage": "25%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas BHD (programa Plus BHD)"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-15",
+      "validUntil": "2026-03-15",
+      "creditingDate": null,
+      "establishments": [
+        "Arbaje Soni"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "25% en mobiliarios y 15% en accesorios. Exclusivo para miembros Plus BHD.",
+      "conditions": [
+        "Exclusivo para miembros Plus BHD",
+        "Porcentaje varía según categoría de producto"
+      ],
+      "isActive": true,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-21T14:34:46.626Z",
+      "id": "cu2s9x",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": 22,
       "daysUntilStart": null
     },
     {
@@ -827,6 +982,46 @@
       "daysUntilStart": null
     },
     {
+      "title": "Hasta 35% descuento en Minaya con Plus BHD",
+      "description": "Hasta 35% de descuento en sillas, espejos y camas seleccionadas, hasta 30% en electrodomésticos y hasta 20% en área de mascotas en Minaya.",
+      "percentage": "35%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas BHD (programa Plus BHD)"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-12-01",
+      "validUntil": "2026-02-28",
+      "creditingDate": null,
+      "establishments": [
+        "Minaya"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Hasta 35% en sillas, espejos y camas seleccionadas; hasta 30% en electrodomésticos; hasta 20% en área de mascotas y accesorios. Exclusivo Plus BHD.",
+      "conditions": [
+        "Exclusivo para miembros Plus BHD",
+        "Porcentaje varía según categoría de producto",
+        "Aplica en productos seleccionados"
+      ],
+      "isActive": true,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-21T14:34:46.626Z",
+      "id": "cu2s9v",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": 7,
+      "daysUntilStart": null
+    },
+    {
       "title": "20% de Cashback en hoteles y Airbnb",
       "description": "Obtén un 20% de cashback en consumos realizados en hoteles y Airbnb con tarjetas de crédito LAFISE.",
       "percentage": "20%",
@@ -1039,41 +1234,6 @@
     },
     {
       "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "Obtén un 20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tiendas físicas, con un tope máximo de RD$5,000.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$1,500.00 acumulado",
-      "maxReturn": "RD$5,000",
-      "validFrom": "2026-02-27",
-      "validUntil": "2026-03-01",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [
-        "Tiendas físicas"
-      ],
-      "categories": [
-        "supermercado",
-        "retail"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Mínimo de consumo acumulado de RD$1,500.00 por cliente durante la vigencia.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:46.665Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": true,
-      "daysUntilExpiry": 8,
-      "daysUntilStart": 6
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
       "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional el 27 de febrero de 2026, de 11 a.m. a 8 p.m.",
       "percentage": "20%",
       "promoType": "devolución",
@@ -1139,6 +1299,80 @@
       "daysUntilStart": null
     },
     {
+      "title": "Promo Colegiatura",
+      "description": "15% de devolución al realizar pagos en Colegios, Escuelas, Universidades y Centros Educativos con tarjetas Banesco.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito y Débito)"
+      ],
+      "minimumSpend": "RD$50,000.00 acumulados durante la vigencia",
+      "maxReturn": "RD$8,000.00 por tarjeta",
+      "validFrom": "2026-02-06",
+      "validUntil": "2026-02-20",
+      "creditingDate": "30 días posteriores al cierre de la promoción",
+      "establishments": [
+        "Colegios",
+        "Escuelas",
+        "Universidades",
+        "Centros Educativos"
+      ],
+      "categories": [
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Solo aplican consumos en pesos dominicanos. No se acreditan tarjetas en mora al momento del pago del cashback y el cashback no se aplica para cubrir deudas o saldos pendientes.",
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/promo-colegiatura-2/",
+      "extractedAt": "2026-02-21T12:18:26.171Z",
+      "id": "f16e4p",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -1,
+      "daysUntilStart": null
+    },
+    {
+      "title": "10% Cashback en Pagos de Colegiatura",
+      "description": "Obtén 10% de cashback al realizar pagos de colegiatura en comercios registrados bajo la categoría de Colegios con tarjetas de crédito personales VISA Banco López de Haro.",
+      "percentage": "10%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito personales VISA Banco López de Haro"
+      ],
+      "minimumSpend": "RD$100,000.00 acumulable",
+      "maxReturn": "RD$10,000.00",
+      "validFrom": "2026-02-18",
+      "validUntil": "2026-02-20",
+      "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
+      "establishments": [],
+      "categories": [
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Válido solo en comercios registrados bajo la categoría de Colegios. No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
+      "conditions": [
+        "Monto mínimo de consumo acumulable RD$100,000.00",
+        "Máximo de devolución RD$10,000.00",
+        "Solo válido en comercios registrados bajo la categoría de Colegios"
+      ],
+      "isActive": false,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-21T14:50:32.384Z",
+      "id": "pz8wdo",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": -1,
+      "daysUntilStart": null
+    },
+    {
       "title": "Oferta Gastos educativos febrero 2026",
       "description": "Recibe un 10% de devolución al acumular RD$80,000 o más en la categoría educación con tu Tarjeta de Crédito o Cuotas BHD.",
       "percentage": "10%",
@@ -1176,6 +1410,77 @@
       "bankColor": "#e63946",
       "isUpcoming": false,
       "daysUntilExpiry": -3,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% de devolución con tarjeta de crédito La Nacional",
+      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con un tope máximo de RD$ 5,000 por cliente.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito La Nacional"
+      ],
+      "minimumSpend": "RD$ 4,000",
+      "maxReturn": "RD$ 5,000",
+      "validFrom": "2026-02-16",
+      "validUntil": "2026-02-18",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [
+        "Tiendas físicas",
+        "Online"
+      ],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:41.514Z",
+      "id": "zgxyam",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -3,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Hasta 20% de devolución en educación con La Nacional",
+      "description": "Devolución de hasta 20% al pagar inscripciones, reinscripciones y mensualidades de colegios y universidades con Tarjeta de Crédito La Nacional.",
+      "percentage": "Hasta 20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito La Nacional",
+        "Crédito diferido CompraMás La Nacional"
+      ],
+      "minimumSpend": "RD$20,000.00",
+      "maxReturn": "RD$12,000",
+      "validFrom": "2026-02-02",
+      "validUntil": "2026-02-17",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [],
+      "categories": [
+        "supermercado",
+        "educación"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "15% con tarjeta de crédito regular y 20% con crédito diferido CompraMás. No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:15:21.313Z",
+      "id": "7mm7ba",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -4,
       "daysUntilStart": null
     },
     {
@@ -1278,6 +1583,293 @@
       "bankColor": "#0077b6",
       "isUpcoming": false,
       "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Promo San Valentín Banesco 2026",
+      "description": "20% de cashback en compras realizadas con Tarjetas de Crédito Banesco en establecimientos participantes como Casa Mencía, Españolerías, La Parrillita, Rancho Chito, floristerías y heladerías, más 10% de descuento en caja en restaurantes seleccionados.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito)"
+      ],
+      "minimumSpend": "Varía por establecimiento: desde RD$1,000.00 hasta RD$4,000.00 acumulados durante la vigencia",
+      "maxReturn": "Varía por establecimiento: desde RD$2,000.00 hasta RD$4,000.00 en puntos verdes",
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-02-15",
+      "creditingDate": "30 días posteriores al cierre de la promoción",
+      "establishments": [
+        "Casa Mencía",
+        "La Españolerías",
+        "La Parrillita (Santiago)",
+        "Rancho Chito (Santiago)",
+        "Floristerías participantes",
+        "Heladerías participantes"
+      ],
+      "categories": [
+        "restaurante",
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan tarjetas Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito ni Débito. Solo aplican consumos en pesos dominicanos y no se acreditan tarjetas en mora.",
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/promo-san-valentin/",
+      "extractedAt": "2026-02-21T12:17:49.312Z",
+      "id": "z64ebg",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% de devolución con tarjetas La Nacional",
+      "description": "15% de devolución al pagar con tarjeta de Crédito Oro Internacional y Débito La Nacional en tiendas físicas y online.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Crédito Oro Internacional La Nacional",
+        "Débito La Nacional"
+      ],
+      "minimumSpend": "RD$ 1,500",
+      "maxReturn": "RD$ 10,000",
+      "validFrom": "2026-02-10",
+      "validUntil": "2026-02-15",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Promoción exclusiva solo para tarjetas débito y crédito Oro Internacional. Consumo mínimo acumulable durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:16.013Z",
+      "id": "fkea64",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% de devolución con tarjeta La Nacional",
+      "description": "15% de devolución al pagar con tu tarjeta de crédito o débito La Nacional, con un tope máximo de RD$ 5,000 por cliente.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito La Nacional",
+        "Tarjeta de débito La Nacional"
+      ],
+      "minimumSpend": "RD$ 5,000",
+      "maxReturn": "RD$ 5,000",
+      "validFrom": "2026-02-10",
+      "validUntil": "2026-02-15",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": null,
+      "categories": [
+        "supermercado"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:20.947Z",
+      "id": "g394l4",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% de devolución con tarjeta de crédito La Nacional",
+      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con consumo mínimo acumulable de RD$4,000.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito La Nacional"
+      ],
+      "minimumSpend": "RD$ 4,000.00",
+      "maxReturn": "RD$ 6,000.00",
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-02-15",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [
+        "Tiendas físicas",
+        "Online"
+      ],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Tope máximo de devolución RD$6,000 por cliente y consumo mínimo acumulable durante la vigencia.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:26.278Z",
+      "id": "zgxyam",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% de devolución con Tarjeta Oro Internacional",
+      "description": "15% de devolución al pagar con tu Tarjeta de Crédito Oro Internacional de La Nacional.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito Oro Internacional"
+      ],
+      "minimumSpend": "RD$5,000.00",
+      "maxReturn": "RD$5,000.00",
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-02-15",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": null,
+      "categories": [
+        "supermercado"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción exclusiva solo para tarjetas de Crédito Oro Internacional. Tope máximo de devolución RD$5,000 por cliente durante la vigencia.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:36.523Z",
+      "id": "5s2nn2",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% Cashback en TOUS",
+      "description": "Recibe 20% de cashback al pagar en TOUS con tarjetas de crédito personales VISA Banco López de Haro.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito personales VISA Banco López de Haro"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "RD$3,500.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-15",
+      "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
+      "establishments": [
+        "TOUS"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
+      "conditions": [
+        "Máximo de devolución por cliente RD$3,500.00"
+      ],
+      "isActive": false,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-21T14:50:32.384Z",
+      "id": "pz8wdn",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% Cashback en Salones de Belleza y Spas",
+      "description": "Recibe 15% de cashback al pagar en salones de belleza y spas con tarjetas de crédito personales VISA Banco López de Haro.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito personales VISA Banco López de Haro"
+      ],
+      "minimumSpend": "RD$5,000.00",
+      "maxReturn": "RD$3,000.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-14",
+      "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
+      "establishments": [],
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Monto mínimo de consumo RD$5,000.00.",
+      "conditions": [
+        "Monto mínimo de consumo RD$5,000.00",
+        "Máximo de devolución por cliente RD$3,000.00"
+      ],
+      "isActive": false,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-21T14:50:32.384Z",
+      "id": "pz8wdl",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": -7,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% Cashback en Floristerías y Reposterías",
+      "description": "Recibe 15% de cashback al pagar en floristerías y reposterías con tarjetas de crédito personales VISA Banco López de Haro.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito personales VISA Banco López de Haro"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "RD$1,000.00",
+      "validFrom": "2026-02-11",
+      "validUntil": "2026-02-14",
+      "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
+      "establishments": [],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
+      "conditions": [
+        "Máximo de devolución por cliente RD$1,000.00"
+      ],
+      "isActive": false,
+      "bank": "Banco López de Haro",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-21T14:50:32.384Z",
+      "id": "pz8wdm",
+      "bankId": "blh",
+      "bankColor": "#2d6a4f",
+      "isUpcoming": false,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1561,6 +2153,73 @@
       "daysUntilStart": null
     },
     {
+      "title": "Hasta 25% de ahorro con Tarjeta de Crédito La Nacional",
+      "description": "Obtén un 20% de devolución al pagar con tu Tarjeta de Crédito La Nacional, y un 5% adicional si pagas con Tarjeta de Crédito Unión, para un total de hasta 25% de ahorro.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito La Nacional",
+        "Tarjeta de Crédito Unión"
+      ],
+      "minimumSpend": "RD$1,000 acumulado por cliente",
+      "maxReturn": "RD$3,000 por cliente",
+      "validFrom": "2026-02-13",
+      "validUntil": "2026-02-14",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": null,
+      "categories": [
+        "supermercado"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, Débito, fondeo ni prepago. El 5% adicional es exclusivo para Tarjeta de Crédito Unión.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:31.850Z",
+      "id": "qilbjj",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -7,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
+      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito La Nacional"
+      ],
+      "minimumSpend": "RD$ 3,000",
+      "maxReturn": "RD$ 6,000",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-12",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:11.029Z",
+      "id": "sr9hk2",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -9,
+      "daysUntilStart": null
+    },
+    {
       "title": "20% de Cashback en aerolíneas",
       "description": "Obtén un 20% de cashback en compras realizadas en aerolíneas con tarjetas de crédito LAFISE.",
       "percentage": "20%",
@@ -1671,6 +2330,40 @@
       "daysUntilStart": null
     },
     {
+      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
+      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito La Nacional"
+      ],
+      "minimumSpend": "RD$ 1,500",
+      "maxReturn": "RD$ 5,000",
+      "validFrom": "2026-02-05",
+      "validUntil": "2026-02-08",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": [],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:16:01.233Z",
+      "id": "sr9hk2",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -13,
+      "daysUntilStart": null
+    },
+    {
       "title": "Día Plus BHD - Febrero",
       "description": "Recibe 20% de devolución en consumos presenciales en restaurantes al pagar con tarjetas de crédito BHD seleccionadas.",
       "percentage": "20%",
@@ -1705,6 +2398,40 @@
       "bankColor": "#e63946",
       "isUpcoming": false,
       "daysUntilExpiry": -13,
+      "daysUntilStart": null
+    },
+    {
+      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
+      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito La Nacional"
+      ],
+      "minimumSpend": "RD$ 3,000.00",
+      "maxReturn": "RD$ 5,000.00",
+      "validFrom": "2026-02-02",
+      "validUntil": "2026-02-04",
+      "creditingDate": "30 días luego de finalizar la promoción",
+      "establishments": null,
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito. Tope máximo de devolución RD$ 5,000 por cliente durante la vigencia de la promoción.",
+      "isActive": false,
+      "bank": "La Nacional",
+      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
+      "extractedAt": "2026-02-21T13:15:15.417Z",
+      "id": "sr9hk2",
+      "bankId": "lanacional",
+      "bankColor": "#8B1A1A",
+      "isUpcoming": false,
+      "daysUntilExpiry": -17,
       "daysUntilStart": null
     },
     {
@@ -1984,850 +2711,6 @@
       "bankColor": "#0077b6",
       "isUpcoming": false,
       "daysUntilExpiry": -35,
-      "daysUntilStart": null
-    },
-    {
-      "title": "55% de descuento en Sleep Center con Banreservas",
-      "description": "Obtén 55% de descuento en colchones Simmons Beautyrest en Sleep Center al pagar con Tarjetas de Crédito o Credimás Banreservas de manera presencial.",
-      "percentage": "55%",
-      "promoType": "descuento",
-      "eligibleCards": [
-        "Tarjetas de Crédito Banreservas",
-        "Credimás Banreservas"
-      ],
-      "minimumSpend": null,
-      "maxReturn": null,
-      "validFrom": "2025-12-04",
-      "validUntil": "2025-12-06",
-      "creditingDate": "Descuento aplicado en caja al momento del pago",
-      "establishments": [
-        "Sleep Center"
-      ],
-      "categories": [
-        "retail"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Solo aplica en colchones Simmons Beautyrest. No aplican tarjetas de débito, compras online ni artículos en ofertas.",
-      "isActive": false,
-      "bank": "Banreservas",
-      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/tu4n4fch/terminos-y-condiciones-aprovecha-55-de-descuento-en-sleep-center-con-tu-gui-uea-de-beneficios-banreservas.pdf",
-      "extractedAt": "2026-02-21T12:05:51.982Z",
-      "id": "idibf1",
-      "bankId": "banreservas",
-      "bankColor": "#d4a017",
-      "isUpcoming": false,
-      "daysUntilExpiry": -77,
-      "daysUntilStart": null
-    },
-    {
-      "0": {
-        "title": "10% de descuento en Hair Plus",
-        "description": "10% de descuento en todos los servicios y productos de Hair Plus para miembros de PLUS BHD.",
-        "percentage": "10%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas BHD"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-12-01",
-        "validUntil": "2026-04-30",
-        "creditingDate": null,
-        "establishments": [
-          "Hair Plus"
-        ],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "Exclusivo para miembros de PLUS BHD. Aplica en todos los servicios y productos.",
-        "isActive": true
-      },
-      "1": {
-        "title": "Hasta 25% de descuento en Arbaje Soni",
-        "description": "25% de descuento en mobiliarios y 15% de descuento en accesorios en Arbaje Soni para miembros de PLUS BHD.",
-        "percentage": "25%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas BHD"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2026-02-15",
-        "validUntil": "2026-03-15",
-        "creditingDate": null,
-        "establishments": [
-          "Arbaje Soni"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "25% en mobiliarios y 15% en accesorios. Exclusivo para miembros de PLUS BHD.",
-        "isActive": true
-      },
-      "2": {
-        "title": "15% de descuento en Donoma Spa",
-        "description": "15% de descuento en servicios de Spa y upgrade en Donoma para miembros de PLUS BHD.",
-        "percentage": "15%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas BHD"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2026-02-15",
-        "validUntil": "2026-12-31",
-        "creditingDate": null,
-        "establishments": [
-          "Donoma"
-        ],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "Aplica en Spa y upgrade. Exclusivo para miembros de PLUS BHD.",
-        "isActive": true
-      },
-      "3": {
-        "title": "Hasta 35% de descuento en Minaya",
-        "description": "Hasta 35% de descuento en sillas, espejos y camas seleccionadas, hasta 30% en electrodomésticos y hasta 20% en área de mascotas y accesorios en Minaya.",
-        "percentage": "35%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas BHD"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-12-01",
-        "validUntil": "2026-02-28",
-        "creditingDate": null,
-        "establishments": [
-          "Minaya"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "Hasta 35% en sillas, espejos y camas seleccionadas; hasta 30% en electrodomésticos; hasta 20% en área de mascotas y accesorios. Exclusivo para miembros de PLUS BHD.",
-        "isActive": true
-      },
-      "bank": "BHD",
-      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
-      "extractedAt": "2026-02-21T12:07:15.132Z",
-      "id": "x1kmae",
-      "bankId": "bhd",
-      "bankColor": "#e63946",
-      "categories": [
-        "otro"
-      ]
-    },
-    {
-      "title": "Promo Colegiatura",
-      "description": "15% de devolución al realizar pagos en Colegios, Escuelas, Universidades y Centros Educativos con tarjetas Banesco.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjetas de crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito y Débito)"
-      ],
-      "minimumSpend": "RD$50,000.00 acumulados durante la vigencia",
-      "maxReturn": "RD$8,000.00 por tarjeta",
-      "validFrom": "2026-02-06",
-      "validUntil": "2026-02-20",
-      "creditingDate": "30 días posteriores al cierre de la promoción",
-      "establishments": [
-        "Colegios",
-        "Escuelas",
-        "Universidades",
-        "Centros Educativos"
-      ],
-      "categories": [
-        "educación"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Solo aplican consumos en pesos dominicanos. No se acreditan tarjetas en mora al momento del pago del cashback y el cashback no se aplica para cubrir deudas o saldos pendientes.",
-      "isActive": false,
-      "bank": "Banesco",
-      "sourceUrl": "https://www.banesco.com.do/promociones/promo-colegiatura-2/",
-      "extractedAt": "2026-02-21T12:18:26.171Z",
-      "id": "f16e4p",
-      "bankId": "banesco",
-      "bankColor": "#C8102E",
-      "isUpcoming": false,
-      "daysUntilExpiry": -1,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con tarjeta de crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con un tope máximo de RD$ 5,000 por cliente.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 4,000",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-16",
-      "validUntil": "2026-02-18",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [
-        "Tiendas físicas",
-        "Online"
-      ],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:41.514Z",
-      "id": "zgxyam",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -3,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Hasta 20% de devolución en educación con La Nacional",
-      "description": "Devolución de hasta 20% al pagar inscripciones, reinscripciones y mensualidades de colegios y universidades con Tarjeta de Crédito La Nacional.",
-      "percentage": "Hasta 20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional",
-        "Crédito diferido CompraMás La Nacional"
-      ],
-      "minimumSpend": "RD$20,000.00",
-      "maxReturn": "RD$12,000",
-      "validFrom": "2026-02-02",
-      "validUntil": "2026-02-17",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "educación"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "15% con tarjeta de crédito regular y 20% con crédito diferido CompraMás. No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:21.313Z",
-      "id": "7mm7ba",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -4,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Promo San Valentín Banesco 2026",
-      "description": "20% de cashback en compras realizadas con Tarjetas de Crédito Banesco en establecimientos participantes como Casa Mencía, Españolerías, La Parrillita, Rancho Chito, floristerías y heladerías, más 10% de descuento en caja en restaurantes seleccionados.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjetas de Crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito)"
-      ],
-      "minimumSpend": "Varía por establecimiento: desde RD$1,000.00 hasta RD$4,000.00 acumulados durante la vigencia",
-      "maxReturn": "Varía por establecimiento: desde RD$2,000.00 hasta RD$4,000.00 en puntos verdes",
-      "validFrom": "2026-02-13",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días posteriores al cierre de la promoción",
-      "establishments": [
-        "Casa Mencía",
-        "La Españolerías",
-        "La Parrillita (Santiago)",
-        "Rancho Chito (Santiago)",
-        "Floristerías participantes",
-        "Heladerías participantes"
-      ],
-      "categories": [
-        "restaurante",
-        "entretenimiento"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No participan tarjetas Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, Mastercard Air Europa, MultiCrédito ni Débito. Solo aplican consumos en pesos dominicanos y no se acreditan tarjetas en mora.",
-      "isActive": false,
-      "bank": "Banesco",
-      "sourceUrl": "https://www.banesco.com.do/promociones/promo-san-valentin/",
-      "extractedAt": "2026-02-21T12:17:49.312Z",
-      "id": "z64ebg",
-      "bankId": "banesco",
-      "bankColor": "#C8102E",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "15% de devolución al pagar con tu Tarjeta de Crédito Oro Internacional de La Nacional en tiendas físicas y online.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito Oro Internacional La Nacional"
-      ],
-      "minimumSpend": "RD$5,000.00",
-      "maxReturn": "RD$5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Promoción exclusiva solo para tarjetas de Crédito Oro Internacional. El titular del anuncio dice 20% pero los términos y condiciones especifican 15% de devolución.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:26.799Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "Obtén un 20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tiendas físicas y online.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$1,000.00",
-      "maxReturn": "RD$4,000.00",
-      "validFrom": "2026-02-09",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito. Tope máximo de devolución RD$4,000 por cliente durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:06.455Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "15% de devolución con tarjetas La Nacional",
-      "description": "15% de devolución al pagar con tarjeta de Crédito Oro Internacional y Débito La Nacional en tiendas físicas y online.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Crédito Oro Internacional La Nacional",
-        "Débito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 10,000",
-      "validFrom": "2026-02-10",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito",
-        "débito"
-      ],
-      "notes": "Promoción exclusiva solo para tarjetas débito y crédito Oro Internacional. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:16.013Z",
-      "id": "fkea64",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "15% de devolución con tarjeta La Nacional",
-      "description": "15% de devolución al pagar con tu tarjeta de crédito o débito La Nacional, con un tope máximo de RD$ 5,000 por cliente.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito La Nacional",
-        "Tarjeta de débito La Nacional"
-      ],
-      "minimumSpend": "RD$ 5,000",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-10",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado"
-      ],
-      "cardTypes": [
-        "crédito",
-        "débito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:20.947Z",
-      "id": "g394l4",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con tarjeta de crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con consumo mínimo acumulable de RD$4,000.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 4,000.00",
-      "maxReturn": "RD$ 6,000.00",
-      "validFrom": "2026-02-13",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [
-        "Tiendas físicas",
-        "Online"
-      ],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Tope máximo de devolución RD$6,000 por cliente y consumo mínimo acumulable durante la vigencia.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:26.278Z",
-      "id": "zgxyam",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "15% de devolución con Tarjeta Oro Internacional",
-      "description": "15% de devolución al pagar con tu Tarjeta de Crédito Oro Internacional de La Nacional.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito Oro Internacional"
-      ],
-      "minimumSpend": "RD$5,000.00",
-      "maxReturn": "RD$5,000.00",
-      "validFrom": "2026-02-13",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Promoción exclusiva solo para tarjetas de Crédito Oro Internacional. Tope máximo de devolución RD$5,000 por cliente durante la vigencia.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:36.523Z",
-      "id": "5s2nn2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -6,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Hasta 25% de ahorro con Tarjeta de Crédito La Nacional",
-      "description": "Obtén un 20% de devolución al pagar con tu Tarjeta de Crédito La Nacional, y un 5% adicional si pagas con Tarjeta de Crédito Unión, para un total de hasta 25% de ahorro.",
-      "percentage": "25%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional",
-        "Tarjeta de Crédito Unión"
-      ],
-      "minimumSpend": "RD$1,000 acumulado por cliente",
-      "maxReturn": "RD$3,000 por cliente",
-      "validFrom": "2026-02-13",
-      "validUntil": "2026-02-14",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, Débito, fondeo ni prepago. El 5% adicional es exclusivo para Tarjeta de Crédito Unión.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:31.850Z",
-      "id": "qilbjj",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -7,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 3,000",
-      "maxReturn": "RD$ 6,000",
-      "validFrom": "2026-02-09",
-      "validUntil": "2026-02-12",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:11.029Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -9,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:31.400Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:36.498Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:40.966Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:45.754Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:51.067Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:55.757Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:01.233Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -13,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 3,000.00",
-      "maxReturn": "RD$ 5,000.00",
-      "validFrom": "2026-02-02",
-      "validUntil": "2026-02-04",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito. Tope máximo de devolución RD$ 5,000 por cliente durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:15.417Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -17,
       "daysUntilStart": null
     },
     {
@@ -3161,6 +3044,41 @@
       "daysUntilStart": null
     },
     {
+      "title": "55% de descuento en Sleep Center con Banreservas",
+      "description": "Obtén 55% de descuento en colchones Simmons Beautyrest en Sleep Center al pagar con Tarjetas de Crédito o Credimás Banreservas de manera presencial.",
+      "percentage": "55%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de Crédito Banreservas",
+        "Credimás Banreservas"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-12-04",
+      "validUntil": "2025-12-06",
+      "creditingDate": "Descuento aplicado en caja al momento del pago",
+      "establishments": [
+        "Sleep Center"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Solo aplica en colchones Simmons Beautyrest. No aplican tarjetas de débito, compras online ni artículos en ofertas.",
+      "isActive": false,
+      "bank": "Banreservas",
+      "sourceUrl": "https://cdnebrpeastus.azureedge.net/banreservas/media/tu4n4fch/terminos-y-condiciones-aprovecha-55-de-descuento-en-sleep-center-con-tu-gui-uea-de-beneficios-banreservas.pdf",
+      "extractedAt": "2026-02-21T12:05:51.982Z",
+      "id": "idibf1",
+      "bankId": "banreservas",
+      "bankColor": "#d4a017",
+      "isUpcoming": false,
+      "daysUntilExpiry": -77,
+      "daysUntilStart": null
+    },
+    {
       "title": "Hasta 20% de devolución en Conformatic con Visa Ademi",
       "description": "Recibe un 20% de devolución al pagar con tus Tarjetas de Crédito Visa Ademi en Conformatic, adicional al 20% de descuento en caja que ofrece la tienda.",
       "percentage": "20%",
@@ -3289,6 +3207,46 @@
       "daysUntilStart": null
     },
     {
+      "title": "Cashback Compras por Internet Amazon, Shein, AliExpress con Banesco",
+      "description": "20% de devolución al realizar compras en línea en Amazon, Shein y AliExpress con tarjetas Banesco.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": "US$50 acumulados durante la vigencia",
+      "maxReturn": "US$100 por tarjeta",
+      "validFrom": "2025-12-01",
+      "validUntil": "2025-12-01",
+      "creditingDate": null,
+      "establishments": [
+        "Amazon",
+        "Shein",
+        "AliExpress"
+      ],
+      "categories": [
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "La vigencia cambió del 15-17 de noviembre al 1 de diciembre de 2025. Compra mínima acumulada de US$50 y tope de devolución de US$100 por tarjeta.",
+      "conditions": [
+        "Compra mínima acumulada de US$50 durante la vigencia",
+        "Tope de devolución de US$100 por tarjeta"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yduccf",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -82,
+      "daysUntilStart": null
+    },
+    {
       "title": "Black Friday Lubricantes - Cashback 20%",
       "description": "20% de devolución al realizar compras en Lubricantes, además de descuentos en servicios, neumáticos y marcas seleccionadas durante el Black Friday.",
       "percentage": "20%",
@@ -3359,6 +3317,43 @@
       "id": "5cng9j",
       "bankId": "ademi",
       "bankColor": "#0056A2",
+      "isUpcoming": false,
+      "daysUntilExpiry": -83,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback y Descuentos Black Friday Lubricantes Diversos con Banesco",
+      "description": "20% de devolución en compras, además de descuentos de 30% a 40% en servicios y neumáticos seleccionados en Lubricantes Diversos.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-11-28",
+      "validUntil": "2025-11-30",
+      "creditingDate": null,
+      "establishments": [
+        "Lubricantes Diversos"
+      ],
+      "categories": [
+        "restaurante"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Además del 20% de devolución: 30% descuento en servicios y neumáticos RoadX y Nankang, 35% en Yokohama, 40% en numeraciones seleccionadas de las tres marcas.",
+      "conditions": [
+        "Descuentos en neumáticos aplican solo en marcas y numeraciones seleccionadas"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yducce",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
       "isUpcoming": false,
       "daysUntilExpiry": -83,
       "daysUntilStart": null
@@ -3441,6 +3436,44 @@
       "daysUntilStart": null
     },
     {
+      "title": "Cashback Black Friday La Sirena con Banesco",
+      "description": "25% de devolución al realizar compras en Supermercados La Sirena y sus plataformas web durante Black Friday.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-11-25",
+      "validUntil": "2025-11-27",
+      "creditingDate": null,
+      "establishments": [
+        "La Sirena"
+      ],
+      "categories": [
+        "supermercado",
+        "restaurante"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica en supermercados La Sirena en República Dominicana y sus plataformas web.",
+      "conditions": [
+        "Solo en República Dominicana"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yduccd",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -86,
+      "daysUntilStart": null
+    },
+    {
       "title": "Black Friday Sleep Center 20% Cashback",
       "description": "20% de devolución al realizar compras en Sleep Center durante el Black Friday, con compra mínima acumulada de RD$6,000.",
       "percentage": "20%",
@@ -3476,6 +3509,42 @@
       "daysUntilStart": null
     },
     {
+      "title": "Cashback Black Friday Sleep Center con Banesco",
+      "description": "20% de devolución al realizar compras en Sleep Center durante Black Friday.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-11-14",
+      "validUntil": "2025-11-16",
+      "creditingDate": null,
+      "establishments": [
+        "Sleep Center"
+      ],
+      "categories": [
+        "restaurante",
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": null,
+      "conditions": [],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yduccc",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -97,
+      "daysUntilStart": null
+    },
+    {
       "title": "Promo Carol – Mes de la Belleza",
       "description": "20% de devolución al realizar compras en tiendas físicas de Carol durante el Mes de la Belleza.",
       "percentage": "20%",
@@ -3504,6 +3573,44 @@
       "sourceUrl": "https://www.banesco.com.do/promociones/promo-carol-mes-de-la-belleza/",
       "extractedAt": "2026-02-21T12:20:37.664Z",
       "id": "i32qix",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -103,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback Carol Mes de la Belleza con Banesco",
+      "description": "20% de devolución al realizar compras en tiendas físicas Carol durante el Mes de la Belleza.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-11-06",
+      "validUntil": "2025-11-10",
+      "creditingDate": null,
+      "establishments": [
+        "Carol"
+      ],
+      "categories": [
+        "farmacia",
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica solo en tiendas físicas Carol.",
+      "conditions": [
+        "Solo en tiendas físicas"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yducca",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
@@ -3548,6 +3655,212 @@
       "daysUntilStart": null
     },
     {
+      "title": "Cashback Black Friday Jumbo con Banesco",
+      "description": "25% de devolución al pagar en Jumbo tienda física y online, a excepción de supermercado, durante Black Friday.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Banesco"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2025-11-07",
+      "validUntil": "2025-11-09",
+      "creditingDate": null,
+      "establishments": [
+        "Jumbo"
+      ],
+      "categories": [
+        "supermercado",
+        "restaurante",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica en tienda física y online a excepción de supermercado.",
+      "conditions": [
+        "No aplica en supermercado Jumbo"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yduccb",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -104,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback Distribuidora Corripio con Banesco",
+      "description": "25% de devolución al realizar compras en tiendas Distribuidora Corripio con tarjetas Banesco.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas Banesco"
+      ],
+      "minimumSpend": "RD$5,000 acumulados durante la vigencia",
+      "maxReturn": "RD$10,000 por tarjeta",
+      "validFrom": "2025-10-30",
+      "validUntil": "2025-11-02",
+      "creditingDate": null,
+      "establishments": [
+        "Distribuidora Corripio"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Compra mínima acumulada de RD$5,000 durante la vigencia. Tope de devolución de RD$10,000 por tarjeta.",
+      "conditions": [
+        "Compra mínima acumulada de RD$5,000 durante la vigencia",
+        "Tope de devolución de RD$10,000 por tarjeta"
+      ],
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
+      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "id": "yducc9",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -111,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback 25% en Tiendas Corripio",
+      "description": "25% de cashback en compras presenciales y en línea en Tiendas Corripio con tarjeta de crédito y Ultracrédito Cibao.",
+      "percentage": "25%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Asociación Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$5,000 por transacción",
+      "maxReturn": "RD$10,000 por cliente",
+      "validFrom": "2025-10-30",
+      "validUntil": "2025-11-02",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Tiendas Corripio"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$40,000.",
+      "conditions": [
+        "Consumo mínimo de RD$5,000 por transacción",
+        "Tope de devolución de RD$10,000 por cliente",
+        "No aplican tarjetas de débito ni empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
+      "extractedAt": "2026-02-21T14:52:03.402Z",
+      "id": "q2sop3",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -111,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Ahorro en Grande El Encanto - Cashback 20% (+5% con Tarjeta El Encanto Cibao)",
+      "description": "20% de cashback en Tiendas El Encanto, con un 5% adicional al pagar con la Tarjeta de Crédito El Encanto Cibao.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Asociación Cibao",
+        "Tarjeta de Crédito El Encanto Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2025-10-31",
+      "validUntil": "2025-11-02",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Tiendas El Encanto"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "5% adicional exclusivo con Tarjeta de Crédito El Encanto Cibao. No aplican tarjetas de débito ni crédito empresariales. Tope de devolución aplica para consumos de hasta RD$25,000.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución de RD$5,000 por cliente",
+        "Tope aplica para consumos de hasta RD$25,000",
+        "No aplican tarjetas de débito ni crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
+      "extractedAt": "2026-02-21T14:39:51.377Z",
+      "id": "q2sop5",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -111,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback 20% (+5% adicional) en El Encanto",
+      "description": "20% de cashback en Tiendas El Encanto con tarjetas de crédito y Ultracrédito Cibao, más un 5% adicional al pagar con la Tarjeta de Crédito El Encanto Cibao.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Asociación Cibao",
+        "Ultracrédito Cibao",
+        "Tarjeta de Crédito El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2025-10-31",
+      "validUntil": "2025-11-02",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Tiendas El Encanto"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "5% adicional exclusivo con Tarjeta de Crédito El Encanto Cibao. No aplican tarjetas de débito ni empresariales. Tope de devolución aplica para consumos de hasta RD$25,000.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución de RD$5,000 por cliente",
+        "No aplican tarjetas de débito ni empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
+      "extractedAt": "2026-02-21T14:52:03.402Z",
+      "id": "q2sop4",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -111,
+      "daysUntilStart": null
+    },
+    {
       "title": "15% cashback en factura de Luz",
       "description": "Obtén un 15% de cashback al pagar tu factura de luz con tarjetas de crédito LAFISE.",
       "percentage": "15%",
@@ -3580,642 +3893,6 @@
       "isUpcoming": false,
       "daysUntilExpiry": -114,
       "daysUntilStart": null
-    },
-    {
-      "title": "Promoción Mamá Social",
-      "description": "15% de devolución al realizar compras en tiendas de vinos y licores, restaurantes y comida rápida, floristerías, viveros y reposterías.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjetas de crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, MasterCard Air Europa, MultiCrédito y Débito)"
-      ],
-      "minimumSpend": "RD$10,000.00 acumulados durante la vigencia",
-      "maxReturn": "RD$4,000.00 por tarjeta",
-      "validFrom": "2025-05-22",
-      "validUntil": "2025-05-25",
-      "creditingDate": "30 días posteriores al cierre de la promoción",
-      "establishments": [
-        "Tiendas de Vinos y Licores",
-        "Restaurantes y Tiendas de Comida Rápida",
-        "Floristerías y Viveros",
-        "Reposterías"
-      ],
-      "categories": [
-        "restaurante",
-        "retail",
-        "bebidas"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No participan tarjetas Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, MasterCard Air Europa, MultiCrédito ni Débito. La promoción es única y no se combina con otras promociones.",
-      "isActive": false,
-      "bank": "Banesco",
-      "sourceUrl": "https://www.banesco.com.do/promociones/promocion-mama-social/",
-      "extractedAt": "2026-02-21T12:25:51.101Z",
-      "id": "tvc3ch",
-      "bankId": "banesco",
-      "bankColor": "#C8102E",
-      "isUpcoming": false,
-      "daysUntilExpiry": -272,
-      "daysUntilStart": null
-    },
-    {
-      "0": {
-        "title": "Cashback 25% en Tiendas Corripio",
-        "description": "25% de cashback en compras presenciales y en línea en Tiendas Corripio con tarjeta de crédito y Ultracrédito Cibao.",
-        "percentage": "25%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito Asociación Cibao",
-          "Ultracrédito Cibao"
-        ],
-        "minimumSpend": "RD$5,000 por transacción",
-        "maxReturn": "RD$10,000 por cliente",
-        "validFrom": "2025-10-30",
-        "validUntil": "2025-11-02",
-        "creditingDate": "Durante el mes siguiente de concluir la promoción",
-        "establishments": [
-          "Tiendas Corripio"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$40,000.",
-        "isActive": false
-      },
-      "1": {
-        "title": "Cashback 20% + 5% adicional en El Encanto",
-        "description": "20% de cashback en Tiendas El Encanto, más un 5% adicional al pagar con la Tarjeta de Crédito El Encanto Cibao.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito Asociación Cibao",
-          "Tarjeta de Crédito El Encanto Cibao",
-          "Ultracrédito Cibao"
-        ],
-        "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
-        "maxReturn": "RD$5,000 por cliente",
-        "validFrom": "2025-10-31",
-        "validUntil": "2025-11-02",
-        "creditingDate": "Durante el mes siguiente de concluir la promoción",
-        "establishments": [
-          "Tiendas El Encanto"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$25,000.",
-        "isActive": false
-      },
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
-      "extractedAt": "2026-02-21T12:27:38.323Z",
-      "id": "16mmk7",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "categories": [
-        "otro"
-      ]
-    },
-    {
-      "0": {
-        "_action": "new",
-        "title": "15% Cashback en Salones de Belleza y Spas",
-        "description": "Recibe 15% de cashback al pagar en salones de belleza y spas con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "15%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": "RD$5,000.00",
-        "maxReturn": "RD$3,000.00",
-        "validFrom": "2026-02-09",
-        "validUntil": "2026-02-14",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Monto mínimo de consumo RD$5,000.00.",
-        "conditions": [
-          "Monto mínimo de consumo RD$5,000.00",
-          "Máximo de devolución por cliente RD$3,000.00"
-        ],
-        "isActive": false
-      },
-      "1": {
-        "_action": "new",
-        "title": "15% Cashback en Floristerías y Reposterías",
-        "description": "Recibe 15% de cashback al pagar en floristerías y reposterías con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "15%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": "RD$1,000.00",
-        "validFrom": "2026-02-11",
-        "validUntil": "2026-02-14",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Máximo de devolución por cliente RD$1,000.00.",
-        "conditions": [
-          "Máximo de devolución por cliente RD$1,000.00"
-        ],
-        "isActive": false
-      },
-      "2": {
-        "_action": "new",
-        "title": "20% Cashback en TOUS",
-        "description": "Recibe 20% de cashback al pagar en TOUS con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": "RD$3,500.00",
-        "validFrom": "2026-02-09",
-        "validUntil": "2026-02-15",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [
-          "TOUS"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Máximo de devolución por cliente RD$3,500.00.",
-        "conditions": [
-          "Máximo de devolución por cliente RD$3,500.00"
-        ],
-        "isActive": false
-      },
-      "3": {
-        "_action": "new",
-        "title": "10% Cashback en Pagos de Colegiatura",
-        "description": "Obtén 10% de cashback al realizar pagos de colegiatura en comercios registrados bajo la categoría de Colegios con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "10%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": "RD$100,000.00 acumulable",
-        "maxReturn": "RD$10,000.00",
-        "validFrom": "2026-02-18",
-        "validUntil": "2026-02-20",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "educación"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Válido solo en comercios registrados bajo la categoría de Colegios. Monto mínimo de consumo acumulable RD$100,000.00.",
-        "conditions": [
-          "Monto mínimo de consumo acumulable RD$100,000.00",
-          "Solo en comercios registrados bajo la categoría de Colegios",
-          "Máximo de devolución RD$10,000.00"
-        ],
-        "isActive": false
-      },
-      "4": {
-        "_action": "new",
-        "title": "30% Descuento en Days Inn Juan Dolio + 5% en Restaurante Ona",
-        "description": "Disfruta de 30% de descuento en estadía en Days Inn Juan Dolio más 5% de descuento en el restaurante Ona al pagar con tarjetas VISA Banco López de Haro.",
-        "percentage": "30%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas de crédito VISA Banco López de Haro",
-          "Tarjetas de débito VISA Banco López de Haro",
-          "Tarjetas empresariales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2026-01-01",
-        "validUntil": "2026-12-31",
-        "creditingDate": "Descuento aplicado en caja directamente por el hotel al momento del pago",
-        "establishments": [
-          "Days Inn Juan Dolio",
-          "Restaurante Ona"
-        ],
-        "categories": [
-          "viaje"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "Descuento aplicado directamente en caja por el hotel. Válido para tarjetas de crédito, débito y empresariales VISA Banco López de Haro. Incluye 5% adicional en restaurante Ona.",
-        "conditions": [
-          "Descuento aplicado en caja directamente por el hotel"
-        ],
-        "isActive": true
-      },
-      "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
-      "extractedAt": "2026-02-21T14:01:06.420Z",
-      "id": "1b9hsp",
-      "bankId": "blh",
-      "bankColor": "#2d6a4f",
-      "categories": [
-        "otro"
-      ]
-    },
-    {
-      "0": {
-        "_action": "new",
-        "title": "15% Cashback en Salones de Belleza y Spas",
-        "description": "Recibe 15% de cashback al pagar en salones de belleza y spas con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "15%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": "RD$5,000.00",
-        "maxReturn": "RD$3,000.00",
-        "validFrom": "2026-02-09",
-        "validUntil": "2026-02-14",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Monto mínimo de consumo RD$5,000.00.",
-        "conditions": [
-          "Monto mínimo de consumo RD$5,000.00",
-          "Máximo de devolución por cliente RD$3,000.00"
-        ],
-        "isActive": false
-      },
-      "1": {
-        "_action": "new",
-        "title": "15% Cashback en Floristerías y Reposterías",
-        "description": "Recibe 15% de cashback al pagar en floristerías y reposterías con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "15%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": "RD$1,000.00",
-        "validFrom": "2026-02-11",
-        "validUntil": "2026-02-14",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
-        "conditions": [
-          "Máximo de devolución por cliente RD$1,000.00"
-        ],
-        "isActive": false
-      },
-      "2": {
-        "_action": "new",
-        "title": "20% Cashback en TOUS",
-        "description": "Recibe 20% de cashback al pagar en TOUS con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": "RD$3,500.00",
-        "validFrom": "2026-02-09",
-        "validUntil": "2026-02-15",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [
-          "TOUS"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
-        "conditions": [
-          "Máximo de devolución por cliente RD$3,500.00"
-        ],
-        "isActive": false
-      },
-      "3": {
-        "_action": "new",
-        "title": "10% Cashback en Pagos de Colegiatura",
-        "description": "Obtén 10% de cashback al realizar pagos de colegiatura en comercios registrados bajo la categoría de Colegios con tarjetas de crédito personales VISA Banco López de Haro.",
-        "percentage": "10%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito personales VISA Banco López de Haro"
-        ],
-        "minimumSpend": "RD$100,000.00 acumulable",
-        "maxReturn": "RD$10,000.00",
-        "validFrom": "2026-02-18",
-        "validUntil": "2026-02-20",
-        "creditingDate": "Dentro de los próximos 45 días luego de realizado el consumo",
-        "establishments": [],
-        "categories": [
-          "educación"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Cashback válido solo en comercios registrados bajo la categoría de Colegios. No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
-        "conditions": [
-          "Monto mínimo de consumo acumulable RD$100,000.00",
-          "Máximo de devolución RD$10,000.00",
-          "Solo en comercios registrados bajo la categoría de Colegios"
-        ],
-        "isActive": false
-      },
-      "4": {
-        "_action": "new",
-        "title": "30% Descuento en Days Inn Juan Dolio + 5% en Restaurante Ona",
-        "description": "Disfruta de 30% de descuento en estadía en Days Inn Juan Dolio y 5% de descuento en el restaurante Ona al pagar con tarjetas VISA Banco López de Haro.",
-        "percentage": "30%",
-        "promoType": "descuento",
-        "eligibleCards": [
-          "Tarjetas de crédito VISA Banco López de Haro",
-          "Tarjetas de débito VISA Banco López de Haro",
-          "Tarjetas empresariales VISA Banco López de Haro"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2026-01-01",
-        "validUntil": "2026-12-31",
-        "creditingDate": "Descuento aplicado en caja directamente por el hotel al momento del pago",
-        "establishments": [
-          "Days Inn Juan Dolio",
-          "Restaurante Ona"
-        ],
-        "categories": [
-          "viaje"
-        ],
-        "cardTypes": [
-          "crédito",
-          "débito"
-        ],
-        "notes": "Descuento aplicado directamente en caja por el hotel. Válido para tarjetas de crédito, débito y empresariales VISA Banco López de Haro. Adicional 5% en restaurante Ona.",
-        "conditions": [
-          "Descuento aplicado en caja directamente por el hotel"
-        ],
-        "isActive": true
-      },
-      "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/category/promociones/",
-      "extractedAt": "2026-02-21T14:01:36.511Z",
-      "id": "sts683",
-      "bankId": "blh",
-      "bankColor": "#2d6a4f",
-      "categories": [
-        "otro"
-      ]
-    },
-    {
-      "0": {
-        "_action": "new",
-        "title": "Cashback Distribuidora Corripio con Banesco",
-        "description": "25% de devolución al realizar compras en tiendas Distribuidora Corripio con tarjetas Banesco.",
-        "percentage": "25%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": "RD$5,000 acumulados durante la vigencia",
-        "maxReturn": "RD$10,000 por tarjeta",
-        "validFrom": "2025-10-30",
-        "validUntil": "2025-11-02",
-        "creditingDate": null,
-        "establishments": [
-          "Distribuidora Corripio"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Compra mínima acumulada de RD$5,000 durante la vigencia. Tope de devolución de RD$10,000 por tarjeta.",
-        "conditions": [
-          "Compra mínima acumulada de RD$5,000 durante la vigencia",
-          "Tope de devolución de RD$10,000 por tarjeta"
-        ],
-        "isActive": false
-      },
-      "1": {
-        "_action": "new",
-        "title": "Cashback Carol Mes de la Belleza con Banesco",
-        "description": "20% de devolución al realizar compras en tiendas físicas Carol durante el Mes de la Belleza.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-11-06",
-        "validUntil": "2025-11-10",
-        "creditingDate": null,
-        "establishments": [
-          "Carol"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Aplica solo en tiendas físicas Carol.",
-        "conditions": [
-          "Solo en tiendas físicas"
-        ],
-        "isActive": false
-      },
-      "2": {
-        "_action": "new",
-        "title": "Cashback Black Friday Jumbo con Banesco",
-        "description": "25% de devolución al pagar en Jumbo con tarjetas de crédito, en tienda física y online, excepto supermercado.",
-        "percentage": "25%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas de crédito Banesco"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-11-07",
-        "validUntil": "2025-11-09",
-        "creditingDate": null,
-        "establishments": [
-          "Jumbo"
-        ],
-        "categories": [
-          "retail",
-          "online"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Aplica en tienda física y online. No aplica en supermercado Jumbo.",
-        "conditions": [
-          "No aplica en supermercado",
-          "Solo tarjetas de crédito"
-        ],
-        "isActive": false
-      },
-      "3": {
-        "_action": "new",
-        "title": "Cashback Black Friday Sleep Center con Banesco",
-        "description": "20% de devolución al realizar compras en Sleep Center durante Black Friday.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-11-14",
-        "validUntil": "2025-11-16",
-        "creditingDate": null,
-        "establishments": [
-          "Sleep Center"
-        ],
-        "categories": [
-          "retail"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": null,
-        "conditions": [],
-        "isActive": false
-      },
-      "4": {
-        "_action": "new",
-        "title": "Cashback Black Friday La Sirena con Banesco",
-        "description": "25% de devolución al realizar compras en Supermercados La Sirena y sus plataformas web en República Dominicana.",
-        "percentage": "25%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-11-25",
-        "validUntil": "2025-11-27",
-        "creditingDate": null,
-        "establishments": [
-          "La Sirena"
-        ],
-        "categories": [
-          "supermercado",
-          "online"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Aplica en supermercados La Sirena en República Dominicana y sus plataformas web.",
-        "conditions": [
-          "Solo en República Dominicana"
-        ],
-        "isActive": false
-      },
-      "5": {
-        "_action": "new",
-        "title": "Cashback y Descuentos Black Friday Lubricantes Diversos con Banesco",
-        "description": "20% de devolución en compras, más descuentos de 30%-40% en servicios y neumáticos seleccionados en Lubricantes Diversos.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": null,
-        "maxReturn": null,
-        "validFrom": "2025-11-28",
-        "validUntil": "2025-11-30",
-        "creditingDate": null,
-        "establishments": [
-          "Lubricantes Diversos"
-        ],
-        "categories": [
-          "otro"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Además del 20% de devolución: 30% descuento en servicios y neumáticos RoadX/Nankang, 35% en Yokohama, 40% en numeraciones seleccionadas.",
-        "conditions": [
-          "Descuentos adicionales aplican solo en marcas y numeraciones seleccionadas"
-        ],
-        "isActive": false
-      },
-      "6": {
-        "_action": "new",
-        "title": "Cashback Compras por Internet Amazon, Shein, AliExpress con Banesco",
-        "description": "20% de devolución al realizar compras en línea en Amazon, Shein y AliExpress con tarjetas Banesco.",
-        "percentage": "20%",
-        "promoType": "devolución",
-        "eligibleCards": [
-          "Tarjetas Banesco"
-        ],
-        "minimumSpend": "US$50 acumulados durante la vigencia",
-        "maxReturn": "US$100 por tarjeta",
-        "validFrom": "2025-12-01",
-        "validUntil": "2025-12-01",
-        "creditingDate": null,
-        "establishments": [
-          "Amazon",
-          "Shein",
-          "AliExpress"
-        ],
-        "categories": [
-          "online"
-        ],
-        "cardTypes": [
-          "crédito"
-        ],
-        "notes": "Vigencia cambiada del 15-17 de noviembre al 1 de diciembre de 2025. Compra mínima acumulada de US$50 y tope de devolución de US$100 por tarjeta.",
-        "conditions": [
-          "Compra mínima acumulada de US$50 durante la vigencia",
-          "Tope de devolución de US$100 por tarjeta"
-        ],
-        "isActive": false
-      },
-      "bank": "Banesco",
-      "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:02:39.610Z",
-      "id": "5w21rd",
-      "bankId": "banesco",
-      "bankColor": "#C8102E",
-      "categories": [
-        "otro"
-      ]
     },
     {
       "title": "Superbomba - Cashback en supermercados y combustible",
@@ -4265,7 +3942,7 @@
     },
     {
       "title": "Jueves de Cine",
-      "description": "15% de cashback en cines todos los jueves de agosto 2025.",
+      "description": "15% de cashback todos los jueves de agosto en cines.",
       "percentage": "15%",
       "promoType": "devolución",
       "eligibleCards": [
@@ -4285,14 +3962,14 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "Texto de la promoción aparece incompleto. Aplica todos los jueves de agosto 2025.",
+      "notes": "Información incompleta, el texto fue cortado. Solo se conoce el porcentaje y que aplica los jueves de agosto.",
       "conditions": [
-        "Solo aplica los jueves de agosto 2025"
+        "Solo los jueves de agosto 2025"
       ],
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-21T14:23:38.900Z",
+      "extractedAt": "2026-02-21T14:52:41.180Z",
       "id": "j8cn4s",
       "bankId": "cibao",
       "bankColor": "#004C97",
@@ -4325,18 +4002,18 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Solo comercios nacionales debidamente registrados.",
+      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta.",
       "conditions": [
-        "Solo aplica los miércoles de agosto 2025",
+        "Solo los miércoles de agosto 2025",
         "Consumo mínimo de RD$1,500 por transacción en supermercados",
         "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
-        "Solo tarjetas Clásica y El Encanto Cibao",
-        "Solo comercios nacionales registrados como supermercados o estaciones de combustible"
+        "Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible",
+        "Solo tarjetas Clásica y El Encanto Cibao"
       ],
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-21T14:23:38.900Z",
+      "extractedAt": "2026-02-21T14:52:41.180Z",
       "id": "j8cn4p",
       "bankId": "cibao",
       "bankColor": "#004C97",
@@ -4346,7 +4023,7 @@
     },
     {
       "title": "Jumbo Regreso a Clases",
-      "description": "20% de cashback en toda la tienda Jumbo, válido para compras presenciales y en línea del 4 al 7 de agosto 2025.",
+      "description": "20% de cashback en Jumbo para compras presenciales y en línea en toda la tienda.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
@@ -4374,13 +4051,13 @@
         "Consumo mínimo de RD$5,000 con Ultracrédito Cibao",
         "Tope de devolución por cliente RD$8,000",
         "No aplican tarjetas de débito ni empresariales",
-        "No combinable con promoción Superbomba de los miércoles",
-        "Ultracrédito no aplica para compras en línea"
+        "Ultracrédito no aplica para compras en línea",
+        "No combinable con promoción Superbomba de los miércoles"
       ],
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-21T14:23:38.900Z",
+      "extractedAt": "2026-02-21T14:52:41.180Z",
       "id": "j8cn4r",
       "bankId": "cibao",
       "bankColor": "#004C97",
@@ -4390,8 +4067,8 @@
     },
     {
       "title": "El Encanto Regreso a Clases",
-      "description": "20% de cashback en Tiendas El Encanto más un 5% adicional al pagar con la tarjeta El Encanto Cibao, válido del 1 al 3 de agosto 2025.",
-      "percentage": "20% + 5% adicional con tarjeta El Encanto Cibao",
+      "description": "20% de cashback en Tiendas El Encanto con un 5% adicional al pagar con tarjeta El Encanto Cibao, en toda la tienda.",
+      "percentage": "20% (+5% adicional con tarjeta El Encanto Cibao)",
       "promoType": "devolución",
       "eligibleCards": [
         "Tarjetas de crédito Asociación Cibao",
@@ -4423,26 +4100,378 @@
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-21T14:23:38.900Z",
+      "extractedAt": "2026-02-21T14:52:41.180Z",
       "id": "j8cn4q",
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
       "daysUntilExpiry": -202,
       "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en PedidosYa",
+      "description": "15% de cashback en restaurantes incluidos en PedidosYa los fines de semana (viernes a domingo) durante julio 2025.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica",
+        "El Encanto Cibao",
+        "Gold",
+        "Platinum",
+        "Infinite"
+      ],
+      "minimumSpend": "RD$500",
+      "maxReturn": "RD$700 por cliente",
+      "validFrom": "2025-07-04",
+      "validUntil": "2025-08-03",
+      "creditingDate": "Descuento aplicado automáticamente en el momento de pago (Checkout)",
+      "establishments": [
+        "PedidosYa"
+      ],
+      "categories": [
+        "restaurante"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Solo aplica en restaurantes incluidos en PedidosYa los fines de semana (viernes a domingo). No aplican tarjetas de débito, crédito empresariales ni Ultracrédito.",
+      "conditions": [
+        "Solo aplica de viernes a domingo",
+        "Consumo mínimo de RD$500",
+        "Solo restaurantes incluidos en PedidosYa",
+        "No aplican tarjetas de débito, empresariales ni Ultracrédito",
+        "Tope de consumo de RD$4,666.66"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-21T14:40:48.172Z",
+      "id": "sbtqdm",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -202,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba: Cashback en supermercados y combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de julio 2025.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica",
+        "El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-07-02",
+      "validUntil": "2025-07-30",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica solo los miércoles de julio. Aplica para GLP. Tope de consumo: RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta.",
+      "conditions": [
+        "Solo aplica los miércoles de julio",
+        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
+        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
+        "Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-21T14:40:48.172Z",
+      "id": "sbtqdn",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -206,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback Amazon Prime Day",
+      "description": "20% de cashback en compras en Amazon durante el Prime Day del 8 al 11 de julio 2025, con topes diferenciados según tipo de tarjeta.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica",
+        "El Encanto Cibao",
+        "Gold",
+        "Platinum",
+        "Infinite"
+      ],
+      "minimumSpend": "US$60 o su equivalente en pesos",
+      "maxReturn": "Clásica y El Encanto: US$25 / Gold: US$50 / Platinum e Infinite: US$80",
+      "validFrom": "2025-07-08",
+      "validUntil": "2025-07-11",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Amazon"
+      ],
+      "categories": [
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Topes de consumo varían por producto: Clásica y El Encanto US$125, Gold US$250, Platinum e Infinite US$400. No aplican tarjetas de débito, empresariales ni Ultracrédito.",
+      "conditions": [
+        "Consumo mínimo de US$60 o su equivalente en pesos",
+        "No aplican tarjetas de débito, empresariales ni Ultracrédito",
+        "Tope de devolución y consumo varía según tipo de tarjeta"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-21T14:40:48.172Z",
+      "id": "sbtqdl",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -225,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Promoción Mamá Social",
+      "description": "15% de devolución al realizar compras en tiendas de vinos y licores, restaurantes y comida rápida, floristerías, viveros y reposterías.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Banesco (excepto Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, MasterCard Air Europa, MultiCrédito y Débito)"
+      ],
+      "minimumSpend": "RD$10,000.00 acumulados durante la vigencia",
+      "maxReturn": "RD$4,000.00 por tarjeta",
+      "validFrom": "2025-05-22",
+      "validUntil": "2025-05-25",
+      "creditingDate": "30 días posteriores al cierre de la promoción",
+      "establishments": [
+        "Tiendas de Vinos y Licores",
+        "Restaurantes y Tiendas de Comida Rápida",
+        "Floristerías y Viveros",
+        "Reposterías"
+      ],
+      "categories": [
+        "restaurante",
+        "retail",
+        "bebidas"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No participan tarjetas Supercashback, Business, Signature Business, Compras, Visa ConnectMiles, MasterCard Air Europa, MultiCrédito ni Débito. La promoción es única y no se combina con otras promociones.",
+      "isActive": false,
+      "bank": "Banesco",
+      "sourceUrl": "https://www.banesco.com.do/promociones/promocion-mama-social/",
+      "extractedAt": "2026-02-21T12:25:51.101Z",
+      "id": "tvc3ch",
+      "bankId": "banesco",
+      "bankColor": "#C8102E",
+      "isUpcoming": false,
+      "daysUntilExpiry": -272,
+      "daysUntilStart": null
     }
   ],
-  "lastUpdated": "2026-02-21T14:23:39.909Z",
+  "lastUpdated": "2026-02-21T14:52:42.196Z",
   "stats": {
-    "total": 106,
-    "active": 28,
-    "upcoming": 2,
-    "expired": 76,
-    "newThisRun": 4,
+    "total": 114,
+    "active": 33,
+    "upcoming": 1,
+    "expired": 80,
+    "newThisRun": 17,
     "correctionsThisRun": 0,
-    "scrapeTimeSeconds": 233.3
+    "duplicatesRemoved": 47,
+    "scrapeTimeSeconds": 157
   },
   "scrapeHistory": [
+    {
+      "date": "2026-02-21T14:52:42.196Z",
+      "newPromos": 17,
+      "correctionsThisRun": 0,
+      "totalPromos": 114,
+      "durationSeconds": 157,
+      "bankResults": [
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 4,
+          "durationSeconds": 28.2
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 7,
+          "durationSeconds": 58.2
+        },
+        {
+          "bankId": "cibao",
+          "name": "Asociación Cibao",
+          "status": "ok",
+          "promosFound": 6,
+          "durationSeconds": 70.7
+        }
+      ]
+    },
+    {
+      "date": "2026-02-21T14:46:37.843Z",
+      "newPromos": 31,
+      "correctionsThisRun": 0,
+      "totalPromos": 144,
+      "durationSeconds": 739.4,
+      "bankResults": [
+        {
+          "bankId": "banreservas",
+          "name": "Banreservas",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 14.3
+        },
+        {
+          "bankId": "bhd",
+          "name": "BHD",
+          "status": "ok",
+          "promosFound": 4,
+          "durationSeconds": 14.5
+        },
+        {
+          "bankId": "scotiabank",
+          "name": "Scotiabank",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 45.7
+        },
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 10,
+          "durationSeconds": 99.1
+        },
+        {
+          "bankId": "lafise",
+          "name": "LAFISE",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 0.5
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 7,
+          "durationSeconds": 124.2
+        },
+        {
+          "bankId": "apap",
+          "name": "APAP",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.1
+        },
+        {
+          "bankId": "cibao",
+          "name": "Asociación Cibao",
+          "status": "ok",
+          "promosFound": 10,
+          "durationSeconds": 149.4
+        },
+        {
+          "bankId": "bancocaribe",
+          "name": "Banco Caribe",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 7.3
+        },
+        {
+          "bankId": "lanacional",
+          "name": "La Nacional",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 6.3
+        },
+        {
+          "bankId": "vimenca",
+          "name": "Banco Vimenca",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 13.7
+        },
+        {
+          "bankId": "promerica",
+          "name": "Promerica",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 9.1
+        },
+        {
+          "bankId": "popular",
+          "name": "Banco Popular",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 11.2
+        },
+        {
+          "bankId": "bsc",
+          "name": "Banco Santa Cruz",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 110
+        },
+        {
+          "bankId": "ademi",
+          "name": "Banco Ademi",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.2
+        },
+        {
+          "bankId": "qik",
+          "name": "Qik",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1
+        },
+        {
+          "bankId": "bdi",
+          "name": "Banco BDI",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 131
+        }
+      ]
+    },
+    {
+      "date": "2026-02-21T14:28:21.759Z",
+      "newPromos": 12,
+      "correctionsThisRun": 0,
+      "totalPromos": 113,
+      "durationSeconds": 94,
+      "bankResults": [
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 5,
+          "durationSeconds": 34.2
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 7,
+          "durationSeconds": 59.8
+        }
+      ]
+    },
     {
       "date": "2026-02-21T14:23:39.909Z",
       "newPromos": 4,
