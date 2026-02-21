@@ -1880,16 +1880,95 @@ function toggleGeo() {
 
 // Toggle location from settings panel
 function onToggleLocation(checked) {
-  geoActive = checked;
-  saveState('cashbackdo_location_enabled', checked);
   const statusEl = document.getElementById('locationStatus');
-  if (checked) {
-    if (statusEl) statusEl.style.display = 'block';
-    startGeo();
-  } else {
+  const toggle = document.getElementById('toggleLocation');
+
+  if (!checked) {
+    geoActive = false;
+    saveState('cashbackdo_location_enabled', false);
     if (statusEl) statusEl.style.display = 'none';
     stopGeo();
+    return;
   }
+
+  // Check permission state first (Permissions API where supported)
+  if (navigator.permissions && navigator.permissions.query) {
+    navigator.permissions.query({ name: 'geolocation' }).then(result => {
+      if (result.state === 'denied') {
+        // Permission was previously denied — show help
+        showLocationDeniedHelp(statusEl, toggle);
+        return;
+      }
+      // 'granted' or 'prompt' — proceed
+      requestAndStartGeo(statusEl, toggle);
+    }).catch(() => {
+      // Permissions API not supported (iOS Safari) — just try it
+      requestAndStartGeo(statusEl, toggle);
+    });
+  } else {
+    // No Permissions API (iOS Safari) — just try it
+    requestAndStartGeo(statusEl, toggle);
+  }
+}
+
+function requestAndStartGeo(statusEl, toggle) {
+  // Use getCurrentPosition first to trigger the permission prompt
+  // watchPosition on iOS sometimes silently fails without a prior prompt
+  if (statusEl) statusEl.style.display = 'block';
+  document.getElementById('locName').textContent = 'Solicitando permiso...';
+  document.getElementById('locSub').textContent = 'Acepta el permiso de ubicación';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      // Permission granted — start real tracking
+      geoActive = true;
+      saveState('cashbackdo_location_enabled', true);
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+      startGeo();
+    },
+    (err) => {
+      console.warn('Location permission error:', err.code, err.message);
+      if (err.code === 1) {
+        // PERMISSION_DENIED
+        showLocationDeniedHelp(statusEl, toggle);
+      } else if (err.code === 2) {
+        // POSITION_UNAVAILABLE
+        document.getElementById('locName').textContent = 'Ubicación no disponible';
+        document.getElementById('locSub').textContent = 'Verifica que el GPS esté activo';
+        geoActive = false;
+        toggle.checked = false;
+        saveState('cashbackdo_location_enabled', false);
+      } else {
+        // TIMEOUT
+        document.getElementById('locName').textContent = 'Tiempo agotado';
+        document.getElementById('locSub').textContent = 'Intenta de nuevo en un área con mejor señal';
+        geoActive = false;
+        toggle.checked = false;
+        saveState('cashbackdo_location_enabled', false);
+      }
+    },
+    { enableHighAccuracy: true, timeout: 15000 }
+  );
+}
+
+function showLocationDeniedHelp(statusEl, toggle) {
+  if (statusEl) statusEl.style.display = 'block';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const dot = document.getElementById('pulseDot');
+  if (dot) { dot.style.background = 'var(--accent3)'; dot.classList.remove('active'); }
+
+  if (isIOS) {
+    document.getElementById('locName').textContent = 'Permiso denegado';
+    document.getElementById('locSub').innerHTML = 'Actívalo en: <strong>Configuración → Privacidad → Localización → Safari</strong> (o el nombre de la app) → <strong>"Mientras se usa"</strong>';
+  } else {
+    document.getElementById('locName').textContent = 'Permiso denegado';
+    document.getElementById('locSub').textContent = 'Activa el permiso de ubicación en la configuración de tu navegador para este sitio.';
+  }
+
+  geoActive = false;
+  toggle.checked = false;
+  saveState('cashbackdo_location_enabled', false);
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1957,14 +2036,13 @@ function saveNotifPrefs() {
 
 // Restore settings toggles from localStorage on page load
 function restoreSettingsState() {
-  // Location
+  // Location — re-request permission on restore (iOS may revoke between sessions)
   const locEnabled = loadState('cashbackdo_location_enabled', false);
   const locToggle = document.getElementById('toggleLocation');
   if (locToggle && locEnabled) {
     locToggle.checked = true;
-    document.getElementById('locationStatus').style.display = 'block';
-    geoActive = true;
-    startGeo();
+    const statusEl = document.getElementById('locationStatus');
+    requestAndStartGeo(statusEl, locToggle);
   }
 
   // Notifications master
@@ -2014,14 +2092,14 @@ function startGeo() {
     (err) => {
       console.warn('Geo error:', err.message);
       dot.style.background = 'var(--accent3)';
-      document.getElementById('locName').textContent = 'Error de ubicación';
-      document.getElementById('locSub').textContent = err.code === 1 ? 'Permiso denegado' : 'No se pudo obtener GPS';
-      // If permission denied, turn off the toggle
+      // If permission denied, show iOS-specific guidance
       if (err.code === 1) {
-        geoActive = false;
+        const statusEl = document.getElementById('locationStatus');
         const toggle = document.getElementById('toggleLocation');
-        if (toggle) toggle.checked = false;
-        saveState('cashbackdo_location_enabled', false);
+        showLocationDeniedHelp(statusEl, toggle);
+      } else {
+        document.getElementById('locName').textContent = 'Error de ubicación';
+        document.getElementById('locSub').textContent = 'No se pudo obtener GPS — verifica tu señal';
       }
     },
     { enableHighAccuracy: true, maximumAge: 30000, timeout: 15000 }
