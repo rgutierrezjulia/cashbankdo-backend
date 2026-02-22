@@ -139,11 +139,10 @@ export const BANK_SOURCES = [
     id: 'vimenca',
     name: 'Banco Vimenca',
     color: '#003366',
-    // Sitio React SPA — Puppeteer renderiza y luego busca en .promociones-activas
-    strategy: 'html_promo_pages',
+    // React SPA at bancovimenca.com times out in Puppeteer; use their public Strapi REST API directly
+    strategy: 'strapi_pdf',
+    strapiUrl: 'https://strapi.mapasgv.com/api/promocion-activas?populate=*',
     promoListUrl: 'https://bancovimenca.com/promociones',
-    listingPages: ['https://bancovimenca.com/promociones'],
-    promoLinkSelector: '.promociones-activas a, .promocionactiva a, .swiper-slide a[href*="promoci"], a[href*="bancovimenca.com/promoci"]',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'remesa'],
   },

@@ -11,6 +11,7 @@ import * as cheerio from 'cheerio';
 import puppeteerExtra from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { HttpsProxyAgent } from 'https-proxy-agent';
+import { execSync } from 'child_process';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -420,6 +421,96 @@ async function processBankFromStrapiApi(source, existingIds, existingContext, ma
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 3c1b. PROCESAR BANCO VÍA STRAPI REST API CON PDFs (Vimenca)
+//       Fetch promos desde Strapi público, descarga PDFs adjuntos
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromStrapiPdf(source, existingIds, existingContext, maxPerBank = Infinity) {
+  try {
+    const { data } = await axios.get(source.strapiUrl, { timeout: 15000, ...axiosProxy });
+    const items = data?.data || [];
+    console.log(`   📋 ${items.length} items en Strapi API`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const item of items) {
+      if (processed >= maxPerBank) break;
+
+      const titulo = item.titulo || item.title || '';
+      const pdfUrl = item.archivo?.url || null;
+      const link = item.link || pdfUrl || '';
+      const idBase = link || `${source.id}-strapi-${item.id || item.documentId}`;
+      const id = generateId(idBase);
+
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      // Pre-filtrar por título
+      const titleLower = titulo.toLowerCase();
+      const hasExclude = (source.excludeKeywords || []).some(k => titleLower.includes(k));
+      if (hasExclude) { skipped++; continue; }
+
+      // Si hay PDF, descargar y extraer con Claude
+      if (pdfUrl) {
+        console.log(`   📄 Descargando PDF: ${titulo.substring(0, 60)}...`);
+        const base64 = await downloadPdfAsBase64(pdfUrl);
+        if (!base64) { skipped++; continue; }
+
+        console.log(`   🤖 Extrayendo con Claude...`);
+        const result = await extractPromoFromPdf(base64, pdfUrl, source.name, existingContext);
+
+        if (result && result._action === 'known') { skipped++; continue; }
+
+        if (result) {
+          for (const promo of result) {
+            promo.bankId = source.id;
+            promo.bankColor = source.color;
+            newPromos.push(promo);
+            processed++;
+            console.log(`   ✅ ${promo.title}`);
+          }
+        }
+      } else if (link) {
+        // Sin PDF — extraer texto de la página enlazada
+        console.log(`   📖 Leyendo página: ${titulo.substring(0, 60)}...`);
+        const text = await extractTextFromPromoPageAxios(link);
+        if (!text) { skipped++; continue; }
+
+        const textLower = text.toLowerCase();
+        const hasKeyword = source.keywords.some(k => textLower.includes(k));
+        if (!hasKeyword) { skipped++; continue; }
+
+        console.log(`   🤖 Extrayendo con Claude...`);
+        const result = await extractPromoFromPageText(text, source.name, link, existingContext);
+
+        if (result && result._action === 'known') { skipped++; continue; }
+
+        if (result) {
+          for (const promo of result) {
+            promo.bankId = source.id;
+            promo.bankColor = source.color;
+            newPromos.push(promo);
+            processed++;
+            console.log(`   ✅ ${promo.title}`);
+          }
+        }
+      } else {
+        skipped++;
+        continue;
+      }
+
+      await new Promise(r => setTimeout(r, 500));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (Strapi PDF):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 3c2. PROCESAR LAFISE VÍA JSON API
 // ───────────────────────────────────────────────────────────────────
 
@@ -717,6 +808,24 @@ async function extractTextFromPromoPageAxios(url) {
   }
 }
 
+// Curl-based fallback for servers with malformed HTTP headers (e.g. BLH)
+function extractTextFromPromoPageCurl(url) {
+  try {
+    const data = execSync(
+      `curl -s -k --max-time 15 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" "${url}"`,
+      { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 }
+    );
+    const $ = cheerio.load(data);
+    $('nav, footer, aside, script, style, .sidebar, .menu, .header').remove();
+    const el = $('article, main, .entry-content, .promo-detail, #main-content, .content-area, .post-content');
+    const text = el.length ? el.text() : $('body').text();
+    return text.replace(/\s+/g, ' ').trim().substring(0, 3000);
+  } catch (e) {
+    console.error(`   ⚠️  Error curl extrayendo texto de ${url}:`, e.message);
+    return null;
+  }
+}
+
 async function processBankFromHtmlAxios(source, existingIds, existingContext, maxPerBank = Infinity) {
   console.log(`   🔍 Buscando links via axios en ${(source.listingPages || []).length} páginas de listado...`);
   const promoLinks = await getPromoLinksViaAxios(source);
@@ -762,17 +871,19 @@ async function processBankFromHtmlAxios(source, existingIds, existingContext, ma
 
 // ───────────────────────────────────────────────────────────────────
 // 3d0b. RSS FEED STRATEGY — para WordPress con RSS (BLH)
-//       Obtiene URLs de artículos del feed, luego axios+cheerio
+//       Obtiene URLs de artículos del feed, luego curl+cheerio
+//       (BLH sends malformed HTTP headers that break all Node.js parsers)
 // ───────────────────────────────────────────────────────────────────
 
 async function processBankFromRss(source, existingIds, existingContext, maxPerBank = Infinity) {
   try {
-    console.log(`   📡 Fetching RSS feed: ${source.rssFeedUrl}`);
-    const { data } = await axios.get(source.rssFeedUrl, {
-      timeout: 15000,
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' },
-      ...axiosProxy,
-    });
+    console.log(`   📡 Fetching RSS feed: ${source.rssUrl}`);
+    // BLH sends malformed HTTP headers ("HTTP X-Frame-Options") that crash all Node.js HTTP
+    // parsers (axios, fetch, https). Use curl which tolerates non-conformant headers.
+    const data = execSync(
+      `curl -s -k --max-time 15 -A "Mozilla/5.0 (compatible; CashbackDO/1.0)" "${source.rssUrl}"`,
+      { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 }
+    );
     const $ = cheerio.load(data, { xmlMode: true });
     const items = [];
     $('item').each((_, el) => {
@@ -796,7 +907,8 @@ async function processBankFromRss(source, existingIds, existingContext, maxPerBa
       if (hasExclude) { skipped++; continue; }
 
       console.log(`   📖 Leyendo: ${item.title.substring(0, 60)}...`);
-      const text = await extractTextFromPromoPageAxios(item.link);
+      // Use curl for page text too — same malformed-header issue on all blh.com.do pages
+      const text = extractTextFromPromoPageCurl(item.link);
       if (!text) { skipped++; continue; }
 
       const textLower = text.toLowerCase();
@@ -1009,6 +1121,11 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
   // Estrategia Strapi API (BHD y similares)
   if (source.strategy === 'strapi_api') {
     return await processBankFromStrapiApi(source, existingIds, existingContext, maxPerBank);
+  }
+
+  // Estrategia Strapi API con PDFs adjuntos (Vimenca)
+  if (source.strategy === 'strapi_pdf') {
+    return await processBankFromStrapiPdf(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia JSON API (LAFISE)
