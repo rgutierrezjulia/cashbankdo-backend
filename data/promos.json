@@ -34,7 +34,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 313,
+      "daysUntilExpiry": 312,
       "daysUntilStart": null
     },
     {
@@ -78,7 +78,7 @@
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": 313,
+      "daysUntilExpiry": 312,
       "daysUntilStart": null
     },
     {
@@ -112,7 +112,7 @@
       "bankId": "bsc",
       "bankColor": "#12499B",
       "isUpcoming": false,
-      "daysUntilExpiry": 313,
+      "daysUntilExpiry": 312,
       "daysUntilStart": null
     },
     {
@@ -152,7 +152,7 @@
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": 313,
+      "daysUntilExpiry": 312,
       "daysUntilStart": null
     },
     {
@@ -190,7 +190,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": 313,
+      "daysUntilExpiry": 312,
       "daysUntilStart": null
     },
     {
@@ -227,7 +227,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 282,
+      "daysUntilExpiry": 281,
       "daysUntilStart": null
     },
     {
@@ -264,7 +264,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 282,
+      "daysUntilExpiry": 281,
       "daysUntilStart": null
     },
     {
@@ -301,7 +301,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 252,
+      "daysUntilExpiry": 251,
       "daysUntilStart": null
     },
     {
@@ -349,7 +349,57 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 221,
+      "daysUntilExpiry": 220,
+      "daysUntilStart": null
+    },
+    {
+      "title": "100€ en tarjeta prepago Visa en El Corte Inglés",
+      "description": "Recibe una tarjeta prepago Visa de 100€ al realizar compras tax free de 1.500€ o más en tiendas El Corte Inglés participantes en España y pagar con tu tarjeta Visa internacional de Banco Vimenca.",
+      "percentage": null,
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Internacional Banco Vimenca"
+      ],
+      "minimumSpend": "1,500 EUR en un mismo día y centro",
+      "maxReturn": "100 EUR en tarjeta prepago Visa",
+      "validFrom": "2025-01-01",
+      "validUntil": "2026-09-30",
+      "creditingDate": "Al momento de presentar el código QR y tickets en el International Customer Lounge y realizar la devolución del IVA",
+      "establishments": [
+        "El Corte Inglés Castellana (Madrid)",
+        "El Corte Inglés Serrano 47 (Madrid)",
+        "El Corte Inglés Diagonal (Barcelona)",
+        "El Corte Inglés Marbella (Málaga)"
+      ],
+      "categories": [
+        "supermercado",
+        "retail",
+        "entretenimiento",
+        "bebidas",
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Limitado a 700 incentivos en total. El saldo de la tarjeta prepago de 100€ está disponible hasta el 30/09/26 solo en tiendas El Corte Inglés participantes.",
+      "conditions": [
+        "Limitado a 700 incentivos totales",
+        "Compras de 1.500€ o más en un mismo día y mismo centro",
+        "Debe ser compra elegible para devolución del IVA (tax free)",
+        "Debe presentar código QR junto con tickets en el International Customer Lounge",
+        "Solo en tiendas El Corte Inglés participantes en España",
+        "Solo para titulares de tarjetas Visa Internacionales"
+      ],
+      "isActive": true,
+      "bank": "Banco Vimenca",
+      "sourceUrl": "https://storage.googleapis.com/bancovimenca/CORTE_INGLES_9b67d43fc6.pdf",
+      "extractedAt": "2026-02-22T20:34:41.880Z",
+      "id": "q940ta",
+      "bankId": "vimenca",
+      "bankColor": "#003366",
+      "isUpcoming": false,
+      "daysUntilExpiry": 220,
       "daysUntilStart": null
     },
     {
@@ -386,7 +436,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 160,
+      "daysUntilExpiry": 159,
       "daysUntilStart": null
     },
     {
@@ -422,7 +472,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 159,
+      "daysUntilExpiry": 158,
       "daysUntilStart": null
     },
     {
@@ -461,7 +511,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 99,
+      "daysUntilExpiry": 98,
       "daysUntilStart": null
     },
     {
@@ -498,7 +548,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 96,
+      "daysUntilExpiry": 95,
       "daysUntilStart": null
     },
     {
@@ -540,7 +590,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 68,
+      "daysUntilExpiry": 67,
       "daysUntilStart": null
     },
     {
@@ -577,7 +627,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 68,
+      "daysUntilExpiry": 67,
       "daysUntilStart": null
     },
     {
@@ -615,7 +665,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": 68,
+      "daysUntilExpiry": 67,
       "daysUntilStart": null
     },
     {
@@ -652,7 +702,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 38,
+      "daysUntilExpiry": 37,
       "daysUntilStart": null
     },
     {
@@ -687,7 +737,7 @@
       "bankId": "bancocaribe",
       "bankColor": "#005FA8",
       "isUpcoming": false,
-      "daysUntilExpiry": 38,
+      "daysUntilExpiry": 37,
       "daysUntilStart": null
     },
     {
@@ -726,7 +776,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": 22,
+      "daysUntilExpiry": 21,
       "daysUntilStart": null
     },
     {
@@ -763,7 +813,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -800,7 +850,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -834,7 +884,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -868,7 +918,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -900,7 +950,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -934,51 +984,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Cashback en Santiago Country Club",
-      "description": "15% de cashback en el pago de la membresía anual del Santiago Country Club con tarjetas de crédito o Ultracrédito Cibao.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjetas de crédito Asociación Cibao",
-        "Ultracrédito Cibao"
-      ],
-      "minimumSpend": "RD$18,000 por transacción",
-      "maxReturn": "RD$8,000 por cliente",
-      "validFrom": "2026-02-02",
-      "validUntil": "2026-02-28",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Santiago Country Club",
-        "Centro Español",
-        "El Encanto",
-        "El Catador"
-      ],
-      "categories": [
-        "entretenimiento"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para pagos en línea. La página incluye múltiples comercios con condiciones distintas cada uno.",
-      "conditions": [
-        "Consumo mínimo de RD$18,000 en una sola transacción (Santiago Country Club)",
-        "No aplican tarjetas de débito ni tarjetas de crédito empresariales",
-        "Ultracrédito no aplica para pagos en línea",
-        "Tope de devolución de RD$8,000 por cliente"
-      ],
-      "isActive": true,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-febrero-2026/",
-      "extractedAt": "2026-02-21T14:04:27.292Z",
-      "id": "d9eaio",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
       "daysUntilStart": null
     },
     {
@@ -1018,7 +1024,89 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": 7,
+      "daysUntilExpiry": 6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "30% devolución en Bienestar y Salud",
+      "description": "Al solicitar y pagar con Tarjetas de Crédito Promerica (solicitadas vía app Promerica Móvil RD), obtén un 30% de devolución en la categoría de Bienestar y Salud.",
+      "percentage": "30%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Promerica"
+      ],
+      "minimumSpend": "RD$3,000",
+      "maxReturn": "RD$6,000 por cliente",
+      "validFrom": "2026-01-15",
+      "validUntil": "2026-02-28",
+      "creditingDate": "A los 30 días de finalizada la promoción",
+      "establishments": [],
+      "categories": [
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "La tarjeta debe ser solicitada vía la app Promerica Móvil RD. Aplica solo en comercios registrados bajo la categoría de Bienestar y Salud.",
+      "conditions": [
+        "Tope máximo de devolución de RD$6,000 por cliente",
+        "Consumo mínimo de RD$3,000",
+        "La tarjeta debe ser solicitada vía la app Promerica Móvil RD",
+        "Solo aplica en comercios registrados bajo la categoría de Bienestar y Salud"
+      ],
+      "isActive": true,
+      "bank": "Promerica",
+      "sourceUrl": "https://clubpromerica.com/republicadominicana/bienestar-y-salud",
+      "extractedAt": "2026-02-22T20:36:30.408Z",
+      "id": "ha5ma3",
+      "bankId": "promerica",
+      "bankColor": "#E8622A",
+      "isUpcoming": false,
+      "daysUntilExpiry": 6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba miércoles de febrero",
+      "description": "10% de cashback en supermercados y 5% en estaciones de combustible todos los miércoles de febrero 2025, válido solo con tarjeta Clásica y El Encanto Cibao.",
+      "percentage": "10% supermercados, 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito Clásica Cibao",
+        "Tarjeta de crédito El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 en supermercados, RD$1,000 en estaciones de combustible",
+      "maxReturn": "RD$3,000 en supermercados, RD$2,000 en estaciones de combustible",
+      "validFrom": "2026-02-04",
+      "validUntil": "2026-02-25",
+      "creditingDate": "Al mes siguiente de realizado el consumo",
+      "establishments": [
+        "Supermercados",
+        "Estaciones de combustible"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas empresariales, débito ni Ultracrédito. No se combina con otras ofertas. Tope aplica para consumo de hasta RD$30,000 en supermercados y RD$40,000 en combustible.",
+      "conditions": [
+        "Solo los miércoles de febrero",
+        "Solo tarjeta Clásica y El Encanto Cibao",
+        "Mínimo de consumo RD$1,500 en supermercados y RD$1,000 en combustible",
+        "No aplican tarjetas empresariales, débito ni Ultracrédito",
+        "No se combina con otras ofertas"
+      ],
+      "isActive": true,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-febrero",
+      "extractedAt": "2026-02-22T20:32:16.774Z",
+      "id": "liqln5",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": 3,
       "daysUntilStart": null
     },
     {
@@ -1053,7 +1141,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": 3,
+      "daysUntilExpiry": 2,
       "daysUntilStart": null
     },
     {
@@ -1087,7 +1175,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": 2,
+      "daysUntilExpiry": 1,
       "daysUntilStart": null
     },
     {
@@ -1120,77 +1208,6 @@
       "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.ofertas-independencia-bebemundo-feb26.html",
       "extractedAt": "2026-02-21T12:07:52.162Z",
       "id": "cty55w",
-      "bankId": "scotiabank",
-      "bankColor": "#e8003d",
-      "isUpcoming": false,
-      "daysUntilExpiry": 1,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Oferta Carnaval Punta Cana 2026",
-      "description": "Obtén 20% de devolución al comprar brazaletes y accesos al Carnaval de Punta Cana pagando con Tarjetas de Crédito BHD.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjetas de Crédito BHD"
-      ],
-      "minimumSpend": "RD$1,914 o US$30 acumulado",
-      "maxReturn": "RD$3,828 o US$60 por cliente durante la vigencia",
-      "validFrom": "2026-02-12",
-      "validUntil": "2026-02-21",
-      "creditingDate": "En el transcurso de los 45 días posteriores a la promoción",
-      "establishments": [
-        "Carnaval de Punta Cana"
-      ],
-      "categories": [
-        "entretenimiento"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican Tarjetas de Débito ni Tarjetas Empresariales. Válido hasta agotar existencia. Tasa del dólar utilizada: RD$63.80.",
-      "isActive": true,
-      "bank": "BHD",
-      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
-      "extractedAt": "2026-02-21T12:07:03.042Z",
-      "id": "x1kmab",
-      "bankId": "bhd",
-      "bankColor": "#e63946",
-      "isUpcoming": false,
-      "daysUntilExpiry": 0,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Campaña Aniversario BACCESSORY - 15% de devolución",
-      "description": "15% de devolución en compras realizadas en BACCESSORY con tarjetas de crédito personales Scotiabank durante el aniversario del comercio.",
-      "percentage": "15%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Visa Scotiabank",
-        "Mastercard Scotiabank",
-        "American Express Scotiabank"
-      ],
-      "minimumSpend": "RD$6,000.00",
-      "maxReturn": "RD$3,000.00",
-      "validFrom": "2026-02-18",
-      "validUntil": "2026-02-21",
-      "creditingDate": null,
-      "establishments": [
-        "BACCESSORY"
-      ],
-      "categories": [
-        "combustible",
-        "retail"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Promoción válida exclusivamente del 18 al 21 de febrero de 2026. Consumo mínimo de RD$6,000.00 y tope de devolución de RD$3,000.00.",
-      "isActive": true,
-      "bank": "Scotiabank",
-      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.campana-aniversario-baccessory-feb26.html",
-      "extractedAt": "2026-02-21T12:08:18.344Z",
-      "id": "bvyjba",
       "bankId": "scotiabank",
       "bankColor": "#e8003d",
       "isUpcoming": false,
@@ -1233,6 +1250,42 @@
       "bankColor": "#1A3A6B"
     },
     {
+      "title": "10% OFF en tours en Guatemala con gotuuri.com",
+      "description": "Recibe un 10% de descuento al reservar tours y actividades en Guatemala a través de gotuuri.com usando el código VISA10 y pagando con tarjetas Visa Banco Vimenca.",
+      "percentage": "10%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Visa Banco Vimenca"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": null,
+      "validUntil": null,
+      "creditingDate": null,
+      "establishments": [
+        "gotuuri.com"
+      ],
+      "categories": [
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Se debe usar el código VISA10 al momento de la reserva. Aplican términos y condiciones.",
+      "conditions": [
+        "Usar código VISA10 al reservar",
+        "Pagar con tarjetas Visa Banco Vimenca"
+      ],
+      "isActive": true,
+      "bank": "Banco Vimenca",
+      "sourceUrl": "https://storage.googleapis.com/bancovimenca/GT_Gotuuri_Renovacion_Toolkit_Bancos_5aad9119bb.pdf",
+      "extractedAt": "2026-02-22T20:34:49.855Z",
+      "id": "ozqv3p",
+      "bankId": "vimenca",
+      "bankColor": "#003366"
+    },
+    {
       "title": "20% de devolución con Tarjeta de Crédito La Nacional",
       "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional el 27 de febrero de 2026, de 11 a.m. a 8 p.m.",
       "percentage": "20%",
@@ -1261,8 +1314,128 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": true,
-      "daysUntilExpiry": 6,
-      "daysUntilStart": 6
+      "daysUntilExpiry": 5,
+      "daysUntilStart": 5
+    },
+    {
+      "title": "20% de devolución en Sirena por Independencia",
+      "description": "Celebra la Independencia con un 20% de devolución en compras realizadas en Sirena con tarjetas Banco Vimenca, válido en tiendas físicas y online.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica Vimenca",
+        "Clásica Internacional Vimenca",
+        "Vimenpaq Vimenca",
+        "PagaTodo Vimenca",
+        "Más Vimenca",
+        "Gold Vimenca",
+        "Black Gold Vimenca",
+        "Platinum Vimenca",
+        "Visa Infinite Vimenca"
+      ],
+      "minimumSpend": "DOP$4,000 durante la oferta",
+      "maxReturn": "DOP$6,000 durante la oferta",
+      "validFrom": "2026-02-23",
+      "validUntil": "2026-02-26",
+      "creditingDate": "30 días después de finalizada la oferta",
+      "establishments": [
+        "Sirena"
+      ],
+      "categories": [
+        "supermercado",
+        "retail",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Para recibir la devolución la tarjeta debe estar al día y sin bloqueo por mora. El cashback será aplicado 30 días finalizada la oferta.",
+      "conditions": [
+        "Mínimo de consumo DOP$4,000 por cliente durante la oferta",
+        "Tope máximo de devolución DOP$6,000 por cliente durante la oferta",
+        "La tarjeta debe estar al día y sin bloqueo por mora"
+      ],
+      "isActive": false,
+      "bank": "Banco Vimenca",
+      "sourceUrl": "https://storage.googleapis.com/bancovimenca/LANDING_SIRENA_IND_e577d53193.pdf",
+      "extractedAt": "2026-02-22T20:35:49.523Z",
+      "id": "3ynd8p",
+      "bankId": "vimenca",
+      "bankColor": "#003366",
+      "isUpcoming": true,
+      "daysUntilExpiry": 4,
+      "daysUntilStart": 1
+    },
+    {
+      "title": "Oferta Carnaval Punta Cana 2026",
+      "description": "Obtén 20% de devolución al comprar brazaletes y accesos al Carnaval de Punta Cana pagando con Tarjetas de Crédito BHD.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito BHD"
+      ],
+      "minimumSpend": "RD$1,914 o US$30 acumulado",
+      "maxReturn": "RD$3,828 o US$60 por cliente durante la vigencia",
+      "validFrom": "2026-02-12",
+      "validUntil": "2026-02-21",
+      "creditingDate": "En el transcurso de los 45 días posteriores a la promoción",
+      "establishments": [
+        "Carnaval de Punta Cana"
+      ],
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican Tarjetas de Débito ni Tarjetas Empresariales. Válido hasta agotar existencia. Tasa del dólar utilizada: RD$63.80.",
+      "isActive": false,
+      "bank": "BHD",
+      "sourceUrl": "https://bhd.com.do/homepage-personal/otros-servicios/products/259",
+      "extractedAt": "2026-02-21T12:07:03.042Z",
+      "id": "x1kmab",
+      "bankId": "bhd",
+      "bankColor": "#e63946",
+      "isUpcoming": false,
+      "daysUntilExpiry": -1,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Campaña Aniversario BACCESSORY - 15% de devolución",
+      "description": "15% de devolución en compras realizadas en BACCESSORY con tarjetas de crédito personales Scotiabank durante el aniversario del comercio.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Visa Scotiabank",
+        "Mastercard Scotiabank",
+        "American Express Scotiabank"
+      ],
+      "minimumSpend": "RD$6,000.00",
+      "maxReturn": "RD$3,000.00",
+      "validFrom": "2026-02-18",
+      "validUntil": "2026-02-21",
+      "creditingDate": null,
+      "establishments": [
+        "BACCESSORY"
+      ],
+      "categories": [
+        "combustible",
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Promoción válida exclusivamente del 18 al 21 de febrero de 2026. Consumo mínimo de RD$6,000.00 y tope de devolución de RD$3,000.00.",
+      "isActive": false,
+      "bank": "Scotiabank",
+      "sourceUrl": "https://do.scotiabank.com/banca-personal/promociones/post.campana-aniversario-baccessory-feb26.html",
+      "extractedAt": "2026-02-21T12:08:18.344Z",
+      "id": "bvyjba",
+      "bankId": "scotiabank",
+      "bankColor": "#e8003d",
+      "isUpcoming": false,
+      "daysUntilExpiry": -1,
+      "daysUntilStart": null
     },
     {
       "title": "Un buen futuro se asegura estudiando - 2026",
@@ -1295,7 +1468,7 @@
       "bankId": "scotiabank",
       "bankColor": "#e8003d",
       "isUpcoming": false,
-      "daysUntilExpiry": -1,
+      "daysUntilExpiry": -2,
       "daysUntilStart": null
     },
     {
@@ -1332,7 +1505,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -1,
+      "daysUntilExpiry": -2,
       "daysUntilStart": null
     },
     {
@@ -1355,21 +1528,22 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "Válido solo en comercios registrados bajo la categoría de Colegios. No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
+      "notes": "Cashback válido solo en comercios registrados bajo la categoría de Colegios. No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
       "conditions": [
         "Monto mínimo de consumo acumulable RD$100,000.00",
         "Máximo de devolución RD$10,000.00",
-        "Solo válido en comercios registrados bajo la categoría de Colegios"
+        "Solo válido en comercios registrados bajo la categoría de Colegios",
+        "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo"
       ],
       "isActive": false,
       "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/category/promociones/",
-      "extractedAt": "2026-02-21T15:02:53.209Z",
-      "id": "u92d9m",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-22T20:25:22.447Z",
+      "id": "pz8wdo",
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": -1,
+      "daysUntilExpiry": -2,
       "daysUntilStart": null
     },
     {
@@ -1409,7 +1583,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -3,
+      "daysUntilExpiry": -4,
       "daysUntilStart": null
     },
     {
@@ -1446,7 +1620,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -3,
+      "daysUntilExpiry": -4,
       "daysUntilStart": null
     },
     {
@@ -1480,7 +1654,87 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -4,
+      "daysUntilExpiry": -5,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín 2026 - Pandora",
+      "description": "Recibe 15% de cashback por compras con tarjetas de crédito Qik en tiendas físicas de Pandora en República Dominicana.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Qik"
+      ],
+      "minimumSpend": "RD$ 10,000.00",
+      "maxReturn": "RD$ 4,000.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-16",
+      "creditingDate": "Dentro de los 30 días calendario posteriores a la fecha de finalización de la promoción",
+      "establishments": [
+        "Pandora"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "El cashback aplica solo una vez durante la vigencia de la promoción. El cliente debe estar al día en sus obligaciones de crédito con Qik.",
+      "conditions": [
+        "Una vez por cliente durante toda la promoción",
+        "Consumo mínimo de RD$ 10,000.00",
+        "Solo en tiendas físicas de Pandora en República Dominicana",
+        "Estar al día en el pago de obligaciones de crédito con Qik"
+      ],
+      "isActive": false,
+      "bank": "Qik",
+      "sourceUrl": "https://qik.do/content/dam/qik/legal/promociones/Terminos_y_Condicones_Promocion_San_Valentin_2026.pdf",
+      "extractedAt": "2026-02-22T20:53:14.221Z",
+      "id": "lylp54",
+      "bankId": "qik",
+      "bankColor": "#0082CD",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín 2026 - Swarovski",
+      "description": "Recibe 15% de cashback por compras con tarjetas de crédito Qik en tiendas físicas de Swarovski en República Dominicana.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Qik"
+      ],
+      "minimumSpend": "RD$ 10,000.00",
+      "maxReturn": "RD$ 4,000.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-16",
+      "creditingDate": "Dentro de los 30 días calendario posteriores a la fecha de finalización de la promoción",
+      "establishments": [
+        "Swarovski"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "El cashback aplica solo una vez durante la vigencia de la promoción. El cliente debe estar al día en sus obligaciones de crédito con Qik.",
+      "conditions": [
+        "Una vez por cliente durante toda la promoción",
+        "Consumo mínimo de RD$ 10,000.00",
+        "Solo en tiendas físicas de Swarovski en República Dominicana",
+        "Estar al día en el pago de obligaciones de crédito con Qik"
+      ],
+      "isActive": false,
+      "bank": "Qik",
+      "sourceUrl": "https://qik.do/content/dam/qik/legal/promociones/Terminos_y_Condicones_Promocion_San_Valentin_2026.pdf",
+      "extractedAt": "2026-02-22T20:53:14.221Z",
+      "id": "lylp53",
+      "bankId": "qik",
+      "bankColor": "#0082CD",
+      "isUpcoming": false,
+      "daysUntilExpiry": -6,
       "daysUntilStart": null
     },
     {
@@ -1515,7 +1769,7 @@
       "bankId": "scotiabank",
       "bankColor": "#e8003d",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1550,7 +1804,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1582,7 +1836,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1622,7 +1876,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1658,7 +1912,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1692,7 +1946,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1729,7 +1983,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1761,12 +2015,12 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
       "title": "20% Cashback en TOUS",
-      "description": "Recibe 20% de cashback en compras realizadas en TOUS al pagar con tarjetas de crédito personales VISA Banco López de Haro.",
+      "description": "Recibe 20% de cashback al pagar en TOUS con tarjetas de crédito personales VISA Banco López de Haro.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
@@ -1788,17 +2042,18 @@
       ],
       "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
       "conditions": [
-        "Máximo de devolución por cliente RD$3,500.00"
+        "Máximo de devolución por cliente RD$3,500.00",
+        "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo"
       ],
       "isActive": false,
       "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/category/promociones/",
-      "extractedAt": "2026-02-21T15:02:53.209Z",
-      "id": "u92d9n",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-22T20:25:22.447Z",
+      "id": "pz8wdn",
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": -6,
+      "daysUntilExpiry": -7,
       "daysUntilStart": null
     },
     {
@@ -1824,17 +2079,18 @@
       "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo. Monto mínimo de consumo RD$5,000.00.",
       "conditions": [
         "Monto mínimo de consumo RD$5,000.00",
-        "Máximo de devolución por cliente RD$3,000.00"
+        "Máximo de devolución por cliente RD$3,000.00",
+        "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo"
       ],
       "isActive": false,
       "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/category/promociones/",
-      "extractedAt": "2026-02-21T15:02:53.209Z",
-      "id": "u92d9p",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-22T20:25:22.447Z",
+      "id": "pz8wdl",
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -1859,17 +2115,18 @@
       ],
       "notes": "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo.",
       "conditions": [
-        "Máximo de devolución por cliente RD$1,000.00"
+        "Máximo de devolución por cliente RD$1,000.00",
+        "No participan Tarjetas Empresariales, Visa Débito ni Línea Efectivo"
       ],
       "isActive": false,
       "bank": "Banco López de Haro",
-      "sourceUrl": "https://www.blh.com.do/category/promociones/",
-      "extractedAt": "2026-02-21T15:02:53.209Z",
-      "id": "u92d9o",
+      "sourceUrl": "https://www.blh.com.do/disfruta-de-promociones-exclusivas-de-febrero/",
+      "extractedAt": "2026-02-22T20:25:22.447Z",
+      "id": "pz8wdm",
       "bankId": "blh",
       "bankColor": "#2d6a4f",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -1907,7 +2164,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -1961,7 +2218,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2005,7 +2262,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2042,7 +2299,7 @@
       "bankId": "scotiabank",
       "bankColor": "#e8003d",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2081,7 +2338,7 @@
       "bankId": "scotiabank",
       "bankColor": "#e8003d",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2115,7 +2372,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2149,7 +2406,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2182,7 +2439,56 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -7,
+      "daysUntilExpiry": -8,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín Floristerías 2026",
+      "description": "Recibe un 10% de cashback por compras realizadas con tarjetas de crédito Qik en floristerías participantes bajo el MCC 5992 en República Dominicana durante la semana de San Valentín.",
+      "percentage": "10%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Qik"
+      ],
+      "minimumSpend": "RD$ 3,000.00",
+      "maxReturn": "RD$ 2,000.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-14",
+      "creditingDate": "Dentro de los 30 días calendario posteriores a la fecha de finalización de la promoción",
+      "establishments": [
+        "AMOROSSA",
+        "JARDIN CONSTANZA",
+        "FLORISTERIA GFC",
+        "D FLORA",
+        "SUPER FLORES",
+        "ELEGANT FLOWERS",
+        "BLOEMEN FLORISTERIA",
+        "FLORISTERIA BONSAI",
+        "FLORISTERIA ANTURIO",
+        "ZUNIFLOR"
+      ],
+      "categories": [
+        "otro"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "El cashback aplica solo una vez durante toda la vigencia de la promoción. El cliente debe estar al día con sus obligaciones de crédito con Qik.",
+      "conditions": [
+        "Una sola vez por cliente durante toda la promoción",
+        "Consumo mínimo de RD$ 3,000.00",
+        "Solo en comercios bajo MCC 5992 (Florists) ubicados en República Dominicana",
+        "Estar al día en el pago de obligaciones de crédito con Qik"
+      ],
+      "isActive": false,
+      "bank": "Qik",
+      "sourceUrl": "https://qik.do/content/dam/qik/legal/promociones/Terminos_y_Condiciones_Promocion_San_Valenti%CC%81n_Floristeri%CC%81as_2026.pdf",
+      "extractedAt": "2026-02-22T20:42:43.548Z",
+      "id": "q2iwop",
+      "bankId": "qik",
+      "bankColor": "#0082CD",
+      "isUpcoming": false,
+      "daysUntilExpiry": -8,
       "daysUntilStart": null
     },
     {
@@ -2216,7 +2522,49 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -9,
+      "daysUntilExpiry": -10,
+      "daysUntilStart": null
+    },
+    {
+      "title": "San Valentín 2026 - La Bodega",
+      "description": "Recibe 15% de cashback por compras con la tarjeta de crédito Pro de Qik en tiendas físicas de La Bodega en República Dominicana.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito Pro Qik"
+      ],
+      "minimumSpend": "RD$ 2,000.00",
+      "maxReturn": "RD$ 4,000.00",
+      "validFrom": "2026-02-09",
+      "validUntil": "2026-02-11",
+      "creditingDate": "Dentro de los 30 días calendario posteriores a la fecha de finalización de la promoción",
+      "establishments": [
+        "La Bodega"
+      ],
+      "categories": [
+        "retail",
+        "bebidas"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "El cashback aplica solo una vez durante la vigencia de la promoción y es exclusivo para la tarjeta de crédito Pro de Qik.",
+      "conditions": [
+        "Una vez por cliente durante toda la promoción",
+        "Consumo mínimo de RD$ 2,000.00",
+        "Solo aplica con tarjeta de crédito Pro de Qik",
+        "Solo en tiendas físicas de La Bodega en República Dominicana",
+        "Estar al día en el pago de obligaciones de crédito con Qik"
+      ],
+      "isActive": false,
+      "bank": "Qik",
+      "sourceUrl": "https://qik.do/content/dam/qik/legal/promociones/Terminos_y_Condicones_Promocion_San_Valentin_2026.pdf",
+      "extractedAt": "2026-02-22T20:53:14.221Z",
+      "id": "lylp52",
+      "bankId": "qik",
+      "bankColor": "#0082CD",
+      "isUpcoming": false,
+      "daysUntilExpiry": -11,
       "daysUntilStart": null
     },
     {
@@ -2250,7 +2598,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -11,
+      "daysUntilExpiry": -12,
       "daysUntilStart": null
     },
     {
@@ -2292,7 +2640,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -12,
+      "daysUntilExpiry": -13,
       "daysUntilStart": null
     },
     {
@@ -2326,7 +2674,44 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -12,
+      "daysUntilExpiry": -13,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Enamorados El Encanto - Cashback 15%",
+      "description": "15% de cashback en categorías de ropa, zapatos y perfumería del 7 al 9 de febrero, con un 5% adicional al pagar con Tarjeta El Encanto Cibao.",
+      "percentage": "15% (hasta 20% con El Encanto Cibao)",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao",
+        "Tarjeta de crédito El Encanto Cibao"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": "2026-02-07",
+      "validUntil": "2026-02-09",
+      "creditingDate": null,
+      "establishments": [],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "5% adicional al pagar con Tarjeta de Crédito El Encanto Cibao. Categorías: ropa, zapatos, perfumería. Texto incompleto, pueden existir condiciones adicionales.",
+      "conditions": [
+        "Solo del 7 al 9 de febrero",
+        "5% adicional exclusivo para Tarjeta El Encanto Cibao"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-febrero",
+      "extractedAt": "2026-02-22T20:32:16.774Z",
+      "id": "liqln6",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -13,
       "daysUntilStart": null
     },
     {
@@ -2360,7 +2745,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -13,
+      "daysUntilExpiry": -14,
       "daysUntilStart": null
     },
     {
@@ -2397,7 +2782,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -13,
+      "daysUntilExpiry": -14,
       "daysUntilStart": null
     },
     {
@@ -2431,7 +2816,7 @@
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
-      "daysUntilExpiry": -17,
+      "daysUntilExpiry": -18,
       "daysUntilStart": null
     },
     {
@@ -2465,7 +2850,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -21,
+      "daysUntilExpiry": -22,
       "daysUntilStart": null
     },
     {
@@ -2499,7 +2884,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -21,
+      "daysUntilExpiry": -22,
       "daysUntilStart": null
     },
     {
@@ -2531,7 +2916,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -22,
+      "daysUntilExpiry": -23,
       "daysUntilStart": null
     },
     {
@@ -2566,7 +2951,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -26,
+      "daysUntilExpiry": -27,
       "daysUntilStart": null
     },
     {
@@ -2598,7 +2983,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -30,
+      "daysUntilExpiry": -31,
       "daysUntilStart": null
     },
     {
@@ -2634,7 +3019,7 @@
       "bankId": "bhd",
       "bankColor": "#e63946",
       "isUpcoming": false,
-      "daysUntilExpiry": -31,
+      "daysUntilExpiry": -32,
       "daysUntilStart": null
     },
     {
@@ -2678,7 +3063,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": -33,
+      "daysUntilExpiry": -34,
       "daysUntilStart": null
     },
     {
@@ -2710,7 +3095,49 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -35,
+      "daysUntilExpiry": -36,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en gimnasios, suplementos y tiendas deportivas",
+      "description": "15% de cashback al pagar con Tarjetas de Crédito o Ultracrédito Cibao en gimnasios, tiendas de suplementos y tiendas deportivas.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$2,500 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": null,
+      "validFrom": "2026-01-08",
+      "validUntil": "2026-01-11",
+      "creditingDate": null,
+      "establishments": [
+        "Gimnasios",
+        "Tiendas de suplementos",
+        "Tiendas deportivas"
+      ],
+      "categories": [
+        "retail",
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Texto de la promoción aparece cortado, posibles condiciones adicionales no visibles. Válido para compras presenciales y en línea.",
+      "conditions": [
+        "Consumo mínimo de RD$2,500 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-enero-2026/",
+      "extractedAt": "2026-02-22T20:30:01.940Z",
+      "id": "i1dxhp",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -42,
       "daysUntilStart": null
     },
     {
@@ -2744,7 +3171,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -44,
+      "daysUntilExpiry": -45,
       "daysUntilStart": null
     },
     {
@@ -2778,7 +3205,133 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -44,
+      "daysUntilExpiry": -45,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en El Mundo del Juguete",
+      "description": "20% de cashback al pagar con Tarjetas de Crédito o Ultracrédito Cibao en El Mundo del Juguete, válido en compras presenciales y en línea.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2026-01-02",
+      "validUntil": "2026-01-05",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "El Mundo del Juguete"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución de RD$5,000 por cliente",
+        "No aplican tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-enero-2026/",
+      "extractedAt": "2026-02-22T20:30:01.940Z",
+      "id": "i1dxhn",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -48,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en La Novia de Villa",
+      "description": "20% de cashback al pagar con Tarjetas de Crédito o Ultracrédito Cibao en La Novia de Villa, válido en compras presenciales y en línea.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2026-01-02",
+      "validUntil": "2026-01-05",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "La Novia de Villa"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución de RD$5,000 por cliente",
+        "No aplican tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-enero-2026/",
+      "extractedAt": "2026-02-22T20:30:01.940Z",
+      "id": "i1dxho",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -48,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en Aro & Pedal",
+      "description": "20% de cashback al pagar con Tarjetas de Crédito o Ultracrédito Cibao en Aro & Pedal, válido en compras presenciales y en línea.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2026-01-02",
+      "validUntil": "2026-01-04",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Aro & Pedal"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución de RD$5,000 por cliente",
+        "No aplican tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-enero-2026/",
+      "extractedAt": "2026-02-22T20:30:01.940Z",
+      "id": "i1dxhm",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -49,
       "daysUntilStart": null
     },
     {
@@ -2812,7 +3365,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -58,
+      "daysUntilExpiry": -59,
       "daysUntilStart": null
     },
     {
@@ -2847,7 +3400,47 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -59,
+      "daysUntilExpiry": -60,
+      "daysUntilStart": null
+    },
+    {
+      "title": "15% descuento en Christmas Special Selection de El Catador",
+      "description": "Al pagar con tarjetas de crédito personales Visa de Banco Vimenca recibe un 15% de descuento en la Christmas Special Selection de El Catador, adicional al 15% de descuento de El Catador.",
+      "percentage": "15%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de crédito personales Visa Banco Vimenca"
+      ],
+      "minimumSpend": null,
+      "maxReturn": "RD$3,000",
+      "validFrom": "2025-12-17",
+      "validUntil": "2025-12-24",
+      "creditingDate": null,
+      "establishments": [
+        "El Catador"
+      ],
+      "categories": [
+        "bebidas"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Descuento Visa solo aplica al tarjetahabiente con plástico en físico al pagar en tiendas o por delivery. No aplica con otras promociones vigentes.",
+      "conditions": [
+        "Tope de descuento Visa por cliente RD$3,000",
+        "Debe presentar plástico en físico al pagar",
+        "No aplica con otras promociones vigentes",
+        "Solo aplica en Christmas Special Selection"
+      ],
+      "isActive": false,
+      "bank": "Banco Vimenca",
+      "sourceUrl": "https://storage.googleapis.com/bancovimenca/Shift_Visa_Holiday_Essentials_Toolkit_Diciembre_2025_post_1_slide_1_39153b5945.pdf",
+      "extractedAt": "2026-02-22T20:34:26.722Z",
+      "id": "fmntz6",
+      "bankId": "vimenca",
+      "bankColor": "#003366",
+      "isUpcoming": false,
+      "daysUntilExpiry": -60,
       "daysUntilStart": null
     },
     {
@@ -2881,7 +3474,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -60,
+      "daysUntilExpiry": -61,
       "daysUntilStart": null
     },
     {
@@ -2922,7 +3515,7 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -62,
+      "daysUntilExpiry": -63,
       "daysUntilStart": null
     },
     {
@@ -2962,7 +3555,7 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -69,
+      "daysUntilExpiry": -70,
       "daysUntilStart": null
     },
     {
@@ -3001,7 +3594,7 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -70,
+      "daysUntilExpiry": -71,
       "daysUntilStart": null
     },
     {
@@ -3040,7 +3633,7 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -76,
+      "daysUntilExpiry": -77,
       "daysUntilStart": null
     },
     {
@@ -3075,7 +3668,7 @@
       "bankId": "banreservas",
       "bankColor": "#d4a017",
       "isUpcoming": false,
-      "daysUntilExpiry": -77,
+      "daysUntilExpiry": -78,
       "daysUntilStart": null
     },
     {
@@ -3114,7 +3707,7 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -80,
+      "daysUntilExpiry": -81,
       "daysUntilStart": null
     },
     {
@@ -3150,7 +3743,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -82,
+      "daysUntilExpiry": -83,
       "daysUntilStart": null
     },
     {
@@ -3203,16 +3796,16 @@
       "bankId": "apap",
       "bankColor": "#CC0000",
       "isUpcoming": false,
-      "daysUntilExpiry": -82,
+      "daysUntilExpiry": -83,
       "daysUntilStart": null
     },
     {
       "title": "Cashback Compras por Internet Amazon, Shein, AliExpress con Banesco",
-      "description": "20% de devolución al realizar compras en línea en Amazon, Shein y AliExpress con tarjetas Banesco.",
+      "description": "20% de devolución al realizar compras en línea en Amazon, Shein y AliExpress.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": "US$50 acumulados durante la vigencia",
       "maxReturn": "US$100 por tarjeta",
@@ -3238,12 +3831,12 @@
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yduccf",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -82,
+      "daysUntilExpiry": -83,
       "daysUntilStart": null
     },
     {
@@ -3277,7 +3870,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -83,
+      "daysUntilExpiry": -84,
       "daysUntilStart": null
     },
     {
@@ -3318,16 +3911,16 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -83,
+      "daysUntilExpiry": -84,
       "daysUntilStart": null
     },
     {
       "title": "Cashback y Descuentos Black Friday Lubricantes Diversos con Banesco",
-      "description": "20% de devolución en compras, además de descuentos de 30% a 40% en servicios y neumáticos seleccionados en Lubricantes Diversos.",
+      "description": "20% de devolución en compras, además de descuentos de 30% a 40% en servicios, neumáticos y numeraciones seleccionadas en Lubricantes Diversos.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": null,
       "maxReturn": null,
@@ -3343,19 +3936,19 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "Además del 20% de devolución: 30% descuento en servicios y neumáticos RoadX y Nankang, 35% en Yokohama, 40% en numeraciones seleccionadas de las tres marcas.",
+      "notes": "Además del 20% de devolución: 30% descuento en servicios y neumáticos RoadX y Nankang, 35% en Yokohama, y 40% en numeraciones seleccionadas de las tres marcas.",
       "conditions": [
-        "Descuentos en neumáticos aplican solo en marcas y numeraciones seleccionadas"
+        "Descuentos adicionales aplican según marca y numeración seleccionada"
       ],
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yducce",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -83,
+      "daysUntilExpiry": -84,
       "daysUntilStart": null
     },
     {
@@ -3391,7 +3984,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -86,
+      "daysUntilExpiry": -87,
       "daysUntilStart": null
     },
     {
@@ -3432,16 +4025,16 @@
       "bankId": "ademi",
       "bankColor": "#0056A2",
       "isUpcoming": false,
-      "daysUntilExpiry": -86,
+      "daysUntilExpiry": -87,
       "daysUntilStart": null
     },
     {
       "title": "Cashback Black Friday La Sirena con Banesco",
-      "description": "25% de devolución al realizar compras en Supermercados La Sirena y sus plataformas web durante Black Friday.",
+      "description": "25% de devolución al realizar compras en Supermercados La Sirena en República Dominicana y sus plataformas web durante el Black Friday.",
       "percentage": "25%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": null,
       "maxReturn": null,
@@ -3459,18 +4052,16 @@
         "crédito"
       ],
       "notes": "Aplica en supermercados La Sirena en República Dominicana y sus plataformas web.",
-      "conditions": [
-        "Solo en República Dominicana"
-      ],
+      "conditions": [],
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yduccd",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -86,
+      "daysUntilExpiry": -87,
       "daysUntilStart": null
     },
     {
@@ -3505,16 +4096,16 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -97,
+      "daysUntilExpiry": -98,
       "daysUntilStart": null
     },
     {
       "title": "Cashback Black Friday Sleep Center con Banesco",
-      "description": "20% de devolución al realizar compras en Sleep Center durante Black Friday.",
+      "description": "20% de devolución al realizar compras en Sleep Center durante el Black Friday.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": null,
       "maxReturn": null,
@@ -3536,12 +4127,12 @@
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yduccc",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -97,
+      "daysUntilExpiry": -98,
       "daysUntilStart": null
     },
     {
@@ -3576,7 +4167,7 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -103,
+      "daysUntilExpiry": -104,
       "daysUntilStart": null
     },
     {
@@ -3585,7 +4176,7 @@
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": null,
       "maxReturn": null,
@@ -3609,12 +4200,12 @@
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yducca",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -103,
+      "daysUntilExpiry": -104,
       "daysUntilStart": null
     },
     {
@@ -3651,12 +4242,12 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -104,
+      "daysUntilExpiry": -105,
       "daysUntilStart": null
     },
     {
       "title": "Cashback Black Friday Jumbo con Banesco",
-      "description": "25% de devolución al pagar en Jumbo tienda física y online, a excepción de supermercado, durante Black Friday.",
+      "description": "25% de devolución al pagar en tiendas Jumbo física y online, a excepción de supermercado, durante el Black Friday.",
       "percentage": "25%",
       "promoType": "devolución",
       "eligibleCards": [
@@ -3679,28 +4270,28 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "Aplica en tienda física y online a excepción de supermercado.",
+      "notes": "Aplica en tienda física y online. No aplica en la sección de supermercado.",
       "conditions": [
-        "No aplica en supermercado Jumbo"
+        "No aplica en supermercado"
       ],
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yduccb",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -104,
+      "daysUntilExpiry": -105,
       "daysUntilStart": null
     },
     {
       "title": "Cashback Distribuidora Corripio con Banesco",
-      "description": "25% de devolución al realizar compras en tiendas Distribuidora Corripio con tarjetas Banesco.",
+      "description": "25% de devolución al realizar compras en tiendas Distribuidora Corripio durante la vigencia de la promoción.",
       "percentage": "25%",
       "promoType": "devolución",
       "eligibleCards": [
-        "Tarjetas Banesco"
+        "Tarjetas de crédito Banesco"
       ],
       "minimumSpend": "RD$5,000 acumulados durante la vigencia",
       "maxReturn": "RD$10,000 por tarjeta",
@@ -3724,12 +4315,12 @@
       "isActive": false,
       "bank": "Banesco",
       "sourceUrl": "https://www.banesco.com.do/promociones/resumen-de-las-promociones-noviembre/",
-      "extractedAt": "2026-02-21T14:51:30.534Z",
+      "extractedAt": "2026-02-22T20:26:37.391Z",
       "id": "yducc9",
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -111,
+      "daysUntilExpiry": -112,
       "daysUntilStart": null
     },
     {
@@ -3758,19 +4349,19 @@
       "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$40,000.",
       "conditions": [
         "Consumo mínimo de RD$5,000 por transacción",
-        "Tope de devolución de RD$10,000 por cliente",
-        "No aplican tarjetas de débito ni empresariales",
+        "Tope de devolución por cliente RD$10,000",
+        "No aplican tarjetas de débito ni tarjetas de crédito empresariales",
         "Ultracrédito no aplica para compras en línea"
       ],
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
-      "extractedAt": "2026-02-21T15:06:32.663Z",
+      "extractedAt": "2026-02-22T20:30:15.427Z",
       "id": "q2sop3",
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -111,
+      "daysUntilExpiry": -112,
       "daysUntilStart": null
     },
     {
@@ -3814,26 +4405,26 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -111,
+      "daysUntilExpiry": -112,
       "daysUntilStart": null
     },
     {
       "title": "Cashback 20% (+5% adicional) en El Encanto",
-      "description": "20% de cashback en Tiendas El Encanto, con un 5% adicional al pagar con la Tarjeta de Crédito El Encanto Cibao.",
+      "description": "20% de cashback en compras en El Encanto, más un 5% adicional al pagar con la Tarjeta de Crédito El Encanto Cibao.",
       "percentage": "20%",
       "promoType": "devolución",
       "eligibleCards": [
         "Tarjetas de crédito Asociación Cibao",
-        "Tarjeta de Crédito El Encanto Cibao",
-        "Ultracrédito Cibao"
+        "Ultracrédito Cibao",
+        "Tarjeta de Crédito El Encanto Cibao"
       ],
-      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito; RD$5,000 con Ultracrédito Cibao",
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito",
       "maxReturn": "RD$5,000 por cliente",
       "validFrom": "2025-10-31",
       "validUntil": "2025-11-02",
       "creditingDate": "Durante el mes siguiente de concluir la promoción",
       "establishments": [
-        "Tiendas El Encanto"
+        "El Encanto"
       ],
       "categories": [
         "retail"
@@ -3841,23 +4432,22 @@
       "cardTypes": [
         "crédito"
       ],
-      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$25,000.",
+      "notes": "5% adicional exclusivo para Tarjeta de Crédito El Encanto Cibao. Tope de devolución aplica para consumos de hasta RD$25,000.",
       "conditions": [
         "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
         "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
-        "Tope de devolución de RD$5,000 por cliente",
-        "No aplican tarjetas de débito ni empresariales",
-        "Ultracrédito no aplica para compras en línea"
+        "Tope de devolución por cliente RD$5,000",
+        "Tope de devolución aplica para consumos de hasta RD$25,000"
       ],
       "isActive": false,
       "bank": "Asociación Cibao",
       "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-noviembre/",
-      "extractedAt": "2026-02-21T15:06:32.663Z",
+      "extractedAt": "2026-02-22T20:30:15.427Z",
       "id": "q2sop4",
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -111,
+      "daysUntilExpiry": -112,
       "daysUntilStart": null
     },
     {
@@ -3891,7 +4481,7 @@
       "bankId": "lafise",
       "bankColor": "#0077b6",
       "isUpcoming": false,
-      "daysUntilExpiry": -114,
+      "daysUntilExpiry": -115,
       "daysUntilStart": null
     },
     {
@@ -3937,7 +4527,135 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -115,
+      "daysUntilExpiry": -116,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba - Cashback en supermercados y combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de septiembre pagando con tarjetas Clásica y El Encanto Cibao.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de Crédito Clásica Cibao",
+        "Tarjeta El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 por transacción en supermercados / RD$1,000 por transacción en estaciones de combustible",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-09-03",
+      "validUntil": "2025-09-24",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Solo comercios nacionales debidamente registrados.",
+      "conditions": [
+        "Solo válido los miércoles de septiembre 2025",
+        "Consumo mínimo de RD$1,500 por transacción en supermercados",
+        "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
+        "Solo tarjetas Clásica y El Encanto Cibao",
+        "Solo comercios nacionales registrados como supermercados y estaciones de combustible"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-septiembre/",
+      "extractedAt": "2026-02-22T20:30:35.323Z",
+      "id": "9e9kzy",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -151,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en Ferretería Bellón",
+      "description": "15% de cashback en compras presenciales en todas las tiendas Ferretería Bellón con tarjetas de crédito y Ultracrédito Cibao.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$6,000 por cliente",
+      "validFrom": "2025-09-15",
+      "validUntil": "2025-09-17",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Ferretería Bellón"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Válido solo para compras presenciales en todas las tiendas. Tope de devolución aplica para consumos de hasta RD$40,000.",
+      "conditions": [
+        "Solo compras presenciales",
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito Cibao",
+        "Tope de devolución por cliente RD$6,000"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-septiembre/",
+      "extractedAt": "2026-02-22T20:30:35.323Z",
+      "id": "9e9l00",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -158,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en Farmacias GBC",
+      "description": "15% de cashback en compras presenciales, telefónicas y vía WhatsApp en todas las Farmacias GBC con tarjetas de crédito y Ultracrédito Cibao.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de Crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$2,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$2,000 por cliente",
+      "validFrom": "2025-09-08",
+      "validUntil": "2025-09-10",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Farmacias GBC"
+      ],
+      "categories": [
+        "farmacia",
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$13,334.",
+      "conditions": [
+        "Consumo mínimo de RD$2,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito Cibao",
+        "Tope de devolución por cliente RD$2,000",
+        "No aplican tarjetas de débito ni tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-septiembre/",
+      "extractedAt": "2026-02-22T20:30:35.323Z",
+      "id": "9e9kzz",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -165,
       "daysUntilStart": null
     },
     {
@@ -3974,7 +4692,7 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -177,
+      "daysUntilExpiry": -178,
       "daysUntilStart": null
     },
     {
@@ -4018,7 +4736,50 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -178,
+      "daysUntilExpiry": -179,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba Cashback en supermercados y combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de agosto 2025, válido para tarjetas Clásica y El Encanto Cibao.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito Clásica",
+        "Tarjeta de crédito El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 por transacción en supermercados / RD$1,000 por transacción en estaciones de combustible",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-08-06",
+      "validUntil": "2025-08-27",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Solo comercios nacionales debidamente registrados.",
+      "conditions": [
+        "Solo los miércoles de agosto 2025",
+        "Consumo mínimo de RD$1,500 por transacción en supermercados",
+        "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
+        "Solo comercios nacionales registrados como supermercados y estaciones de combustible"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
+      "extractedAt": "2026-02-22T20:30:54.525Z",
+      "id": "j8cn4p",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -179,
       "daysUntilStart": null
     },
     {
@@ -4061,7 +4822,50 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -198,
+      "daysUntilExpiry": -199,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Jumbo Regreso a Clases Cashback",
+      "description": "Cashback de 20% en toda la tienda Jumbo para compras presenciales y en línea, del 4 al 7 de agosto 2025.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Asociación Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$2,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$8,000 por cliente",
+      "validFrom": "2025-08-04",
+      "validUntil": "2025-08-07",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Jumbo"
+      ],
+      "categories": [
+        "supermercado",
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Válido para compras presenciales y en línea. No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope aplica para consumos de hasta RD$40,000.",
+      "conditions": [
+        "Consumo mínimo de RD$2,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución por cliente RD$8,000",
+        "No aplican tarjetas de débito ni tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
+      "extractedAt": "2026-02-22T20:30:54.525Z",
+      "id": "j8cn4r",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -199,
       "daysUntilStart": null
     },
     {
@@ -4104,7 +4908,7 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -202,
+      "daysUntilExpiry": -203,
       "daysUntilStart": null
     },
     {
@@ -4149,7 +4953,91 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -202,
+      "daysUntilExpiry": -203,
+      "daysUntilStart": null
+    },
+    {
+      "title": "El Encanto Regreso a Clases Cashback",
+      "description": "Cashback de 20% más un 5% adicional al pagar con tarjeta de crédito El Encanto Cibao en toda la tienda El Encanto, del 1 al 3 de agosto 2025.",
+      "percentage": "20% + 5% adicional con tarjeta El Encanto Cibao",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito El Encanto Cibao",
+        "Tarjetas de crédito Asociación Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$3,000 por transacción con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$5,000 por cliente",
+      "validFrom": "2025-08-01",
+      "validUntil": "2025-08-03",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Tiendas El Encanto"
+      ],
+      "categories": [
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope aplica para consumos de hasta RD$25,000.",
+      "conditions": [
+        "Consumo mínimo de RD$3,000 por transacción con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 por transacción con Ultracrédito",
+        "Tope de devolución por cliente RD$5,000",
+        "No aplican tarjetas de débito ni tarjetas de crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
+      "extractedAt": "2026-02-22T20:30:54.525Z",
+      "id": "j8cn4q",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -203,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback PedidosYa 15%",
+      "description": "15% de cashback en restaurantes de PedidosYa los fines de semana (viernes a domingo) con tarjetas de crédito Cibao. El descuento se aplica automáticamente al momento del pago.",
+      "percentage": "15%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao (personales)"
+      ],
+      "minimumSpend": "RD$500",
+      "maxReturn": "RD$700 por cliente",
+      "validFrom": "2025-07-04",
+      "validUntil": "2025-08-03",
+      "creditingDate": "Descuento aplicado automáticamente en el momento del pago (Checkout)",
+      "establishments": [
+        "PedidosYa República Dominicana"
+      ],
+      "categories": [
+        "restaurante"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito, tarjetas de crédito empresariales ni Ultracrédito. Solo aplica en restaurantes incluidos en PedidosYa los fines de semana de viernes a domingo.",
+      "conditions": [
+        "Solo fines de semana de viernes a domingo",
+        "Consumo mínimo de RD$500",
+        "Solo restaurantes incluidos en PedidosYa",
+        "No aplican tarjetas de débito, empresariales ni Ultracrédito",
+        "Tope de devolución aplica para consumos de hasta RD$4,666.66"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-22T20:31:12.994Z",
+      "id": "sbtqdm",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -203,
       "daysUntilStart": null
     },
     {
@@ -4192,7 +5080,50 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -206,
+      "daysUntilExpiry": -207,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba Cashback en Supermercados y Combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de julio 2025, válido con tarjetas Clásica y El Encanto Cibao.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica Cibao",
+        "El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible por tarjeta",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-07-02",
+      "validUntil": "2025-07-30",
+      "creditingDate": "Durante el mes siguiente de concluir la promoción",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica solo los miércoles de julio. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Aplica para GLP.",
+      "conditions": [
+        "Solo los miércoles de julio",
+        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
+        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
+        "Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-22T20:31:12.994Z",
+      "id": "sbtqdn",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -207,
       "daysUntilStart": null
     },
     {
@@ -4235,7 +5166,7 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -225,
+      "daysUntilExpiry": -226,
       "daysUntilStart": null
     },
     {
@@ -4278,7 +5209,177 @@
       "bankId": "cibao",
       "bankColor": "#004C97",
       "isUpcoming": false,
-      "daysUntilExpiry": -225,
+      "daysUntilExpiry": -226,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Amazon Prime Day Cashback 20%",
+      "description": "20% de cashback en compras en Amazon durante el Prime Day con tarjetas de crédito Cibao. Tope de devolución varía según tipo de tarjeta.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Clásica Cibao",
+        "El Encanto Cibao",
+        "Gold Cibao",
+        "Platinum Cibao",
+        "Infinite Cibao"
+      ],
+      "minimumSpend": "US$60 o su equivalente en pesos",
+      "maxReturn": "Clásica y El Encanto: US$25 / Gold: US$50 / Platinum e Infinite: US$80",
+      "validFrom": "2025-07-08",
+      "validUntil": "2025-07-11",
+      "creditingDate": "El crédito del cashback será aplicado posterior a la promoción",
+      "establishments": [
+        "Amazon"
+      ],
+      "categories": [
+        "online"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Tope de consumo varía por tarjeta: Clásica y El Encanto US$125, Gold US$250, Platinum e Infinite US$400. Aplica en dólares o su equivalente en pesos.",
+      "conditions": [
+        "Consumo mínimo de US$60 o su equivalente en pesos",
+        "Tope de devolución y consumo varía según tipo de tarjeta",
+        "Solo compras en Amazon"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
+      "extractedAt": "2026-02-22T20:31:12.994Z",
+      "id": "sbtqdl",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -226,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba Cashback en supermercados y combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de junio pagando con tarjetas Clásica y El Encanto Cibao.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito Clásica Cibao",
+        "Tarjeta El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible por tarjeta",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-06-04",
+      "validUntil": "2025-06-25",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica solo para comercios nacionales debidamente registrados como supermercados y estaciones de combustible. Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta.",
+      "conditions": [
+        "Solo válido los miércoles de junio 2025",
+        "Solo tarjetas Clásica y El Encanto Cibao",
+        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
+        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-junio/",
+      "extractedAt": "2026-02-22T20:31:29.151Z",
+      "id": "10yu2f",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -242,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cashback en Santiago Country Club",
+      "description": "15% de cashback en el pago del campamento de verano en Santiago Country Club con tarjetas de crédito y Ultracrédito Cibao.",
+      "percentage": "15%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$10,000 acumulado",
+      "maxReturn": "RD$6,000 por cliente",
+      "validFrom": "2025-06-02",
+      "validUntil": "2025-06-11",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Santiago Country Club"
+      ],
+      "categories": [
+        "entretenimiento"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope de devolución aplica para consumos de hasta RD$40,000.",
+      "conditions": [
+        "Tope de devolución por cliente RD$6,000",
+        "No aplican tarjetas de débito ni empresariales",
+        "Ultracrédito no aplica para compras en línea",
+        "Consumo mínimo acumulado de RD$10,000"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-junio/",
+      "extractedAt": "2026-02-21T14:04:27.292Z",
+      "id": "d9eaio",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -256,
+      "daysUntilStart": null,
+      "correctedAt": "2026-02-22T20:53:20.712Z"
+    },
+    {
+      "title": "Cashback de Vacaciones",
+      "description": "20% de cashback en hoteles, estancias vacacionales, aerolíneas y agencias de viajes pagando con tarjetas de crédito y Ultracrédito Cibao.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$25,000 o su equivalente en dólares acumulado",
+      "maxReturn": "RD$10,000 o su equivalente en dólares por cliente",
+      "validFrom": "2025-06-06",
+      "validUntil": "2025-06-08",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Hoteles",
+        "Estancias vacacionales",
+        "Aerolíneas",
+        "Agencias de viajes"
+      ],
+      "categories": [
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Tope de devolución aplica para consumos de hasta RD$50,000 o su equivalente en dólares. Aplica en categorías de hoteles, estancias vacacionales, aerolíneas y agencias de viajes.",
+      "conditions": [
+        "Solo del 6 al 8 de junio 2025",
+        "Consumo mínimo acumulado de RD$25,000 o equivalente en dólares"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-junio/",
+      "extractedAt": "2026-02-22T20:31:29.151Z",
+      "id": "10yu2h",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -259,
       "daysUntilStart": null
     },
     {
@@ -4317,22 +5418,572 @@
       "bankId": "banesco",
       "bankColor": "#C8102E",
       "isUpcoming": false,
-      "daysUntilExpiry": -272,
+      "daysUntilExpiry": -273,
       "daysUntilStart": null
+    },
+    {
+      "title": "Superbomba Cashback en Supermercados y Combustible",
+      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible al pagar con tarjetas de crédito Clásica y El Encanto Cibao todos los miércoles de marzo.",
+      "percentage": "10% supermercados / 5% combustible",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjeta de crédito Clásica Cibao",
+        "Tarjeta El Encanto Cibao"
+      ],
+      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible",
+      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
+      "validFrom": "2025-03-05",
+      "validUntil": "2025-03-26",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Supermercados nacionales",
+        "Estaciones de combustible nacionales"
+      ],
+      "categories": [
+        "supermercado",
+        "combustible"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Solo aplica los miércoles de marzo 2025. Aplica para GLP. Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible.",
+      "conditions": [
+        "Solo válido los miércoles de marzo",
+        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
+        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
+        "Tope de devolución aplica para consumo de hasta RD$30,000 por tarjeta en supermercados",
+        "Tope de devolución aplica para consumo de hasta RD$40,000 por tarjeta en estaciones de combustible",
+        "Solo tarjetas Clásica y El Encanto Cibao"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-marzo",
+      "extractedAt": "2026-02-22T20:31:59.803Z",
+      "id": "jnfsz4",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -333,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Oferta Semana Santa - Cashback 20%",
+      "description": "Cashback del 20% en reservas de hoteles, estancias vacacionales, agencias de viajes y boletos aéreos para Semana Santa.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "RD$6,000 o equivalente en dólares con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$8,000",
+      "validFrom": "2025-03-13",
+      "validUntil": "2025-03-15",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Hoteles",
+        "Estancias vacacionales",
+        "Agencias de viajes",
+        "Aerolíneas"
+      ],
+      "categories": [
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "Aplica en reservas de hoteles, estancias vacacionales, agencias de viajes y compras de boletos aéreos. Texto de términos incompleto.",
+      "conditions": [
+        "Consumo mínimo de RD$6,000 o equivalente en dólares con tarjeta de crédito",
+        "Consumo mínimo de RD$5,000 con Ultracrédito Cibao",
+        "Tope de devolución por cliente RD$8,000"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-marzo",
+      "extractedAt": "2026-02-22T20:31:59.803Z",
+      "id": "jnfsz6",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -344,
+      "daysUntilStart": null
+    },
+    {
+      "title": "Cumpleaños Jumbo - Cashback 20%",
+      "description": "Cashback del 20% en compras presenciales y en línea en Tiendas Jumbo por su aniversario, válido con tarjetas de crédito y Ultracrédito Cibao.",
+      "percentage": "20%",
+      "promoType": "devolución",
+      "eligibleCards": [
+        "Tarjetas de crédito Cibao",
+        "Ultracrédito Cibao"
+      ],
+      "minimumSpend": "Sin mínimo con tarjeta de crédito / RD$5,000 con Ultracrédito Cibao",
+      "maxReturn": "RD$6,000",
+      "validFrom": "2025-03-10",
+      "validUntil": "2025-03-13",
+      "creditingDate": "Durante el mes siguiente de realizado el consumo",
+      "establishments": [
+        "Tiendas Jumbo"
+      ],
+      "categories": [
+        "supermercado",
+        "retail"
+      ],
+      "cardTypes": [
+        "crédito"
+      ],
+      "notes": "No aplican tarjetas de débito ni tarjetas de crédito empresariales. Ultracrédito no aplica para compras en línea. Tope aplica para consumos de hasta RD$30,000.",
+      "conditions": [
+        "Tope de devolución por cliente RD$6,000",
+        "Tope aplica para consumos de hasta RD$30,000",
+        "No aplican tarjetas de débito ni crédito empresariales",
+        "Ultracrédito no aplica para compras en línea"
+      ],
+      "isActive": false,
+      "bank": "Asociación Cibao",
+      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-marzo",
+      "extractedAt": "2026-02-22T20:31:59.803Z",
+      "id": "jnfsz5",
+      "bankId": "cibao",
+      "bankColor": "#004C97",
+      "isUpcoming": false,
+      "daysUntilExpiry": -346,
+      "daysUntilStart": null
+    },
+    {
+      "title": "10% OFF en tours en Panamá y Colombia con Gotuuri",
+      "description": "Obtén 10% de descuento en reservas de tours y actividades en Panamá y Colombia al pagar con Tarjetas Visa Banco Vimenca usando el código VISA10 en gotuuri.com.",
+      "percentage": "10%",
+      "promoType": "descuento",
+      "eligibleCards": [
+        "Visa Banco Vimenca"
+      ],
+      "minimumSpend": null,
+      "maxReturn": null,
+      "validFrom": null,
+      "validUntil": null,
+      "creditingDate": null,
+      "establishments": [
+        "gotuuri.com"
+      ],
+      "categories": [
+        "viaje"
+      ],
+      "cardTypes": [
+        "crédito",
+        "débito"
+      ],
+      "notes": "Aplican términos y condiciones. Se debe usar el código VISA10 en gotuuri.com al momento de la reserva.",
+      "conditions": [
+        "Usar código VISA10 al momento de la reserva",
+        "Solo aplica para tours y actividades en Panamá y Colombia"
+      ],
+      "isActive": false,
+      "bank": "Banco Vimenca",
+      "sourceUrl": "https://storage.googleapis.com/bancovimenca/PM_COL_LANDING_Gotuuri_Renovacion_Toolkit_Bancos_cc03ad8071.pdf",
+      "extractedAt": "2026-02-22T20:33:27.539Z",
+      "id": "grbg6j",
+      "bankId": "vimenca",
+      "bankColor": "#003366"
     }
   ],
-  "lastUpdated": "2026-02-21T15:12:53.244Z",
+  "lastUpdated": "2026-02-22T20:53:20.712Z",
   "stats": {
-    "total": 115,
-    "active": 33,
-    "upcoming": 1,
-    "expired": 81,
-    "newThisRun": 17,
-    "correctionsThisRun": 0,
-    "duplicatesRemoved": 16,
-    "scrapeTimeSeconds": 708.2
+    "total": 145,
+    "active": 34,
+    "upcoming": 2,
+    "expired": 109,
+    "newThisRun": 47,
+    "correctionsThisRun": 2,
+    "duplicatesRemoved": 17,
+    "scrapeTimeSeconds": 1764.6
   },
   "scrapeHistory": [
+    {
+      "date": "2026-02-22T20:53:20.713Z",
+      "newPromos": 47,
+      "correctionsThisRun": 2,
+      "totalPromos": 145,
+      "durationSeconds": 1764.6,
+      "bankResults": [
+        {
+          "bankId": "banreservas",
+          "name": "Banreservas",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 20.3
+        },
+        {
+          "bankId": "bhd",
+          "name": "BHD",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 3.2
+        },
+        {
+          "bankId": "scotiabank",
+          "name": "Scotiabank",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 46.8
+        },
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 4,
+          "durationSeconds": 18.9
+        },
+        {
+          "bankId": "lafise",
+          "name": "LAFISE",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 7,
+          "durationSeconds": 257.1
+        },
+        {
+          "bankId": "apap",
+          "name": "APAP",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.4
+        },
+        {
+          "bankId": "cibao",
+          "name": "Asociación Cibao",
+          "status": "ok",
+          "promosFound": 24,
+          "durationSeconds": 153.9
+        },
+        {
+          "bankId": "bancocaribe",
+          "name": "Banco Caribe",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 34.6
+        },
+        {
+          "bankId": "lanacional",
+          "name": "La Nacional",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 14.9
+        },
+        {
+          "bankId": "vimenca",
+          "name": "Banco Vimenca",
+          "status": "ok",
+          "promosFound": 6,
+          "durationSeconds": 161.7
+        },
+        {
+          "bankId": "promerica",
+          "name": "Promerica",
+          "status": "ok",
+          "promosFound": 1,
+          "durationSeconds": 88.3
+        },
+        {
+          "bankId": "popular",
+          "name": "Banco Popular",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 49.8
+        },
+        {
+          "bankId": "bsc",
+          "name": "Banco Santa Cruz",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 186.3
+        },
+        {
+          "bankId": "ademi",
+          "name": "Banco Ademi",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 2.7
+        },
+        {
+          "bankId": "qik",
+          "name": "Qik",
+          "status": "ok",
+          "promosFound": 7,
+          "durationSeconds": 718.1
+        },
+        {
+          "bankId": "bdi",
+          "name": "Banco BDI",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 5.5
+        }
+      ]
+    },
+    {
+      "date": "2026-02-22T20:23:11.124Z",
+      "newPromos": 0,
+      "correctionsThisRun": 0,
+      "totalPromos": 115,
+      "durationSeconds": 1510.5,
+      "bankResults": [
+        {
+          "bankId": "banreservas",
+          "name": "Banreservas",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 5.8
+        },
+        {
+          "bankId": "bhd",
+          "name": "BHD",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 4.8
+        },
+        {
+          "bankId": "scotiabank",
+          "name": "Scotiabank",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 57.2
+        },
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 17.4
+        },
+        {
+          "bankId": "lafise",
+          "name": "LAFISE",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 2.6
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 200.4
+        },
+        {
+          "bankId": "apap",
+          "name": "APAP",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.1
+        },
+        {
+          "bankId": "cibao",
+          "name": "Asociación Cibao",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 14.2
+        },
+        {
+          "bankId": "bancocaribe",
+          "name": "Banco Caribe",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 10.9
+        },
+        {
+          "bankId": "lanacional",
+          "name": "La Nacional",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 12.9
+        },
+        {
+          "bankId": "vimenca",
+          "name": "Banco Vimenca",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 18.1
+        },
+        {
+          "bankId": "promerica",
+          "name": "Promerica",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 59.9
+        },
+        {
+          "bankId": "popular",
+          "name": "Banco Popular",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 25.8
+        },
+        {
+          "bankId": "bsc",
+          "name": "Banco Santa Cruz",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1051.1
+        },
+        {
+          "bankId": "ademi",
+          "name": "Banco Ademi",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.2
+        },
+        {
+          "bankId": "qik",
+          "name": "Qik",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 24.4
+        },
+        {
+          "bankId": "bdi",
+          "name": "Banco BDI",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 2.5
+        }
+      ]
+    },
+    {
+      "date": "2026-02-22T19:39:32.518Z",
+      "newPromos": 0,
+      "correctionsThisRun": 0,
+      "totalPromos": 115,
+      "durationSeconds": 581.2,
+      "bankResults": [
+        {
+          "bankId": "banreservas",
+          "name": "Banreservas",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 5.2
+        },
+        {
+          "bankId": "bhd",
+          "name": "BHD",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 2.1
+        },
+        {
+          "bankId": "scotiabank",
+          "name": "Scotiabank",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 46.2
+        },
+        {
+          "bankId": "blh",
+          "name": "Banco López de Haro",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 3.1
+        },
+        {
+          "bankId": "lafise",
+          "name": "LAFISE",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 0.5
+        },
+        {
+          "bankId": "banesco",
+          "name": "Banesco",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 121.7
+        },
+        {
+          "bankId": "apap",
+          "name": "APAP",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.2
+        },
+        {
+          "bankId": "cibao",
+          "name": "Asociación Cibao",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 13.3
+        },
+        {
+          "bankId": "bancocaribe",
+          "name": "Banco Caribe",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 10.7
+        },
+        {
+          "bankId": "lanacional",
+          "name": "La Nacional",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 10.5
+        },
+        {
+          "bankId": "vimenca",
+          "name": "Banco Vimenca",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 11.4
+        },
+        {
+          "bankId": "promerica",
+          "name": "Promerica",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 44.7
+        },
+        {
+          "bankId": "popular",
+          "name": "Banco Popular",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 121
+        },
+        {
+          "bankId": "bsc",
+          "name": "Banco Santa Cruz",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 150.8
+        },
+        {
+          "bankId": "ademi",
+          "name": "Banco Ademi",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 1.3
+        },
+        {
+          "bankId": "qik",
+          "name": "Qik",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 32.6
+        },
+        {
+          "bankId": "bdi",
+          "name": "Banco BDI",
+          "status": "ok",
+          "promosFound": 0,
+          "durationSeconds": 5
+        }
+      ]
+    },
     {
       "date": "2026-02-21T15:12:53.245Z",
       "newPromos": 17,

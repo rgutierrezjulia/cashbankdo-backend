@@ -4,7 +4,8 @@
 // para parsear los campos clave de cada promoción.
 // ═══════════════════════════════════════════════════════════════════
 
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ override: true });
 import Anthropic from '@anthropic-ai/sdk';
 import axios from 'axios';
 import * as cheerio from 'cheerio';

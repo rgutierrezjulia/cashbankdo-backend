@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ override: true });
 // ═══════════════════════════════════════════════════════════════════
 // SERVIDOR API — CashbackDO
 // Express + CORS + Cron job diario a las 6am
