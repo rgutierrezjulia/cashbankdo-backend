@@ -99,25 +99,15 @@
   .scrape-btn.loading .idle { display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .geo-btn {
-    background: var(--surface2); border: 1px solid var(--border);
-    color: var(--text); padding: 6px 14px; border-radius: 8px;
-    font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px;
-    transition: all 0.2s; font-family: 'DM Sans', sans-serif;
-  }
-  .geo-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .geo-btn.active { border-color: var(--accent); background: rgba(0,229,160,0.1); color: var(--accent); }
-
   .hero { max-width: 1100px; margin: 0 auto; padding: 48px 24px 32px; }
   .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; }
   .hero h1 em { font-style: normal; color: var(--accent); }
   .hero p { color: var(--muted); font-size: 0.95rem; max-width: 480px; line-height: 1.6; }
 
   .stats-row { max-width: 1100px; margin: 0 auto 32px; padding: 0 24px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 20px; flex: 1; min-width: 130px; }
+  .stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 20px; flex: 1; min-width: 130px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .stat-chip .num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
   .stat-chip .lbl { font-size: 0.75rem; color: var(--muted); }
-  .stat-chip { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .stat-chip.green .num { color: #059669; }
   .stat-chip.yellow .num { color: #b45309; }
   .stat-chip.purple .num { color: var(--accent2); }
@@ -272,8 +262,6 @@
   .tag.débito { background: rgba(0,0,0,0.05); color: var(--muted); }
 
   /* Widget (used inside drawers) */
-  .widget { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
-  .widget-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 
   /* ═══ Hamburger menu (mobile only) ═══ */
   .hamburger-btn {
@@ -825,7 +813,6 @@ const CATEGORY_TAGS = {
   otro:              ['otro', 'combustible'],
 };
 let geoActive = false;
-// timerSec / timerRef replaced by dwell system in geo section
 // Persist helper — saves to localStorage and logs for debugging
 function saveState(key, data) {
   try {
@@ -844,7 +831,6 @@ function loadState(key, fallback) {
 let walletCards = loadState('cashbackdo_wallet', []);
 let favoriteIds = new Set(loadState('cashbackdo_favs', []));
 let hiddenIds = new Set(loadState('cashbackdo_hidden', []));
-console.log('Init — wallet:', walletCards.length, 'cards, favs:', favoriteIds.size, 'hidden:', hiddenIds.size);
 // Modal state
 let modalSelected = new Set();
 
@@ -941,7 +927,6 @@ async function loadData() {
           const fbData = await fb.json();
           if (fbData.promos?.length > 0) {
             allPromos = fbData.promos;
-            console.log('API returned 0 promos, loaded fallback:', allPromos.length);
           }
         }
       } catch (e) { /* no fallback available */ }
@@ -982,7 +967,6 @@ async function loadData() {
           if (fallback.ok) {
             const data = await fallback.json();
             allPromos = data.promos || [];
-            console.log('Loaded fallback promos from', path, ':', allPromos.length);
             break;
           }
         } catch (e) { /* try next path */ }
@@ -997,20 +981,13 @@ function setSyncStatus(status, lastUpdated) {
   const text = document.getElementById('syncText');
   dot.className = 'sync-dot';
 
-  const menuDot = document.getElementById('menuSyncDot');
-  const menuText = document.getElementById('menuSyncText');
-
   if (status === 'ok') {
     const ago = lastUpdated ? timeAgo(lastUpdated) : 'recién';
     text.textContent = `Actualizado ${ago}`;
     dot.style.background = 'var(--accent)';
-    if (menuDot) { menuDot.style.background = 'var(--accent)'; }
-    if (menuText) { menuText.textContent = `Actualizado ${ago}`; }
   } else if (status === 'error') {
     text.textContent = 'Sin conexión al servidor';
     dot.style.background = 'var(--accent3)';
-    if (menuDot) { menuDot.style.background = 'var(--accent3)'; }
-    if (menuText) { menuText.textContent = 'Sin conexión al servidor'; }
   }
 }
 
@@ -1572,8 +1549,6 @@ function renderBankFilter(banks) {
     `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
       style="--bc:${b.color}">${b.name}</button>`
   ).join('');
-  // Remove old bank buttons (keep first 2 static ones)
-  const staticBtns = filter.querySelectorAll('[data-bank="all"], [data-bank="mis-productos"]');
   filter.innerHTML =
     `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +
     `<button class="bank-btn fav-bank-btn" data-bank="favoritos" onclick="setBank('favoritos',this)">❤️ Favoritos</button>` +
@@ -1836,8 +1811,11 @@ async function triggerScrape() {
     });
     if (!res.ok) throw new Error('No autorizado');
     showToast('Sistema', '🔄 Scraping iniciado en el servidor', 'Los datos se actualizarán en unos minutos. Recarga la página cuando termine.');
-    // Poll cada 30s para detectar cuando termina
+    // Poll cada 30s para detectar cuando termina (max 10 min)
+    let pollCount = 0;
     const poll = setInterval(async () => {
+      pollCount++;
+      if (pollCount > 20) { clearInterval(poll); btn.classList.remove('loading'); btn.disabled = false; return; }
       try {
         const s = await fetchStats();
         if (s.lastUpdated && Date.now() - new Date(s.lastUpdated) < 120000) {
@@ -1867,16 +1845,6 @@ let dwellTimerRef = null;      // interval for the UI timer
 let dwellNotified = false;     // already fired notification for this dwell?
 const DWELL_RADIUS_KM = 0.2;  // 200 meters
 const DWELL_TIME_SEC = 300;    // 5 minutes
-
-function toggleGeo() {
-  geoActive = !geoActive;
-  const btn = document.getElementById('geoBtn');
-  if (btn) {
-    btn.textContent = geoActive ? '📍 Activo' : '📍 Ubicación';
-    btn.classList.toggle('active', geoActive);
-  }
-  geoActive ? startGeo() : stopGeo();
-}
 
 // Toggle location from settings panel
 function onToggleLocation(checked) {
@@ -2448,7 +2416,6 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
       .then(reg => {
-        console.log('SW registered, scope:', reg.scope);
         // Check for updates every 30 minutes
         setInterval(() => reg.update(), 30 * 60 * 1000);
       })
