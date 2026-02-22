@@ -1,6 +1,6 @@
 {
   "name": "cashbackdo-backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Backend scraper + API para CashbackDO",
   "main": "server.js",
   "type": "module",
