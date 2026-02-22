@@ -19,7 +19,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 COPY . .
-RUN cd backend && npm install
+RUN cd backend && npm ci
 
 # Copia cards.json a /app/seeds/ — fuera de /app/data/ que será sobreescrito
 # por el volumen de Railway. Usado para sembrar el volumen en el primer arranque.
