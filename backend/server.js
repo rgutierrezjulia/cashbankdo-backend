@@ -172,6 +172,23 @@ app.get('/api/card-catalog', async (req, res) => {
   }
 });
 
+// PUT /api/card-catalog — update card catalog (admin only)
+app.put('/api/card-catalog', async (req, res) => {
+  if (req.headers['x-api-key'] !== process.env.ADMIN_API_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  try {
+    const catalog = req.body;
+    if (!catalog || typeof catalog !== 'object' || Object.keys(catalog).length === 0) {
+      return res.status(400).json({ error: 'Invalid catalog data' });
+    }
+    await fs.writeFile(CARDS_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
+    res.json({ ok: true, banks: Object.keys(catalog).length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET /api/banks — lista de bancos disponibles
 app.get('/api/banks', async (req, res) => {
   const { BANK_SOURCES } = await import('./sources.js');
@@ -329,15 +346,18 @@ function getNextCronTime() {
 
 async function seedDataDir() {
   await fs.mkdir(DATA_DIR, { recursive: true });
+  // Always update cards.json from the seed (Docker image) on startup
+  // This ensures card catalog changes are deployed with each build
   try {
-    await fs.access(CARDS_FILE);
-    console.log('📂 cards.json encontrado en volumen');
-  } catch {
+    await fs.copyFile(SEED_CARDS, CARDS_FILE);
+    console.log('🌱 cards.json actualizado desde imagen Docker');
+  } catch (err) {
+    // Seed file may not exist in dev; check if volume already has one
     try {
-      await fs.copyFile(SEED_CARDS, CARDS_FILE);
-      console.log('🌱 cards.json sembrado desde imagen Docker');
-    } catch (err) {
-      console.warn('⚠️  No se pudo sembrar cards.json:', err.message);
+      await fs.access(CARDS_FILE);
+      console.log('📂 cards.json encontrado en volumen');
+    } catch {
+      console.warn('⚠️  No se pudo encontrar cards.json:', err.message);
     }
   }
 }
