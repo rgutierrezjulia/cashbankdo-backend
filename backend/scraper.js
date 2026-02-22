@@ -666,7 +666,170 @@ async function processBankFromInlineCards(source, existingIds, existingContext, 
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 3d. PROCESAR BANCO VÍA PÁGINAS HTML DE PROMOS (Scotiabank, BLH)
+// 3d0. AXIOS+CHEERIO FALLBACK — para sitios que funcionan sin JS
+//      pero Puppeteer falla desde datacenter (DNS, timeout, IP block)
+// ───────────────────────────────────────────────────────────────────
+
+async function getPromoLinksViaAxios(source) {
+  const links = new Set();
+  for (const listingUrl of (source.listingPages || [source.promoListUrl])) {
+    try {
+      console.log(`   📃 Cargando (axios): ${listingUrl}`);
+      const { data } = await axios.get(listingUrl, {
+        timeout: 15000,
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' },
+        ...axiosProxy,
+      });
+      const $ = cheerio.load(data);
+      $(source.promoLinkSelector).each((_, el) => {
+        const href = $(el).attr('href');
+        if (href) {
+          const fullUrl = href.startsWith('http') ? href : new URL(href, listingUrl).href;
+          links.add(fullUrl);
+        }
+      });
+      console.log(`   🔗 Links encontrados: ${links.size}`);
+    } catch (e) {
+      console.error(`   ⚠️  Error axios en listing ${listingUrl}:`, e.message);
+    }
+  }
+  return [...links];
+}
+
+async function extractTextFromPromoPageAxios(url) {
+  try {
+    return await withRetry(async () => {
+      const { data } = await axios.get(url, {
+        timeout: 15000,
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' },
+        ...axiosProxy,
+      });
+      const $ = cheerio.load(data);
+      // Eliminar nav, footer, sidebar, scripts
+      $('nav, footer, aside, script, style, .sidebar, .menu, .header').remove();
+      const el = $('article, main, .entry-content, .promo-detail, #main-content, .content-area, .post-content');
+      const text = el.length ? el.text() : $('body').text();
+      return text.replace(/\s+/g, ' ').trim().substring(0, 3000);
+    }, { retries: 1, label: url });
+  } catch (e) {
+    console.error(`   ⚠️  Error axios extrayendo texto de ${url}:`, e.message);
+    return null;
+  }
+}
+
+async function processBankFromHtmlAxios(source, existingIds, existingContext, maxPerBank = Infinity) {
+  console.log(`   🔍 Buscando links via axios en ${(source.listingPages || []).length} páginas de listado...`);
+  const promoLinks = await getPromoLinksViaAxios(source);
+  console.log(`   📄 Encontrados ${promoLinks.length} links de promos`);
+
+  const newPromos = [];
+  let processed = 0;
+  let skipped = 0;
+
+  for (const url of promoLinks.slice(0, 20)) {
+    if (processed >= maxPerBank) break;
+    const id = generateId(url);
+    if (existingIds.has(id)) { skipped++; continue; }
+
+    console.log(`   📖 Leyendo (axios): ${url.substring(0, 80)}...`);
+    const text = await extractTextFromPromoPageAxios(url);
+    if (!text) { skipped++; continue; }
+
+    const textLower = text.toLowerCase();
+    const hasKeyword = source.keywords.some(k => textLower.includes(k));
+    if (!hasKeyword) { skipped++; continue; }
+
+    console.log(`   🤖 Extrayendo con Claude...`);
+    const result = await extractPromoFromPageText(text, source.name, url, existingContext);
+
+    if (result && result._action === 'known') { skipped++; continue; }
+
+    if (result) {
+      for (const promo of result) {
+        promo.bankId = source.id;
+        promo.bankColor = source.color;
+        newPromos.push(promo);
+        processed++;
+        console.log(`   ✅ ${promo.title}`);
+      }
+    }
+    await new Promise(r => setTimeout(r, 1000));
+  }
+
+  console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+  return newPromos;
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 3d0b. RSS FEED STRATEGY — para WordPress con RSS (BLH)
+//       Obtiene URLs de artículos del feed, luego axios+cheerio
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromRss(source, existingIds, existingContext, maxPerBank = Infinity) {
+  try {
+    console.log(`   📡 Fetching RSS feed: ${source.rssFeedUrl}`);
+    const { data } = await axios.get(source.rssFeedUrl, {
+      timeout: 15000,
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CashbackDO/1.0)' },
+      ...axiosProxy,
+    });
+    const $ = cheerio.load(data, { xmlMode: true });
+    const items = [];
+    $('item').each((_, el) => {
+      const title = $(el).find('title').text().trim();
+      const link = $(el).find('link').text().trim();
+      if (link) items.push({ title, link });
+    });
+    console.log(`   📋 ${items.length} artículos en el feed RSS`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const item of items) {
+      if (processed >= maxPerBank) break;
+      const id = generateId(item.link);
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      // Pre-filtrar por título (excluir sorteos, concursos, etc.)
+      const titleLower = item.title.toLowerCase();
+      const hasExclude = (source.excludeKeywords || []).some(k => titleLower.includes(k));
+      if (hasExclude) { skipped++; continue; }
+
+      console.log(`   📖 Leyendo: ${item.title.substring(0, 60)}...`);
+      const text = await extractTextFromPromoPageAxios(item.link);
+      if (!text) { skipped++; continue; }
+
+      const textLower = text.toLowerCase();
+      const hasKeyword = source.keywords.some(k => textLower.includes(k));
+      if (!hasKeyword) { skipped++; continue; }
+
+      console.log(`   🤖 Extrayendo con Claude...`);
+      const result = await extractPromoFromPageText(text, source.name, item.link, existingContext);
+
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
+      }
+      await new Promise(r => setTimeout(r, 1000));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (RSS):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// 3d. PROCESAR BANCO VÍA PÁGINAS HTML DE PROMOS (Scotiabank)
 // ───────────────────────────────────────────────────────────────────
 
 async function getPromoLinksFromListingPages(source) {
@@ -853,9 +1016,19 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
     return await processBankFromLafiseJson(source, existingIds, existingContext, maxPerBank);
   }
 
-  // Estrategia HTML promo pages (Scotiabank, BLH)
+  // Estrategia HTML promo pages via Puppeteer (Scotiabank, Banesco, etc.)
   if (source.strategy === 'html_promo_pages') {
     return await processBankFromHtmlPromoPages(source, existingIds, existingContext, maxPerBank);
+  }
+
+  // Estrategia HTML promo pages via axios+cheerio (Cibao, BDI — no necesitan JS)
+  if (source.strategy === 'axios_html_promo_pages') {
+    return await processBankFromHtmlAxios(source, existingIds, existingContext, maxPerBank);
+  }
+
+  // Estrategia RSS feed → axios (BLH WordPress)
+  if (source.strategy === 'wp_rss') {
+    return await processBankFromRss(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia WordPress REST API (Banco Ademi)

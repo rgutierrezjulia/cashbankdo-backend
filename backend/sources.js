@@ -58,12 +58,12 @@ export const BANK_SOURCES = [
     id: 'blh',
     name: 'Banco López de Haro',
     color: '#2d6a4f',
-    strategy: 'html_promo_pages',
+    // WordPress RSS feed bypasses DNS/IP blocking — no Puppeteer needed
+    strategy: 'wp_rss',
+    rssUrl: 'https://www.blh.com.do/category/promociones/feed/',
     promoListUrl: 'https://www.blh.com.do/category/promociones/',
-    listingPages: ['https://www.blh.com.do/category/promociones/'],
-    promoLinkSelector: 'article a[href*="blh.com.do"], h2.entry-title a, .post-title a',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
-    excludeKeywords: [],
+    excludeKeywords: ['sorteo'],
   },
   {
     id: 'lafise',
@@ -104,7 +104,8 @@ export const BANK_SOURCES = [
     id: 'cibao',
     name: 'Asociación Cibao',
     color: '#004C97',
-    strategy: 'html_promo_pages',
+    // axios+cheerio bypasses Railway IP blocking (Puppeteer gets 0 links from datacenter)
+    strategy: 'axios_html_promo_pages',
     promoListUrl: 'https://www.cibao.com.do/banca-personal/ofertas-y-promociones/',
     listingPages: ['https://www.cibao.com.do/banca-personal/ofertas-y-promociones/'],
     // El índice enlaza a páginas mensuales: /ofertas-de-febrero, /ofertas-de-enero, etc.
@@ -162,10 +163,11 @@ export const BANK_SOURCES = [
     id: 'popular',
     name: 'Banco Popular',
     color: '#FF0000',
-    // Incapsula WAF bloquea axios — usamos dynamic_js (Puppeteer+stealth) para pasar la protección
+    // Incapsula WAF blocks both popular.com.do and popularenlinea.com from datacenter IPs
+    // Requires residential proxy to work. Puppeteer+stealth needed to bypass WAF.
     strategy: 'dynamic_js',
-    promoListUrl: 'https://popular.com.do/personas/tarjetas/promociones/',
-    pdfLinkSelector: 'a[href*=".pdf"], a[href*="SiteCollectionDocuments"]',
+    promoListUrl: 'https://popularenlinea.com/tarjetas',
+    pdfLinkSelector: 'a[href*=".pdf"], a[href*="SiteCollectionDocuments"], a[href*="/PROMOCIONES/"]',
     keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota'],
   },
@@ -202,19 +204,19 @@ export const BANK_SOURCES = [
     id: 'qik',
     name: 'Qik',
     color: '#0082CD',
-    // Banco digital dominicano (subsidiaria Grupo Popular). Sitio AEM estático — axios funciona directamente.
-    strategy: 'html_pdf_links',
+    // AEM CMS returns 403 to plain axios from Railway — use Puppeteer stealth to bypass WAF
+    strategy: 'dynamic_js',
     promoListUrl: 'https://www.qik.do/Promociones_TC_Qik.html',
     pdfLinkSelector: 'a[href*="/content/dam/qik/legal/promociones/"][href$=".pdf"], a[href$=".pdf"]',
-    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
+    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso', 'promo'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'derechos', 'deberes'],
   },
   {
     id: 'bdi',
     name: 'Banco BDI',
     color: '#1A3A6B',
-    // Umbraco CMS, carga con axios, novedades en /novedades/?category=Promociones
-    strategy: 'html_promo_pages',
+    // Umbraco CMS — Puppeteer times out from Railway, but axios+cheerio works fine
+    strategy: 'axios_html_promo_pages',
     promoListUrl: 'https://www.bdi.com.do/novedades?category=Promociones',
     listingPages: ['https://www.bdi.com.do/novedades?category=Promociones'],
     promoLinkSelector: 'article h2 a, article a[href*="/novedades/"]',

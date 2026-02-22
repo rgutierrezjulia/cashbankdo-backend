@@ -18,6 +18,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
+
+# Bust Docker cache — change this value to force Railway to re-COPY
+ARG CACHEBUST=20260221
 COPY . .
 RUN cd backend && npm ci
 
