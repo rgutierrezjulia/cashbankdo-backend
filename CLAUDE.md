@@ -1,7 +1,7 @@
 # CashbackDO - Claude Project Memory
 
 ## What This Is
-AI-powered scraper for Dominican bank cashback/discount promotions. Scrapes 16 banks daily at 6 AM (Dominican time), extracts promo details via Claude API, serves via Express REST API. Deployed on Railway.
+AI-powered scraper for Dominican bank cashback/discount promotions. Scrapes 17 banks daily at 6 AM (Dominican time), extracts promo details via Claude API, serves via Express REST API. Deployed on Railway.
 
 ## Architecture
 - **Backend**: `backend/server.js` (Express + cron) + `backend/scraper.js` (scraping + Claude AI extraction)
