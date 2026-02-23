@@ -108,8 +108,8 @@ export const BANK_SOURCES = [
     strategy: 'axios_html_promo_pages',
     promoListUrl: 'https://www.cibao.com.do/banca-personal/ofertas-y-promociones/',
     listingPages: ['https://www.cibao.com.do/banca-personal/ofertas-y-promociones/'],
-    // El índice enlaza a páginas mensuales: /ofertas-de-febrero, /ofertas-de-enero, etc.
-    promoLinkSelector: 'a[href*="/ofertas-de-"]',
+    // El índice enlaza a páginas mensuales (/ofertas-de-febrero, etc.) y a ofertas por tarjeta (/ofertas-visa/)
+    promoLinkSelector: 'a[href*="/ofertas-de-"], a[href*="/ofertas-visa"]',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'ahorro', 'pasos'],
   },
