@@ -162,13 +162,15 @@ export const BANK_SOURCES = [
     id: 'popular',
     name: 'Banco Popular',
     color: '#FF0000',
-    // Incapsula WAF blocks both popular.com.do and popularenlinea.com from datacenter IPs
-    // Requires residential proxy to work. Puppeteer+stealth needed to bypass WAF.
-    strategy: 'dynamic_js',
+    // Incapsula WAF blocks popularenlinea.com from datacenter IPs.
+    // Instead, scrape their Instagram (@popularenlinea) via Apify free tier
+    // and feed captions through Claude AI extraction.
+    strategy: 'instagram_apify',
+    instagramHandle: 'popularenlinea',
     promoListUrl: 'https://popularenlinea.com/tarjetas',
-    pdfLinkSelector: 'a[href*=".pdf"], a[href*="SiteCollectionDocuments"], a[href*="/PROMOCIONES/"]',
-    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso'],
-    excludeKeywords: ['sorteo', 'concurso', 'millas', 'cuota'],
+    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso', 'devoluci', 'ahorro'],
+    // "cuota" removed — catches legitimate "Cuotas Popular" promos. "millas popular" kept specific.
+    excludeKeywords: ['sorteo', 'concurso', 'millas popular', 'remesa'],
   },
   {
     id: 'bsc',

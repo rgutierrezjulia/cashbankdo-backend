@@ -512,6 +512,88 @@ async function processBankFromStrapiPdf(source, existingIds, existingContext, ma
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 3c1c. PROCESAR BANCO VÍA INSTAGRAM (Apify free tier)
+//       Fetch recent posts from Instagram, filter by keywords,
+//       extract promo details with Claude AI from captions.
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromInstagram(source, existingIds, existingContext, maxPerBank = Infinity) {
+  const APIFY_TOKEN = process.env.APIFY_API_TOKEN;
+  if (!APIFY_TOKEN) {
+    console.error(`   ⚠️  APIFY_API_TOKEN no configurado — saltando ${source.name}`);
+    return [];
+  }
+
+  try {
+    console.log(`   📸 Buscando posts de @${source.instagramHandle} via Apify...`);
+
+    // Run Apify Instagram Scraper synchronously — returns dataset items directly
+    const { data: posts } = await axios.post(
+      `https://api.apify.com/v2/acts/apify~instagram-scraper/run-sync-get-dataset-items?token=${APIFY_TOKEN}`,
+      {
+        directUrls: [`https://www.instagram.com/${source.instagramHandle}/`],
+        resultsType: 'posts',
+        resultsLimit: 30,
+      },
+      { timeout: 120000 }  // Apify sync runs can take up to 2 min
+    );
+
+    if (!Array.isArray(posts) || posts.length === 0) {
+      console.log(`   📭 No se encontraron posts para @${source.instagramHandle}`);
+      return [];
+    }
+    console.log(`   📋 ${posts.length} posts encontrados`);
+
+    // Pre-filter by keywords in caption
+    const matching = posts.filter(post => {
+      const caption = (post.caption || '').toLowerCase();
+      const hasKeyword = source.keywords.some(k => caption.includes(k));
+      const hasExclude = (source.excludeKeywords || []).some(k => caption.includes(k));
+      return hasKeyword && !hasExclude;
+    });
+    console.log(`   🔍 ${matching.length} posts coinciden con keywords`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const post of matching) {
+      if (processed >= maxPerBank) break;
+
+      const postUrl = post.url || `https://www.instagram.com/p/${post.shortCode}/`;
+      const id = generateId(postUrl);
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      const caption = post.caption || '';
+      if (caption.length < 30) { skipped++; continue; }  // Skip very short captions
+
+      console.log(`   🤖 Extrayendo con Claude: ${caption.substring(0, 60)}...`);
+      const result = await extractPromoFromPageText(caption, source.name, postUrl, existingContext);
+
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.sourceUrl = postUrl;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
+      }
+
+      await new Promise(r => setTimeout(r, 500));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (Instagram):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 3c2. PROCESAR LAFISE VÍA JSON API
 // ───────────────────────────────────────────────────────────────────
 
@@ -1127,6 +1209,11 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
   // Estrategia Strapi API con PDFs adjuntos (Vimenca)
   if (source.strategy === 'strapi_pdf') {
     return await processBankFromStrapiPdf(source, existingIds, existingContext, maxPerBank);
+  }
+
+  // Estrategia Instagram via Apify (Banco Popular)
+  if (source.strategy === 'instagram_apify') {
+    return await processBankFromInstagram(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia JSON API (LAFISE)
