@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment files (contain API keys!)
+.env
+*.env
+backend/.env
+!.env.example
+!backend/.env.example
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude worktrees
+.claude/
+
+# Expo
+backend/.expo/
+
+# Logs
+*.log
+npm-debug.log*
