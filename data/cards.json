@@ -6,33 +6,55 @@
       { "id": "banreservas-visa-clasica", "name": "Visa Clásica Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-visa-gold", "name": "Visa Gold Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-visa-platinum", "name": "Visa Platinum Banreservas", "network": "Visa", "type": "crédito" },
-      { "id": "banreservas-mc-clasica", "name": "Mastercard Clásica Banreservas", "network": "Mastercard", "type": "crédito" },
-      { "id": "banreservas-mc-gold", "name": "Mastercard Gold Banreservas", "network": "Mastercard", "type": "crédito" },
-      { "id": "banreservas-mc-black", "name": "Mastercard Black Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-visa-platinum-universe", "name": "Visa Platinum Universe Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-visa-infinite", "name": "Visa Infinite Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-visa-ser", "name": "Visa SER Banreservas", "network": "Visa", "type": "crédito" },
+      { "id": "banreservas-mc-standard", "name": "Mastercard Standard Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-mc-standard-tactil", "name": "Mastercard Standard Táctil Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-mc-gold", "name": "Mastercard Gold Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-mc-platinum", "name": "Mastercard Platinum Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-mc-black", "name": "Mastercard Black Banreservas", "network": "Mastercard", "type": "crédito" },
+      { "id": "banreservas-preserva", "name": "Preserva Banreservas", "network": "Visa", "type": "crédito" },
       { "id": "banreservas-debito-mc", "name": "Mastercard Débito Banreservas", "network": "Mastercard", "type": "débito" },
+      { "id": "banreservas-debito-mc-tactil", "name": "Mastercard Débito Táctil Banreservas", "network": "Mastercard", "type": "débito" },
       { "id": "banreservas-debito-mc-gold", "name": "Mastercard Débito Gold Banreservas", "network": "Mastercard", "type": "débito" },
       { "id": "banreservas-debito-mc-platinum", "name": "Mastercard Débito Platinum Banreservas", "network": "Mastercard", "type": "débito" },
-      { "id": "banreservas-debito-visa", "name": "Visa Débito Banreservas", "network": "Visa", "type": "débito" }
+      { "id": "banreservas-debito-mc-dolares", "name": "Mastercard Débito Dólares Banreservas", "network": "Mastercard", "type": "débito" }
     ]
   },
   "bhd": {
     "name": "BHD",
     "color": "#e63946",
     "cards": [
-      { "id": "bhd-visa-clasica", "name": "Visa Clásica BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-clasica-local", "name": "Visa Clásica Local BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-clasica-intl", "name": "Visa Clásica Internacional BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-clasica-premia", "name": "Visa Clásica Premia BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-gold", "name": "Visa Gold BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-platinum", "name": "Visa Platinum BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-infinite", "name": "Visa Infinite BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-now", "name": "Visa NOW BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-premia", "name": "Visa Premia BHD", "network": "Visa", "type": "crédito" },
       { "id": "bhd-visa-lifemiles", "name": "Visa LifeMiles BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-mipais", "name": "Visa Mi País BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-billet", "name": "Visa Billet BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-lacadena", "name": "Visa La Cadena BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-visa-cinco", "name": "Visa Cinco BHD", "network": "Visa", "type": "crédito" },
+      { "id": "bhd-mc-standard-local", "name": "Mastercard Standard Local BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-standard-intl", "name": "Mastercard Standard Internacional BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-gold", "name": "Mastercard Gold BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-platinum", "name": "Mastercard Platinum BHD", "network": "Mastercard", "type": "crédito" },
       { "id": "bhd-mc-black", "name": "Mastercard Black BHD", "network": "Mastercard", "type": "crédito" },
-      { "id": "bhd-mc-mujer-black", "name": "Mastercard Mujer Black BHD", "network": "Mastercard", "type": "crédito" },
-      { "id": "bhd-debito-visa", "name": "Visa Débito BHD", "network": "Visa", "type": "débito" },
+      { "id": "bhd-mc-mlb", "name": "Mastercard MLB BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-edesur-standard", "name": "Mastercard Edesur Standard BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-edesur-gold", "name": "Mastercard Edesur Gold BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-mujer-practica", "name": "Mastercard Mujer Práctica BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-mujer-activa", "name": "Mastercard Mujer Activa BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-mc-mujer-autentica", "name": "Mastercard Mujer Auténtica BHD", "network": "Mastercard", "type": "crédito" },
+      { "id": "bhd-debito-visa", "name": "Visa Débito Clásica BHD", "network": "Visa", "type": "débito" },
+      { "id": "bhd-debito-visa-intl", "name": "Visa Débito Internacional BHD", "network": "Visa", "type": "débito" },
       { "id": "bhd-debito-visa-gold", "name": "Visa Débito Gold BHD", "network": "Visa", "type": "débito" },
-      { "id": "bhd-debito-visa-elite", "name": "Visa Débito ÉLITE BHD", "network": "Visa", "type": "débito" }
+      { "id": "bhd-debito-visa-elite", "name": "Visa Débito ÉLITE BHD", "network": "Visa", "type": "débito" },
+      { "id": "bhd-debito-visa-life", "name": "Visa Débito Life BHD", "network": "Visa", "type": "débito" }
     ]
   },
   "scotiabank": {
@@ -41,22 +63,29 @@
     "cards": [
       { "id": "scotiabank-visa-clasica", "name": "Visa Clásica Scotiabank", "network": "Visa", "type": "crédito" },
       { "id": "scotiabank-visa-gold", "name": "Visa Gold Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-platinum", "name": "Visa Platinum Scotiabank", "network": "Visa", "type": "crédito" },
       { "id": "scotiabank-visa-bravo", "name": "Visa Bravo Scotiabank", "network": "Visa", "type": "crédito" },
-      { "id": "scotiabank-visa-aadvantage-platinum", "name": "AAdvantage Platinum Visa Scotiabank", "network": "Visa", "type": "crédito" },
       { "id": "scotiabank-visa-infinite", "name": "Visa Infinite Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-infinite-premium", "name": "Visa Infinite Banca Premium Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-aadvantage", "name": "AAdvantage Visa Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-aadvantage-gold", "name": "AAdvantage Gold Visa Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-aadvantage-platinum", "name": "AAdvantage Platinum Visa Scotiabank", "network": "Visa", "type": "crédito" },
+      { "id": "scotiabank-visa-pricesmart", "name": "PriceSmart Visa Scotiabank", "network": "Visa", "type": "crédito" },
       { "id": "scotiabank-mc-standard", "name": "Mastercard Standard Scotiabank", "network": "Mastercard", "type": "crédito" },
       { "id": "scotiabank-mc-gold", "name": "Mastercard Gold Scotiabank", "network": "Mastercard", "type": "crédito" },
       { "id": "scotiabank-mc-platinum", "name": "Mastercard Platinum Scotiabank", "network": "Mastercard", "type": "crédito" },
-      { "id": "scotiabank-mc-black", "name": "Mastercard Black Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-platinum-plus", "name": "Mastercard Platinum Plus Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-aadvantage-gold", "name": "AAdvantage Gold Mastercard Scotiabank", "network": "Mastercard", "type": "crédito" },
+      { "id": "scotiabank-mc-pricesmart-diamond", "name": "PriceSmart Diamond Mastercard Scotiabank", "network": "Mastercard", "type": "crédito" },
       { "id": "scotiabank-amex-green", "name": "American Express Green Scotiabank", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-standard", "name": "American Express Scotiabank", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-amex-gold", "name": "American Express Gold Scotiabank", "network": "American Express", "type": "crédito" },
-      { "id": "scotiabank-amex-platinum", "name": "The Platinum Card American Express", "network": "American Express", "type": "crédito" },
-      { "id": "scotiabank-amex-casadecampo", "name": "Casa de Campo American Express Platinum", "network": "American Express", "type": "crédito" },
-      { "id": "scotiabank-amex-carrefour", "name": "Carrefour American Express", "network": "American Express", "type": "crédito" },
-      { "id": "scotiabank-amex-sumaccn", "name": "Suma CCN American Express", "network": "American Express", "type": "crédito" },
+      { "id": "scotiabank-amex-platinum", "name": "The Platinum Card American Express Scotiabank", "network": "American Express", "type": "crédito" },
+      { "id": "scotiabank-amex-casadecampo", "name": "Casa de Campo American Express Platinum Scotiabank", "network": "American Express", "type": "crédito" },
+      { "id": "scotiabank-amex-sumaccn", "name": "Suma CCN American Express Scotiabank", "network": "American Express", "type": "crédito" },
       { "id": "scotiabank-debito-visa", "name": "ScotiaCard Visa Débito", "network": "Visa", "type": "débito" },
-      { "id": "scotiabank-debito-mc", "name": "ScotiaCard Mastercard Débito", "network": "Mastercard", "type": "débito" }
+      { "id": "scotiabank-debito-mc", "name": "ScotiaCard Mastercard Débito", "network": "Mastercard", "type": "débito" },
+      { "id": "scotiabank-debito-mc-premium", "name": "Mastercard Débito Premium Scotiabank", "network": "Mastercard", "type": "débito" }
     ]
   },
   "blh": {
@@ -65,13 +94,15 @@
     "cards": [
       { "id": "blh-visa-clasica", "name": "Visa Clásica BLH", "network": "Visa", "type": "crédito" },
       { "id": "blh-visa-gold", "name": "Visa Gold BLH", "network": "Visa", "type": "crédito" },
-      { "id": "blh-visa-gold-unidos", "name": "Visa Gold Unidos BLH", "network": "Visa", "type": "crédito" },
-      { "id": "blh-visa-gold-iberia", "name": "Visa Gold Iberia BLH", "network": "Visa", "type": "crédito" },
+      { "id": "blh-visa-casa-espana", "name": "Visa Casa de España BLH", "network": "Visa", "type": "crédito" },
+      { "id": "blh-visa-club-hemingway", "name": "Visa Club Hemingway BLH", "network": "Visa", "type": "crédito" },
+      { "id": "blh-visa-almacenes-unidos", "name": "Visa Almacenes Unidos BLH", "network": "Visa", "type": "crédito" },
       { "id": "blh-visa-platinum", "name": "Visa Platinum BLH", "network": "Visa", "type": "crédito" },
       { "id": "blh-visa-platinum-iberia", "name": "Visa Platinum Iberia BLH", "network": "Visa", "type": "crédito" },
       { "id": "blh-visa-infinite", "name": "Visa Infinite BLH", "network": "Visa", "type": "crédito" },
       { "id": "blh-visa-infinite-iberia", "name": "Visa Infinite Iberia BLH", "network": "Visa", "type": "crédito" },
-      { "id": "blh-debito-visa", "name": "Visa Débito BLH", "network": "Visa", "type": "débito" }
+      { "id": "blh-debito-visa-clasica", "name": "Visa Débito Clásica BLH", "network": "Visa", "type": "débito" },
+      { "id": "blh-debito-visa-platinum", "name": "Visa Débito Platinum BLH", "network": "Visa", "type": "débito" }
     ]
   },
   "lafise": {
@@ -90,7 +121,7 @@
     "name": "Banesco",
     "color": "#C8102E",
     "cards": [
-      { "id": "banesco-visa-clasica", "name": "Visa Clásica Banesco", "network": "Visa", "type": "crédito" },
+      { "id": "banesco-visa-clasica", "name": "Visa Clásica Internacional Banesco", "network": "Visa", "type": "crédito" },
       { "id": "banesco-visa-gold", "name": "Visa Gold Banesco", "network": "Visa", "type": "crédito" },
       { "id": "banesco-visa-platinum", "name": "Visa Platinum Banesco", "network": "Visa", "type": "crédito" },
       { "id": "banesco-visa-infinite", "name": "Visa Infinite Banesco", "network": "Visa", "type": "crédito" },
@@ -111,13 +142,20 @@
     "cards": [
       { "id": "apap-visa-clasica", "name": "Visa Clásica APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-gold", "name": "Visa Gold APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-visa-premium-gold", "name": "Visa Premium Gold APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-platinum", "name": "Visa Platinum APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-infinite", "name": "Visa Infinite APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-visa-infinite-onyx", "name": "Visa Infinite Onyx APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-joven", "name": "Visa Joven APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-visa-sirena", "name": "Visa Sirena APAP", "network": "Visa", "type": "crédito" },
+      { "id": "apap-visa-familiar", "name": "Visa Familiar APAP", "network": "Visa", "type": "crédito" },
       { "id": "apap-mc-standard", "name": "Mastercard Estándar APAP", "network": "Mastercard", "type": "crédito" },
       { "id": "apap-mc-gold", "name": "Mastercard Gold APAP", "network": "Mastercard", "type": "crédito" },
-      { "id": "apap-debito-visa", "name": "Visa Débito APAP", "network": "Visa", "type": "débito" }
+      { "id": "apap-debito-visa", "name": "Visa Débito APAP", "network": "Visa", "type": "débito" },
+      { "id": "apap-debito-visa-gold", "name": "Visa Débito Gold APAP", "network": "Visa", "type": "débito" },
+      { "id": "apap-debito-visa-joven", "name": "Visa Débito Joven APAP", "network": "Visa", "type": "débito" },
+      { "id": "apap-debito-visa-familiar", "name": "Visa Débito Familiar APAP", "network": "Visa", "type": "débito" },
+      { "id": "apap-debito-visa-digital", "name": "Visa Débito Digital APAP", "network": "Visa", "type": "débito" }
     ]
   },
   "cibao": {
@@ -126,6 +164,7 @@
     "cards": [
       { "id": "cibao-visa-clasica", "name": "Visa Clásica Cibao", "network": "Visa", "type": "crédito" },
       { "id": "cibao-visa-gold", "name": "Visa Gold Cibao", "network": "Visa", "type": "crédito" },
+      { "id": "cibao-visa-platinum", "name": "Visa Platinum Cibao", "network": "Visa", "type": "crédito" },
       { "id": "cibao-visa-infinite", "name": "Visa Infinite Cibao", "network": "Visa", "type": "crédito" },
       { "id": "cibao-visa-ciplus", "name": "Visa Ci+ Cibao", "network": "Visa", "type": "crédito" },
       { "id": "cibao-debito-visa", "name": "Visa Débito Cibao", "network": "Visa", "type": "débito" }
@@ -137,10 +176,13 @@
     "cards": [
       { "id": "bancocaribe-visa-clasica-local", "name": "Visa Clásica Local Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-clasica-intl", "name": "Visa Clásica Internacional Banco Caribe", "network": "Visa", "type": "crédito" },
+      { "id": "bancocaribe-visa-clasica-mailboxes", "name": "Visa Clásica Mail Boxes Banco Caribe", "network": "Visa", "type": "crédito" },
+      { "id": "bancocaribe-visa-clasica-medicoop", "name": "Visa Clásica Medicoop Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-oro", "name": "Visa Oro Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-platinum", "name": "Visa Platinum Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-infinite-elite", "name": "Visa Infinite Elite Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-visa-ecard", "name": "Visa E-Card Banco Caribe", "network": "Visa", "type": "crédito" },
+      { "id": "bancocaribe-visa-unica-gasoline", "name": "Visa Única Gasoline Banco Caribe", "network": "Visa", "type": "crédito" },
       { "id": "bancocaribe-debito-visa", "name": "Visa Débito Banco Caribe", "network": "Visa", "type": "débito" }
     ]
   },
@@ -148,9 +190,16 @@
     "name": "La Nacional",
     "color": "#8B1A1A",
     "cards": [
-      { "id": "lanacional-visa-clasica", "name": "Visa Clásica La Nacional", "network": "Visa", "type": "crédito" },
-      { "id": "lanacional-visa-gold", "name": "Visa Gold La Nacional", "network": "Visa", "type": "crédito" },
-      { "id": "lanacional-visa-platinum", "name": "Visa Platinum La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-clasica", "name": "Visa Clásica Internacional La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-gold", "name": "Visa Gold Internacional La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-confiamas", "name": "Visa ConfiaMás La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-confiaenti-local", "name": "Visa Confía en Ti Local La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-confiaenti-intl", "name": "Visa Confía en Ti Internacional La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-confiaenti-gold", "name": "Visa Confía en Ti Gold La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-unase-local", "name": "Visa Unase Local La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-unase-intl", "name": "Visa Unase Internacional La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-union-local", "name": "Visa Unión Local La Nacional", "network": "Visa", "type": "crédito" },
+      { "id": "lanacional-visa-union-intl", "name": "Visa Unión Internacional La Nacional", "network": "Visa", "type": "crédito" },
       { "id": "lanacional-debito-visa", "name": "Visa Débito La Nacional", "network": "Visa", "type": "débito" }
     ]
   },
@@ -158,10 +207,21 @@
     "name": "Banco Vimenca",
     "color": "#003366",
     "cards": [
-      { "id": "vimenca-visa-clasica", "name": "Visa Clásica Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-clasica-local", "name": "Visa Clásica Local Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-clasica-intl", "name": "Visa Clásica Internacional Vimenca", "network": "Visa", "type": "crédito" },
       { "id": "vimenca-visa-gold", "name": "Visa Gold Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-black-gold", "name": "Visa Black Gold Vimenca", "network": "Visa", "type": "crédito" },
       { "id": "vimenca-visa-platinum", "name": "Visa Platinum Vimenca", "network": "Visa", "type": "crédito" },
-      { "id": "vimenca-debito-visa", "name": "Visa Débito Vimenca", "network": "Visa", "type": "débito" }
+      { "id": "vimenca-visa-infinite", "name": "Visa Infinite Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-supercredito-local", "name": "Visa Super Crédito Local Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-supercredito-intl", "name": "Visa Super Crédito Internacional Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-vimenpaq", "name": "Visa Vimenpaq Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-pagatodo", "name": "Visa Paga Todo Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-masbeneficios1", "name": "Visa Más Beneficios 1 Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-masbeneficios2", "name": "Visa Más Beneficios 2 Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-visa-beespay", "name": "Visa BEES Pay Vimenca", "network": "Visa", "type": "crédito" },
+      { "id": "vimenca-debito-visa", "name": "Visa Débito Vimenca", "network": "Visa", "type": "débito" },
+      { "id": "vimenca-prepago", "name": "Tarjeta Prepago Vimenca", "network": "Visa", "type": "prepago" }
     ]
   },
   "promerica": {
@@ -171,7 +231,10 @@
       { "id": "promerica-visa-clasica", "name": "Visa Clásica Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-gold", "name": "Visa Gold Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-gold-plus", "name": "Visa Gold Plus Promerica", "network": "Visa", "type": "crédito" },
+      { "id": "promerica-visa-misuper", "name": "Visa Mi Super Promerica", "network": "Visa", "type": "crédito" },
+      { "id": "promerica-visa-lama-plazos", "name": "Visa Lama Plazos Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-platinum", "name": "Visa Platinum Promerica", "network": "Visa", "type": "crédito" },
+      { "id": "promerica-visa-platinum-premium", "name": "Visa Platinum Premium Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-infinite", "name": "Visa Infinite Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-connectmiles-platinum", "name": "ConnectMiles Visa Platinum Promerica", "network": "Visa", "type": "crédito" },
       { "id": "promerica-visa-connectmiles-infinite", "name": "ConnectMiles Visa Infinite Promerica", "network": "Visa", "type": "crédito" },
@@ -186,17 +249,24 @@
     "color": "#FF0000",
     "cards": [
       { "id": "popular-visa-clasica-local", "name": "Visa Clásica Local Popular", "network": "Visa", "type": "crédito" },
-      { "id": "popular-visa-clasica-intl", "name": "Visa Clásica Internacional Popular", "network": "Visa", "type": "crédito" },
-      { "id": "popular-visa-gold", "name": "Visa Gold Popular", "network": "Visa", "type": "crédito" },
+      { "id": "popular-visa-gold-local", "name": "Visa Gold Local Popular", "network": "Visa", "type": "crédito" },
+      { "id": "popular-visa-gold-doble-saldo", "name": "Visa Gold Doble Saldo Popular", "network": "Visa", "type": "crédito" },
+      { "id": "popular-visa-gold-intl", "name": "Visa Gold Internacional Popular", "network": "Visa", "type": "crédito" },
       { "id": "popular-visa-titanium", "name": "Visa Titanium Popular", "network": "Visa", "type": "crédito" },
+      { "id": "popular-visa-platinum", "name": "Visa Platinum Popular", "network": "Visa", "type": "crédito" },
+      { "id": "popular-visa-prestige", "name": "Visa Prestige Popular", "network": "Visa", "type": "crédito" },
       { "id": "popular-visa-infinite-prestige", "name": "Visa Infinite Prestige Popular", "network": "Visa", "type": "crédito" },
       { "id": "popular-visa-isi", "name": "Visa isi Popular", "network": "Visa", "type": "crédito" },
-      { "id": "popular-mc-clasica", "name": "Mastercard Clásica Popular", "network": "Mastercard", "type": "crédito" },
-      { "id": "popular-mc-gold", "name": "Mastercard Gold Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-clasica", "name": "Mastercard Clásica Local Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-gnial", "name": "Mastercard gnial Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-gold-local", "name": "Mastercard Gold Local Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-gold-doble-saldo", "name": "Mastercard Gold Doble Saldo Popular", "network": "Mastercard", "type": "crédito" },
       { "id": "popular-mc-titanium", "name": "Mastercard Titanium Popular", "network": "Mastercard", "type": "crédito" },
       { "id": "popular-mc-black", "name": "Mastercard Black Popular", "network": "Mastercard", "type": "crédito" },
-      { "id": "popular-mc-gnial", "name": "Mastercard gnial Popular", "network": "Mastercard", "type": "crédito" },
       { "id": "popular-mc-infinia", "name": "Mastercard infinia Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-teen", "name": "Mastercard Teen Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-mileageplus", "name": "Mastercard MileagePlus Popular", "network": "Mastercard", "type": "crédito" },
+      { "id": "popular-mc-ccnplus", "name": "Mastercard CCN Plus Popular", "network": "Mastercard", "type": "crédito" },
       { "id": "popular-debito-visa", "name": "Visa Débito Popular", "network": "Visa", "type": "débito" }
     ]
   },
@@ -210,6 +280,7 @@
       { "id": "bsc-visa-platinum", "name": "Visa Platinum Santa Cruz", "network": "Visa", "type": "crédito" },
       { "id": "bsc-visa-infinite", "name": "Visa Infinite Santa Cruz", "network": "Visa", "type": "crédito" },
       { "id": "bsc-visa-bravo", "name": "Visa Bravo Santa Cruz", "network": "Visa", "type": "crédito" },
+      { "id": "bsc-visa-cecomsa", "name": "Visa Cecomsa Santa Cruz", "network": "Visa", "type": "crédito" },
       { "id": "bsc-debito-visa", "name": "Visa Débito Santa Cruz", "network": "Visa", "type": "débito" }
     ]
   },
@@ -219,7 +290,9 @@
     "cards": [
       { "id": "ademi-visa-clasica-local", "name": "Visa Clásica Local Ademi", "network": "Visa", "type": "crédito" },
       { "id": "ademi-visa-clasica-intl", "name": "Visa Clásica Internacional Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-clasica-multimoneda", "name": "Visa Clásica Multimoneda Ademi", "network": "Visa", "type": "crédito" },
       { "id": "ademi-visa-gold", "name": "Visa Gold Ademi", "network": "Visa", "type": "crédito" },
+      { "id": "ademi-visa-intl-plus", "name": "Visa Internacional Plus Ademi", "network": "Visa", "type": "crédito" },
       { "id": "ademi-visa-flexible", "name": "Visa Flexible Ademi", "network": "Visa", "type": "crédito" },
       { "id": "ademi-visa-ole", "name": "Visa Olé Ademi", "network": "Visa", "type": "crédito" },
       { "id": "ademi-debito-visa", "name": "Visa Débito Ademi", "network": "Visa", "type": "débito" }
@@ -229,7 +302,8 @@
     "name": "Qik",
     "color": "#0082CD",
     "cards": [
-      { "id": "qik-tc", "name": "Tarjeta de Crédito Qik", "network": "Visa", "type": "crédito" },
+      { "id": "qik-tc", "name": "Tarjeta de Crédito Qik", "network": "Mastercard", "type": "crédito" },
+      { "id": "qik-tc-pro", "name": "Tarjeta de Crédito Qik Pro", "network": "Mastercard", "type": "crédito" },
       { "id": "qik-td", "name": "Tarjeta de Débito Qik", "network": "Visa", "type": "débito" }
     ]
   },
@@ -241,6 +315,11 @@
       { "id": "bdi-visa-gold", "name": "Visa Gold BDI", "network": "Visa", "type": "crédito" },
       { "id": "bdi-visa-platinum", "name": "Visa Platinum BDI", "network": "Visa", "type": "crédito" },
       { "id": "bdi-visa-signature", "name": "Visa Signature BDI", "network": "Visa", "type": "crédito" },
+      { "id": "bdi-visa-clasica-anthonys", "name": "Visa Clásica Anthony's BDI", "network": "Visa", "type": "crédito" },
+      { "id": "bdi-visa-gold-anthonys", "name": "Visa Gold Anthony's BDI", "network": "Visa", "type": "crédito" },
+      { "id": "bdi-visa-platinum-anthonys", "name": "Visa Platinum Anthony's BDI", "network": "Visa", "type": "crédito" },
+      { "id": "bdi-visa-gold-sdcc", "name": "Visa Gold SDCC BDI", "network": "Visa", "type": "crédito" },
+      { "id": "bdi-visa-signature-sdcc", "name": "Visa Signature SDCC BDI", "network": "Visa", "type": "crédito" },
       { "id": "bdi-debito-visa", "name": "Visa Débito BDI", "network": "Visa", "type": "débito" }
     ]
   }

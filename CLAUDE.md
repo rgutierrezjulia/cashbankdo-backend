@@ -74,3 +74,12 @@ Body: {"banks": ["popular"]}  // optional, omit for all banks
 - Change scraping logic: `backend/scraper.js`
 - Change API routes or cron schedule: `backend/server.js`
 - Frontend: `frontend/index.html`
+
+## ACTION REQUIRED: Rotate ADMIN_API_KEY
+The ADMIN_API_KEY was exposed in a chat session on 2026-02-23. **Remind the user to rotate it** in Railway dashboard → Variables tab. The key is only used server-side for manual scrape triggers, so just update it in Railway and remember the new value.
+
+## Monetization (exploring)
+- AdSense requires a custom domain — not viable during beta on GitHub Pages / free subdomains
+- **Affiliate links with Dominican banks** is the preferred strategy — natural fit since the app already shows which cards have the best promos. Research which banks (Popular, BHD, Banreservas, etc.) offer affiliate/referral programs for card applications.
+- Frontend is currently hosted at: https://rgutierrezjulia.github.io/cashbankdo-backend/
+- Consider migrating frontend to Netlify (`cashbackdo.netlify.app`) for a cleaner URL, then eventually buy a `.com.do` domain when ready to monetize with AdSense
