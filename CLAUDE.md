@@ -58,6 +58,7 @@ Body: {"banks": ["popular"]}  // optional, omit for all banks
 3. **Promo extensions not detected**: See "KNOWN BUG" above. Recently-expired promos are excluded from dedup context.
 
 ## Lessons Learned
+- **NEVER commit `data/promos.json` to git.** It's in `.gitignore`. Railway has an ephemeral filesystem — data persists via Redis (Upstash). If `promos.json` is in git, every push overwrites production data with a stale local copy, wiping promos from banks scraped only in production (e.g., Popular via Apify). The server's `readData()` restores from Redis on fresh deploys when the file is missing.
 - Dominican banks frequently extend promos with new dates after the original expires. The dedup system MUST account for this by including recently-expired promos in the context window.
 - Always verify merges actually landed on `master` and were pushed. Worktree branches (`.claude/worktrees/`) don't auto-merge.
 - Railway auto-deploys on push to `master`. After merging, confirm deployment before triggering a scrape.

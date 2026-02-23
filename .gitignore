@@ -26,6 +26,10 @@ Thumbs.db
 # Expo
 backend/.expo/
 
+# Runtime data (persisted via Redis, not git)
+data/promos.json
+data/scrape_log.json
+
 # Logs
 *.log
 npm-debug.log*
