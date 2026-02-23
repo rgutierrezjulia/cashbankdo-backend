@@ -1165,14 +1165,18 @@ async function loadExistingData() {
 
 function formatExistingPromosForContext(allPromos, bankId) {
   const today = new Date().toISOString().split('T')[0];
-  const activeForBank = allPromos.filter(p =>
-    p.bankId === bankId && p.validUntil && p.validUntil >= today
+  // Include recently-expired promos (last 14 days) so Claude can detect
+  // extensions/renewals of promos that expired and were later re-launched
+  const fourteenDaysAgo = new Date(Date.now() - 14 * 86400000).toISOString().split('T')[0];
+  const relevantForBank = allPromos.filter(p =>
+    p.bankId === bankId && p.validUntil && p.validUntil >= fourteenDaysAgo
   );
-  if (activeForBank.length === 0) return null;
+  if (relevantForBank.length === 0) return null;
 
-  const lines = activeForBank.map(p => {
+  const lines = relevantForBank.map(p => {
     const estab = Array.isArray(p.establishments) ? p.establishments.slice(0, 3).join(', ') : '';
-    return `- [${p.id}] "${p.title}" | ${p.percentage || '?'} | ${p.validFrom || '?'}→${p.validUntil || '?'} | ${estab}`;
+    const status = p.validUntil < today ? ' [EXPIRADA]' : '';
+    return `- [${p.id}] "${p.title}" | ${p.percentage || '?'} | ${p.validFrom || '?'}→${p.validUntil || '?'}${status} | ${estab}`;
   });
   return lines.join('\n');
 }
@@ -1180,12 +1184,15 @@ function formatExistingPromosForContext(allPromos, bankId) {
 function buildDedupInstructions(existingContext) {
   if (!existingContext) return '';
   return `
-DEDUPLICACIÓN: Ya tenemos estas promos activas de este banco:
+DEDUPLICACIÓN: Ya tenemos estas promos (activas y recientemente expiradas) de este banco:
 ${existingContext}
+
+Las promos marcadas [EXPIRADA] vencieron hace poco. Los bancos frecuentemente EXTIENDEN promos después de que expiran (misma promo, nuevas fechas).
 
 Para cada promo que analices:
 - Si ya existe en la lista anterior SIN cambios relevantes, devuelve ÚNICAMENTE la palabra KNOWN (sin nada más).
 - Si existe pero tiene cambios (fechas extendidas, porcentaje diferente, términos actualizados), devuelve el JSON con los campos actualizados MÁS estos campos adicionales: "_action": "correction", "_correctedId": "[id de la promo existente que corrige]".
+- IMPORTANTE: Si una promo [EXPIRADA] aparece de nuevo con nuevas fechas, es una EXTENSIÓN. Devuelve el JSON actualizado con "_action": "correction" y el "_correctedId" de la promo expirada.
 - Si es una promo genuinamente nueva que no aparece arriba, devuelve el JSON normal con "_action": "new".
 - Si no es cashback/descuento, devuelve SKIP como siempre.
 
