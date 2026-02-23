@@ -1587,43 +1587,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "20% de devolución con tarjeta de crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con un tope máximo de RD$ 5,000 por cliente.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 4,000",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-16",
-      "validUntil": "2026-02-18",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [
-        "Tiendas físicas",
-        "Online"
-      ],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:41.514Z",
-      "id": "zgxyam",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -4,
-      "daysUntilStart": null
-    },
-    {
       "title": "Hasta 20% de devolución en educación con La Nacional",
       "description": "Devolución de hasta 20% al pagar inscripciones, reinscripciones y mensualidades de colegios y universidades con Tarjeta de Crédito La Nacional.",
       "percentage": "Hasta 20%",
@@ -1943,43 +1906,6 @@
       "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
       "extractedAt": "2026-02-21T13:16:20.947Z",
       "id": "g394l4",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -7,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con tarjeta de crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online, con consumo mínimo acumulable de RD$4,000.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 4,000.00",
-      "maxReturn": "RD$ 6,000.00",
-      "validFrom": "2026-02-13",
-      "validUntil": "2026-02-15",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [
-        "Tiendas físicas",
-        "Online"
-      ],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Tope máximo de devolución RD$6,000 por cliente y consumo mínimo acumulable durante la vigencia.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:26.278Z",
-      "id": "zgxyam",
       "bankId": "lanacional",
       "bankColor": "#8B1A1A",
       "isUpcoming": false,
@@ -2492,40 +2418,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 3,000",
-      "maxReturn": "RD$ 6,000",
-      "validFrom": "2026-02-09",
-      "validUntil": "2026-02-12",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:11.029Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -10,
-      "daysUntilStart": null
-    },
-    {
       "title": "San Valentín 2026 - La Bodega",
       "description": "Recibe 15% de cashback por compras con la tarjeta de crédito Pro de Qik en tiendas físicas de La Bodega en República Dominicana.",
       "percentage": "15%",
@@ -2715,40 +2607,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu Tarjeta de Crédito La Nacional en tienda física y online en República Dominicana.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 1,500",
-      "maxReturn": "RD$ 5,000",
-      "validFrom": "2026-02-05",
-      "validUntil": "2026-02-08",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": [],
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, débito, fondeo ni prepago. Consumo mínimo acumulable durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:16:01.233Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -14,
-      "daysUntilStart": null
-    },
-    {
       "title": "Día Plus BHD - Febrero",
       "description": "Recibe 20% de devolución en consumos presenciales en restaurantes al pagar con tarjetas de crédito BHD seleccionadas.",
       "percentage": "20%",
@@ -2783,40 +2641,6 @@
       "bankColor": "#e63946",
       "isUpcoming": false,
       "daysUntilExpiry": -14,
-      "daysUntilStart": null
-    },
-    {
-      "title": "20% de devolución con Tarjeta de Crédito La Nacional",
-      "description": "20% de devolución al pagar con tu tarjeta de crédito La Nacional en tiendas físicas y online.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito La Nacional"
-      ],
-      "minimumSpend": "RD$ 3,000.00",
-      "maxReturn": "RD$ 5,000.00",
-      "validFrom": "2026-02-02",
-      "validUntil": "2026-02-04",
-      "creditingDate": "30 días luego de finalizar la promoción",
-      "establishments": null,
-      "categories": [
-        "supermercado",
-        "retail",
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "No aplican tarjetas empresariales, combustible, fondeo, prepago ni débito. Tope máximo de devolución RD$ 5,000 por cliente durante la vigencia de la promoción.",
-      "isActive": false,
-      "bank": "La Nacional",
-      "sourceUrl": "https://asociacionlanacional.com.do/ofertas-tarjetas",
-      "extractedAt": "2026-02-21T13:15:15.417Z",
-      "id": "sr9hk2",
-      "bankId": "lanacional",
-      "bankColor": "#8B1A1A",
-      "isUpcoming": false,
-      "daysUntilExpiry": -18,
       "daysUntilStart": null
     },
     {
@@ -4531,50 +4355,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "Superbomba - Cashback en supermercados y combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de septiembre pagando con tarjetas Clásica y El Encanto Cibao.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de Crédito Clásica Cibao",
-        "Tarjeta El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 por transacción en supermercados / RD$1,000 por transacción en estaciones de combustible",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-09-03",
-      "validUntil": "2025-09-24",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Solo comercios nacionales debidamente registrados.",
-      "conditions": [
-        "Solo válido los miércoles de septiembre 2025",
-        "Consumo mínimo de RD$1,500 por transacción en supermercados",
-        "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
-        "Solo tarjetas Clásica y El Encanto Cibao",
-        "Solo comercios nacionales registrados como supermercados y estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-septiembre/",
-      "extractedAt": "2026-02-22T20:30:35.323Z",
-      "id": "9e9kzy",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -151,
-      "daysUntilStart": null
-    },
-    {
       "title": "Cashback en Ferretería Bellón",
       "description": "15% de cashback en compras presenciales en todas las tiendas Ferretería Bellón con tarjetas de crédito y Ultracrédito Cibao.",
       "percentage": "15%",
@@ -4693,93 +4473,6 @@
       "bankColor": "#004C97",
       "isUpcoming": false,
       "daysUntilExpiry": -178,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Superbomba - Cashback en supermercados y combustible",
-      "description": "10% de cashback en supermercados y 5% en estaciones de combustible todos los miércoles de agosto 2025.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito Clásica",
-        "Tarjeta de crédito El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 por transacción en supermercados / RD$1,000 por transacción en estaciones de combustible",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-08-06",
-      "validUntil": "2025-08-27",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Supermercados",
-        "Estaciones de combustible"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica para GLP. Tope en supermercados aplica para consumos de hasta RD$30,000 por tarjeta y en combustible hasta RD$40,000 por tarjeta. Solo comercios nacionales debidamente registrados.",
-      "conditions": [
-        "Solo los miércoles de agosto 2025",
-        "Consumo mínimo de RD$1,500 por transacción en supermercados",
-        "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
-        "Solo tarjetas Clásica y El Encanto Cibao",
-        "Solo comercios nacionales registrados como supermercados y estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-21T15:07:09.339Z",
-      "id": "j8cn4p",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -179,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Superbomba Cashback en supermercados y combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de agosto 2025, válido para tarjetas Clásica y El Encanto Cibao.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito Clásica",
-        "Tarjeta de crédito El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 por transacción en supermercados / RD$1,000 por transacción en estaciones de combustible",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-08-06",
-      "validUntil": "2025-08-27",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Solo comercios nacionales debidamente registrados.",
-      "conditions": [
-        "Solo los miércoles de agosto 2025",
-        "Consumo mínimo de RD$1,500 por transacción en supermercados",
-        "Consumo mínimo de RD$1,000 por transacción en estaciones de combustible",
-        "Solo comercios nacionales registrados como supermercados y estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-agosto/",
-      "extractedAt": "2026-02-22T20:30:54.525Z",
-      "id": "j8cn4p",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -179,
       "daysUntilStart": null
     },
     {
@@ -5041,92 +4734,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "Superbomba: Cashback en supermercados y combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de julio 2025.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Clásica",
-        "El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-07-02",
-      "validUntil": "2025-07-30",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica solo los miércoles de julio 2025. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Aplica para GLP.",
-      "conditions": [
-        "Solo aplica los miércoles de julio",
-        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
-        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
-        "Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
-      "extractedAt": "2026-02-21T15:07:51.345Z",
-      "id": "sbtqdn",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -207,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Superbomba Cashback en Supermercados y Combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de julio 2025, válido con tarjetas Clásica y El Encanto Cibao.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Clásica Cibao",
-        "El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible por tarjeta",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-07-02",
-      "validUntil": "2025-07-30",
-      "creditingDate": "Durante el mes siguiente de concluir la promoción",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica solo los miércoles de julio. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta. Aplica para GLP.",
-      "conditions": [
-        "Solo los miércoles de julio",
-        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
-        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
-        "Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
-      "extractedAt": "2026-02-22T20:31:12.994Z",
-      "id": "sbtqdn",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -207,
-      "daysUntilStart": null
-    },
-    {
       "title": "Cashback Amazon Prime Day",
       "description": "20% de cashback en compras en Amazon durante el Prime Day del 8 al 11 de julio 2025, con topes diferenciados según tipo de tarjeta.",
       "percentage": "20%",
@@ -5210,92 +4817,6 @@
       "bankColor": "#004C97",
       "isUpcoming": false,
       "daysUntilExpiry": -226,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Amazon Prime Day Cashback 20%",
-      "description": "20% de cashback en compras en Amazon durante el Prime Day con tarjetas de crédito Cibao. Tope de devolución varía según tipo de tarjeta.",
-      "percentage": "20%",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Clásica Cibao",
-        "El Encanto Cibao",
-        "Gold Cibao",
-        "Platinum Cibao",
-        "Infinite Cibao"
-      ],
-      "minimumSpend": "US$60 o su equivalente en pesos",
-      "maxReturn": "Clásica y El Encanto: US$25 / Gold: US$50 / Platinum e Infinite: US$80",
-      "validFrom": "2025-07-08",
-      "validUntil": "2025-07-11",
-      "creditingDate": "El crédito del cashback será aplicado posterior a la promoción",
-      "establishments": [
-        "Amazon"
-      ],
-      "categories": [
-        "online"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Tope de consumo varía por tarjeta: Clásica y El Encanto US$125, Gold US$250, Platinum e Infinite US$400. Aplica en dólares o su equivalente en pesos.",
-      "conditions": [
-        "Consumo mínimo de US$60 o su equivalente en pesos",
-        "Tope de devolución y consumo varía según tipo de tarjeta",
-        "Solo compras en Amazon"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-julio/",
-      "extractedAt": "2026-02-22T20:31:12.994Z",
-      "id": "sbtqdl",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -226,
-      "daysUntilStart": null
-    },
-    {
-      "title": "Superbomba Cashback en supermercados y combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible todos los miércoles de junio pagando con tarjetas Clásica y El Encanto Cibao.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito Clásica Cibao",
-        "Tarjeta El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible por tarjeta",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-06-04",
-      "validUntil": "2025-06-25",
-      "creditingDate": "Durante el mes siguiente de realizado el consumo",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Aplica solo para comercios nacionales debidamente registrados como supermercados y estaciones de combustible. Aplica para GLP. Tope de devolución aplica para consumos de hasta RD$30,000 en supermercados y RD$40,000 en estaciones de combustible por tarjeta.",
-      "conditions": [
-        "Solo válido los miércoles de junio 2025",
-        "Solo tarjetas Clásica y El Encanto Cibao",
-        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
-        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-junio/",
-      "extractedAt": "2026-02-22T20:31:29.151Z",
-      "id": "10yu2f",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -242,
       "daysUntilStart": null
     },
     {
@@ -5422,51 +4943,6 @@
       "daysUntilStart": null
     },
     {
-      "title": "Superbomba Cashback en Supermercados y Combustible",
-      "description": "Cashback de 10% en supermercados y 5% en estaciones de combustible al pagar con tarjetas de crédito Clásica y El Encanto Cibao todos los miércoles de marzo.",
-      "percentage": "10% supermercados / 5% combustible",
-      "promoType": "devolución",
-      "eligibleCards": [
-        "Tarjeta de crédito Clásica Cibao",
-        "Tarjeta El Encanto Cibao"
-      ],
-      "minimumSpend": "RD$1,500 en supermercados / RD$1,000 en estaciones de combustible",
-      "maxReturn": "RD$3,000 en supermercados / RD$2,000 en estaciones de combustible",
-      "validFrom": "2025-03-05",
-      "validUntil": "2025-03-26",
-      "creditingDate": "Durante el mes siguiente de realizado el consumo",
-      "establishments": [
-        "Supermercados nacionales",
-        "Estaciones de combustible nacionales"
-      ],
-      "categories": [
-        "supermercado",
-        "combustible"
-      ],
-      "cardTypes": [
-        "crédito"
-      ],
-      "notes": "Solo aplica los miércoles de marzo 2025. Aplica para GLP. Solo comercios nacionales debidamente registrados como supermercados y estaciones de combustible.",
-      "conditions": [
-        "Solo válido los miércoles de marzo",
-        "Consumo mínimo de RD$1,500 por tarjeta en supermercados",
-        "Consumo mínimo de RD$1,000 por tarjeta en estaciones de combustible",
-        "Tope de devolución aplica para consumo de hasta RD$30,000 por tarjeta en supermercados",
-        "Tope de devolución aplica para consumo de hasta RD$40,000 por tarjeta en estaciones de combustible",
-        "Solo tarjetas Clásica y El Encanto Cibao"
-      ],
-      "isActive": false,
-      "bank": "Asociación Cibao",
-      "sourceUrl": "https://www.cibao.com.do/banca-personal/ofertas-y-promociones/ofertas-de-marzo",
-      "extractedAt": "2026-02-22T20:31:59.803Z",
-      "id": "jnfsz4",
-      "bankId": "cibao",
-      "bankColor": "#004C97",
-      "isUpcoming": false,
-      "daysUntilExpiry": -333,
-      "daysUntilStart": null
-    },
-    {
       "title": "Oferta Semana Santa - Cashback 20%",
       "description": "Cashback del 20% en reservas de hoteles, estancias vacacionales, agencias de viajes y boletos aéreos para Semana Santa.",
       "percentage": "20%",
@@ -5590,13 +5066,13 @@
   ],
   "lastUpdated": "2026-02-22T20:53:20.712Z",
   "stats": {
-    "total": 145,
+    "total": 132,
     "active": 34,
     "upcoming": 2,
-    "expired": 109,
+    "expired": 96,
     "newThisRun": 47,
     "correctionsThisRun": 2,
-    "duplicatesRemoved": 17,
+    "duplicatesRemoved": 30,
     "scrapeTimeSeconds": 1764.6
   },
   "scrapeHistory": [
