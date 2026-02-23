@@ -206,9 +206,10 @@ export const BANK_SOURCES = [
     name: 'Qik',
     color: '#0082CD',
     // AEM CMS returns 403 to plain axios from Railway — use Puppeteer stealth to bypass WAF
+    // Old URL was /Promociones_TC_Qik.html — new promo page is /promociones/tarjetaqik/
     strategy: 'dynamic_js',
-    promoListUrl: 'https://www.qik.do/Promociones_TC_Qik.html',
-    pdfLinkSelector: 'a[href*="/content/dam/qik/legal/promociones/"][href$=".pdf"], a[href$=".pdf"]',
+    promoListUrl: 'https://qik.do/promociones/tarjetaqik/',
+    pdfLinkSelector: 'a[href$=".pdf"]',
     keywords: ['cashback', 'devoluc', 'descuento', 'reembolso', 'promo'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos', 'derechos', 'deberes'],
   },

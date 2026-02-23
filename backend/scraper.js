@@ -660,7 +660,7 @@ async function extractPromoFromPageText(pageText, bankName, sourceUrl, existingC
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-6',
-      max_tokens: 2000,
+      max_tokens: 4096,
       messages: [{
         role: 'user',
         content: `Eres un extractor de datos de promociones bancarias dominicanas.
@@ -668,7 +668,7 @@ async function extractPromoFromPageText(pageText, bankName, sourceUrl, existingC
 Analiza el siguiente texto de una página web de ${bankName} que describe una promoción.
 
 TEXTO DE LA PÁGINA:
-${pageText.substring(0, 2500)}
+${pageText.substring(0, 8000)}
 
 IMPORTANTE: Esta app SOLO muestra cashbacks y descuentos directos. Si la promoción NO es un cashback, devolución en efectivo o descuento directo en el precio (por ejemplo: conciertos, sorteos, millas, cuotas sin intereses, membresías, preventas, rifas, gimnasios, remesas), devuelve ÚNICAMENTE la palabra SKIP, sin nada más.
 
@@ -883,7 +883,8 @@ async function extractTextFromPromoPageAxios(url) {
       $('nav, footer, aside, script, style, .sidebar, .menu, .header').remove();
       const el = $('article, main, .entry-content, .promo-detail, #main-content, .content-area, .post-content');
       const text = el.length ? el.text() : $('body').text();
-      return text.replace(/\s+/g, ' ').trim().substring(0, 3000);
+      // Higher limit for pages that may contain multiple promos (e.g., Cibao monthly pages)
+      return text.replace(/\s+/g, ' ').trim().substring(0, 8000);
     }, { retries: 1, label: url });
   } catch (e) {
     console.error(`   ⚠️  Error axios extrayendo texto de ${url}:`, e.message);
@@ -902,7 +903,7 @@ function extractTextFromPromoPageCurl(url) {
     $('nav, footer, aside, script, style, .sidebar, .menu, .header').remove();
     const el = $('article, main, .entry-content, .promo-detail, #main-content, .content-area, .post-content');
     const text = el.length ? el.text() : $('body').text();
-    return text.replace(/\s+/g, ' ').trim().substring(0, 3000);
+    return text.replace(/\s+/g, ' ').trim().substring(0, 8000);
   } catch (e) {
     console.error(`   ⚠️  Error curl extrayendo texto de ${url}:`, e.message);
     return null;
@@ -1082,7 +1083,7 @@ async function extractTextFromPromoPage(url) {
           const el = document.querySelector('article, main, .entry-content, .promo-detail, #main-content, .content-area');
           return el ? el.innerText : document.body.innerText;
         });
-        return text.substring(0, 3000);
+        return text.substring(0, 8000);
       } finally {
         if (browser) await browser.close();
       }
