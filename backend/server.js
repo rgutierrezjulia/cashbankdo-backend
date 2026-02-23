@@ -85,82 +85,97 @@ cron.schedule('0 3 1 * *', async () => {
 
 // GET /api/promos — todas las promos con filtros opcionales
 app.get('/api/promos', async (req, res) => {
-  const data = await readData();
-  let { promos } = data;
+  try {
+    const data = await readData();
+    let { promos } = data;
 
-  const { bank, status, category, cardType, days } = req.query;
+    const { bank, status, category, cardType, days } = req.query;
 
-  // Filtro por banco
-  if (bank) {
-    promos = promos.filter(p => p.bankId === bank || p.bank?.toLowerCase() === bank.toLowerCase());
-  }
-
-  // Filtro por status
-  if (status === 'active') promos = promos.filter(p => p.isActive);
-  if (status === 'upcoming') promos = promos.filter(p => p.isUpcoming);
-  if (status === 'expired') promos = promos.filter(p => !p.isActive && !p.isUpcoming);
-  if (status === 'next15') {
-    promos = promos.filter(p => p.isActive || (p.isUpcoming && p.daysUntilStart <= 15));
-  }
-
-  // Filtro por categoría
-  if (category) {
-    promos = promos.filter(p => p.categories?.includes(category));
-  }
-
-  // Filtro por tipo de tarjeta
-  if (cardType) {
-    promos = promos.filter(p => p.cardTypes?.includes(cardType));
-  }
-
-  // Solo próximos N días
-  if (days) {
-    const n = parseInt(days);
-    promos = promos.filter(p => {
-      if (p.isActive) return true;
-      if (p.isUpcoming && p.daysUntilStart <= n) return true;
-      return false;
-    });
-  }
-
-  res.json({
-    promos,
-    meta: {
-      total: promos.length,
-      lastUpdated: data.lastUpdated,
-      stats: data.stats,
+    // Filtro por banco
+    if (bank) {
+      promos = promos.filter(p => p.bankId === bank || p.bank?.toLowerCase() === bank.toLowerCase());
     }
-  });
+
+    // Filtro por status
+    if (status === 'active') promos = promos.filter(p => p.isActive);
+    if (status === 'upcoming') promos = promos.filter(p => p.isUpcoming);
+    if (status === 'expired') promos = promos.filter(p => !p.isActive && !p.isUpcoming);
+    if (status === 'next15') {
+      promos = promos.filter(p => p.isActive || (p.isUpcoming && p.daysUntilStart <= 15));
+    }
+
+    // Filtro por categoría
+    if (category) {
+      promos = promos.filter(p => p.categories?.includes(category));
+    }
+
+    // Filtro por tipo de tarjeta
+    if (cardType) {
+      promos = promos.filter(p => p.cardTypes?.includes(cardType));
+    }
+
+    // Solo próximos N días
+    if (days) {
+      const n = parseInt(days);
+      promos = promos.filter(p => {
+        if (p.isActive) return true;
+        if (p.isUpcoming && p.daysUntilStart <= n) return true;
+        return false;
+      });
+    }
+
+    res.json({
+      promos,
+      meta: {
+        total: promos.length,
+        lastUpdated: data.lastUpdated,
+        stats: data.stats,
+      }
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/promos:', err.message);
+    res.status(500).json({ error: 'Error cargando promos', detail: err.message });
+  }
 });
 
 // GET /api/promos/:id — una promo específica
 app.get('/api/promos/:id', async (req, res) => {
-  const data = await readData();
-  const promo = data.promos.find(p => p.id === req.params.id);
-  if (!promo) return res.status(404).json({ error: 'Promo no encontrada' });
-  res.json(promo);
+  try {
+    const data = await readData();
+    const promo = data.promos.find(p => p.id === req.params.id);
+    if (!promo) return res.status(404).json({ error: 'Promo no encontrada' });
+    res.json(promo);
+  } catch (err) {
+    console.error('❌ Error en /api/promos/:id:', err.message);
+    res.status(500).json({ error: 'Error cargando promo', detail: err.message });
+  }
 });
 
 // GET /api/stats — estadísticas generales
 app.get('/api/stats', async (req, res) => {
-  const data = await readData();
-  const { promos, lastUpdated, stats, scrapeHistory } = data;
+  try {
+    const data = await readData();
+    const { promos, lastUpdated, stats, scrapeHistory } = data;
 
-  const byBank = {};
-  promos.forEach(p => {
-    if (!byBank[p.bank]) byBank[p.bank] = { total: 0, active: 0, upcoming: 0 };
-    byBank[p.bank].total++;
-    if (p.isActive) byBank[p.bank].active++;
-    if (p.isUpcoming) byBank[p.bank].upcoming++;
-  });
+    const byBank = {};
+    promos.forEach(p => {
+      if (!byBank[p.bank]) byBank[p.bank] = { total: 0, active: 0, upcoming: 0 };
+      byBank[p.bank].total++;
+      if (p.isActive) byBank[p.bank].active++;
+      if (p.isUpcoming) byBank[p.bank].upcoming++;
+    });
 
-  res.json({
-    lastUpdated,
-    stats,
-    byBank,
-    scrapeHistory: scrapeHistory?.slice(0, 10),
-    nextScrape: getNextCronTime(),
-  });
+    res.json({
+      lastUpdated,
+      stats,
+      byBank,
+      scrapeHistory: scrapeHistory?.slice(0, 10),
+      nextScrape: getNextCronTime(),
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/stats:', err.message);
+    res.status(500).json({ error: 'Error cargando stats', detail: err.message });
+  }
 });
 
 // GET /api/card-catalog — catálogo de tarjetas por banco
@@ -192,85 +207,100 @@ app.put('/api/card-catalog', async (req, res) => {
 
 // GET /api/banks — lista de bancos disponibles
 app.get('/api/banks', async (req, res) => {
-  const { BANK_SOURCES } = await import('./sources.js');
-  const data = await readData();
+  try {
+    const { BANK_SOURCES } = await import('./sources.js');
+    const data = await readData();
 
-  const banks = BANK_SOURCES.map(b => ({
-    id: b.id,
-    name: b.name,
-    color: b.color,
-    promoCount: data.promos.filter(p => p.bankId === b.id).length,
-    activeCount: data.promos.filter(p => p.bankId === b.id && p.isActive).length,
-  }));
+    const banks = BANK_SOURCES.map(b => ({
+      id: b.id,
+      name: b.name,
+      color: b.color,
+      promoCount: data.promos.filter(p => p.bankId === b.id).length,
+      activeCount: data.promos.filter(p => p.bankId === b.id && p.isActive).length,
+    }));
 
-  res.json(banks);
+    res.json(banks);
+  } catch (err) {
+    console.error('❌ Error en /api/banks:', err.message);
+    res.status(500).json({ error: 'Error cargando banks', detail: err.message });
+  }
 });
 
 // POST /api/match-wallet — dadas las tarjetas del usuario, retorna promos que aplican
 // Acepta formato nuevo { bankId, cardId, name, type } y antiguo { bank, name, tipo }
 app.post('/api/match-wallet', async (req, res) => {
-  const { cards } = req.body;
-  if (!cards || !Array.isArray(cards)) {
-    return res.status(400).json({ error: 'Envía un array de cards' });
-  }
+  try {
+    const { cards } = req.body;
+    if (!cards || !Array.isArray(cards)) {
+      return res.status(400).json({ error: 'Envía un array de cards' });
+    }
 
-  const data = await readData();
-  const activeAndUpcoming = data.promos.filter(p => p.isActive || p.isUpcoming);
+    const data = await readData();
+    const activeAndUpcoming = data.promos.filter(p => p.isActive || p.isUpcoming);
 
-  const matches = cards.map(card => {
-    // Normalizar: soporte para formato nuevo (bankId) y antiguo (bank)
-    const bankId = card.bankId || card.bank?.toLowerCase().replace(/\s+/g, '');
-    const bankName = card.bank || card.name;
-    const cardType = card.type || card.tipo;
-    const cardName = card.name;
+    const matches = cards.map(card => {
+      // Normalizar: soporte para formato nuevo (bankId) y antiguo (bank)
+      const bankId = card.bankId || card.bank?.toLowerCase().replace(/\s+/g, '');
+      const bankName = card.bank || card.name;
+      const cardType = card.type || card.tipo;
+      const cardName = card.name;
 
-    const matchingPromos = activeAndUpcoming.filter(promo => {
-      // Matching por bankId exacto (nuevo) o por nombre de banco (antiguo)
-      const bankMatch = promo.bankId === bankId ||
-                        promo.bank?.toLowerCase().includes(bankName?.toLowerCase()) ||
-                        promo.bankId === bankName?.toLowerCase();
-      if (!bankMatch) return false;
+      const matchingPromos = activeAndUpcoming.filter(promo => {
+        // Matching por bankId exacto (nuevo) o por nombre de banco (antiguo)
+        const bankMatch = promo.bankId === bankId ||
+                          promo.bank?.toLowerCase().includes(bankName?.toLowerCase()) ||
+                          promo.bankId === bankName?.toLowerCase();
+        if (!bankMatch) return false;
 
-      // Verificar tipo de tarjeta
-      if (cardType && promo.cardTypes?.length > 0) {
-        if (!promo.cardTypes.includes(cardType)) return false;
-      }
+        // Verificar tipo de tarjeta
+        if (cardType && promo.cardTypes?.length > 0) {
+          if (!promo.cardTypes.includes(cardType)) return false;
+        }
 
-      return true;
+        return true;
+      });
+
+      return {
+        card,
+        promos: matchingPromos,
+        promoCount: matchingPromos.length,
+      };
     });
 
-    return {
-      card,
-      promos: matchingPromos,
-      promoCount: matchingPromos.length,
-    };
-  });
-
-  res.json({ matches });
+    res.json({ matches });
+  } catch (err) {
+    console.error('❌ Error en /api/match-wallet:', err.message);
+    res.status(500).json({ error: 'Error en match-wallet', detail: err.message });
+  }
 });
 
 // POST /api/nearby — dado lat/lng, retorna promos con comercios cercanos
 app.post('/api/nearby', async (req, res) => {
-  const { lat, lng, radiusKm = 2 } = req.body;
-  if (!lat || !lng) return res.status(400).json({ error: 'Envía lat y lng' });
+  try {
+    const { lat, lng, radiusKm = 2 } = req.body;
+    if (!lat || !lng) return res.status(400).json({ error: 'Envía lat y lng' });
 
-  const data = await readData();
-  const active = data.promos.filter(p => p.isActive);
+    const data = await readData();
+    const active = data.promos.filter(p => p.isActive);
 
-  // Nota: Para geolocalización real necesitarías una base de datos de
-  // coordenadas de cada comercio. Por ahora retornamos promos activas
-  // con establecimientos físicos (presenciales).
-  const nearbyPromos = active.filter(p =>
-    p.categories?.includes('presencial') ||
-    p.categories?.includes('supermercado') ||
-    p.categories?.includes('restaurante')
-  );
+    // Nota: Para geolocalización real necesitarías una base de datos de
+    // coordenadas de cada comercio. Por ahora retornamos promos activas
+    // con establecimientos físicos (presenciales).
+    const nearbyPromos = active.filter(p =>
+      p.categories?.includes('presencial') ||
+      p.categories?.includes('supermercado') ||
+      p.categories?.includes('restaurante')
+    );
 
-  res.json({
-    lat, lng, radiusKm,
-    promos: nearbyPromos,
-    note: 'Para geolocalización exacta, integra Google Places API con los establecimientos de cada promo'
-  });
+    res.json({
+      lat, lng, radiusKm,
+      promos: nearbyPromos,
+      note: 'Para geolocalización exacta, integra Google Places API con los establecimientos de cada promo'
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/nearby:', err.message);
+    res.status(500).json({ error: 'Error en nearby', detail: err.message });
+  }
 });
 
 // POST /api/scrape — disparar scrape manual (protegido con API key)
