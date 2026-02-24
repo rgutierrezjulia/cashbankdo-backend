@@ -10,17 +10,18 @@ AI-powered scraper for Dominican bank cashback/discount promotions. Scrapes 17 b
 - **Frontend**: `frontend/index.html` (single-file SPA)
 - **Deploy**: Railway (auto-deploys on push to `master`), GitHub Actions pings `/api/health` every 5 min to prevent sleep
 
-## Scraping Strategies (8 types)
-- `html_pdf_links` — Banreservas, APAP
+## Scraping Strategies
+- `html_pdf_links` — Banreservas, APAP, Qik
 - `strapi_api` — BHD (has `detailApi` for card details)
-- `html_promo_pages` — Scotiabank, Banesco, Banco Caribe, Promerica, Banco Santa Cruz
-- `axios_html_promo_pages` — Asociacion Cibao, Banco BDI (bypasses Railway IP blocking)
-- `wp_rss` — Banco Lopez de Haro
+- `html_promo_pages` — Banesco
+- `axios_html_promo_pages` — Asociacion Cibao, Banco BDI, Promerica (bypasses Railway IP blocking)
+- `wp_rss` — Banco Lopez de Haro (server sends malformed HTTP headers, currently broken)
 - `wp_api` — Banco Ademi
 - `lafise_json` — LAFISE
-- `html_inline_cards` — La Nacional
+- `html_inline_cards` — La Nacional (uses axios+cheerio, not Puppeteer)
 - `strapi_pdf` — Banco Vimenca
-- `dynamic_js` — Qik (AEM CMS, Puppeteer stealth)
+- `bsc_graphql` — **Banco Santa Cruz** (Nuxt.js SPA with Apollo GraphQL; queries `/graphql` endpoint directly for categories + profits, no Puppeteer needed)
+- `instagram_apify` — **Banco Popular**, **Banco Caribe**, **Scotiabank** (WAF/JS-rendered pages block datacenter scraping; scrapes Instagram via Apify free tier). Requires `APIFY_API_TOKEN` env var.
 - `instagram_apify` — **Banco Popular** (Incapsula WAF blocks datacenter IPs; scrapes @popularenlinea Instagram via Apify free tier). Requires `APIFY_API_TOKEN` env var.
 
 ## Deduplication System (CRITICAL — read carefully)

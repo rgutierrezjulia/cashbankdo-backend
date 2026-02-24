@@ -41,18 +41,14 @@ export const BANK_SOURCES = [
     id: 'scotiabank',
     name: 'Scotiabank',
     color: '#e8003d',
-    strategy: 'html_promo_pages',
-    // Página de listado — tiene paginación tipo .2.all.all.all.html
+    // AEM CMS listing page is JS-rendered — Puppeteer broken on Railway.
+    // Individual promo pages are static HTML but can't be discovered without JS.
+    // Use Instagram @scotiabankdo via Apify as promo discovery mechanism.
+    strategy: 'instagram_apify',
+    instagramHandle: 'scotiabankdo',
     promoListUrl: 'https://do.scotiabank.com/banca-personal/promociones.html',
-    listingPages: [
-      'https://do.scotiabank.com/banca-personal/promociones.html',
-      'https://do.scotiabank.com/banca-personal/promociones.2.all.all.all.html',
-      'https://do.scotiabank.com/banca-personal/promociones.3.all.all.all.html',
-    ],
-    // Selector para links a páginas individuales de promo
-    promoLinkSelector: 'a[href*="/post."]',
-    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
-    excludeKeywords: [],
+    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso', 'devoluci', 'ahorro'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'remesa'],
   },
   {
     id: 'blh',
@@ -117,12 +113,13 @@ export const BANK_SOURCES = [
     id: 'bancocaribe',
     name: 'Banco Caribe',
     color: '#005FA8',
-    strategy: 'html_promo_pages',
+    // Akamai WAF blocks all datacenter IPs (403 on every path).
+    // Use Instagram scraping via Apify, same as Banco Popular.
+    strategy: 'instagram_apify',
+    instagramHandle: 'bancocariberd',
     promoListUrl: 'https://www.bancocaribe.com.do/novedades',
-    listingPages: ['https://www.bancocaribe.com.do/novedades'],
-    promoLinkSelector: 'a[href*="bancocaribe.com.do/novedades/"], article a, h2 a, h3 a',
-    keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
-    excludeKeywords: ['sorteo', 'concurso', 'millas'],
+    keywords: ['cashback', 'devoluc', 'descuento', 'reembolso', 'devoluci', 'ahorro'],
+    excludeKeywords: ['sorteo', 'concurso', 'millas', 'remesa'],
   },
   {
     id: 'lanacional',
@@ -177,16 +174,14 @@ export const BANK_SOURCES = [
     id: 'bsc',
     name: 'Banco Santa Cruz',
     color: '#12499B',
-    // SPA Vue.js + Vuetify — Puppeteer renderiza y sigue links con IDs MongoDB
-    strategy: 'html_promo_pages',
+    // Nuxt.js SPA with Apollo GraphQL backend — Puppeteer can't render on Railway.
+    // GraphQL endpoint at /graphql serves both "profits" (beneficios) and "promotions".
+    // Profits have base64-encoded HTML in `condition` field with promo details.
+    strategy: 'bsc_graphql',
+    graphqlUrl: 'https://bsc.com.do/graphql',
     promoListUrl: 'https://bsc.com.do/beneficios',
-    listingPages: [
-      'https://bsc.com.do/beneficios',
-      'https://bsc.com.do/beneficios/categoria/hogar',
-      'https://bsc.com.do/beneficios/categoria/tus-tiendas',
-      'https://bsc.com.do/promociones',
-    ],
-    promoLinkSelector: 'a[href*="/about/prouser/"], a[href*="/products/cards/"][href*="/item/"], a.v-card[href], .v-card a[href*="bsc.com.do"]',
+    // Target string for fetching benefit categories via findCategoryByTarget
+    categoryTarget: 'category::profits',
     keywords: ['devoluc', 'cashback', 'descuento', 'reembolso'],
     excludeKeywords: ['sorteo', 'concurso', 'millas', 'puntos'],
   },

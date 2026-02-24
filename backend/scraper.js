@@ -649,6 +649,171 @@ async function processBankFromLafiseJson(source, existingIds, existingContext, m
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 3c2b. BSC GRAPHQL API (Banco Santa Cruz)
+// Nuxt.js SPA uses Apollo GraphQL. We query the /graphql endpoint
+// directly to get categories and profits (beneficios), avoiding
+// the need for Puppeteer to render the Vue.js SPA.
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromBscGraphql(source, existingIds, existingContext, maxPerBank = Infinity) {
+  try {
+    const gqlUrl = source.graphqlUrl;
+
+    // Step 1: Fetch all benefit categories
+    const catRes = await axios.post(gqlUrl, {
+      query: `{ findCategoryByTarget(Target: "${source.categoryTarget}") { _id name slug disabled } }`,
+    }, { timeout: 15000, headers: { 'Content-Type': 'application/json' }, ...axiosProxy });
+
+    const categories = catRes.data?.data?.findCategoryByTarget?.filter(c => !c.disabled) || [];
+    console.log(`   📂 ${categories.length} categorías activas de beneficios`);
+
+    // Step 2: Fetch profits for each category
+    const allProfits = [];
+    for (const cat of categories) {
+      const profitRes = await axios.post(gqlUrl, {
+        query: `query FindProfitsByCategory($categoryId: String!) {
+          findProfitsByCategory(categoryID: $categoryId) {
+            _id name percent devolution condition disabled picture
+            pictureImageDetail { _id image altText }
+            date { start end }
+            description { text enabled }
+            category color createdAt updatedAt
+          }
+        }`,
+        variables: { categoryId: cat._id },
+      }, { timeout: 15000, headers: { 'Content-Type': 'application/json' }, ...axiosProxy });
+
+      const profits = profitRes.data?.data?.findProfitsByCategory || [];
+      const activeProfits = profits.filter(p => !p.disabled);
+      if (activeProfits.length > 0) {
+        console.log(`   📋 ${cat.name}: ${activeProfits.length} beneficios activos`);
+      }
+      for (const p of activeProfits) {
+        allProfits.push({ ...p, categoryName: cat.name, categorySlug: cat.slug });
+      }
+    }
+
+    // Step 3: Also try fetching promotions (separate from profits/beneficios)
+    // findPromotionByDate is public and doesn't require auth
+    const now = new Date();
+    const startDate = new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString().split('T')[0];
+    const endDate = new Date(now.getFullYear(), now.getMonth() + 2, 0).toISOString().split('T')[0];
+    try {
+      const promoRes = await axios.post(gqlUrl, {
+        query: `query FindPromotionByDate($paramsByDate: ParamsByDate!) {
+          findPromotionByDate(ParamsByDate: $paramsByDate) {
+            _id name percent devolution condition extract disabled picture
+            pictureImageDetail { _id image altText }
+            date { start end }
+            createdAt updatedAt
+          }
+        }`,
+        variables: { paramsByDate: { start: startDate, end: endDate } },
+      }, { timeout: 15000, headers: { 'Content-Type': 'application/json' }, ...axiosProxy });
+
+      const promos = promoRes.data?.data?.findPromotionByDate || [];
+      const activePromos = promos.filter(p => !p.disabled);
+      if (activePromos.length > 0) {
+        console.log(`   📋 Promociones: ${activePromos.length} activas`);
+        for (const p of activePromos) {
+          allProfits.push({ ...p, categoryName: 'Promoción', categorySlug: 'promociones' });
+        }
+      }
+    } catch (promoErr) {
+      // Promotions endpoint may require auth or be empty — not critical
+      console.log(`   ⚠️ Promociones endpoint: ${promoErr.message} (no crítico)`);
+    }
+
+    console.log(`   📊 Total: ${allProfits.length} beneficios/promos encontrados`);
+
+    if (allProfits.length === 0) return [];
+
+    // Step 4: Process each profit through Claude AI for extraction
+    const newPromos = [];
+    let processed = 0;
+    let skipped = 0;
+
+    for (const profit of allProfits) {
+      if (processed >= maxPerBank) break;
+
+      // Decode base64 condition (contains promo details as HTML)
+      let conditionHtml = '';
+      try {
+        conditionHtml = profit.condition ? Buffer.from(profit.condition, 'base64').toString('utf8') : '';
+      } catch {
+        conditionHtml = profit.condition || '';
+      }
+
+      // Decode base64 description
+      let descriptionHtml = '';
+      try {
+        descriptionHtml = profit.description?.text ? Buffer.from(profit.description.text, 'base64').toString('utf8') : '';
+      } catch {
+        descriptionHtml = profit.description?.text || '';
+      }
+
+      // Strip HTML tags for plain text
+      const stripHtml = (html) => html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const conditionText = stripHtml(conditionHtml);
+      const descriptionText = stripHtml(descriptionHtml);
+
+      // Build a rich text description for Claude
+      const dateStart = profit.date?.start ? profit.date.start.split('T')[0] : '';
+      const dateEnd = profit.date?.end ? profit.date.end.split('T')[0] : '';
+      const fullText = [
+        `Nombre: ${profit.name}`,
+        profit.percent ? `Porcentaje: ${profit.percent}%` : '',
+        profit.devolution ? `Devolución: ${profit.devolution}` : '',
+        conditionText ? `Condiciones: ${conditionText}` : '',
+        descriptionText ? `Descripción: ${descriptionText}` : '',
+        `Categoría: ${profit.categoryName}`,
+        dateStart ? `Vigencia: ${dateStart} a ${dateEnd}` : '',
+        `Tarjetas: Visa Banco Santa Cruz`,
+      ].filter(Boolean).join('\n');
+
+      const id = generateId(`bsc-${profit._id}`);
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      // Keyword filter
+      const textLower = fullText.toLowerCase();
+      const hasKeyword = source.keywords.some(k => textLower.includes(k));
+      const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
+
+      // BSC profits are card benefits (discounts/cashback by nature), so if no keyword
+      // match but there's a percent or devolution, still process it
+      if (hasExclude) { skipped++; continue; }
+      if (!hasKeyword && !profit.percent && !profit.devolution) { skipped++; continue; }
+
+      console.log(`   🤖 Extrayendo: ${profit.name.substring(0, 60)}...`);
+      const sourceUrl = `https://bsc.com.do/beneficios/categoria/${profit.categorySlug}`;
+      const result = await extractPromoFromPageText(fullText, source.name, sourceUrl, existingContext);
+
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.sourceUrl = sourceUrl;
+          promo.id = id;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
+      }
+
+      await new Promise(r => setTimeout(r, 400));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error procesando ${source.name} (GraphQL):`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 3c3. EXTRAER DATOS DE PÁGINA HTML COMPLETA (Scotiabank, BLH)
 // ───────────────────────────────────────────────────────────────────
 
@@ -1295,6 +1460,11 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
   // Estrategia JSON API (LAFISE)
   if (source.strategy === 'lafise_json') {
     return await processBankFromLafiseJson(source, existingIds, existingContext, maxPerBank);
+  }
+
+  // Estrategia GraphQL API (Banco Santa Cruz — Nuxt.js SPA with Apollo)
+  if (source.strategy === 'bsc_graphql') {
+    return await processBankFromBscGraphql(source, existingIds, existingContext, maxPerBank);
   }
 
   // Estrategia HTML promo pages via Puppeteer (Scotiabank, Banesco, etc.)
