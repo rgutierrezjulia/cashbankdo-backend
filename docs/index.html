@@ -1061,7 +1061,8 @@ function isCardEligible(card, promo) {
       if (broadRuleMatchesCard(beforeExcept, card)) return true;
 
     } else {
-      // No exclusion — check if rule matches this card directly
+      // No exclusion — check broad rules first, then specific
+      if (broadRuleMatchesCard(ruleLower, card)) return true;
       if (specificRuleMatchesCard(ruleLower, card)) return true;
     }
   }
@@ -1081,6 +1082,9 @@ function broadRuleMatchesCard(rule, card) {
     if (rule.includes('débito') && cardType === 'débito') return true;
     if (!rule.includes('crédito') && !rule.includes('débito')) return true;
   }
+
+  // "tarjetas [bank]" (no type qualifier) = all cards from the bank
+  if (/^tarjetas\b/.test(rule) && !rule.includes('crédito') && !rule.includes('débito')) return true;
 
   // Network-based: "mastercard", "visa", "american express"
   if (rule.includes('mastercard') && cardNetwork.includes('mastercard')) return true;
