@@ -76,7 +76,8 @@ export const BANK_SOURCES = [
     id: 'banesco',
     name: 'Banesco',
     color: '#C8102E',
-    strategy: 'html_promo_pages',
+    // Static HTML — listing and promo pages both work with axios+cheerio, no Puppeteer needed
+    strategy: 'axios_html_promo_pages',
     promoListUrl: 'https://www.banesco.com.do/promociones/',
     listingPages: ['https://www.banesco.com.do/promociones/'],
     // Cada promo es una sub-página: /promociones/[slug]/

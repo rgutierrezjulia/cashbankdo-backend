@@ -171,6 +171,7 @@
 
   .bank-filter { display: flex; gap: 6px; flex-wrap: wrap; }
   .bank-btn { padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.75rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s; white-space: nowrap; }
+  .bank-btn.empty-bank { opacity: 0.45; }
   .bank-btn.active-all { background: var(--surface2); border-color: var(--text); color: var(--text); }
 
   .main { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
@@ -932,11 +933,10 @@ async function loadData() {
       } catch (e) { /* no fallback available */ }
     }
 
-    // Update stats — derive bank count from actual promos to stay accurate
+    // Update stats — use /api/banks count to include banks with 0 current promos
     document.getElementById('statActive').textContent = promosData.meta?.stats?.active || allPromos.filter(p => p.isActive).length;
     document.getElementById('statUpcoming').textContent = promosData.meta?.stats?.upcoming || allPromos.filter(p => p.isUpcoming).length;
-    const uniqueBanks = new Set(allPromos.map(p => p.bankId));
-    document.getElementById('statBanks').textContent = uniqueBanks.size;
+    document.getElementById('statBanks').textContent = banksData.length;
     document.getElementById('statTotal').textContent = promosData.meta?.stats?.total || allPromos.length;
 
     // Sync status
@@ -1545,9 +1545,9 @@ function promoDistance(promo) {
 function renderBankFilter(banks) {
   const filter = document.getElementById('bankFilter');
   // Keep the static Todos + Mis Productos buttons, only replace the bank buttons after them
-  const bankBtns = banks.filter(b => b.promoCount > 0).map(b =>
-    `<button class="bank-btn" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
-      style="--bc:${b.color}">${b.name}</button>`
+  const bankBtns = banks.map(b =>
+    `<button class="bank-btn${b.promoCount === 0 ? ' empty-bank' : ''}" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
+      style="--bc:${b.color}">${b.name}${b.promoCount === 0 ? ' (0)' : ''}</button>`
   ).join('');
   filter.innerHTML =
     `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +

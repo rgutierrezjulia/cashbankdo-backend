@@ -13,8 +13,7 @@ AI-powered scraper for Dominican bank cashback/discount promotions. Scrapes 17 b
 ## Scraping Strategies
 - `html_pdf_links` — Banreservas, APAP, Qik
 - `strapi_api` — BHD (has `detailApi` for card details)
-- `html_promo_pages` — Banesco
-- `axios_html_promo_pages` — Asociacion Cibao, Banco BDI, Promerica (bypasses Railway IP blocking)
+- `axios_html_promo_pages` — Asociacion Cibao, Banco BDI, Promerica, Banesco (static HTML, bypasses Railway IP blocking)
 - `wp_rss` — Banco Lopez de Haro (server sends malformed HTTP headers, currently broken)
 - `wp_api` — Banco Ademi
 - `lafise_json` — LAFISE
