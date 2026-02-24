@@ -36,24 +36,22 @@ async function readData() {
     const raw = await fs.readFile(DATA_FILE, 'utf-8');
     const data = JSON.parse(raw);
     // Defensive: ensure expected shape even if file/Redis has unexpected structure
-    if (!data || !Array.isArray(data.promos)) {
+    if (!data || typeof data !== 'object' || !Array.isArray(data.promos)) {
       console.warn('⚠️  Datos con estructura inesperada, usando defaults');
-      return { ...EMPTY_DATA, ...data, promos: data?.promos || [] };
+      return EMPTY_DATA;
     }
     return data;
   } catch {
     // Archivo no existe (deploy fresco) — intentar restaurar desde Redis
     const saved = await redisGet('promos');
-    if (saved) {
+    if (saved && typeof saved === 'object' && !Array.isArray(saved) && Array.isArray(saved.promos)) {
       await fs.mkdir(DATA_DIR, { recursive: true });
       await fs.writeFile(DATA_FILE, JSON.stringify(saved, null, 2)).catch(() => {});
       console.log('📥 Datos restaurados desde Redis');
-      // Defensive: Redis data might have unexpected shape
-      if (!saved.promos || !Array.isArray(saved.promos)) {
-        console.warn('⚠️  Redis data con estructura inesperada:', Object.keys(saved));
-        return { ...EMPTY_DATA, ...saved, promos: saved?.promos || [] };
-      }
       return saved;
+    }
+    if (saved) {
+      console.warn('⚠️  Redis data corrupta (tipo:', typeof saved, '), ignorando');
     }
     return EMPTY_DATA;
   }

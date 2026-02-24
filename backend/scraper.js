@@ -1151,12 +1151,20 @@ function generateId(url) {
   return Math.abs(hash).toString(36);
 }
 
+const EMPTY_SCRAPER_DATA = { promos: [], lastUpdated: null, scrapeHistory: [] };
+
 async function loadExistingData() {
   try {
     const raw = await fs.readFile(DATA_FILE, 'utf-8');
-    return JSON.parse(raw);
+    const data = JSON.parse(raw);
+    // Defensive: file may contain corrupted Redis restore (e.g. string or array instead of object)
+    if (!data || typeof data !== 'object' || !Array.isArray(data.promos)) {
+      console.warn('⚠️  Datos existentes con estructura inesperada, empezando vacío');
+      return EMPTY_SCRAPER_DATA;
+    }
+    return data;
   } catch {
-    return { promos: [], lastUpdated: null, scrapeHistory: [] };
+    return EMPTY_SCRAPER_DATA;
   }
 }
 
