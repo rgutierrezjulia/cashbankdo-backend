@@ -1,11 +1,12 @@
 FROM node:20-slim
 
-# Instalar Chromium, fuentes y utilidades DNS
+# Instalar Chromium, fuentes, curl y utilidades DNS
 RUN apt-get update && apt-get install -y \
     chromium \
     fonts-liberation \
     fonts-noto-color-emoji \
     dnsutils \
+    curl \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
