@@ -840,6 +840,66 @@ async function processBankFromInlineCards(source, existingIds, existingContext, 
 }
 
 // ───────────────────────────────────────────────────────────────────
+// 3c6b. INLINE CARDS VIA AXIOS+CHEERIO (La Nacional — static HTML)
+// ───────────────────────────────────────────────────────────────────
+
+async function processBankFromInlineCardsAxios(source, existingIds, existingContext, maxPerBank = Infinity) {
+  try {
+    console.log(`   📃 Cargando inline cards (axios): ${source.promoListUrl}`);
+    const { data } = await axios.get(source.promoListUrl, {
+      timeout: 15000,
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' },
+      ...axiosProxy,
+    });
+    const $ = cheerio.load(data);
+    const cards = [];
+    $(source.cardSelector).each((_, el) => {
+      const text = $(el).text().replace(/\s+/g, ' ').trim();
+      if (text) cards.push(text);
+    });
+
+    console.log(`   📋 ${cards.length} cards inline encontradas`);
+
+    const newPromos = [];
+    let processed = 0, skipped = 0;
+
+    for (const cardText of cards) {
+      if (processed >= maxPerBank) break;
+      const textLower = cardText.toLowerCase();
+      const hasKeyword = source.keywords.some(k => textLower.includes(k));
+      const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
+      if (!hasKeyword || hasExclude) { skipped++; continue; }
+
+      const id = generateId(`${source.id}-${cardText.substring(0, 80)}`);
+      if (existingIds.has(id)) { skipped++; continue; }
+
+      console.log(`   🤖 Extrayendo: ${cardText.substring(0, 60).replace(/\n/g, ' ')}...`);
+      const result = await extractPromoFromPageText(cardText, source.name, source.promoListUrl, existingContext);
+
+      if (result && result._action === 'known') { skipped++; continue; }
+
+      if (result) {
+        for (const promo of result) {
+          promo.bankId = source.id;
+          promo.bankColor = source.color;
+          promo.id = id;
+          newPromos.push(promo);
+          processed++;
+          console.log(`   ✅ ${promo.title}`);
+        }
+      }
+      await new Promise(r => setTimeout(r, 500));
+    }
+
+    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
+    return newPromos;
+  } catch (err) {
+    console.error(`❌ Error en inline cards axios ${source.name}:`, err.message);
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────
 // 3d0. AXIOS+CHEERIO FALLBACK — para sitios que funcionan sin JS
 //      pero Puppeteer falla desde datacenter (DNS, timeout, IP block)
 // ───────────────────────────────────────────────────────────────────
@@ -1259,7 +1319,7 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
 
   // Estrategia inline cards (La Nacional — ofertas en una sola página sin sub-páginas)
   if (source.strategy === 'html_inline_cards') {
-    return await processBankFromInlineCards(source, existingIds, existingContext, maxPerBank);
+    return await processBankFromInlineCardsAxios(source, existingIds, existingContext, maxPerBank);
   }
 
   // Obtener links de PDFs

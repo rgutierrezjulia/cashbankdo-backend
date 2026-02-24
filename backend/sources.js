@@ -151,7 +151,8 @@ export const BANK_SOURCES = [
     name: 'Promerica',
     color: '#E8622A',
     // Promos reales están en Club Promerica (NopCommerce), no en promerica.com.do (página vacía)
-    strategy: 'html_promo_pages',
+    // Static HTML — axios+cheerio works, no Puppeteer needed
+    strategy: 'axios_html_promo_pages',
     promoListUrl: 'https://clubpromerica.com/republicadominicana/comercios-2',
     listingPages: ['https://clubpromerica.com/republicadominicana/comercios-2'],
     promoLinkSelector: '.product-title a',
@@ -205,9 +206,9 @@ export const BANK_SOURCES = [
     id: 'qik',
     name: 'Qik',
     color: '#0082CD',
-    // AEM CMS returns 403 to plain axios from Railway — use Puppeteer stealth to bypass WAF
+    // AEM CMS — PDF links are in static HTML, no Puppeteer needed
     // Old URL was /Promociones_TC_Qik.html — new promo page is /promociones/tarjetaqik/
-    strategy: 'dynamic_js',
+    strategy: 'html_pdf_links',
     promoListUrl: 'https://qik.do/promociones/tarjetaqik/',
     pdfLinkSelector: 'a[href$=".pdf"]',
     keywords: ['cashback', 'devoluc', 'descuento', 'reembolso', 'promo'],
