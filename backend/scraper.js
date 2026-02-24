@@ -128,43 +128,6 @@ async function getPdfLinksFromHtml(url, selector, keywords, excludeKeywords) {
   }
 }
 
-async function getPdfLinksFromDynamic(url, selector, keywords, excludeKeywords) {
-  let browser;
-  try {
-    browser = await launchBrowser();
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (compatible; CashbackDO/1.0)');
-    await withRetry(
-      () => page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 }),
-      { retries: 2, label: url }
-    );
-
-    // Esperar a que cargue el contenido
-    await new Promise(r => setTimeout(r, 5000));
-
-    const links = await page.evaluate((selector, keywords, excludeKeywords) => {
-      const results = [];
-      document.querySelectorAll(selector).forEach(el => {
-        const href = el.getAttribute('href') || '';
-        const text = (el.textContent + ' ' + href).toLowerCase();
-        const hasKeyword = keywords.some(k => text.includes(k));
-        const hasExclude = excludeKeywords.some(k => text.includes(k));
-        if (hasKeyword && !hasExclude && href) {
-          results.push({ url: href.startsWith('http') ? href : new URL(href, window.location.href).href, text: el.textContent.trim() });
-        }
-      });
-      return results;
-    }, selector, keywords, excludeKeywords);
-
-    return links;
-  } catch (err) {
-    console.error(`❌ Error with Puppeteer on ${url}:`, err.message);
-    return [];
-  } finally {
-    if (browser) await browser.close();
-  }
-}
-
 // ───────────────────────────────────────────────────────────────────
 // 2. DESCARGAR PDF Y CONVERTIR A BASE64
 // ───────────────────────────────────────────────────────────────────
@@ -938,73 +901,6 @@ async function processBankFromWpApi(source, existingIds, existingContext, maxPer
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 3c5. PROCESAR BANCO VÍA CARDS INLINE EN PÁGINA DE LISTADO (La Nacional)
-// ───────────────────────────────────────────────────────────────────
-
-async function processBankFromInlineCards(source, existingIds, existingContext, maxPerBank = Infinity) {
-  let browser;
-  try {
-    console.log(`   🌐 Cargando página de listado inline para ${source.name}...`);
-    browser = await launchBrowser();
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
-    await page.evaluateOnNewDocument(() => {
-      Object.defineProperty(navigator, 'webdriver', { get: () => false });
-    });
-    await withRetry(
-      () => page.goto(source.promoListUrl, { waitUntil: 'networkidle2', timeout: 60000 }),
-      { retries: 2, label: source.promoListUrl }
-    );
-    await new Promise(r => setTimeout(r, 5000));
-
-    const cards = await page.evaluate((sel) =>
-      [...document.querySelectorAll(sel)].map(el => el.innerText.trim()).filter(Boolean)
-    , source.cardSelector);
-
-    console.log(`   📋 ${cards.length} cards inline encontradas`);
-
-    const newPromos = [];
-    let processed = 0, skipped = 0;
-
-    for (const cardText of cards) {
-      if (processed >= maxPerBank) break;
-      const textLower = cardText.toLowerCase();
-      const hasKeyword = source.keywords.some(k => textLower.includes(k));
-      const hasExclude = source.excludeKeywords?.some(k => textLower.includes(k));
-      if (!hasKeyword || hasExclude) { skipped++; continue; }
-
-      const id = generateId(`${source.id}-${cardText.substring(0, 80)}`);
-      if (existingIds.has(id)) { skipped++; continue; }
-
-      console.log(`   🤖 Extrayendo: ${cardText.substring(0, 60).replace(/\n/g, ' ')}...`);
-      const result = await extractPromoFromPageText(cardText, source.name, source.promoListUrl, existingContext);
-
-      if (result && result._action === 'known') { skipped++; continue; }
-
-      if (result) {
-        for (const promo of result) {
-          promo.bankId = source.id;
-          promo.bankColor = source.color;
-          promo.id = id;
-          newPromos.push(promo);
-          processed++;
-          console.log(`   ✅ ${promo.title}`);
-        }
-      }
-      await new Promise(r => setTimeout(r, 500));
-    }
-
-    console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
-    return newPromos;
-  } catch (err) {
-    console.error(`❌ Error en inline cards ${source.name}:`, err.message);
-    return [];
-  } finally {
-    if (browser) await browser.close();
-  }
-}
-
-// ───────────────────────────────────────────────────────────────────
 // 3c6b. INLINE CARDS VIA AXIOS+CHEERIO (La Nacional — static HTML)
 // ───────────────────────────────────────────────────────────────────
 
@@ -1250,119 +1146,6 @@ async function processBankFromRss(source, existingIds, existingContext, maxPerBa
 }
 
 // ───────────────────────────────────────────────────────────────────
-// 3d. PROCESAR BANCO VÍA PÁGINAS HTML DE PROMOS (Scotiabank)
-// ───────────────────────────────────────────────────────────────────
-
-async function getPromoLinksFromListingPages(source) {
-  const links = new Set();
-  let browser;
-  try {
-    console.log(`   🌐 Lanzando Puppeteer para ${source.name}...`);
-    browser = await launchBrowser();
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
-    console.log(`   ✅ Puppeteer lanzado OK`);
-
-    // Ocultar señales de automatización (ayuda con Akamai/Cloudflare)
-    await page.evaluateOnNewDocument(() => {
-      Object.defineProperty(navigator, 'webdriver', { get: () => false });
-    });
-
-    for (const listingUrl of (source.listingPages || [source.promoListUrl])) {
-      try {
-        console.log(`   📃 Cargando: ${listingUrl}`);
-        await withRetry(
-          () => page.goto(listingUrl, { waitUntil: 'networkidle2', timeout: 60000 }),
-          { retries: 2, label: listingUrl }
-        );
-        await new Promise(r => setTimeout(r, 5000));
-        const found = await page.evaluate((sel) =>
-          [...new Set([...document.querySelectorAll(sel)].map(a => a.href).filter(Boolean))]
-        , source.promoLinkSelector);
-        console.log(`   🔗 Links encontrados en esta página: ${found.length}`);
-        found.forEach(l => links.add(l));
-      } catch (e) {
-        console.error(`   ⚠️  Error en listing ${listingUrl}:`, e.message);
-      }
-    }
-  } catch (e) {
-    console.error(`   ❌ Error lanzando Puppeteer para ${source.name}:`, e.message);
-  } finally {
-    if (browser) await browser.close();
-  }
-  return [...links];
-}
-
-async function extractTextFromPromoPage(url) {
-  try {
-    return await withRetry(async () => {
-      let browser;
-      try {
-        browser = await launchBrowser();
-        const page = await browser.newPage();
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
-        await new Promise(r => setTimeout(r, 2000));
-        // Extraer el texto del artículo/main, ignorando nav y footer
-        const text = await page.evaluate(() => {
-          const el = document.querySelector('article, main, .entry-content, .promo-detail, #main-content, .content-area');
-          return el ? el.innerText : document.body.innerText;
-        });
-        return text.substring(0, 8000);
-      } finally {
-        if (browser) await browser.close();
-      }
-    }, { retries: 1, label: url });
-  } catch (e) {
-    console.error(`   ⚠️  Error extrayendo texto de ${url}:`, e.message);
-    return null;
-  }
-}
-
-async function processBankFromHtmlPromoPages(source, existingIds, existingContext, maxPerBank = Infinity) {
-  console.log(`   🔍 Buscando links en ${(source.listingPages || []).length} páginas de listado...`);
-  const promoLinks = await getPromoLinksFromListingPages(source);
-  console.log(`   📄 Encontrados ${promoLinks.length} links de promos`);
-
-  const newPromos = [];
-  let processed = 0;
-  let skipped = 0;
-
-  for (const url of promoLinks.slice(0, 20)) {
-    if (processed >= maxPerBank) break;
-    const id = generateId(url);
-    if (existingIds.has(id)) { skipped++; continue; }
-
-    console.log(`   📖 Leyendo: ${url.substring(0, 80)}...`);
-    const text = await extractTextFromPromoPage(url);
-    if (!text) { skipped++; continue; }
-
-    const textLower = text.toLowerCase();
-    const hasKeyword = source.keywords.some(k => textLower.includes(k));
-    if (!hasKeyword) { skipped++; continue; }
-
-    console.log(`   🤖 Extrayendo con Claude...`);
-    const result = await extractPromoFromPageText(text, source.name, url, existingContext);
-
-    if (result && result._action === 'known') { skipped++; continue; }
-
-    if (result) {
-      for (const promo of result) {
-        promo.bankId = source.id;
-        promo.bankColor = source.color;
-        newPromos.push(promo);
-        processed++;
-        console.log(`   ✅ ${promo.title}`);
-      }
-    }
-    await new Promise(r => setTimeout(r, 1000));
-  }
-
-  console.log(`   📊 ${source.name}: ${processed} nuevas, ${skipped} saltadas`);
-  return newPromos;
-}
-
-// ───────────────────────────────────────────────────────────────────
 // 4. DEDUPLICAR — no procesar PDFs ya vistos
 // ───────────────────────────────────────────────────────────────────
 
@@ -1467,12 +1250,7 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
     return await processBankFromBscGraphql(source, existingIds, existingContext, maxPerBank);
   }
 
-  // Estrategia HTML promo pages via Puppeteer (Scotiabank, Banesco, etc.)
-  if (source.strategy === 'html_promo_pages') {
-    return await processBankFromHtmlPromoPages(source, existingIds, existingContext, maxPerBank);
-  }
-
-  // Estrategia HTML promo pages via axios+cheerio (Cibao, BDI — no necesitan JS)
+  // Estrategia HTML promo pages via axios+cheerio (Cibao, BDI, Banesco, Promerica)
   if (source.strategy === 'axios_html_promo_pages') {
     return await processBankFromHtmlAxios(source, existingIds, existingContext, maxPerBank);
   }
@@ -1496,11 +1274,6 @@ async function processBank(source, existingIds, allPromos, maxPerBank = Infinity
   let pdfLinks = [];
   if (source.strategy === 'html_pdf_links') {
     pdfLinks = await getPdfLinksFromHtml(
-      source.promoListUrl, source.pdfLinkSelector,
-      source.keywords, source.excludeKeywords
-    );
-  } else if (source.strategy === 'dynamic_js') {
-    pdfLinks = await getPdfLinksFromDynamic(
       source.promoListUrl, source.pdfLinkSelector,
       source.keywords, source.excludeKeywords
     );
