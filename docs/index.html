@@ -1546,8 +1546,8 @@ function renderBankFilter(banks) {
   const filter = document.getElementById('bankFilter');
   // Keep the static Todos + Mis Productos buttons, only replace the bank buttons after them
   const bankBtns = banks.map(b =>
-    `<button class="bank-btn${b.promoCount === 0 ? ' empty-bank' : ''}" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
-      style="--bc:${b.color}">${b.name}${b.promoCount === 0 ? ' (0)' : ''}</button>`
+    `<button class="bank-btn${b.activeCount === 0 ? ' empty-bank' : ''}" data-bank="${b.id}" onclick="setBank('${b.id}',this)"
+      style="--bc:${b.color}">${b.name}${b.activeCount === 0 ? ' (0)' : ''}</button>`
   ).join('');
   filter.innerHTML =
     `<button class="bank-btn mis-bank-btn" data-bank="mis-productos" onclick="setBank('mis-productos',this)">⭐ Mis Productos</button>` +
