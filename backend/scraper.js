@@ -660,7 +660,7 @@ async function extractPromoFromPageText(pageText, bankName, sourceUrl, existingC
   try {
     const response = await client.messages.create({
       model: 'claude-opus-4-6',
-      max_tokens: 4096,
+      max_tokens: 16384,
       messages: [{
         role: 'user',
         content: `Eres un extractor de datos de promociones bancarias dominicanas.
